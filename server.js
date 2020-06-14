@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/health-hub-a2/<name-of-app>'));
+app.use(express.static(__dirname + '/dist/health-hub-a2'));
 
 app.get('/*', function (req, res) {
 
