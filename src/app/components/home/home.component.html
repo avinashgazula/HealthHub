@@ -1,0 +1,76 @@
+<body>
+    <section class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row" fxLayout.lt-sm="column"
+        fxLayoutGap="1%">
+        <mat-form-field style="width: fit-content;">
+            <mat-label>Filter</mat-label>
+            <span matPrefix style="margin-right: 8px;">
+                <mat-icon>filter_list</mat-icon>
+            </span>
+            <mat-select disableOptionCentering>
+                <mat-option *ngFor="let value of filterValues" [value]="value">{{value}}</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Ex. Dr.Simon" s>
+        </mat-form-field>
+
+        <button mat-raised-button>
+            Search
+        </button>
+    </section>
+    <section fxLayout="row" class="type-container" fxLayout="column">
+        <article fxLayout="row">
+            <h3>Upcoming Appointments</h3>
+            <mat-divider></mat-divider>
+        </article>
+        <article class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card class="example-card" *ngFor="let card of obs | async">
+                <mat-card-header fxLayout="row" fxLayoutGap="5%" class="card-header">
+                    <img mat-card-avatar src={{card.image}}>
+                    <mat-card-title>{{card.doctor}}</mat-card-title>
+                    <mat-card-subtitle>{{card.type}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5%">
+                        <mat-icon>date_range</mat-icon>
+                        <h5>{{card.date}}</h5>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="5%">
+                        <mat-icon>timer</mat-icon>
+                        <h5>{{card.time}}</h5>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <br>
+        </article>
+        <br>
+        <mat-divider></mat-divider>
+    </section>
+
+    <section fxLayout="row" class="type-container" fxLayout="column">
+        <article fxLayout="row">
+            <h3>Your Orders</h3>
+            <mat-divider></mat-divider>
+        </article>
+        <article class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card class="example-card" *ngFor="let card of obsOrders | async">
+                <mat-card-header fxLayout="row" fxLayoutGap="5%" class="card-header">
+                    <img mat-card-avatar src={{card.image}}>
+                    <mat-card-title>{{card.medicine}}</mat-card-title>
+                    <mat-card-subtitle>{{card.price}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <h5>Expected Delivery</h5>
+                    <h5>{{card.date}}</h5>
+                </mat-card-content>
+            </mat-card>
+            <br>
+        </article>
+        <br>
+        <mat-divider></mat-divider>
+    </section>
+
+</body>

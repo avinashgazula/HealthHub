@@ -1,0 +1,37 @@
+<div>
+    <mat-toolbar>
+
+        <button mat-icon-button [matMenuTriggerFor]="belowMenu" opened="false" fxHide.gt-sm="true">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+            <div fxLayout="column">
+                <a href="#" mat-button [routerLink]="['/']"><span class="menu-item">Home</span></a>
+                <a href="#" mat-button><span class="menu-item">Health</span></a>
+                <a href="#" mat-button><span class="menu-item">Medicines</span></a>
+                <a href="#" mat-button [routerLink]="['/consult']"><span class="menu-item">Consult</span></a>
+                <a href="#" mat-button><span class="menu-item">Forum</span></a>
+                <button mat-button (click)="openLoginPage()">
+                    <span class="menu-item">Login/Register</span>
+                </button>
+            </div>
+
+        </mat-menu>
+        <a mat-button routerLink="/">
+            <mat-icon class="logo">local_hospital</mat-icon>
+            <span class="logo">HEALTHHUB</span>
+        </a>
+        <span class="menu-spacer"></span>
+        <div fxShow="true" fxLayout="row" fxHide.lt-md="true">
+            <a href="#" mat-button [routerLink]="['/']"><span class="menu-item">Home</span></a>
+            <a href="#" mat-button><span class="menu-item">Health</span></a>
+            <a href="#" mat-button><span class="menu-item">Medicines</span></a>
+            <a href="#" mat-button [routerLink]="['/consult']"><span class="menu-item">Consult</span></a>
+            <a href="#" mat-button><span class="menu-item">Forum</span></a>
+            <button mat-icon-button (click)="openLoginPage()">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+        </div>
+
+    </mat-toolbar>
+</div>

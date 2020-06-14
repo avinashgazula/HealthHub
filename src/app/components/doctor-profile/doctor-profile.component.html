@@ -1,0 +1,78 @@
+<body fxLayout="column">
+    <section style="margin-top: 10px;" fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
+        fxLayoutGap="5%">
+        <img class="profile-picture"
+            src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+            alt="Profile Picture">
+        <article class="details-container">
+            <h2>Dr. Rishi Henson</h2>
+            <h3>General Physician</h3>
+            <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta repellendus quaerat eos dolores deserunt
+                laborum non id? Assumenda quo voluptate dignissimos ullam ipsum non tenetur, rem molestiae cum illo
+                aliquam!</h4>
+            <h2>Appointments</h2>
+            <div class="appointment-container" fxLayout="column">
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutGap="2%">
+                    <button disabled mat-stroked-button (click)="selectTime1()" [class.mat-raised-button]="time1">09:00
+                        AM</button>
+                    <button mat-stroked-button (click)="selectTime2()" [class.mat-raised-button]="time2">11:00
+                        AM</button>
+                    <button mat-stroked-button (click)="selectTime3()" [class.mat-raised-button]="time3">02:00
+                        PM</button>
+                    <button mat-stroked-button (click)="selectTime4()" [class.mat-raised-button]="time4">04:00
+                        PM</button>
+                </div>
+                <br>
+                <button (click)="confirmAppointment()" class="confirm" mat-raised-button>Book Appointment</button>
+            </div>
+        </article>
+
+    </section>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <section fxLayout="column" fxLayoutAlign="flex-start flex-start" class="review-container">
+        <h4>Reviews & Ratings</h4>
+        <article fxLayoutAlign="center center" fxLayoutGap="5%" fxLayout="row" fxLayout.lt-sm="column">
+            <article fxLayout="row">
+                <h4>Rating:</h4>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star</mat-icon>
+                <mat-icon>star_border</mat-icon>
+            </article>
+            <mat-form-field>
+                <mat-label>Enter your review here</mat-label>
+                <textarea matInput></textarea>
+            </mat-form-field>
+            <button mat-raised-button class="confirm">Submit</button>
+        </article>
+        <article fxLayout="row" fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <h3>Other Reviews </h3>
+                <mat-divider fxShow.gt-sm></mat-divider>
+            </div>
+            <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+                <mat-card class="example-card" *ngFor="let card of obs | async">
+                    <mat-card-header fxLayout="row" fxLayoutGap="5%" class="card-header">
+                        <mat-card-title>{{card.user}}</mat-card-title>
+                        <mat-card-subtitle>{{card.rating}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{card.review}}</p>
+                    </mat-card-content>
+                </mat-card>
+                <br>
+            </div>
+            <br>
+            <mat-divider></mat-divider>
+        </article>
+    </section>
+</body>

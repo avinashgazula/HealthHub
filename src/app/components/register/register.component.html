@@ -1,0 +1,52 @@
+<div class="parent">
+    <div class="container">
+        <div class="register">
+            <h3>Create a new Account</h3>
+            <mat-card-actions>
+                <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button
+                    color="primary">For
+                    Consumers</button>
+                <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button
+                    color="primary">For
+                    Doctors</button>
+            </mat-card-actions>
+            <mat-form-field class="first" appearance="standard">
+                <mat-label>Enter your name</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="standard">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="standard">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="standard">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-card-actions>
+                <button (click)="register()" mat-raised-button type="submit" color="primary">REGISTER</button>
+                <br>
+                <br>
+                <button (click)="openLoginPage()" class="link" mat-button color="primary">Have an account? Login
+                    Here</button>
+            </mat-card-actions>
+        </div>
+    </div>
+</div>

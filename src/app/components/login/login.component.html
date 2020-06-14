@@ -1,0 +1,42 @@
+<div class="parent">
+    <div class="container">
+        <div class="login">
+            <h3>Login</h3>
+            <mat-card-actions>
+                <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button
+                    color="primary">For
+                    Consumers</button>
+                <button m={0} (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button
+                    color="primary">For
+                    Doctors</button>
+            </mat-card-actions>
+            <mat-form-field class="first" appearance="standard">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="standard">
+                <mat-label>Enter your password</mat-label>
+                <input matInput required [formControl]="password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-card-actions>
+                <button mat-raised-button type="submit" color="primary" (click)="login()">LOGIN</button>
+                <br>
+                <br>
+                <button class="link" mat-button color="primary">Forgot Password?</button>
+                <br>
+                <button (click)="openRegisterPage()" class="link" mat-button color="primary">New User? Register
+                    here</button>
+            </mat-card-actions>
+        </div>
+    </div>
+
+</div>

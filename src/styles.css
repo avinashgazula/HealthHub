@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-paginator-range-label {
+    display: none !important;
+}
+
+button:focus, button:active:focus, button.active:focus {
+outline: none !important;
+outline-style: none !important;
+}

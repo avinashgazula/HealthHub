@@ -1,0 +1,47 @@
+<body fxLayoutAlign="center" fxLayout="column">
+
+    <div class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row" fxLayout.lt-md="column"
+        fxLayoutGap="1%">
+        <mat-form-field style="width: fit-content;">
+            <mat-label>Filter</mat-label>
+            <span matPrefix style="margin-right: 8px;">
+                <mat-icon>filter_list</mat-icon>
+            </span>
+            <mat-select disableOptionCentering>
+                <mat-option *ngFor="let value of filterValues" [value]="value">{{value}}</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Ex. Dr.Simon">
+        </mat-form-field>
+
+        <button mat-raised-button>
+            Search
+        </button>
+    </div>
+
+    <div class="type-container" fxLayout="column" *ngFor="let data of obs | async">
+        <div fxLayout="row">
+            <h3>{{data.type}}</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card [routerLink]="['/doctor']" (click)="click(card.title)" class="example-card"
+                *ngFor="let card of data.values">
+                <mat-card-header class="card-header">
+                    <mat-card-title>{{card.title}}</mat-card-title>
+                    <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{card.image}}>
+            </mat-card>
+            <br>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+
+</body>

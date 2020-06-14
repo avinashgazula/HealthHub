@@ -1,0 +1,41 @@
+@import url('//fonts.googleapis.com/css?family=Roboto|Material+Icons');
+.menu-item{
+    font-family: 'Roboto', sans-serif;
+    font-size: 120%;
+}
+
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+    background-color: #001F3F;
+    color: #fef8f2;
+    align-items: center;
+}
+
+a {
+    margin: 0 10px;
+}
+
+.logo {
+    padding-left: 10px;
+    font-size: 150%;
+}
+
+
+.mat-toolbar{
+  height: 10vh;
+}
+
+div {
+    overflow: inherit;
+}
+
+.mat-button:hover {
+  color: #fef8f2;
+  text-decoration: none;
+  box-shadow: 1px 1px wheat;
+  
+ }
+
