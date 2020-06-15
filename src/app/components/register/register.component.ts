@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, NgModel } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginComponent } from './../login/login.component';
@@ -11,19 +11,30 @@ import { LoginComponent } from './../login/login.component';
 })
 export class RegisterComponent implements OnInit {
     email = new FormControl('', [Validators.required, Validators.email]);
+    password = new FormControl('', [Validators.required]);
     hide = true;
     consumer = true;
+    passwordError: string;
+    passwordErrorBool: Boolean;
 
-    constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
+    constructor(private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
-    ngOnInit(): void {}
+    ngOnInit(): void { }
 
     getErrorMessage = () => {
         if (this.email.hasError('required')) {
-            return 'You must enter a value';
+            return 'Enter email';
         }
 
         return this.email.hasError('email') ? 'Not a valid email' : '';
+    };
+
+    getPasswordErrorMessage = () => {
+        if (this.password.hasError('required')) {
+            return 'You must enter a value';
+        }
+
+        return this.password.hasError('pattern') ? 'Password must contain atleast one uppercase, lowercase, number and a symbol' : '';
     };
 
     onClick = () => {

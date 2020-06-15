@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormControl, Validators } from '@angular/forms';
 
 export interface Review {
   user: string;
@@ -30,6 +31,7 @@ const DATA: Review[] = [
 export class DoctorProfileComponent implements OnInit {
   obs: Observable<any>;
   dataSource: MatTableDataSource<Review> = new MatTableDataSource<Review>(DATA);
+  review = new FormControl('', [Validators.required]);
 
   time1: Boolean = false;
   time2: Boolean = false;
@@ -37,6 +39,12 @@ export class DoctorProfileComponent implements OnInit {
   time4: Boolean = false;
 
   constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef) { }
+
+  getReviewErrorMessage = () => {
+    if (this.review.hasError('required')) {
+      return 'You must enter a value';
+    }
+  };
 
   ngOnInit() {
     this.changeDetectorRef.detectChanges();

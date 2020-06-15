@@ -39,20 +39,24 @@
     <br>
     <section fxLayout="column" fxLayoutAlign="flex-start flex-start" class="review-container">
         <h2>Reviews & Ratings</h2>
-        <article fxLayoutAlign="center center" fxLayoutGap="5%" fxLayout="row" fxLayout.lt-sm="column">
-            <article fxLayout="row">
-                <h3>Rating:</h3>
-                <mat-icon>star</mat-icon>
-                <mat-icon>star</mat-icon>
-                <mat-icon>star</mat-icon>
-                <mat-icon>star</mat-icon>
-                <mat-icon>star_border</mat-icon>
-            </article>
-            <mat-form-field>
-                <mat-label>Enter your review here</mat-label>
-                <textarea matInput></textarea>
-            </mat-form-field>
-            <button mat-raised-button class="confirm">Submit</button>
+        <article fxLayoutAlign="center center" fxLayout="row" fxLayout.lt-sm="column">
+            <form>
+                <article fxLayout="row">
+                    <h3>Rating:</h3>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star_border</mat-icon>
+                </article>
+                <mat-form-field>
+                    <mat-label>Enter your review here</mat-label>
+                    <textarea [formControl]="review" required matInput></textarea>
+                    <mat-error *ngIf="review.invalid">{{getReviewErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <button type="submit" mat-raised-button class="confirm">Submit</button>
+            </form>
+
         </article>
         <article fxLayout="row" fxLayout="column">
             <div fxLayout="row" fxLayoutAlign="center center">
