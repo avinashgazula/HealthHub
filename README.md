@@ -77,6 +77,7 @@ https://health-hub-a2.herokuapp.com/
 
 ### Gitlab Link
 
+https://git.cs.dal.ca/gazula/a2_avinash_gazula
 
 ### Github Link
 
@@ -152,3 +153,6 @@ All the images used in the Application were taken from Unsplash.com and can be u
 [5] "Doctor 5". [Image]. Available: https://unsplash.com/photos/1RskUx-C0A8 [Accessed: 12-Jun-2020]
 
 [6] "Doctor 6". [Image]. Available: https://unsplash.com/photos/wzV17t-k3k0 [Accessed: 12-Jun-2020]
+
+## Acknowledgements
+* https://www.traversymedia.com/
