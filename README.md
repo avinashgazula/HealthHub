@@ -71,6 +71,10 @@ NodeJs and Angular need to be installed on the system
 
 App is deployed on heroku by linking github repository. Automatic deploy is enabled so that it builds as soon as a commit has been made.
 
+### Heroku URL
+
+https://health-hub-a2.herokuapp.com/
+
 ### Gitlab Link
 
 
