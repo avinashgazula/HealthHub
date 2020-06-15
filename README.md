@@ -42,11 +42,11 @@ NodeJs and Angular need to be installed on the system
 
 ### Pages Built
 
-* Login 
-* Signup
-* Home Page
-* Consult Doctor
-* Doctor's Profile
+* Login - Can be accessed using the icon on the header
+* Signup - Can be accessed using the icon on the header
+* Home Page - https://health-hub-a2.herokuapp.com/
+* Consult Doctor - https://health-hub-a2.herokuapp.com/consult
+* Doctor's Profile - https://health-hub-a2.herokuapp.com/doctor
 
 ### Directory Structure
 

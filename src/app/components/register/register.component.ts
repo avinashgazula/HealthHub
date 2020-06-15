@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, NgModel } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginComponent } from './../login/login.component';
+import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
+
+
 
 @Component({
     selector: 'app-register',
@@ -10,36 +13,61 @@ import { LoginComponent } from './../login/login.component';
     styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-    email = new FormControl('', [Validators.required, Validators.email]);
-    password = new FormControl('', [Validators.required]);
+
     hide = true;
     consumer = true;
-    passwordError: string;
-    passwordErrorBool: Boolean;
+    registerForm: FormGroup;
 
-    constructor(private dialog: MatDialog, private snackBar: MatSnackBar) { }
+    constructor(private fb: FormBuilder, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
-    ngOnInit(): void { }
+    ngOnInit(): void {
+        this.registerForm = this.fb.group({
+            name: ['', [Validators.required]],
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
+            confirmPassword: ['', [Validators.required]]
+        }, {
+            validator: MatchPasswords('password', 'confirmPassword')
+        })
+    }
 
-    getErrorMessage = () => {
+
+    getEmailError = () => {
         if (this.email.hasError('required')) {
-            return 'Enter email';
+            return 'Email is required';
         }
-
         return this.email.hasError('email') ? 'Not a valid email' : '';
     };
 
-    getPasswordErrorMessage = () => {
+    getPasswordError = () => {
         if (this.password.hasError('required')) {
-            return 'You must enter a value';
+            return 'Password is required';
         }
+        return 'Password must be atleast 8 characters long and have at least one uppercase, lowercase character and a symbol'
+    }
 
-        return this.password.hasError('pattern') ? 'Password must contain atleast one uppercase, lowercase, number and a symbol' : '';
-    };
+    getConfirmPasswordError = () => {
+        if (this.confirmPassword.hasError('required')) {
+            return 'Password is required';
+        }
+        return 'Passwords do not match'
+    }
 
-    onClick = () => {
-        console.log('test');
-    };
+    get name() {
+        return this.registerForm.get('name')
+    }
+
+    get email() {
+        return this.registerForm.get('email');
+    }
+
+    get password() {
+        return this.registerForm.get('password')
+    }
+
+    get confirmPassword() {
+        return this.registerForm.get('confirmPassword')
+    }
 
     selectConsumer = () => {
         this.consumer = true;
@@ -50,10 +78,13 @@ export class RegisterComponent implements OnInit {
     };
 
     register = () => {
-        this.snackBar.open('Registration Succesful', '', {
-            duration: 3000,
-        });
-        this.dialog.closeAll();
+        if (this.registerForm.valid) {
+            this.snackBar.open('Registration Succesful', '', {
+                duration: 3000,
+            });
+            this.dialog.closeAll();
+        }
+
     };
 
     openLoginPage = () => {

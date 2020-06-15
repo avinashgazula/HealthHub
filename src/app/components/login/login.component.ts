@@ -1,6 +1,6 @@
 import { RegisterComponent } from './../register/register.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -10,27 +10,40 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-    email = new FormControl('', [Validators.required, Validators.email]);
-    password = new FormControl('', [Validators.required]);
     hide = true;
     consumer = true;
+    loginForm: FormGroup;
 
-    constructor(private dialog: MatDialog, private snackBar: MatSnackBar) {}
+    constructor(private fb: FormBuilder, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.loginForm = this.fb.group({
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required]]
+        })
+    }
 
-    getEmailErrorMessage = () => {
+    getEmailError = () => {
         if (this.email.hasError('required')) {
-            return 'You must enter a value';
+            return 'Email is required';
         }
-        return this.email.hasError('email') ? 'Not a valid email' : '';
+        return 'Not a valid email';
     };
 
-    getPasswordErrorMessage = () => {
-        if (this.email.hasError('required')) {
-            return 'You must enter a value';
+    getPasswordError = () => {
+        if (this.password.hasError('required')) {
+            return 'Password is required';
         }
-    };
+        return 'Password must be atleast 8 characters long and have at least one uppercase, lowercase character and a symbol'
+    }
+
+    get email() {
+        return this.loginForm.get('email');
+    }
+
+    get password() {
+        return this.loginForm.get('password')
+    }
 
     selectConsumer = () => {
         this.consumer = true;
@@ -46,9 +59,11 @@ export class LoginComponent implements OnInit {
     };
 
     login = () => {
-        this.snackBar.open('Login Succesful', '', {
-            duration: 3000,
-        });
-        this.dialog.closeAll();
+        if (this.loginForm.valid) {
+            this.snackBar.open('Login Succesful', '', {
+                duration: 3000,
+            });
+            this.dialog.closeAll();
+        }
     };
 }
