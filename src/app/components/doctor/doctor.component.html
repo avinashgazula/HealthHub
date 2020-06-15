@@ -1,7 +1,7 @@
 <body fxLayoutAlign="center" fxLayout="column">
 
-    <div class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row" fxLayout.lt-md="column"
-        fxLayoutGap="1%">
+    <form [formGroup]="searchForm" class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row"
+        fxLayout.lt-md="column" fxLayoutGap="4%">
         <mat-form-field style="width: fit-content;">
             <mat-label>Filter</mat-label>
             <span matPrefix style="margin-right: 8px;">
@@ -15,13 +15,15 @@
 
         <mat-form-field>
             <mat-label>Search</mat-label>
-            <input matInput placeholder="Ex. Dr.Simon">
+            <input formControlName="search" matInput placeholder="Ex. Dr.Simon">
+            <mat-error *ngIf="search.invalid">Enter a keyword</mat-error>
         </mat-form-field>
 
-        <button mat-raised-button>
+        <button type="submit" mat-raised-button>
             Search
         </button>
-    </div>
+
+    </form>
 
     <div class="type-container" fxLayout="column" *ngFor="let data of obs | async">
         <div fxLayout="row">

@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export interface Card {
     title: string;
@@ -87,20 +88,31 @@ const data: Doctor[] = [
 export class DoctorComponent implements OnInit {
     obs: Observable<any>;
     dataSource: MatTableDataSource<Doctor> = new MatTableDataSource<Doctor>(data);
+    searchForm: FormGroup;
 
     filterValues: string[] = ['Specialization', 'Name'];
 
-    constructor(private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) { }
+    constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) { }
 
     ngOnInit() {
+        this.searchForm = this.fb.group({
+            search: ['', [Validators.required]]
+        })
+
         this.changeDetectorRef.detectChanges();
         this.obs = this.dataSource.connect();
+
+
     }
 
     ngOnDestroy() {
         if (this.dataSource) {
             this.dataSource.disconnect();
         }
+    }
+
+    get search() {
+        return this.searchForm.get('search');
     }
 
     click = (name) => {

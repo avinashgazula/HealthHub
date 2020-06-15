@@ -1,6 +1,6 @@
 <body>
-    <section class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row" fxLayout.lt-sm="column"
-        fxLayoutGap="1%">
+    <form [formGroup]="searchForm" class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row"
+        fxLayout.lt-sm="column" fxLayoutGap="5%">
         <mat-form-field style="width: fit-content;">
             <mat-label>Filter</mat-label>
             <span matPrefix style="margin-right: 8px;">
@@ -14,13 +14,14 @@
 
         <mat-form-field>
             <mat-label>Search</mat-label>
-            <input matInput placeholder="Ex. Dr.Simon" s>
+            <input formControlName="search" matInput placeholder="Ex. Dr.Simon">
+            <mat-error *ngIf="search.invalid">Enter a keyword</mat-error>
         </mat-form-field>
 
-        <button mat-raised-button>
+        <button type="submit" mat-raised-button>
             Search
         </button>
-    </section>
+    </form>
     <section fxLayout="row" class="type-container" fxLayout="column">
         <article fxLayout="row">
             <h3>Upcoming Appointments</h3>

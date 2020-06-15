@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 export interface Appointment {
   doctor: string;
@@ -67,10 +68,14 @@ export class HomeComponent implements OnInit {
   obsOrders: Observable<any>;
   dataSource: MatTableDataSource<Appointment> = new MatTableDataSource<Appointment>(DATA);
   dataSourceOrders: MatTableDataSource<Order> = new MatTableDataSource<Order>(orders);
+  searchForm: FormGroup;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.searchForm = this.fb.group({
+      search: ['', [Validators.required]]
+    })
     this.changeDetectorRef.detectChanges();
     this.obs = this.dataSource.connect();
     this.obsOrders = this.dataSourceOrders.connect();
@@ -83,6 +88,11 @@ export class HomeComponent implements OnInit {
     if (this.dataSourceOrders) {
       this.dataSourceOrders.disconnect();
     }
+  }
+
+
+  get search() {
+    return this.searchForm.get('search');
   }
 
 }
