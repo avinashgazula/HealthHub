@@ -32,6 +32,14 @@ NodeJs and Angular need to be installed on the system
 * [Bootstrap](https://getbootstrap.com/) - Used for styling
 * [Angular Material](https://material.angular.io/) - Material UI componengts for angular
 
+### Design Justifications
+
+* Angular was the preffered framework for the development of the website because of the straight forward 2-way binding and routing it provides. TyeScript is more robust.
+* Material UI was used for the components because it offers a streamlined and minimalistic layout. Material UI is widely used also its familiar to the end users.
+* Bootstrap was used because its easy to set up and configure laypouts. 
+* A dark blue colour was chosen as the primary color because it constrasts well with the white background. 
+* Roboto font was used for the components because it is the recommended font for Material UI
+
 ### Pages Built
 
 * Login 
