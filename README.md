@@ -1,9 +1,9 @@
 # Assignment 2
 
-Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, view blogs and access forum where the questions are answered by medica professionals.
+Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, view blogs and access forum where the questions are answered by medical professionals.
 
 * *Date Created*: 07 Jun 2020
-* *Last Modification Date*: 14 Jun 2020
+* *Last Modification Date*: 15 Jun 2020
 
 ## Authors
 
@@ -13,16 +13,16 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 
 ### Prerequisites
 
-NodeJs and Angular need to be installed on the system
+NodeJs and Angular must be installed on the system
 
 ### Installing
 
 * Clone the repository by using the provided GitLab link
 * Open the terminal and go to the directory where package.json is located
 * Install the node modules using the following command
-	 npm install or npm i 
+	 `npm install` or `npm i` 
 * Start the angular application by using the following command
-	 ng serve
+	 `ng serve`
 
 
 ### Built With
@@ -37,7 +37,7 @@ NodeJs and Angular need to be installed on the system
 * Angular was the preffered framework for the development of the website because of the straight forward 2-way binding and routing it provides. TyeScript is more robust.
 * Material UI was used for the components because it offers a streamlined and minimalistic layout. Material UI is widely used also its familiar to the end users.
 * Bootstrap was used because its easy to set up and configure laypouts. 
-* A dark blue colour was chosen as the primary color because it constrasts well with the white background. 
+* A dark blue colour (#001F3F) was chosen as the primary color because it constrasts well with the white background. 
 * Roboto font was used for the components because it is the recommended font for Material UI
 
 ### Pages Built
@@ -65,6 +65,8 @@ NodeJs and Angular need to be installed on the system
 `components/login` - This folder contains files related to the login page
 
 `components/register` - This folder contains files related to the registration page
+
+`helpers` - This folder contains all the helper methods
 
 
 ## Deployment
@@ -135,6 +137,34 @@ https://github.com/avinashgazula/HealthHub-A2
 - [Why] [7](https://alligator.io/css/css-scrollbars/) Code was used to create a custom scroll bar
 - [How] [7](https://alligator.io/css/css-scrollbars/) Code was modified by Avinash Gazula
 
+[8] "Angular 7 - Reactive Forms Validation". [Online]. Available: https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example [Accessed: 15-Jun-2020]
+
+### /src/app/helpers/MatchPasswords.ts
+
+```javascript
+export function MatchPasswords(password: string, confirmPassword: string) {
+    return (formGroup: FormGroup) => {
+        const control1 = formGroup.controls[password];
+        const control2 = formGroup.controls[confirmPassword];
+
+        if (control2.errors && !control2.errors.mustMatch) {
+            return;
+        }
+
+        if (control1.value !== control2.value) {
+            control2.setErrors({ match: true });
+        } else {
+            control2.setErrors(null);
+        }
+    }
+}
+```
+
+- [How] The code in [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) was implemented by Jason Watmore
+- [Why] [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) Code was used to create a custom validator to match passwords
+- [How] [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) Code was modified by Avinash Gazula
+
+[9] "How to Deploy Angular Application to Heroku". [Online]. Available: https://itnext.io/how-to-deploy-angular-application-to-heroku-1d56e09c5147 [Accessed: 14-Jun-2020]
 
 
 
@@ -142,17 +172,17 @@ https://github.com/avinashgazula/HealthHub-A2
 
 All the images used in the Application were taken from Unsplash.com and can be used for both commercial and non commercial purposes with no credit required.
 
-[1] "Medical doctor fighting Corona virus.". [Image]. Available: https://unsplash.com/photos/DPEPYPBZpB8 [Accessed: 12-Jun-2020]
+[1] "Doctor". [Image]. Available: https://unsplash.com/photos/DPEPYPBZpB8 [Accessed: 12-Jun-2020]
 
-[2] "Doctor 2". [Image]. Available: https://unsplash.com/photos/FVh_yqLR9eA [Accessed: 12-Jun-2020]
+[2] "Doctor". [Image]. Available: https://unsplash.com/photos/FVh_yqLR9eA [Accessed: 12-Jun-2020]
 
-[3] "Doctor 3". [Image]. Available: https://unsplash.com/photos/7bMdiIqz_J4 [Accessed: 12-Jun-2020]
+[3] "Doctor". [Image]. Available: https://unsplash.com/photos/7bMdiIqz_J4 [Accessed: 12-Jun-2020]
 
-[4] "Doctor 4". [Image]. Available: https://unsplash.com/photos/7bMdiIqz_J4 [Accessed: 12-Jun-2020]
+[4] "Doctor". [Image]. Available: https://unsplash.com/photos/7bMdiIqz_J4 [Accessed: 12-Jun-2020]
 
-[5] "Doctor 5". [Image]. Available: https://unsplash.com/photos/1RskUx-C0A8 [Accessed: 12-Jun-2020]
+[5] "Doctor". [Image]. Available: https://unsplash.com/photos/1RskUx-C0A8 [Accessed: 12-Jun-2020]
 
-[6] "Doctor 6". [Image]. Available: https://unsplash.com/photos/wzV17t-k3k0 [Accessed: 12-Jun-2020]
+[6] "Doctor". [Image]. Available: https://unsplash.com/photos/wzV17t-k3k0 [Accessed: 12-Jun-2020]
 
 ## Acknowledgements
 * https://www.traversymedia.com/
