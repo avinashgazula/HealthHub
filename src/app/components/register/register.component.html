@@ -1,14 +1,12 @@
 <div class="parent">
     <div class="container">
         <div class="register">
-            <h3>Create a new Account</h3>
+            <h3>Register</h3>
             <form [formGroup]="registerForm">
                 <mat-card-actions>
-                    <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button
-                        color="primary">For
+                    <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
                         Consumers</button>
-                    <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button
-                        color="primary">For
+                    <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
                         Doctors</button>
                 </mat-card-actions>
                 <mat-form-field class="first" appearance="standard">

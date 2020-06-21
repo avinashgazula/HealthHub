@@ -1,6 +1,7 @@
 mat-form-field {
-    width: 80%;
+    width: 70%;
 }
+
 
 mat-divider {
     border-style: inset;
@@ -15,6 +16,16 @@ mat-card-actions {
 button {
     margin-left: 0 !important;
 }
+
+.mat-raised-button {
+    background-color: #001F3F;
+    color: white;
+}
+
+.mat-button {
+    color: #001F3F;
+}
+
 
 h3 {
     margin: 0 150px;
