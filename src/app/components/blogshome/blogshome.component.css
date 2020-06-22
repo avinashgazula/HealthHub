@@ -1,0 +1,40 @@
+.example-card {
+    max-width: 1900px;
+  }
+
+  .avatar{
+
+    background-image: url('https://pickaface.net/gallery/avatar/InspireBuddy5290e4bdc07a4.png');
+    background-size: cover;
+  }
+
+
+  .center {
+    margin: auto;
+    width: 100%;
+    border: 3px solid snow;
+    padding: 10px;
+  }
+
+  .blog {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .colored{
+
+    background-color: #16222A;
+  }
+
+  .mybutton{
+    padding-left: 20px;
+  }
+
+  button:hover{
+    transform: scale(1.05);
+  }
+
+  button:focus{
+    background-repeat: repeat;
+  }

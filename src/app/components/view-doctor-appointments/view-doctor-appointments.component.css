@@ -1,0 +1,31 @@
+/* .avatar and oexample-card is Modified CSS adaopted from Mat card in Angular Material */
+
+.avatar{
+
+    background-image: url('https://pickaface.net/gallery/avatar/InspireBuddy5290e4bdc07a4.png');
+    background-size: cover;
+  }
+  .example-card {
+   max-width: 1900px;
+  }
+  .center {
+    margin: auto;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color:snow;
+    border: thistle;
+  }
+
+  button:hover{
+    transform: scale(1.05);
+  }
+
+  .stroke{
+    color: #001F3F;
+  }
+
+  .raised{
+    background-color: #001F3F;
+    color: #fef8f2;
+  }
