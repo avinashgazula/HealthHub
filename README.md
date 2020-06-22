@@ -8,6 +8,7 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 ## Authors
 
 * [Avinash Gazula](av530575@dal.ca) 
+* [Sai Sunil Menta](ss734478@dal.ca)
 
 ## Getting Started
 
