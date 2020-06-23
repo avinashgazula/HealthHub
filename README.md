@@ -7,7 +7,8 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 
 ## Authors
 
-* [Avinash Gazula](av530575@dal.ca) 
+* [Avinash Gazula](av530575@dal.ca)
+* [Harshit Trivedi](harshit.trivedi@dal.ca) 
 
 ## Getting Started
 
@@ -45,8 +46,13 @@ NodeJs and Angular must be installed on the system
 * Login - Can be accessed using the icon on the header
 * Signup - Can be accessed using the icon on the header
 * Home Page - https://health-hub-a2.herokuapp.com/
+* About Us - https://health-hub-a2.herokuapp.com/aboutUs
+* Contact Us - https://health-hub-a2.herokuapp.com/contactUs
 * Consult Doctor - https://health-hub-a2.herokuapp.com/consult
 * Doctor's Profile - https://health-hub-a2.herokuapp.com/doctor
+* Home Care - https://health-hub-a2.herokuapp.com/homeCare
+* Medicine Delivery - https://health-hub-a2.herokuapp.com/orderMedicine
+* Schedule Care - https://health-hub-a2.herokuapp.com/homeCare
 
 ### Directory Structure
 
@@ -65,6 +71,16 @@ NodeJs and Angular must be installed on the system
 `components/login` - This folder contains files related to the login page
 
 `components/register` - This folder contains files related to the registration page
+
+`components/about-us` - This folder container files related to about us page
+
+`components/contact-us` - This folder container files related to contact us page
+
+`components/home-care` - This folder container files related to home care informational page
+
+`components/schedule-care` - This folder container files related to book home care page
+
+`components/medicine-delivery` - This folder container files related to medicine delivery page
 
 `helpers` - This folder contains all the helper methods
 
@@ -170,8 +186,6 @@ export function MatchPasswords(password: string, confirmPassword: string) {
 
 ## Image Sources
 
-All the images used in the Application were taken from Unsplash.com and can be used for both commercial and non commercial purposes with no credit required.
-
 [1] "Doctor". [Image]. Available: https://unsplash.com/photos/DPEPYPBZpB8 [Accessed: 12-Jun-2020]
 
 [2] "Doctor". [Image]. Available: https://unsplash.com/photos/FVh_yqLR9eA [Accessed: 12-Jun-2020]
@@ -183,6 +197,12 @@ All the images used in the Application were taken from Unsplash.com and can be u
 [5] "Doctor". [Image]. Available: https://unsplash.com/photos/1RskUx-C0A8 [Accessed: 12-Jun-2020]
 
 [6] "Doctor". [Image]. Available: https://unsplash.com/photos/wzV17t-k3k0 [Accessed: 12-Jun-2020]
+
+[7] "Home-Care". [Image]. Available: https://lh3.googleusercontent.com/proxy/pYuLu4Lt0tZnX5YvOd8-UsMO-k5KspYkZoHxIpNZzbVkwqZD5uH6io2kRuXkaInvAXzoiuKSqmKTkkd9fMRjYwS3WjmWEoyCfldNwml_eFHGoqQly7bMps7wsQ [Accessed: 22-Jun-2020]
+
+[8] "Order-Medicine" [Image]. Available: https://d.newsweek.com/en/full/1541364/prescription-pills.jpg [Accessed: 22-Jun-2020] 
+
+[9] "Contact-Us" [Image]. Available: https://i.gifer.com/YXIc.gif [Accessed: 22-Jun-2020]
 
 ## Acknowledgements
 * https://www.traversymedia.com/
