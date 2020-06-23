@@ -12,17 +12,20 @@ import { ForumComponent } from './forum/forum.component';
 import { QuestionitemComponent } from './questionitem/questionitem.component';
 import { InsuranceitemComponent } from './insuranceitem/insuranceitem.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
 
 
 const routes: Routes = [
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'consult', component: DoctorComponent },
+  { path: 'single-blog', component: BlogComponent },
   { path: 'orderMedicine', component: MedicineDeliveryComponent },
   { path: 'homeCare', component: HomeCareComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
-  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomepageComponent },
   { path: 'insurance', component: InsurancefinderComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'question/:id', component: QuestionitemComponent },
