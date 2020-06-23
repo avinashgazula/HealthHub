@@ -1,0 +1,65 @@
+<body fxLayoutAlign="center" fxLayout="column">
+  <div class="parent">
+    <div class="editprofile container">
+    <mat-toolbar>
+          <mat-toolbar-row>
+            <span class="span">Edit your information</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
+          <div>
+          <form [formGroup]="editProfileForm">
+            
+            <mat-form-field class="first" appearance="standard">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" formControlName="firstName" required>
+              <mat-error *ngIf="editProfileForm.controls['firstName'].invalid && editProfileForm.controls['firstName'].touched">First name is required
+              </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="standard">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lastName" required>
+            <mat-error *ngIf="editProfileForm.controls['lastName'].invalid && editProfileForm.controls['lastName'].touched">Last name is required
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Email Address</mat-label>
+          <input matInput type="email" name="emailInput" formControlName="emailID" required>
+          <mat-error *ngIf="editProfileForm.controls['emailID'].invalid && editProfileForm.controls['emailID'].touched" class="alert alert-danger">{{getEmailIDError()}}
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your password</mat-label>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-hint align="end">Min Length 8. At least 1 Uppercase, Lowercase and Number</mat-hint>
+          <mat-error *ngIf="editProfileForm.controls['password'].invalid && editProfileForm.controls['password'].touched">{{getPasswordError()}}
+          </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="standard">
+        <mat-label>Confirm Password</mat-label>
+        <input formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="editProfileForm.controls['confirmPassword'].invalid && editProfileForm.controls['confirmPassword'].touched">
+          {{getConfirmPasswordError()}}
+        </mat-error>
+      </mat-form-field>
+      <br>      
+      <mat-card-actions>
+        <button (click)="edit()" mat-raised-button type="submit" color="primary" >Edit Profile</button>
+        <span>  </span>
+        <button (click)="cancel()" mat-raised-button type="reset" color="secondary">Cancel</button>
+      </mat-card-actions>
+      </form>
+      </div>
+      </div>
+  </div>
+  <hr>
+</body>

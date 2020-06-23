@@ -1,0 +1,44 @@
+  span{
+    margin-left: 10px;
+  }
+
+  .editprofile {
+    text-align: center;
+    width: 50%;
+  }
+
+  h3 {
+    margin: 0 150px;
+  }
+
+  
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .first {
+    margin-top: 10px;
+  }
+
+  mat-divider {
+    border-style: inset;
+    border-width: 1px;
+    height: 200px;
+  }
+
+  mat-card-actions {
+      margin-bottom: 0 !important;
+  }
+
+  button {
+      margin-left: 0 !important;
+  }
+
+  mat-toolbar {
+    text-align: center;
+  }
+
+  .span {
+    margin: auto;
+  }
