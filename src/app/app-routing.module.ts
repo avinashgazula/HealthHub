@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InsurancefinderComponent } from './insurancefinder/insurancefinder.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +16,7 @@ import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+
 
 
 const routes: Routes = [
@@ -33,7 +35,8 @@ const routes: Routes = [
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'consult', component: DoctorComponent },
   { path: 'blogs', component: BlogshomeComponent },
-  { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent }
+  { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent },
+  { path: 'edit-profile', component: EditProfileComponent }
 
 ];
 

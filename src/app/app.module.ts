@@ -64,7 +64,7 @@ import { QuestionitemComponent } from './questionitem/questionitem.component';
 import { InsuranceitemComponent } from './insuranceitem/insuranceitem.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
-
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +88,8 @@ import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appoin
     QuestionitemComponent,
     InsuranceitemComponent,
     BlogshomeComponent,
-    ViewDoctorAppointmentsComponent
+    ViewDoctorAppointmentsComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
