@@ -57,14 +57,14 @@ import { HomeCareComponent } from './components/home-care/home-care.component';
 import { ScheduleCareComponent } from './components/schedule-care/schedule-care.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { InsurancefinderComponent } from './insurancefinder/insurancefinder.component';
-import { InsuranceService } from './insurance.service';
-import { ForumComponent } from './forum/forum.component';
-import { QuestionitemComponent } from './questionitem/questionitem.component';
-import { InsuranceitemComponent } from './insuranceitem/insuranceitem.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
+import { InsuranceService } from './insurance.service';
+import { ForumComponent } from './components/forum/forum.component';
+import { QuestionitemComponent } from './components/questionitem/questionitem.component';
+import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 
 @NgModule({
   declarations: [
