@@ -76,7 +76,7 @@ import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appoin
     HomeCareComponent,
     ScheduleCareComponent,
     AboutUsComponent,
-    ContactUsComponent
+    ContactUsComponent,
     InsurancefinderComponent,
     ForumComponent,
     QuestionitemComponent,
