@@ -1,0 +1,45 @@
+h2 {
+    padding: 0px;
+    margin: 10px 0px 13px 0px;
+    font: normal 400 30px/30px 'Roboto', sans-serif;
+    color: #335e85;
+ }
+.parentCss{
+    text-align: center;
+    margin-top: 40px;
+}
+.myTextArea{
+    width: calc(50%)
+}
+.mat-icon-button {
+    background-color: #001F3F;
+    color: white;
+}
+
+.mat-raised-button {
+    background-color: #001F3F;
+    color: white;
+    height: fit-content;
+    width: fit-content;
+    margin: auto 0;
+    padding: 0 !important;
+}
+
+.custom-tab{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: calc(20%);
+    margin-left: calc(20%);
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px black;
+    padding: 0px 0px 5px 5px;
+}
+
+.content-center{
+    justify-content: space-around;
+}
+.text-style{
+    font-family: 'Roboto', sans-serif;
+    padding-top: 3px;
+    padding-right: 5px;
+}

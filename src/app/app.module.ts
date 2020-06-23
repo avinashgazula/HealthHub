@@ -47,6 +47,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
+import { HomeCareComponent } from './components/home-care/home-care.component';
+import { ScheduleCareComponent } from './components/schedule-care/schedule-care.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,12 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     DoctorComponent,
     DoctorProfileComponent,
-    HomeComponent
+    HomeComponent,
+    MedicineDeliveryComponent,
+    HomeCareComponent,
+    ScheduleCareComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

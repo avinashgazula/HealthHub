@@ -1,0 +1,38 @@
+.homeCare {
+    margin-left: 20px;
+}
+h1 {
+    padding: 0px;
+    margin: 10px 0px 13px 0px;
+    font: normal 400 36px/36px 'Roboto', sans-serif;
+    color: #335e85;
+}
+h2 {
+    font: normal 400 28px 'Roboto', sans-serif;
+}
+h4 {
+    font: normal 400 24px 'Roboto', sans-serif;
+}
+p {
+    padding: 0px;
+    letter-spacing: 0.000em;
+    font: normal 400 19px/26px 'Roboto', sans-serif;
+    color: #635f5d;
+  }
+li{
+    font-weight: bold;
+    font: normal 400 19px/26px 'Roboto', sans-serif;
+}
+.mat-icon-button {
+    background-color: #001F3F;
+    color: white;
+}
+
+.mat-raised-button {
+    background-color: #001F3F;
+    color: white;
+    height: fit-content;
+    width: fit-content;
+    margin-bottom: 15px;
+    padding: 5px !important;
+}

@@ -1,0 +1,73 @@
+<div class="orderMedicine-container">
+
+    <div class="text-center">
+        <img src="https://d.newsweek.com/en/full/1541364/prescription-pills.jpg" width="100%" height="350px">
+        <br>
+        <div class="custom-tab">
+            <form (ngSubmit)="onSubmit()" [formGroup]="formPersonalRecord">
+                <h2>Upload your medical prescription here</h2>
+                <div class="row parentCss content-center">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Apartment Number</mat-label>
+                            <input matInput formControlName="aptNumber" required>
+                            <mat-error>
+                                Please provide Apartment number.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Street Address</mat-label>
+                            <input matInput formControlName="streetAddress" required>
+                            <mat-error>
+                                Please provide street address.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row parentCss content-center">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput formControlName="postalCode" 
+                            required>
+                            <mat-error>
+                                Please provide postal code of 6 chararcters.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Mobile Number</mat-label>
+                            <input type="tel" matInput formControlName="mobileNumber" 
+                            required 
+                            placeholder="902-555-1234">
+                            <mat-error>
+                                Please provide a 10-digit mobile number.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row parentCss " style="justify-content: center;">
+                    <div>
+                        <label for="uploadPrescription" class="text-style">Upload Prescription File*</label>
+                    </div>
+                    <div>
+                        <input id="uploadPrescription" type="file"/>
+                    </div>
+                </div>
+                <br>
+                <mat-form-field class="myTextArea">
+                    <mat-label>Additional Comments</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <br>
+                <button type="submit" mat-raised-button 
+                [disabled]="!formPersonalRecord.valid">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
