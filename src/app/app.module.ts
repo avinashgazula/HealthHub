@@ -11,6 +11,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Angular Material imports
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -47,6 +49,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { InsurancefinderComponent } from './insurancefinder/insurancefinder.component';
+import { InsuranceService } from './insurance.service';
+import { ForumComponent } from './forum/forum.component';
+import { QuestionitemComponent } from './questionitem/questionitem.component';
+import { InsuranceitemComponent } from './insuranceitem/insuranceitem.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
 
@@ -59,6 +66,11 @@ import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appoin
     RegisterComponent,
     DoctorComponent,
     DoctorProfileComponent,
+    HomeComponent,
+    InsurancefinderComponent,
+    ForumComponent,
+    QuestionitemComponent,
+    InsuranceitemComponent
     HomeComponent,
     BlogshomeComponent,
     ViewDoctorAppointmentsComponent
@@ -101,9 +113,10 @@ import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appoin
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [InsuranceService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })
