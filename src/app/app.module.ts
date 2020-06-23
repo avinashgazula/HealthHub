@@ -70,7 +70,7 @@ import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appoin
     InsurancefinderComponent,
     ForumComponent,
     QuestionitemComponent,
-    InsuranceitemComponent
+    InsuranceitemComponent,
     HomeComponent,
     BlogshomeComponent,
     ViewDoctorAppointmentsComponent
