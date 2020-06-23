@@ -9,6 +9,7 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 
 * [Avinash Gazula](av530575@dal.ca)
 * [Harshit Trivedi](harshit.trivedi@dal.ca) 
+* [Sai Sunil Menta](ss734478@dal.ca)
 
 ## Getting Started
 

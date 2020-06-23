@@ -11,6 +11,8 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Angular Material imports
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -52,6 +54,14 @@ import { HomeCareComponent } from './components/home-care/home-care.component';
 import { ScheduleCareComponent } from './components/schedule-care/schedule-care.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { InsurancefinderComponent } from './insurancefinder/insurancefinder.component';
+import { InsuranceService } from './insurance.service';
+import { ForumComponent } from './forum/forum.component';
+import { QuestionitemComponent } from './questionitem/questionitem.component';
+import { InsuranceitemComponent } from './insuranceitem/insuranceitem.component';
+import { BlogshomeComponent } from './components/blogshome/blogshome.component';
+import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+
 
 @NgModule({
   declarations: [
@@ -67,6 +77,12 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     ScheduleCareComponent,
     AboutUsComponent,
     ContactUsComponent
+    InsurancefinderComponent,
+    ForumComponent,
+    QuestionitemComponent,
+    InsuranceitemComponent,
+    BlogshomeComponent,
+    ViewDoctorAppointmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -106,9 +122,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [InsuranceService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })

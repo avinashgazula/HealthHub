@@ -1,0 +1,7 @@
+[
+     {"insurancename":"Insurance Name","insurancecompany":"Company1","agegroup":"20-30","premium":200,"payduration":"year","insurancedetails":"Hospitalisation Covered, All dental and eye care coverd in this plan. Internationa travle is also covered.","type":"individual"},
+      {"insurancename":"Insurance Name","insurancecompany":"Company1","agegroup":"30-40","premium":400,"payduration":"month","insurancedetails":"details","type":"Family"},
+      {"insurancename":"Insurance Name2","insurancecompany":"Company2","agegroup":"20-30","premium":300,"payduration":"year","insurancedetails":"details","type":"individual"},
+      {"insurancename":"Insurance Name3","insurancecompany":"Company3","agegroup":"25-30","premium":1000,"payduration":"month","insurancedetails":"details","type":"individual"},
+      {"insurancename":"Insurance Name4","insurancecompany":"Company4","agegroup":"20-30","premium":1200,"payduration":"year","insurancedetails":"details","type":"Family"}
+]
