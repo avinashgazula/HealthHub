@@ -1,8 +1,8 @@
 <body fxLayout="column">
     <div [ngStyle]="{background:'url(./assets/healthcare.jpg)'}" id="backmain">
-        <h2 id="mainheading">Find Health Insurance easily</h2> 
+        <h2 id="mainheading">Find Health Insurance easily</h2>
        </div>
-    
+
     <div class="card" id="maincard">
         <h2 style="text-align: center; margin-top: 5%;">Find Personalized Health Insurance:</h2>
         <div class="card-body" style="overflow-y: scroll;">
@@ -12,9 +12,9 @@
                   <div class="col-sm">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name" id="fullName" name="fullNameControl" #fullNameControl="ngModel" (change)="log(fullNameControl)"  [(ngModel)]="fName" required>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="user name" id="fullName" name="fullNameControl" #fullNameControl="ngModel" (change)="log(fullNameControl)"  [(ngModel)]="fName" required>
                         <div class="alert alert-danger" *ngIf="fullNameControl.touched && !fullNameControl.valid">Full Name is required</div>
-                    
+
                     </div>
                   </div>
                   <div class="col-sm">
@@ -25,21 +25,21 @@
                     </div>
                   </div>
                 </div>
-    
+
                 <div class="row">
                     <div class="col-sm">
                       <div class="form-group">
                           <label for="exampleFormControlInput1">Phone Number</label>
-                          <input type="number" class="form-control" [pattern]="mobNumberPattern" id="exampleFormControlInput3" placeholder="Contact Number" name="UserPhone" #UserPhone="ngModel"  (change)="checkEmail(UserPhone)"  [(ngModel)]="uphone" required minlength="10" maxlength="10" pattern="1111111111">
+                          <input type="number" class="form-control" [pattern]="mobNumberPattern" id="exampleFormControlInput3" placeholder="999999999" name="UserPhone" #UserPhone="ngModel"  (change)="checkEmail(UserPhone)"  [(ngModel)]="uphone" required minlength="10" maxlength="10" pattern="1111111111">
                           <div class="alert alert-danger"  *ngIf="UserPhone.touched && !UserPhone.valid && UserPhone.errors.required">Phone Number is Required</div>
-                          <div *ngIf="UserPhone.touched && UserPhone.errors" class="alert alert-danger">  
-                            <div *ngIf="UserPhone.errors.pattern">  
-                              Mobile number not valid.  
-                            </div>   
-                          </div> 
+                          <div *ngIf="UserPhone.touched && UserPhone.errors" class="alert alert-danger">
+                            <div *ngIf="UserPhone.errors.pattern">
+                              Mobile number not valid.
+                            </div>
+                          </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm">
                       <div class="form-group">
                         <label for="exampleFormControlInput1">Age Group</label>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                   </div>
-    
+
                   <div class="row">
                     <div class="col-sm">
                       <div class="form-group">
@@ -67,7 +67,7 @@
                           <div class="alert alert-danger"  *ngIf="gender.touched && !gender.valid && gender.errors.required">Gender is Required</div>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm">
                       <div class="form-group">
                         <label for="exampleFormControlInput1">Yearly Salary</label>
@@ -90,9 +90,9 @@
             <br>
             <h2 style="text-align: center;">Your Response has been submitted</h2>
             <button type="button" class="btn btn-info" id="button" routerLink="/insurance/{{fName}}/{{uage}}/{{uemail}}/{{ugender}}/{{usalary}}" style="text-align: center; margin-left: 11%;">See Peronsalised Health Plans</button></div>
-           
+
               </div>
-          </div>     
+          </div>
     </div>
     <br>
     <div class="container-fluid" style="width: 90%;">
@@ -122,7 +122,7 @@
             </div>
             <br>
         </div>
-              
+
           </div>
           <div class="col-sm">
               <p>Filters</p>
