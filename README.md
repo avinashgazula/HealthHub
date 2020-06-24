@@ -7,7 +7,10 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 
 ## Authors
 
-* [Avinash Gazula](av530575@dal.ca) 
+* [Avinash Gazula](av530575@dal.ca)
+* [Harshit Trivedi](harshit.trivedi@dal.ca) 
+* [Sai Sunil Menta](ss734478@dal.ca)
+* [Vidip Malhotra](vidip.malhotra@dal.ca)
 
 ## Getting Started
 
@@ -45,8 +48,16 @@ NodeJs and Angular must be installed on the system
 * Login - Can be accessed using the icon on the header
 * Signup - Can be accessed using the icon on the header
 * Home Page - https://health-hub-a2.herokuapp.com/
+* About Us - https://health-hub-a2.herokuapp.com/aboutUs
+* Contact Us - https://health-hub-a2.herokuapp.com/contactUs
 * Consult Doctor - https://health-hub-a2.herokuapp.com/consult
 * Doctor's Profile - https://health-hub-a2.herokuapp.com/doctor
+* Home Care - https://health-hub-a2.herokuapp.com/homeCare
+* Medicine Delivery - https://health-hub-a2.herokuapp.com/orderMedicine
+* Schedule Care - https://health-hub-a2.herokuapp.com/homeCare
+* Insurance - 
+* Forum
+* Forum Question Answer Page - 
 
 ### Directory Structure
 
@@ -65,6 +76,16 @@ NodeJs and Angular must be installed on the system
 `components/login` - This folder contains files related to the login page
 
 `components/register` - This folder contains files related to the registration page
+
+`components/about-us` - This folder container files related to about us page
+
+`components/contact-us` - This folder container files related to contact us page
+
+`components/home-care` - This folder container files related to home care informational page
+
+`components/schedule-care` - This folder container files related to book home care page
+
+`components/medicine-delivery` - This folder container files related to medicine delivery page
 
 `helpers` - This folder contains all the helper methods
 
@@ -170,8 +191,6 @@ export function MatchPasswords(password: string, confirmPassword: string) {
 
 ## Image Sources
 
-All the images used in the Application were taken from Unsplash.com and can be used for both commercial and non commercial purposes with no credit required.
-
 [1] "Doctor". [Image]. Available: https://unsplash.com/photos/DPEPYPBZpB8 [Accessed: 12-Jun-2020]
 
 [2] "Doctor". [Image]. Available: https://unsplash.com/photos/FVh_yqLR9eA [Accessed: 12-Jun-2020]
@@ -183,6 +202,37 @@ All the images used in the Application were taken from Unsplash.com and can be u
 [5] "Doctor". [Image]. Available: https://unsplash.com/photos/1RskUx-C0A8 [Accessed: 12-Jun-2020]
 
 [6] "Doctor". [Image]. Available: https://unsplash.com/photos/wzV17t-k3k0 [Accessed: 12-Jun-2020]
+
+[7] "Home-Care". [Image]. Available: https://lh3.googleusercontent.com/proxy/pYuLu4Lt0tZnX5YvOd8-UsMO-k5KspYkZoHxIpNZzbVkwqZD5uH6io2kRuXkaInvAXzoiuKSqmKTkkd9fMRjYwS3WjmWEoyCfldNwml_eFHGoqQly7bMps7wsQ [Accessed: 22-Jun-2020]
+
+[8] "Order-Medicine" [Image]. Available: https://d.newsweek.com/en/full/1541364/prescription-pills.jpg [Accessed: 22-Jun-2020] 
+
+[9] "Contact-Us" [Image]. Available: https://i.gifer.com/YXIc.gif [Accessed: 22-Jun-2020]
+
+[10] usericon.png (“User-Icon,” Emmegi Heat Exchangers UK. [Online]. Available: http://www.emmegi.co.uk/contact-emmegi-for-air-blast-oil-coolers/user-icon/. [Accessed: 15-Jun-2020].)
+
+[11] login.jpg (Veernavya, “Flat Doctor Healthcare Character,” Vecteezy, 24-May-2019. [Online]. Available: https://www.vecteezy.com/vector-art/541891-flat-doctor-healthcare-character. [Accessed: 15-Jun-2020].)
+
+[12] greenicon.png (S. Network, “Green ok icon - Free green check mark icons,” IconsDB. [Online]. Available: https://www.iconsdb.com/green-icons/ok-icon.html. [Accessed: 15-Jun-2020].)
+
+[13] healthrecords.png (“Electronic Health Records,” MeHI. [Online]. Available: https://mehi.masstech.org/ehealth/electronic-health-records. [Accessed: 15-Jun-2020].)
+[14] insurance.jpg (“Medical Insurance Icon with Shadow. Flat Design. Isolated Illustration.,” 123RF. [Online]. Available: https://www.123rf.com/photo_48456177_stock-vector-medical-insurance-icon-with-shadow-flat-design-isolated-illustration-.html. [Accessed: 15-Jun-2020].)
+
+[15] digestive.png (VectorGrove.com, “Stomach icon, flat style. Internal organs of the human design element, logo. Anatomy, medicine concept. Digestion. Digestive tract, system. 
+Healthcare. Isolated on white background. Vector illustr. by Borokh,” VectorGrove. [Online]. Available: https://www.vectorgrove.com/royalty-free-vector-image/25762996/stomach-icon-flat-style-internal-organs-of-the-human-design-element-logo-anatomy-medicine-concept-digestion-digestive-tract-system-healthcare-isolated-on-white-background-vector-illustr.html. [Accessed: 15-Jun-2020].)
+
+[16] heart.png (C. Fernando, “'Medical Icons Set (Simple)' by Carlos Fernando,” Iconfinder. [Online]. Available: https://www.iconfinder.com/icons/1542716/clinic_doctor_heart_hospital_pulsation_pulse_rate_icon. [Accessed: 15-Jun-2020].)
+
+[17] teeth.png (Prettycons, “'Prettycons - Dentistry Vol.1 - Flat' by Prettycons,” Iconfinder. [Online]. Available: https://www.iconfinder.com/icons/4429971/change_dentist_doctor_hospital_teeth_tooth_icon. [Accessed: 15-Jun-2020].)
+
+[18] ortho.png (https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.enpcn.com%2Forthotriage%2Forthopedic-triage%2F&psig=AOvVaw3PQfsIJpfVThZ-08JsVmlt&ust=1592336780880000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCM0fPKhOoCFQAAAAAdAAAAABAD)
+
+[19] healthcare.jpg (“Medical information and health advice you can trust.,” Healthline. [Online]. Available: https://www.healthline.com/. [Accessed: 15-Jun-2020].)
+
+[20] user.png (“User Icon Svg,” OnlineWebFonts.COM. [Online]. Available: https://www.onlinewebfonts.com/icon/184513. [Accessed: 15-Jun-2020].)
+
+Icons References:
+[1] “Icons Reference,” Icons from Font Awesome, Bootstrap and Google. [Online]. Available: https://www.w3schools.com/icons/icons_reference.asp. [Accessed: 15-Jun-2020].
 
 ## Acknowledgements
 * https://www.traversymedia.com/

@@ -7,10 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { BlogComponent } from './components/blog/blog.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Angular Material imports
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -47,6 +52,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
+import { HomeCareComponent } from './components/home-care/home-care.component';
+import { ScheduleCareComponent } from './components/schedule-care/schedule-care.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { BlogshomeComponent } from './components/blogshome/blogshome.component';
+import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
+import { InsuranceService } from './insurance.service';
+import { ForumComponent } from './components/forum/forum.component';
+import { QuestionitemComponent } from './components/questionitem/questionitem.component';
+import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +74,22 @@ import { HomeComponent } from './components/home/home.component';
     RegisterComponent,
     DoctorComponent,
     DoctorProfileComponent,
-    HomeComponent
+    HomeComponent,
+    MedicineDeliveryComponent,
+    HomeCareComponent,
+    ScheduleCareComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    InsurancefinderComponent,
+    FooterComponent,
+    BlogComponent,
+    HomepageComponent,
+    ForumComponent,
+    QuestionitemComponent,
+    InsuranceitemComponent,
+    BlogshomeComponent,
+    ViewDoctorAppointmentsComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -96,9 +129,10 @@ import { HomeComponent } from './components/home/home.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [InsuranceService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })
