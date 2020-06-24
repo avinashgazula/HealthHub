@@ -1,9 +1,9 @@
-# Assignment 2
+# Group 12 - Project Proposal
 
-Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, view blogs and access forum where the questions are answered by medical professionals.
+Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, book health plans, have intercation in forum and view blogs where the questions are answered by medical professionals.
 
 * *Date Created*: 07 Jun 2020
-* *Last Modification Date*: 15 Jun 2020
+* *Last Modification Date*: 24 Jun 2020
 
 ## Authors
 
