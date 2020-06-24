@@ -87,6 +87,14 @@ NodeJs and Angular must be installed on the system
 
 `components/medicine-delivery` - This folder container files related to medicine delivery page
 
+`components/insurancefinder` - This folder container files related to insurance finder and comparision
+
+`components/forum` - This folder container files related to forum
+
+`components/insuranceitem` - This folder container files related to each insurance recommendation
+
+`components/questionitem` - This folder container files related to each question
+
 `helpers` - This folder contains all the helper methods
 
 
