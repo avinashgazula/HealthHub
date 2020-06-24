@@ -47,17 +47,17 @@ NodeJs and Angular must be installed on the system
 
 * Login - Can be accessed using the icon on the header
 * Signup - Can be accessed using the icon on the header
-* Home Page - https://health-hub-a2.herokuapp.com/
-* About Us - https://health-hub-a2.herokuapp.com/aboutUs
-* Contact Us - https://health-hub-a2.herokuapp.com/contactUs
-* Consult Doctor - https://health-hub-a2.herokuapp.com/consult
-* Doctor's Profile - https://health-hub-a2.herokuapp.com/doctor
-* Home Care - https://health-hub-a2.herokuapp.com/homeCare
-* Medicine Delivery - https://health-hub-a2.herokuapp.com/orderMedicine
-* Schedule Care - https://health-hub-a2.herokuapp.com/homeCare
-* Insurance - 
-* Forum
-* Forum Question Answer Page - 
+* Home Page - https://health-hub-5709-test.herokuapp.com/
+* About Us - https://health-hub-5709-test.herokuapp.com/aboutUs
+* Contact Us - https://health-hub-5709-test.herokuapp.com/contactUs
+* Consult Doctor - https://health-hub-5709-test.herokuapp.com/consult
+* Doctor's Profile - https://health-hub-5709-test.herokuapp.com/doctor
+* Home Care - https://health-hub-5709-test.herokuapp.com/homeCare
+* Medicine Delivery - https://health-hub-5709-test.herokuapp.com/orderMedicine
+* Schedule Care - https://health-hub-5709-test.herokuapp.com/homeCare
+* Insurance - https://health-hub-5709-test.herokuapp.com/insurance
+* Forum - https://health-hub-5709-test.herokuapp.com/forum
+* Forum Question Answer Page - https://health-hub-5709-test.herokuapp.com/question/1
 
 ### Directory Structure
 
