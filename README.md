@@ -11,6 +11,7 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 * [Harshit Trivedi](harshit.trivedi@dal.ca) 
 * [Sai Sunil Menta](ss734478@dal.ca)
 * [Vidip Malhotra](vidip.malhotra@dal.ca)
+* [Rudra Makwana](Rudra.Makwana@dal.ca)
 
 ## Getting Started
 
@@ -58,6 +59,7 @@ NodeJs and Angular must be installed on the system
 * Insurance - https://health-hub-5709-test.herokuapp.com/insurance
 * Forum - https://health-hub-5709-test.herokuapp.com/forum
 * Forum Question Answer Page - https://health-hub-5709-test.herokuapp.com/question/1
+* Edit Profile Page - https://health-hub-5709-test.herokuapp.com/edit-profile
 
 ### Directory Structure
 
@@ -94,6 +96,8 @@ NodeJs and Angular must be installed on the system
 `components/insuranceitem` - This folder container files related to each insurance recommendation
 
 `components/questionitem` - This folder container files related to each question
+
+`components/edit-profile` - This folder contains files related to edit-profile
 
 `helpers` - This folder contains all the helper methods
 
