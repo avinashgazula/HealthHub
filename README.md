@@ -12,6 +12,7 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 * [Sai Sunil Menta](ss734478@dal.ca)
 * [Vidip Malhotra](vidip.malhotra@dal.ca)
 * [Rudra Makwana](Rudra.Makwana@dal.ca)
+* [Swarali Ghalwadkar](swaralisg22@gmail.com)
 
 ## Getting Started
 
