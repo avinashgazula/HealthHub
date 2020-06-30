@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginComponent } from './../login/login.component';
 import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
+import { RegistrationService } from './../../services/registration.service';
 
 
 
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
     consumer = true;
     registerForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog, private snackBar: MatSnackBar) { }
+    constructor(private fb: FormBuilder, private dialog: MatDialog, private snackBar: MatSnackBar, private registrationService: RegistrationService) { }
 
     ngOnInit(): void {
         this.registerForm = this.fb.group({
@@ -79,10 +80,16 @@ export class RegisterComponent implements OnInit {
 
     register = () => {
         if (this.registerForm.valid) {
-            this.snackBar.open('Registration Succesful', '', {
-                duration: 3000,
-            });
-            this.dialog.closeAll();
+            this.registrationService.register(JSON.stringify(this.registerForm.value)).subscribe(
+                data => {
+                    console.log(data);
+                    this.snackBar.open('Registration Succesful', '', {
+                        duration: 3000,
+                    });
+                    this.dialog.closeAll();
+                }
+            )
+
         }
 
     };

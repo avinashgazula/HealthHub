@@ -66,6 +66,8 @@ import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 
+import { RegistrationService } from './services/registration.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -132,7 +134,7 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     MatPaginatorModule,
     HttpClientModule
   ],
-  providers: [InsuranceService],
+  providers: [InsuranceService, RegistrationService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })
