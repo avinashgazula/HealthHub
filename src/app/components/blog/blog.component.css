@@ -1,0 +1,99 @@
+h1{
+  color: black;
+  font-weight: 600;
+  text-align: center;
+}
+
+#corona-text{
+  font-size: 31px;
+  font-weight: 800 ;
+  color:whitesmoke;
+  margin-top: 60px;
+}
+
+.vitamin-text-container{
+  text-align: center;
+}
+
+#vitamin-container{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+
+  .section-0{
+      margin-top: 70px;
+  }
+  .section-1{
+      margin-top: 30px;
+  }
+
+  .section-4{
+      margin-top: 150px;
+  }
+
+  .section-0{
+
+margin-top: 150px;
+}  
+  
+
+  #banner{
+      height: 370px;
+  }
+
+#text1-container{
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#text2-container{
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#para1{
+  font-family: Arial;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#para2{
+  font-family: Arial;
+  font-size: 18px;
+  
+
+}
+   
+
+@keyframes color-change {
+  0% { color: red; }
+50% { color: blue; }
+100% { color: yellow; }
+
+}
+
+.title-container p{
+ 
+   font-size: 8vw;
+   animation: color-change 5s linear infinite;
+   font-weight: 600;
+   background-repeat: repeat-x;
+   height: 100px;
+}
+
+#para3{
+  font-family: Arial;
+  font-size: 18px;
+  
+}
+
+
+  .section-2{
+      margin-top: 150px;
+  }
+  .section-3{
+      margin-top: 150px;
+  }
