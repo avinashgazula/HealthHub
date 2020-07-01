@@ -13,17 +13,18 @@ router.get("/register", (req, res) => {
 })
 
 router.post("/register", (req, res) => {
-    const { name, email, password } = req.body;
+    const { type, name, email, password } = req.body;
 
     User.findOne({ email: email })
         .then(user => {
             if (user) {
                 return res.status(200).json({
                     success: false,
-                    error: 'User already exists'
+                    error: 'Email is already in use'
                 })
             } else {
                 const newUser = new User({
+                    type,
                     name,
                     email,
                     password
@@ -42,11 +43,8 @@ router.post("/register", (req, res) => {
                             .catch(err => console.log(err))
                     });
                 })
-
-
             }
         })
-
 })
 
 module.exports = router;

@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
+const passport = require('passport');
+
+require('./config/passport')(passport);
 
 const DB_URI = require('./config/keys').MONGO_URI;
 mongoose.connect(DB_URI, {
@@ -14,6 +17,9 @@ mongoose.connect(DB_URI, {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/users", require("./routes/users.js"));
 
