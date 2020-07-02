@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     hide = true;
     consumer = true;
     registerForm: FormGroup;
+    registrationErrorMessage: String = '';
 
     constructor(private fb: FormBuilder, private dialog: MatDialog, private snackBar: MatSnackBar, private registrationService: RegistrationService) { }
 
@@ -34,10 +35,13 @@ export class RegisterComponent implements OnInit {
 
 
     getEmailError = () => {
+        console.log(this.registrationErrorMessage);
+
+
         if (this.email.hasError('required')) {
             return 'Email is required';
         }
-        return this.email.hasError('email') ? 'Not a valid email' : '';
+        return this.email.hasError('email') ? 'Not a valid email' : this.registrationErrorMessage;
     };
 
     getPasswordError = () => {
@@ -80,13 +84,25 @@ export class RegisterComponent implements OnInit {
 
     register = () => {
         if (this.registerForm.valid) {
-            this.registrationService.register(JSON.stringify(this.registerForm.value)).subscribe(
+            var formData = this.registerForm.value;
+            formData.type = this.consumer ? "consumer" : "doctor";
+            delete formData.confirmPassword;
+
+            this.registrationService.register(JSON.stringify(formData)).subscribe(
                 data => {
                     console.log(data);
-                    this.snackBar.open('Registration Succesful', '', {
-                        duration: 3000,
-                    });
-                    this.dialog.closeAll();
+                    if (data.success) {
+                        this.snackBar.open('Registration Succesful', '', {
+                            duration: 3000,
+                        });
+                        this.openLoginPage();
+                    } else {
+                        console.log(data.error);
+                        this.snackBar.open('Email already in use', '', {
+                            duration: 3000,
+                        });
+                        this.registrationErrorMessage = data.error;
+                    }
                 }
             )
 

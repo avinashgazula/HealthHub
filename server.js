@@ -3,6 +3,9 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
+const morgan = require('morgan');
+const cors = require('cors');
 
 require('./config/passport')(passport);
 
@@ -14,14 +17,15 @@ mongoose.connect(DB_URI, {
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error(err))
 
-
+app.use(morgan('dev'));
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/users", require("./routes/users.js"));
+app.use("/users", require("./routes/users.js")(passport, jwt));
 
 app.use(express.static(__dirname + '/dist/healthhub'));
 
