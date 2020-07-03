@@ -5,19 +5,17 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RegistrationService {
+export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  register(body: any): Observable<any> {
-    console.log(body);
+  login(body: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }
 
-    return this.httpClient.post('http://localhost:8080/users/register', body, httpOptions);
+    return this.httpClient.post('http://localhost:8080/users/login', body, httpOptions);
   }
-
 }

@@ -1,16 +1,11 @@
 mat-form-field {
-    width: 70%;
+    width: 100%;
 }
-
 
 mat-divider {
     border-style: inset;
     border-width: 1px;
     height: 200px;
-}
-
-mat-card-actions {
-    margin-bottom: 0 !important;
 }
 
 button {

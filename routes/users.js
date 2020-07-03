@@ -57,7 +57,7 @@ module.exports = (passport, jwt) => {
                 })
 
             } else {
-                res.status(401).json({
+                res.status(200).json({
                     success: false,
                     message: info.message
                 });

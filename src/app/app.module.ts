@@ -65,7 +65,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 
-import { RegistrationService } from './services/registration.service'
+import { RegistrationService } from './services/registration/registration.service'
 
 @NgModule({
   declarations: [

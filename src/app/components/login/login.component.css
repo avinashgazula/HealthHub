@@ -46,11 +46,6 @@ h3 {
     align-items: center;
 }
 
-.register {
-    float: left;
-    margin: 25px auto;
-}
-
 .login {
     text-align: center;
 }

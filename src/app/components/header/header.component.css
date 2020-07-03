@@ -8,6 +8,13 @@
   flex: 1 1 auto;
 }
 
+.parent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 mat-toolbar {
     background-color: #001F3F;
     color: #fef8f2;

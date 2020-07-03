@@ -9,25 +9,22 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
 })
 export class HeaderComponent implements OnInit {
   collapsed: Boolean = true;
+  isLoggedIn: Boolean = false;
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') !== null) {
+      this.isLoggedIn = true
+    }
   }
 
   openLoginPage = () => {
     this.dialog.open(LoginComponent)
   }
 
-  iconClicked(menuIcon: HTMLElement) {
-    console.log("hello");
-
-    this.collapsed = !this.collapsed;
-    if (this.collapsed) {
-      menuIcon.classList.add('collapse');
-    } else {
-      menuIcon.classList.remove('collapese');
-    }
+  logout = () => {
+    console.log(`logged out`);
 
   }
 

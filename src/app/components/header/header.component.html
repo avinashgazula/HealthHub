@@ -1,45 +1,71 @@
 <div>
-    <mat-toolbar>
+    <mat-toolbar class="parent">
 
-        <button mat-icon-button [matMenuTriggerFor]="belowMenu" opened="false" fxHide.gt-sm="true">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <mat-menu #belowMenu="matMenu" yPosition="below">
-            <div fxLayout="column">
-                <a href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></a>
-                <a href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
-                        class="menu-item">Appointments</span></a>
-                <a href="#" mat-button [routerLink]="['/orderMedicine']"><span class="menu-item">Medicines</span></a>
-                <a href="#" mat-button [routerLink]="['/consult']"><span class="menu-item">Consult</span></a>
-                <a href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home Care</span></a>
-                <a href="#" mat-button [routerLink]="['/insurance']"><span class="menu-item">Insurance</span></a>
-                <a href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></a>
-                <a href="#" mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit Profile</span></a>
-                <button mat-button (click)="openLoginPage()">
-                    <span class="menu-item">Login/Register</span>
-                </button>
+        <div fxLayout.lt-md="row">
+            <button mat-icon-button [matMenuTriggerFor]="belowMenu" opened="false" fxHide.gt-sm="true">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+                <div fxLayout="column">
+                    <a href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></a>
+                    <a href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
+                            class="menu-item">Appointments</span></a>
+                    <a href="#" mat-button [routerLink]="['/orderMedicine']"><span
+                            class="menu-item">Medicines</span></a>
+                    <a href="#" mat-button [routerLink]="['/consult']"><span class="menu-item">Consult</span></a>
+                    <a href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home Care</span></a>
+                    <a href="#" mat-button [routerLink]="['/insurance']"><span class="menu-item">Insurance</span></a>
+                    <a href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></a>
+                    <a href="#" mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit
+                            Profile</span></a>
+                </div>
+
+            </mat-menu>
+            <div fxLayout="row">
+                <a mat-button routerLink="/" dis>
+                    <mat-icon class="logo">local_hospital</mat-icon>
+                    <span class="logo">HEALTHHUB</span>
+                </a>
+
+                <span class="menu-spacer"></span>
+                <div fxShow="true" fxLayout="row" fxHide.lt-md="true">
+                    <a href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></a>
+                    <a href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
+                            class="menu-item">Appointments</span></a>
+                    <a href="#" mat-button [routerLink]="['/orderMedicine']"><span
+                            class="menu-item">Medicines</span></a>
+                    <a href="#" mat-button [routerLink]="['/insurance']"><span class="menu-item">Insurance</span></a>
+                    <a href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></a>
+                    <a href="#" mat-button [routerLink]="['/consult']"><span class="menu-item">Consult</span></a>
+                    <a href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home Care</span></a>
+                    <a href="#" mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit
+                            Profile</span></a>
+                    <!-- <button mat-icon-button (click)="openLoginPage()">
+                            <mat-icon>account_circle</mat-icon>
+                        </button> -->
+                </div>
             </div>
 
-        </mat-menu>
-        <a mat-button routerLink="/">
-            <mat-icon class="logo">local_hospital</mat-icon>
-            <span class="logo">HEALTHHUB</span>
-        </a>
+        </div>
 
-        <span class="menu-spacer"></span>
-        <div fxShow="true" fxLayout="row" fxHide.lt-md="true">
-            <a href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></a>
-            <a href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
-                    class="menu-item">Appointments</span></a>
-            <a href="#" mat-button [routerLink]="['/orderMedicine']"><span class="menu-item">Medicines</span></a>
-            <a href="#" mat-button [routerLink]="['/insurance']"><span class="menu-item">Insurance</span></a>
-            <a href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></a>
-            <a href="#" mat-button [routerLink]="['/consult']"><span class="menu-item">Consult</span></a>
-            <a href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home Care</span></a>
-            <a href="#" mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit Profile</span></a>
-            <button mat-icon-button (click)="openLoginPage()">
+
+        <button *ngIf="!isLoggedIn" mat-icon-button (click)="openLoginPage()">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <div *ngIf="isLoggedIn">
+            <button mat-icon-button [matMenuTriggerFor]="belowMenu" opened="false" fxHide.gt-sm="true">
                 <mat-icon>account_circle</mat-icon>
             </button>
+            <mat-menu #belowMenu="matMenu" yPosition="below">
+                <div fxLayout="column">
+                    <a href="#" mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit
+                            Profile</span></a>
+                    <a (click)="logout()" mat-button><span class="menu-item">Logout</span></a>
+                </div>
+            </mat-menu>
         </div>
+
+
     </mat-toolbar>
 </div>
