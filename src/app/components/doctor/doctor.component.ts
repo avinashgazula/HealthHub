@@ -101,8 +101,6 @@ export class DoctorComponent implements OnInit {
 
         this.changeDetectorRef.detectChanges();
         this.obs = this.dataSource.connect();
-
-
     }
 
     ngOnDestroy() {

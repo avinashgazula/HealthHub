@@ -14,7 +14,6 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
 //Angular Material imports
@@ -22,6 +21,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -66,6 +66,8 @@ import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 
+import { RegistrationService } from './services/registration/registration.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,6 +102,7 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     FlexLayoutModule,
     MatCheckboxModule,
     MatCheckboxModule,
+    MatBadgeModule,
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -132,7 +135,7 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     MatPaginatorModule,
     HttpClientModule
   ],
-  providers: [InsuranceService],
+  providers: [InsuranceService, RegistrationService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })

@@ -2,13 +2,13 @@
     <section class="container">
         <div class="login">
             <h3>Login</h3>
+            <mat-card-actions>
+                <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
+                    Consumers</button>
+                <button m={0} (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
+                    Doctors</button>
+            </mat-card-actions>
             <form [formGroup]="loginForm">
-                <mat-card-actions>
-                    <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
-                        Consumers</button>
-                    <button m={0} (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
-                        Doctors</button>
-                </mat-card-actions>
                 <mat-form-field class="first" appearance="standard">
                     <mat-label>Enter your email</mat-label>
                     <input formControlName="email" matInput placeholder="pat@example.com" required>
@@ -27,7 +27,7 @@
                 <br>
                 <br>
                 <mat-card-actions>
-                    <button mat-raised-button type="submit" color="primary">LOGIN</button>
+                    <button (click)="login()" mat-raised-button type="submit" color="primary">LOGIN</button>
                     <br>
                     <br>
                     <button class="link" mat-button>Forgot Password?</button>
