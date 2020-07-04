@@ -16,7 +16,7 @@ export class LoginService {
       })
     }
 
-    return this.httpClient.post('http://localhost:8080/users/login', body, httpOptions);
+    return this.httpClient.post('/users/login', body, httpOptions);
   }
 
   logout(token: string): Observable<any> {
@@ -27,6 +27,6 @@ export class LoginService {
       })
     }
 
-    return this.httpClient.get('http://localhost:8080/users/logout', httpOptions);
+    return this.httpClient.get('/users/logout', httpOptions);
   }
 }

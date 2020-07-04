@@ -16,7 +16,7 @@ export class RegistrationService {
       })
     }
 
-    return this.httpClient.post('http://localhost:8080/users/register', body, httpOptions);
+    return this.httpClient.post('/users/register', body, httpOptions);
   }
 
 }
