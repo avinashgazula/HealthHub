@@ -12,6 +12,10 @@ button {
     margin-left: 0 !important;
 }
 
+mat-card-actions{
+    padding: 0 !important;
+}
+
 .mat-raised-button {
     background-color: #001F3F;
     color: white;
@@ -30,7 +34,6 @@ h1 {
 }
 
 .first {
-    margin-top: 10px;
 }
 
 .parent {
