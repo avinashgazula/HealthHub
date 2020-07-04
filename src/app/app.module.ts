@@ -65,6 +65,10 @@ import { InsuranceService } from './insurance.service';
 import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
+import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 
 @NgModule({
   declarations: [
@@ -89,7 +93,8 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     InsuranceitemComponent,
     BlogshomeComponent,
     ViewDoctorAppointmentsComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    SuggestdoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -130,7 +135,8 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBadgeModule
   ],
   providers: [InsuranceService],
   bootstrap: [AppComponent],

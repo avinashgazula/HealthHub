@@ -18,6 +18,13 @@
                 <button mat-button (click)="openLoginPage()">
                     <span class="menu-item">Login/Register</span>
                 </button>
+                <button mat-icon-button (click)="openNotificationPage()">
+                    <mat-icon matBadge="2">notification_important</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item style="width: fit-content;">Your Appointment with Dr. Rob Hawkey is confirmed</button>
+                    <button mat-menu-item style="width: fit-content;">Your Medicine will be ariving today evening</button>
+                </mat-menu>
             </div>
 
         </mat-menu>
@@ -40,6 +47,14 @@
             <button mat-icon-button (click)="openLoginPage()">
                 <mat-icon>account_circle</mat-icon>
             </button>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon matBadge="2">notification_important</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Your Appointment with Dr. Rob Hawkey is confirmed</button>
+                <button mat-menu-item>Your Medicine will be ariving today evening</button>
+            </mat-menu>
+
         </div>
     </mat-toolbar>
 </div>

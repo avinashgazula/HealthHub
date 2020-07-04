@@ -1,0 +1,61 @@
+.search{
+    width:10%;
+    padding-top: 50px;
+  }
+
+  .mat-form-field{
+    width: 100%;
+  }
+
+  .myrow{
+   height: 280px;
+   padding: 10px;
+  }
+
+  .resultrow{
+    padding-left: 20px;
+  }
+  .mycolumn{
+  padding: 10px;
+  padding-left: 15px;
+  }
+
+  .column{
+    width: 55%;
+    padding-top: 50px;
+
+  }
+
+  .example-card {
+    width: 350px;
+    transform: scale(1);
+    transform: transition 0.5s ease;
+  }
+
+  .example-header-image {
+    background-image: url('https://pickaface.net/gallery/avatar/InspireBuddy5290e4bdc07a4.png');
+    background-size: cover;
+  }
+
+  mat-card:hover{
+    transform: scale(1.05);
+  }
+
+  .hardline
+  {
+    border: solid #4f4d49;
+  }
+
+  .stroke{
+    color: #001F3F;
+  }
+
+  .raised{
+    background-color: #001F3F;
+    color: #fef8f2;
+    width: 200px;
+  }
+
+  .mat-step-header{
+    color: #001F3F;
+  }

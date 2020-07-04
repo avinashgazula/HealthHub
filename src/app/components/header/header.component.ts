@@ -16,17 +16,19 @@ export class HeaderComponent implements OnInit {
   }
 
   openLoginPage = () => {
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent);
+  }
+
+  openNotificationPage = () => {
+    this.dialog.open(Notification);
   }
 
   iconClicked(menuIcon: HTMLElement) {
-    console.log("hello");
-
     this.collapsed = !this.collapsed;
     if (this.collapsed) {
       menuIcon.classList.add('collapse');
     } else {
-      menuIcon.classList.remove('collapese');
+      menuIcon.classList.remove('collapse');
     }
 
   }
