@@ -21,6 +21,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -101,6 +102,7 @@ import { RegistrationService } from './services/registration/registration.servic
     FlexLayoutModule,
     MatCheckboxModule,
     MatCheckboxModule,
+    MatBadgeModule,
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,

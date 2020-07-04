@@ -78,7 +78,6 @@ export class LoginComponent implements OnInit {
                 data => {
                     console.log(data);
                     if (data.success) {
-                        console.log(`login success`);
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("userType", data.user.type);
                         localStorage.setItem("userId", data.user._id);

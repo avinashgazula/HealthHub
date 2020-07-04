@@ -18,4 +18,15 @@ export class LoginService {
 
     return this.httpClient.post('http://localhost:8080/users/login', body, httpOptions);
   }
+
+  logout(token: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '.concat(token)
+      })
+    }
+
+    return this.httpClient.get('http://localhost:8080/users/logout', httpOptions);
+  }
 }
