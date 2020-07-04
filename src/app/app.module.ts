@@ -65,8 +65,10 @@ import { InsuranceService } from './insurance.service';
 import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
+import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 
 import { RegistrationService } from './services/registration/registration.service'
+import { LoginService } from './services/login/login.service'
 
 @NgModule({
   declarations: [
@@ -91,7 +93,8 @@ import { RegistrationService } from './services/registration/registration.servic
     InsuranceitemComponent,
     BlogshomeComponent,
     ViewDoctorAppointmentsComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    SuggestdoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,6 @@ import { RegistrationService } from './services/registration/registration.servic
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatCheckboxModule,
     MatCheckboxModule,
     MatBadgeModule,
     MatButtonModule,
@@ -133,9 +135,10 @@ import { RegistrationService } from './services/registration/registration.servic
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBadgeModule
   ],
-  providers: [InsuranceService, RegistrationService],
+  providers: [InsuranceService, RegistrationService, LoginService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })
