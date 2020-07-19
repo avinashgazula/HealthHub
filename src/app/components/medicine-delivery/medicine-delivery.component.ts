@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, startWith } from 'rxjs/operators';
+import { OrderMedicineService } from 'src/app/services/orderMedicine/orderMedicine.service';
 
 export interface StateGroup {
   letter: string;
@@ -17,11 +19,19 @@ export const _filter = (opt: string[], value: string): string[] => {
 @Component({
   selector: 'healthhub-medicine-delivery',
   templateUrl: './medicine-delivery.component.html',
-  styleUrls: ['./medicine-delivery.component.css']
+  styleUrls: ['./medicine-delivery.component.css'],
+  providers: [OrderMedicineService]
 })
 export class MedicineDeliveryComponent implements OnInit {
+  pharmacyName: string;
+  apartmentNo: number;
+  streetAddress: string;
+  postalCode: string;
+  mobileNumber: number;
+  prescription: string;
+
   stateForm: FormGroup = this._formBuilder.group({
-    stateGroup: '',
+    pharmacyName: '',
   });
   // the below pharmacy store data has been referenced from the URL: https://pans.ns.ca/public/you-your-pharmacist/pharmacy-finder
   stateGroups: StateGroup[] = [{
@@ -68,11 +78,14 @@ export class MedicineDeliveryComponent implements OnInit {
   stateGroupOptions: Observable<StateGroup[]>;
   public formPersonalRecord: FormGroup;
   formErrors: any;
-  constructor(private builder: FormBuilder, private _formBuilder: FormBuilder) {
+  constructor(private builder: FormBuilder, 
+    private snackBar: MatSnackBar,
+    private _formBuilder: FormBuilder,
+    private orderMedicineService: OrderMedicineService) {
 
     this.formPersonalRecord = this.builder.group({
-      stateGroup: ['', [Validators.required]],
-      aptNumber: ['', Validators.required],
+      pharmacyName: ['', [Validators.required]],
+      apartmentNo: ['', Validators.required],
       streetAddress: ['', Validators.required],
       postalCode: ['', [Validators.required, Validators.minLength(6),
       Validators.maxLength(6)]],
@@ -82,8 +95,8 @@ export class MedicineDeliveryComponent implements OnInit {
     });
 
     this.formErrors = {
-      stateGroup: {},
-      aptNumber: {},
+      pharmacyName: {},
+      apartmentNo: {},
       streetAddress: {},
       postalCode: {},
       mobileNumber: {}
@@ -104,7 +117,7 @@ export class MedicineDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges
+    this.stateGroupOptions = this.formPersonalRecord.get('pharmacyName')!.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filterGroup(value))
@@ -122,7 +135,23 @@ export class MedicineDeliveryComponent implements OnInit {
 
     return this.stateGroups;
   }
-  onSubmit() {
-    alert("Your order is confirmed !! \nIt will be delivered within 2 business days.")
+
+  onClear() {
+
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    var orderData = this.formPersonalRecord.value;
+    console.log(orderData);
+    this.orderMedicineService.postOrder(JSON.stringify(orderData)).subscribe(
+      data => {
+
+      }
+    )
+
+    this.snackBar.open('Your order has been placed Succesfully !!', '', {
+      duration: 3000,
+    });
   }
 }

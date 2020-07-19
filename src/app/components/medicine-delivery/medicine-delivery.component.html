@@ -5,12 +5,12 @@
         <br>
         <div class="custom-tab">
             <h2>Upload your medical prescription here</h2>
-            <form [formGroup]="stateForm">
+            <form [formGroup]="formPersonalRecord">
                 <mat-form-field class="example-full-width">
                     <input type="text"
                            matInput
                            placeholder="Enter Pharmacy name"
-                           formControlName="stateGroup"
+                           formControlName="pharmacyName"
                            required
                            [matAutocomplete]="autoGroup">
                       <mat-autocomplete #autoGroup="matAutocomplete">
@@ -22,12 +22,12 @@
                     </mat-autocomplete>
                   </mat-form-field>
             </form>
-            <form (ngSubmit)="onSubmit()" [formGroup]="formPersonalRecord">
+            <form (ngSubmit)="onSubmit($event)" [formGroup]="formPersonalRecord">
                 <div class="row parentCss content-center">
                     <div>
                         <mat-form-field>
                             <mat-label>Apartment Number</mat-label>
-                            <input matInput formControlName="aptNumber" required>
+                            <input matInput formControlName="apartmentNo" required>
                             <mat-error>
                                 Please provide Apartment number.
                             </mat-error>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="row parentCss " style="justify-content: center;">
                     <div>
-                        <label for="uploadPrescription" class="text-style">Upload Prescription File*</label>
+                        <label for="uploadPrescription" class="text-style">Upload Prescription File</label>
                     </div>
                     <div>
                         <input id="uploadPrescription" type="file" />
@@ -77,10 +77,19 @@
                     <mat-label>Additional Comments</mat-label>
                     <textarea matInput></textarea>
                 </mat-form-field>
-                <br>
-                <button type="submit" mat-raised-button [disabled]="!formPersonalRecord.valid">
-                    Submit
-                </button>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="reset" mat-raised-button>
+                            Clear
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" mat-raised-button color="primary" [disabled]="!formPersonalRecord.valid">
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
