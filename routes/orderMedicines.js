@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { getOrder, putOrder, postOrder, deleteOrder } = require('../controllers/orderMedicineController');
-   
+const { getPharmacyList}  = require('../controllers/pharmacyListController');
+
+router.route('/getPharmacyList').get(getPharmacyList)
+
 router
     .route('/')
     .get(getOrder) 
