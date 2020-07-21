@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,12 +23,6 @@ export const _filter = (opt: string[], value: string): string[] => {
   providers: [OrderMedicineService]
 })
 export class MedicineDeliveryComponent implements OnInit {
-  pharmacyName: string;
-  apartmentNo: number;
-  streetAddress: string;
-  postalCode: string;
-  mobileNumber: number;
-  prescription: string;
 
   stateForm: FormGroup = this._formBuilder.group({
     pharmacyName: '',
@@ -36,23 +30,26 @@ export class MedicineDeliveryComponent implements OnInit {
   // the below pharmacy store data has been referenced from the URL: https://pans.ns.ca/public/you-your-pharmacist/pharmacy-finder
   pharmacyNames: StateGroup[]
 
+  @ViewChild('fileInput') fileInput: ElementRef;
+  public image;
+
   stateGroupOptions: Observable<StateGroup[]>;
   public formPersonalRecord: FormGroup;
   formErrors: any;
 
-  constructor(private builder: FormBuilder, 
+  constructor(private builder: FormBuilder,
     private snackBar: MatSnackBar,
     private _formBuilder: FormBuilder,
     private orderMedicineService: OrderMedicineService) {
 
-      this.orderMedicineService.getPharmacyList().subscribe(
-        pharmacyNamesdata => {
-          console.log(pharmacyNamesdata);
-          this.pharmacyNames = pharmacyNamesdata['data'];
-        }
-      )
+    this.orderMedicineService.getPharmacyList().subscribe(
+      pharmacyNamesdata => {
+        console.log(pharmacyNamesdata);
+        this.pharmacyNames = pharmacyNamesdata['data'];
+      }
+    )
 
-      this.formPersonalRecord = this.builder.group({
+    this.formPersonalRecord = this.builder.group({
       pharmacyName: ['', [Validators.required]],
       apartmentNo: ['', Validators.required],
       streetAddress: ['', Validators.required],
@@ -60,7 +57,8 @@ export class MedicineDeliveryComponent implements OnInit {
       Validators.maxLength(6)]],
 
       mobileNumber: ['', [Validators.required, Validators.minLength(10),
-      Validators.maxLength(10)]]
+      Validators.maxLength(10)]],
+      prescriptionFile: ['', Validators.required],
     });
 
     this.formErrors = {
@@ -68,7 +66,8 @@ export class MedicineDeliveryComponent implements OnInit {
       apartmentNo: {},
       streetAddress: {},
       postalCode: {},
-      mobileNumber: {}
+      mobileNumber: {},
+      prescriptionFile: {}
     };
   }
 
@@ -105,12 +104,24 @@ export class MedicineDeliveryComponent implements OnInit {
     return this.pharmacyNames;
   }
 
-  onClear() {
+  onFileChange(event) {
+    var files1 = event.target.files;
+    var file1 = files1[0];
+    if (files1 && file1) {
+      var reader1 = new FileReader();
+      reader1.onload = this._handleReaderLoaded.bind(this);
+      reader1.readAsBinaryString(file1);
+    }
+  }
 
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.formPersonalRecord.value["prescriptionFile"] = btoa(binaryString);
   }
 
   onSubmit(event) {
     event.preventDefault();
+    console.log(this.formPersonalRecord.value);
     var orderData = this.formPersonalRecord.value;
     console.log(orderData);
     this.orderMedicineService.postOrder(JSON.stringify(orderData)).subscribe(

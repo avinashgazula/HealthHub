@@ -26,7 +26,7 @@ const orderMedicineSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    prescription: {
+    prescriptionFile: {
         type: String,
         required: false
     },

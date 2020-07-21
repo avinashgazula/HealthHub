@@ -17,12 +17,14 @@ import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
+import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 
 const routes: Routes = [
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'consult', component: DoctorComponent },
   { path: 'single-blog', component: BlogComponent },
   { path: 'orderMedicine', component: MedicineDeliveryComponent },
+  { path: 'my-orders', component: MyOrdersComponent },
   { path: 'homeCare', component: HomeCareComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
