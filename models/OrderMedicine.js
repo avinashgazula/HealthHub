@@ -28,6 +28,10 @@ const orderMedicineSchema = new mongoose.Schema({
     },
     prescriptionFile: {
         type: String,
+        required: true
+    },
+    comments: {
+        type: String,
         required: false
     },
     date: {

@@ -22,7 +22,7 @@ exports.getOrder = async (req, res, next) => {
 exports.postOrder = async (req, res, next) => {
     try {
         const { pharmacyName, apartmentNo, streetAddress, 
-            postalCode, mobileNumber, prescription } = req.body; 
+            postalCode, mobileNumber, prescription, comments } = req.body; 
     
         const orders = await orderMedicine.create(req.body);
     

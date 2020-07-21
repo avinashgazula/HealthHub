@@ -59,6 +59,7 @@ export class MedicineDeliveryComponent implements OnInit {
       mobileNumber: ['', [Validators.required, Validators.minLength(10),
       Validators.maxLength(10)]],
       prescriptionFile: ['', Validators.required],
+      comments: ['']
     });
 
     this.formErrors = {
