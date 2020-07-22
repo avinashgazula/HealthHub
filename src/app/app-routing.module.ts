@@ -17,6 +17,7 @@ import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
 
 const routes: Routes = [
   { path: 'doctor', component: DoctorProfileComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
   { path: 'blogs', component: BlogshomeComponent },
   { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent },
   { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'suggest', component: SuggestdoctorComponent }
+  { path: 'suggest', component: SuggestdoctorComponent },
+  { path: 'details', component: DoctorDetailsComponent }
 ];
 
 @NgModule({

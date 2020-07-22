@@ -1,8 +1,8 @@
 #button{
     background: #ffe743;
-    border: 4px solid cadetblue;
+    border: 4px solid #001F3F;
     color: black;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
   
     font-family:Helvetica;
@@ -64,7 +64,7 @@ transform: translate3d(-1056px, 0px, 0px);
 #doctor-card{
   border-radius: 25px;
   border: 1px solid grey;
-  border-bottom: 7px solid cadetblue;
+  border-bottom: 7px solid #001F3F;
 }
 
 #image-2{
@@ -91,12 +91,12 @@ transform: translate3d(-1056px, 0px, 0px);
      
 }
 .card{
-  background-image: linear-gradient( cadetblue, cadetblue );
+  background-image: linear-gradient( #001F3F, #001F3F );
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 0% 100%;
   transition: background-size .5s, color .5s;
-  border-bottom: 6px solid cadetblue;
+  border-bottom: 6px solid #001F3F;
    
   
 
@@ -174,7 +174,7 @@ font-size: 35px;
 
 #hello{
     background:#ffe743;
-    border: 4px solid cadetblue;
+    border: 4px solid #001F3F;
     color: black;
     font-size: 24px;
     font-weight: 800;
@@ -196,7 +196,7 @@ hello:hover{
 #nursing-button{
     transition: transform .2s;
     background: #ffe743;
-    border: 4px solid cadetblue;
+    border: 4px solid #001F3F;
     color: black;
     font-size: 24px;
     font-weight: 600;
@@ -211,7 +211,7 @@ hello:hover{
 #read-more{
 
     background: #ffe743;
-        border: 4px solid cadetblue;
+        border: 4px solid #001F3F;;
         color: black;
   
         font-weight: 600;
