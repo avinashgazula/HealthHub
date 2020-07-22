@@ -1,0 +1,15 @@
+.example-card {
+    max-width: 1600px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://cdn4.iconfinder.com/data/icons/medical-set-glyph-silhouettes/300/142732197Untitled-31-512.png');
+    background-size: cover;
+  }
+
+  .style1 {
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }

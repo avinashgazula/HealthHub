@@ -5,6 +5,8 @@ const { getPharmacyList}  = require('../controllers/pharmacyListController');
 
 router.route('/getPharmacyList').get(getPharmacyList)
 
+router.route('/getOrders').get(getOrder);
+
 router
     .route('/')
     .get(getOrder) 

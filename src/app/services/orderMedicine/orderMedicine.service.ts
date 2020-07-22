@@ -27,4 +27,22 @@ export class OrderMedicineService {
 
     return this.httpClient.post('/orderMedicine', newOrder, httpOptions);
     }
+
+    getMyOrders(){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }
+      return this.httpClient.get('/orderMedicine/getOrders', httpOptions)
+    }
+
+    deleteOrder(id){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }
+      return this.httpClient.delete('/orderMedicine/'+id, httpOptions);
+    }
 }
