@@ -15,8 +15,16 @@ export class RegistrationService {
         'Content-Type': 'application/json'
       })
     }
+    return this.httpClient.post('http://localhost:8080/users/register', body, httpOptions);
+  }
 
-    return this.httpClient.post('/users/register', body, httpOptions);
+  registerDoctor(body: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.httpClient.post('http://localhost:8080/users/register-doctor', body, httpOptions);
   }
 
 }
