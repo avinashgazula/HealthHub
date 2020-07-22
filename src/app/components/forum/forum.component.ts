@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ForumService } from '../../services/forum/forum.service';
+import { Question } from '../../model/question';
 
 @Component({
   selector: 'app-forum',
@@ -10,40 +12,73 @@ import { NgForm } from '@angular/forms';
 export class ForumComponent implements OnInit {
 
   question:any="";
+  question_model:any="";
   category:any="";
   forumData:any = [];
-  forumFilter = [
-    {id:1,question:"What are some precautions for COVID, also home remedies for COVID",askedby:"Vidip",answer_count:"1",votes:"200",category:"covid",answers:['haldi','aa']},
-    {id:2,question:"I have pain on right side of tooth ",askedby:"Vidip",answer_count:"2",votes:"300",category:"ortho",answers:['haldi','aa']},
-    {id:3,question:"How to have fit leg muscles",askedby:"Vidip",answer_count:"3",votes:"1000",category:"dental",answers:['haldi','aa']},
-  ];
-  constructor(private router: Router) { }
+  questionsdata : any = [];
+  forumFilter : any = [];
+  dataobject : Object;
+  originalData :any = [];
+  constructor(private router: Router, private api:ForumService) { }
 
   ngOnInit(): void {
-    this.loaddata();
+   // this.loaddata();
+    this.getquestionsdata();
   }
 
   onSelect(data)
   {
-    this.router.navigate(['/question',data.id]);
+    console.log(data);
+    this.router.navigate(['/question',{id: data.questionId, category : data.category}]);
   }
 
-  dataChanged(newObj)
+  async dataChanged(newObj)
   {
-    this.loaddata();
+    //this.loaddata();
+    console.log(newObj);
+    this.forumData = this.originalData;
     this.forumData = this.forumData.filter(option => option.category == this.category);
   }
   onSubmit(form:NgForm)
   {
-    this.forumData.push({'question':form.form.value.question,askedby:'Vidip',answer_count:'0',votes:'0',category:'',answers:[]});
+    var ques = new Question();
+    ques.title = form.form.value.question2;
+    ques.description = form.form.value.question1;
+    ques.user_by = 'vidip';
+    ques.upvotes = 0;
+    ques.category = form.form.value.category1;
+    this.submitquestion(ques);
   }
 
   loaddata()
   {
-    this.forumData=[
-      {id:1,question:"What are some precautions for COVID, also home remedies for COVID",askedby:"Vidip",answer_count:"1",votes:200,category:"covid",answers:['haldi','aa']},
-      {id:2,question:"I have pain on right side of tooth ",askedby:"Vidip",answer_count:"2",votes:300,category:"ortho",answers:['haldi','aa']},
-      {id:3,question:"How to have fit leg muscles",askedby:"Vidip",answer_count:"3",votes:1000,category:"dental",answers:['haldi','aa']},
-    ]
+   
+  }
+
+  async submitquestion(ques)
+  {
+    await this.api.submitquestion(ques);
+    this.getquestionsdata();
+  }
+
+  getquestionsdata()
+  {
+    this.forumData = [];
+    this.api.getQuestions()
+    .subscribe(data => {
+      for (const d of (data as any)) {
+        this.forumData.push({
+          questionId:d._id,
+          question: d.title,
+          description: d.description,
+          askedby: d.user_by,
+          votes: d.upvotes,
+          category: d.category
+        });
+      }
+      console.log(this.forumData);
+      this.originalData = this.forumData;
+      this.forumFilter = ['COVID','Dental','Ortho','Digestive','Eyes'];
+    });
   }
 }

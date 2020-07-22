@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomepageComponent },
   { path: 'insurance', component: InsurancefinderComponent },
   { path: 'forum', component: ForumComponent },
-  { path: 'question/:id', component: QuestionitemComponent },
+  { path: 'question/:id/:category', component: QuestionitemComponent },
   { path: 'insurance/:username/:age/:email/:gender/:salary', component: InsuranceitemComponent },
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'consult', component: DoctorComponent },

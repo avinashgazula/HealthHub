@@ -1,9 +1,10 @@
 <div class="container" style="margin-bottom:35%; font-family: Lato;">
     <br>
     <div class="row">
-      <div class="col-8">
+      <div class="col-7">
         <div style="background-color: #F4E2DE;  font-family: Charcoal; padding-top: 10px; padding-bottom: 10px;  padding-left:10px;  padding-right:10px;">
             <h2>Q: {{forumData[0].question}} ?</h2>
+            <h3>{{forumData[0].description}}</h3>
             <h3><span style="font-size: 15px;">Asked By: </span>{{forumData[0].askedby}}</h3>
             <h3><span style="font-size: 15px;">Category: </span>{{forumData[0].category}}</h3>
             <span class="badge badge-primary" (click)="votequestion(forumData[0].id)">Upvote</span> &nbsp;&nbsp;&nbsp; <span>{{forumData[0].votes}} Upvotes</span>
@@ -30,7 +31,7 @@
                 <img src="assets/user.png" alt="image" />
                 <h3 style="padding-top: 15px;">{{data.by}}</h3>
               </div>
-              <div class="col-sm-9">
+              <div class="col-sm-8">
                <h3 style="padding-top: 10px;">{{data.answer}}</h3>
                <br>
                <span class="badge badge-primary" (click)="voted(data.id)">Upvote</span> &nbsp;&nbsp;&nbsp; <span>{{data.vote}}: Upvotes</span>
@@ -42,7 +43,7 @@
       </div>
       <div class="col-4">
        <h3 style="">Similar Questions</h3>
-       <p *ngFor="let data of allQuestions"><a href="/question/{{data.id}}">{{data.question}}</a></p>
+       <p *ngFor="let data of allQuestions"> <span routerLink="/question/{{data.question_id}}/{{data.category}}" style="color: blue; cursor: -webkit-grab; cursor: grab;">{{data.question}}</span></p>
       </div>
     </div>
   </div>
