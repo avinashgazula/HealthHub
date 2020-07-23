@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  serverUrl: string = environment.serverUrl;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,7 +18,7 @@ export class LoginService {
       })
     }
 
-    return this.httpClient.post('http://localhost:8080/users/login', body, httpOptions);
+    return this.httpClient.post(this.serverUrl + '/users/login', body, httpOptions);
   }
 
   logout(token: string): Observable<any> {
@@ -27,6 +29,7 @@ export class LoginService {
       })
     }
 
-    return this.httpClient.get('http://localhost:8080/users/logout', httpOptions);
+
+    return this.httpClient.get(this.serverUrl + '/users/logout', httpOptions);
   }
 }

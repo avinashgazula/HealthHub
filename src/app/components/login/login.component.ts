@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
     login = () => {
         if (this.loginForm.valid) {
             let formData = this.loginForm.value;
-            console.log(formData);
+            formData.type = this.consumer ? "consumer" : "doctor";
 
             this.loginService.login(JSON.stringify(formData)).subscribe(
                 data => {

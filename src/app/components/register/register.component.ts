@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginComponent } from './../login/login.component';
 import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
 import { RegistrationService } from '../../services/registration/registration.service';
+import { DoctorDetailsComponent } from './../doctor-details/doctor-details.component';
 
 
 
@@ -93,10 +94,21 @@ export class RegisterComponent implements OnInit {
                 data => {
                     console.log(data);
                     if (data.success) {
-                        this.openLoginPage();
-                        this.snackBar.open('Registration Succesful', '', {
-                            duration: 3000,
-                        });
+                        if (!this.consumer) {
+                            this.dialog.closeAll();
+                            this.dialog.open(DoctorDetailsComponent, {
+                                data: {
+                                    "email": formData.email,
+                                    "type": formData.type
+                                }
+                            });
+                        }
+                        else {
+                            this.openLoginPage();
+                            this.snackBar.open('Registration Succesful', '', {
+                                duration: 3000,
+                            });
+                        }
                     } else {
                         console.log(data.error);
                         this.registerForm.markAsUntouched();
@@ -114,4 +126,5 @@ export class RegisterComponent implements OnInit {
         this.dialog.closeAll();
         this.dialog.open(LoginComponent);
     };
+
 }

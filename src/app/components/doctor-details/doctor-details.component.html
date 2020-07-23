@@ -4,6 +4,8 @@
             <h3>Enter Additional Details</h3>
 
             <form [formGroup]="detailsForm">
+                <mat-label>Upload your image: </mat-label>
+                <input type="file" (change)="onFileChange($event)" />
 
                 <mat-form-field class="first" appearance="standard">
                     <mat-label>Enter your Specialization</mat-label>

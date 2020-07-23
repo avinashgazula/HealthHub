@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireStorageModule, AngularFireStorageReference, AngularFireUploadTask } from "@angular/fire/storage";
+
 //Angular Material imports
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
@@ -67,9 +70,11 @@ import { QuestionitemComponent } from './components/questionitem/questionitem.co
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 
-import { RegistrationService } from './services/registration/registration.service'
+import { RegistrationService } from './services/registration/registration.service';
 import { LoginService } from './services/login/login.service';
-import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component'
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -101,6 +106,8 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
