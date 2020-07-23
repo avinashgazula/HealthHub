@@ -81,6 +81,7 @@ export class LoginComponent implements OnInit {
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("userType", data.user.type);
                         localStorage.setItem("userId", data.user._id);
+                        localStorage.setItem("name", data.user.name);
                         this.dialog.closeAll();
                         this.snackBar.open('Login Succesful', '', {
                             duration: 3000,

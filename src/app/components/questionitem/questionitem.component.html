@@ -16,6 +16,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name ="question1" #question1="ngModel" [(ngModel)]="question" (ngModelChange)="dataChanged(question1)" required></textarea>
                 <div class="alert alert-danger" *ngIf="question1.touched && !question1.valid">Answer is required</div>
             </div>
+            <p style="text-align: center; color: red;">{{alert_message}}</p>
               <button type="submit" class="btn btn-success" style="width:200px; margin-left: 34%;"  [disabled]="question === ''">Answer</button>
             </form>
 

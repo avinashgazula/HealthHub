@@ -14,15 +14,16 @@ export class ForumComponent implements OnInit {
   question:any="";
   question_model:any="";
   category:any="";
+  answerstring:string;
   forumData:any = [];
   questionsdata : any = [];
   forumFilter : any = [];
   dataobject : Object;
   originalData :any = [];
+  alert_message: string;
   constructor(private router: Router, private api:ForumService) { }
 
   ngOnInit(): void {
-   // this.loaddata();
     this.getquestionsdata();
   }
 
@@ -32,6 +33,7 @@ export class ForumComponent implements OnInit {
     this.router.navigate(['/question',{id: data.questionId, category : data.category}]);
   }
 
+  //function to change data
   async dataChanged(newObj)
   {
     //this.loaddata();
@@ -39,28 +41,47 @@ export class ForumComponent implements OnInit {
     this.forumData = this.originalData;
     this.forumData = this.forumData.filter(option => option.category == this.category);
   }
+
+  //function to submit
   onSubmit(form:NgForm)
   {
-    var ques = new Question();
-    ques.title = form.form.value.question2;
-    ques.description = form.form.value.question1;
-    ques.user_by = 'vidip';
-    ques.upvotes = 0;
-    ques.category = form.form.value.category1;
-    this.submitquestion(ques);
+    console.log(localStorage.getItem('name'));
+    if(localStorage.getItem('name'))
+    {
+      this.alert_message = '';
+      var ques = new Question();
+      ques.title = form.form.value.question2;
+      ques.description = form.form.value.question1;
+      ques.user_by = localStorage.getItem('name');
+      ques.upvotes = 0;
+      ques.category = form.form.value.category1;
+      ques.answer = 0;
+      this.submitquestion(ques);
+    }
+    else{
+      this.alert_message = 'User is not logged in. Please LogIn To Continue';
+    }
   }
 
+  //function to refresh the data
+  refresh()
+  {
+    this.getquestionsdata();
+  }
+  
   loaddata()
   {
    
   }
 
+  //function to submit question
   async submitquestion(ques)
   {
     await this.api.submitquestion(ques);
     this.getquestionsdata();
   }
 
+  //Function to get questions data
   getquestionsdata()
   {
     this.forumData = [];
@@ -73,7 +94,8 @@ export class ForumComponent implements OnInit {
           description: d.description,
           askedby: d.user_by,
           votes: d.upvotes,
-          category: d.category
+          category: d.category,
+          answerval:d.answer
         });
       }
       console.log(this.forumData);

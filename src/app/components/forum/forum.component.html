@@ -1,5 +1,5 @@
 <body fxLayout="column">
-
+<!--This page is main for Forum Page, having all questions and option to post a new question, any offline user can also see questions and answers-->
 <div class="container" style="width:50%;">
     <br>
     <form #QuestionForm="ngForm" (ngSubmit)="onSubmit(QuestionForm)" autocomplete="off">
@@ -27,6 +27,8 @@
             <div class="alert alert-danger" *ngIf="category1.touched && !category1.valid">Category is required</div>
           </div>
           <button type="submit" class="btn btn-success" style="width:200px; margin-left: 34%;"  [disabled]="question === '' || category === ''">Post</button>
+          <br>
+          <p style="text-align: center; color: red;">{{alert_message}}</p>
         </form>
 </div>
 <br>
@@ -40,8 +42,8 @@
             <tr *ngFor="let data of forumData" style=" border-bottom: 1px solid grey;">
                 <br>
                 <span routerLink="/question/{{data.questionId}}/{{data.category}}" style="color: blue; cursor: -webkit-grab; cursor: grab;"><h2>{{data.question}} ?</h2></span>
-                <p><span style="color: grey;">Asked By:</span> {{data.askedby}}</p>
-                <p><!--<span style="color: green;">{{data.answer_count}}</span> answer &nbsp;&nbsp; --><span style="color: green;">{{data.votes}}</span> votes &nbsp;&nbsp; Category: <span style="color: blue;">{{data.category}}</span></p>
+                <p><span style="color: grey;">Asked By:</span> {{data.askedby}}</p> 
+                <p><span style="color: red;" *ngIf="data.answerval==0 else elblock">No Answers</span> <ng-template #elblock>Answers posted</ng-template> &nbsp;&nbsp; <span style="color: green;">{{data.votes}}</span> votes &nbsp;&nbsp; Category: <span style="color: blue;">{{data.category}}</span></p>
             </tr>
         </table>
       </div>
@@ -57,6 +59,7 @@
                     <option  *ngFor="let data of forumFilter" value="{{data}}">{{data}}</option>
                   </select>
                 </div>
+                <button type="button" class="btn btn-success" style="width:150px;" (click)="refresh()">Refresh</button>
             </div>
           </div>
       </div>

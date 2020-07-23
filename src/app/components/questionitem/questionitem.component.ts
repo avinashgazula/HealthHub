@@ -23,6 +23,7 @@ export class QuestionitemComponent implements OnInit {
   allQuestions:any=[]
   answers:any = []
   question:any="";
+  alert_message:string;
 
   dataChanged(newObj)
   {
@@ -60,15 +61,20 @@ export class QuestionitemComponent implements OnInit {
   }
   onSubmit(form)
   {
+    if(localStorage.getItem('name'))
+    {
+    this.alert_message = '';
     console.log("insert answer submit function");
     var ques = new Answer();
     ques.description = form.form.value.question1;
-    ques.user_by = 'vidip';
-    ques.upvotes = 100;
+    ques.user_by = localStorage.getItem('name')
+    ques.upvotes = 0;
     ques.question_id = this.id;
-    //this.dataobject = { title: form.form.value.question , description:'question description',user_by:'123',upvotes:0,category:'newcat'}
-  //  this.forumData.push({'question':form.form.value.question1,askedby:'Vidip',answer_count:'0',votes:'0',category:'',answers:[]});
     this.submitanswer(ques);
+    }
+    else{
+      this.alert_message = 'User is not logged in. Please LogIn To Continue';
+    }
   }
 
   ngOnInit(): void {
@@ -92,6 +98,7 @@ export class QuestionitemComponent implements OnInit {
   getsimilarquestions(category)
   {
     console.log("component similar questions");
+    this.allQuestions = [];
     this.api.getsimilarquestions(category)
     .subscribe(data => {
       for (const d of (data as any)) {
@@ -133,6 +140,7 @@ export class QuestionitemComponent implements OnInit {
     this.api.getanswersquestion(id)
     .subscribe(data => {
       this.answers = [];
+      console.log(data);
       for (const d of (data as any)) {
         this.answers.push({
           id: d._id,
@@ -169,15 +177,10 @@ export class QuestionitemComponent implements OnInit {
     
   }
 
-  submitanswer(ques)
+  async submitanswer(ques)
   {
     console.log(ques);
-    this.api.submitanswer(ques);
-    this.answers.push({
-      id: ques.answerId,
-      answer: ques.description,
-      by: ques.user_by,
-      vote: ques.upvoyes
-    })
+    await this.api.submitanswer(ques);
+    this.getanswers(this.id,this.category);
   }
 }

@@ -4,4 +4,5 @@ export class Question{
     user_by: string;
     upvotes: number;
     category: string;
+    answer:number;
 }
