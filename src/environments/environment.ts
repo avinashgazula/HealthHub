@@ -12,7 +12,9 @@ export const environment = {
     storageBucket: "healthhub-284019.appspot.com",
     messagingSenderId: "294870414372",
     appId: "1:294870414372:web:47f5a9e8ce6ae9df4a14b1"
-  }
+  },
+  googleMapsApiKey: "AIzaSyC-ZNNBX0x-yt8fKtvOIZludcYxR6PRixQ",
+  serverUrl: 'http://localhost:8080'
 };
 
 /*
