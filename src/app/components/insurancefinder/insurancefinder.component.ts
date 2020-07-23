@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { InsuranceService } from '../../insurance.service';
+import { InsuranceService } from '../../services/insurance/insurance.service';
 import { HttpClient } from '@angular/common/http'
 
 @Component({

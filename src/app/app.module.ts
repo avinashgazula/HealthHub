@@ -64,7 +64,7 @@ import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
-import { InsuranceService } from './insurance.service';
+import { InsuranceService } from './services/insurance/insurance.service';
 import { ForumComponent } from './components/forum/forum.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
