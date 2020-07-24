@@ -74,7 +74,8 @@ import { RegistrationService } from './services/registration/registration.servic
 import { LoginService } from './services/login/login.service';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
 
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { environment } from '../environments/environment'
     ViewDoctorAppointmentsComponent,
     EditProfileComponent,
     SuggestdoctorComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
