@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angula
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, startWith } from 'rxjs/operators';
 import { OrderMedicineService } from 'src/app/services/orderMedicine/orderMedicine.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { LoginComponent } from './../login/login.component';
 
 export interface StateGroup {
   letter: string;
@@ -40,7 +43,24 @@ export class MedicineDeliveryComponent implements OnInit {
   constructor(private builder: FormBuilder,
     private snackBar: MatSnackBar,
     private _formBuilder: FormBuilder,
-    private orderMedicineService: OrderMedicineService) {
+    private orderMedicineService: OrderMedicineService,
+    private router: Router,
+    private dialog: MatDialog,) {
+
+      if(!localStorage.getItem('token') || localStorage.getItem('token') === null ||
+      localStorage.getItem('token') === undefined) {
+        this.dialog.closeAll();
+        this.dialog.open(LoginComponent, { disableClose: true });
+      }
+
+      console.log(localStorage);
+      console.log(localStorage.getItem('userId'));
+      
+
+      // if (localStorage.getItem('token') !== null) {
+      //   this.dialog.open(LoginComponent, { disableClose: true });
+      // }
+
 
     this.orderMedicineService.getPharmacyList().subscribe(
       pharmacyNamesdata => {
@@ -59,7 +79,8 @@ export class MedicineDeliveryComponent implements OnInit {
       mobileNumber: ['', [Validators.required, Validators.minLength(10),
       Validators.maxLength(10)]],
       prescriptionFile: ['', Validators.required],
-      comments: ['']
+      comments: [''],
+      userId: localStorage.getItem('userId')
     });
 
     this.formErrors = {
@@ -134,5 +155,7 @@ export class MedicineDeliveryComponent implements OnInit {
     this.snackBar.open('Your order has been placed Succesfully !!', '', {
       duration: 3000,
     });
+
+    this.router.navigate(['/']);
   }
 }

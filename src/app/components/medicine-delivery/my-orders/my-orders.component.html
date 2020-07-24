@@ -29,4 +29,15 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    <div class= "style2" *ngIf="orderLength==0">
+        <div>
+            <img src="https://www.vinsolutions.com/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg?ext=.jpg">
+        </div>
+        <br>
+        <div>
+            <button mat-raised-button color="primary" (click)="goToOrderMedicine()"
+                >Order Medicines Now !</button>
+        </div>
+        <br>
+    </div>
 </div>

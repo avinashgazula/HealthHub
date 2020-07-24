@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getOrder, putOrder, postOrder, deleteOrder } = require('../controllers/orderMedicineController');
+const { getOrder, putOrder, postOrder, deleteOrder, getUserOrder } = require('../controllers/orderMedicineController');
 const { getPharmacyList}  = require('../controllers/pharmacyListController');
 
 router.route('/getPharmacyList').get(getPharmacyList)
@@ -13,6 +13,7 @@ router
     .post(postOrder)
 
 router.route('/:id')
+    .get(getUserOrder)
     .put(putOrder)
     .delete(deleteOrder);
 
