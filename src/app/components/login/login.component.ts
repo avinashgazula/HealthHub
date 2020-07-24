@@ -4,6 +4,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from './../../services/login/login.service';
+import { ResetPasswordComponent } from './../reset-password/reset-password.component';
 
 @Component({
     selector: 'app-login',
@@ -69,6 +70,11 @@ export class LoginComponent implements OnInit {
         this.dialog.open(RegisterComponent);
     };
 
+    openResetPasswordPage = () => {
+        this.dialog.closeAll();
+        this.dialog.open(ResetPasswordComponent)
+    }
+
     login = () => {
         if (this.loginForm.valid) {
             let formData = this.loginForm.value;
@@ -76,7 +82,6 @@ export class LoginComponent implements OnInit {
 
             this.loginService.login(JSON.stringify(formData)).subscribe(
                 data => {
-                    console.log(data);
                     if (data.success) {
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("userType", data.user.type);
