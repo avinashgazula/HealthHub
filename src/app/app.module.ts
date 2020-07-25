@@ -75,6 +75,8 @@ import { LoginService } from './services/login/login.service';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
 
 import { environment } from '../environments/environment'
+import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+import {CdkScrollableModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -145,9 +147,10 @@ import { environment } from '../environments/environment'
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatBadgeModule
+    MatBadgeModule,
+    CdkScrollableModule
   ],
-  providers: [InsuranceService, RegistrationService, LoginService],
+  providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })

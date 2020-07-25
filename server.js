@@ -11,9 +11,9 @@ require('./config/passport')(passport);
 
 const DB_URI = require('./config/keys').MONGO_URI;
 mongoose.connect(DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error(err))
 
@@ -29,7 +29,7 @@ app.use("/users", require("./routes/users.js")(passport, jwt));
 
 app.use(express.static(__dirname + '/dist/healthhub'));
 
-app.get('/*', function (req, res) {
+app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/healthhub/index.html'));
 });
 
