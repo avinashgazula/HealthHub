@@ -81,6 +81,7 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { SearchResultComponent } from './components/search-result/search-result.component'
 import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
+import { FeedbackComponent } from './components/feedback/feedback.component'
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-o
     ResetPasswordComponent,
     SearchResultComponent,
     MyOrdersComponent,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,

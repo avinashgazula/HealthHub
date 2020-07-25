@@ -1,5 +1,5 @@
 <body fxLayoutAlign="center" fxLayout="column">
-    
+
     <form [formGroup]="searchForm" class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row"
         fxLayout.lt-md="column" fxLayoutGap="4%">
         <mat-form-field style="width: fit-content;">
@@ -31,7 +31,8 @@
             <mat-divider></mat-divider>
         </div>
         <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
-            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultsAll" (click)="click(data)" class="example-card">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultsAll" (click)="click(data)"
+                class="example-card">
                 <mat-card-header class="card-header">
                     <mat-card-title>{{data.name}}</mat-card-title>
                     <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
@@ -50,7 +51,8 @@
             <mat-divider></mat-divider>
         </div>
         <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
-            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultPhysician" (click)="click(data)" class="example-card">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultPhysician" (click)="click(data)"
+                class="example-card">
                 <mat-card-header class="card-header">
                     <mat-card-title>{{data.name}}</mat-card-title>
                     <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
@@ -69,7 +71,8 @@
             <mat-divider></mat-divider>
         </div>
         <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
-            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultSurgeons" (click)="click(data)" class="example-card">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultSurgeons" (click)="click(data)"
+                class="example-card">
                 <mat-card-header class="card-header">
                     <mat-card-title>{{data.name}}</mat-card-title>
                     <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>

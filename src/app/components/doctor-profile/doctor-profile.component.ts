@@ -1,37 +1,17 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable, empty } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
-import { Router,ActivatedRoute } from '@angular/router';
-
-export interface Review {
-  user: string;
-  rating: number;
-  review: string;
-}
-
-const DATA: Review[] = [
-  {
-    user: 'Harrison O\'Ryan',
-    rating: 5,
-    review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed sollicitudin purus'
-  },
-  {
-    user: 'Bruce Wayne',
-    rating: 4,
-    review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed sollicitudin purus. Pellentesque ac nisl ut massa tempus faucibus. Suspendisse mi enim, tincidunt eget iaculis ac, fermentum vel quam.'
-  }
-]
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-profile',
   templateUrl: './doctor-profile.component.html',
   styleUrls: ['./doctor-profile.component.css']
+
 })
 export class DoctorProfileComponent implements OnInit {
   obs: Observable<any>;
-  dataSource: MatTableDataSource<Review> = new MatTableDataSource<Review>(DATA);
   review = new FormControl('', [Validators.required]);
 
   time1: Boolean = false;
@@ -41,7 +21,7 @@ export class DoctorProfileComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
     this.router.getCurrentNavigation().extras.state;
-   }
+  }
 
   getReviewErrorMessage = () => {
     if (this.review.hasError('required')) {
@@ -57,12 +37,11 @@ export class DoctorProfileComponent implements OnInit {
   doctorFee;
   doctorImageSrc;
   doctor;
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.changeDetectorRef.detectChanges();
-    this.obs = this.dataSource.connect();
     this.doctor = history.state.doctorObject;
-    
-    if( this.doctor == null ){
+
+    if (this.doctor == null) {
       this.router.navigate(['/consult']);
     } else {
       this.doctorID = this.doctor._id;
@@ -72,12 +51,6 @@ export class DoctorProfileComponent implements OnInit {
       this.doctorLocation = this.doctor.location;
       this.doctorFee = this.doctor.fee;
       this.doctorImageSrc = this.doctor.image_url;
-    }
-  }
-
-  ngOnDestroy() {
-    if (this.dataSource) {
-      this.dataSource.disconnect();
     }
   }
 

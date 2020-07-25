@@ -109,8 +109,8 @@ mat-divider {
 
 #submit-button{
 
-    background: #09335e;
-    border: 2px solid #001F3F;
+    background: #001f3f ;
+    
     color: white;
     font-size: 14px;
     font-weight: 600;
@@ -122,8 +122,8 @@ mat-divider {
 }
 
 #reset-button{
-    background: #09335e;
-    border: 2px solid #001F3F;
+    background:#001f3f ;
+    
     color: white;
     font-size: 14px;
     font-weight: 600;
@@ -139,7 +139,7 @@ padding: 30px;
 }
 
 .card{
-background: linear-gradient(135deg,#09335e ,white);
+padding: 20px;
 
 
 height: fit-content;
