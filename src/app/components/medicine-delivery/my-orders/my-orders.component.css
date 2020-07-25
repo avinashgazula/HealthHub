@@ -1,9 +1,11 @@
+/* author: Harshit Trivedi */
+
 .example-card {
     max-width: 1600px;
   }
   
   .example-header-image {
-    background-image: url('https://cdn4.iconfinder.com/data/icons/medical-set-glyph-silhouettes/300/142732197Untitled-31-512.png');
+    background-image: url('../../../../assets/cartIcon.png');
     background-size: cover;
   }
 

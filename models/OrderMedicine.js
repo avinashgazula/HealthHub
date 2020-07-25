@@ -1,5 +1,8 @@
+// author: Harshit Trivedi
+
 const mongoose = require('mongoose');
 
+// describing the Schema
 const orderMedicineSchema = new mongoose.Schema({
     type: {
         type: String,
@@ -44,6 +47,8 @@ const orderMedicineSchema = new mongoose.Schema({
     }
 })
 
+// compiling the model from our schema
 const orderMedicine = mongoose.model('orderMedicine', orderMedicineSchema);
 
+// exporting the model to router file for actions, operations and functionality
 module.exports = orderMedicine;

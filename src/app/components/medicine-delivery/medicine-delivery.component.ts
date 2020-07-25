@@ -1,3 +1,5 @@
+// author: Harshit Trivedi
+
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
@@ -8,14 +10,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginComponent } from './../login/login.component';
 
+// defining the syntax of pharmacy names
 export interface StateGroup {
   letter: string;
   names: string[];
 }
 
+// pharmacy names to lower case to maintain consistency of names
 export const _filter = (opt: string[], value: string): string[] => {
   const filterValue = value.toLowerCase();
-
   return opt.filter(item => item.toLowerCase().indexOf(filterValue) === 0);
 };
 
@@ -26,11 +29,8 @@ export const _filter = (opt: string[], value: string): string[] => {
   providers: [OrderMedicineService]
 })
 export class MedicineDeliveryComponent implements OnInit {
-
-  stateForm: FormGroup = this._formBuilder.group({
-    pharmacyName: '',
-  });
-  // the below pharmacy store data has been referenced from the URL: https://pans.ns.ca/public/you-your-pharmacist/pharmacy-finder
+  // stateForm: FormGroup = this._formBuilder.group({
+  // pharmacyName: '',});
   pharmacyNames: StateGroup[]
 
   @ViewChild('fileInput') fileInput: ElementRef;
@@ -42,40 +42,32 @@ export class MedicineDeliveryComponent implements OnInit {
 
   constructor(private builder: FormBuilder,
     private snackBar: MatSnackBar,
-    private _formBuilder: FormBuilder,
+    // private _formBuilder: FormBuilder,
     private orderMedicineService: OrderMedicineService,
     private router: Router,
     private dialog: MatDialog,) {
 
-      if(!localStorage.getItem('token') || localStorage.getItem('token') === null ||
+    // redirect to login page if user is not logged in
+    if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
       localStorage.getItem('token') === undefined) {
-        this.dialog.closeAll();
-        this.dialog.open(LoginComponent, { disableClose: true });
-      }
+      this.dialog.closeAll();
+      this.dialog.open(LoginComponent, { disableClose: true });
+    }
 
-      console.log(localStorage);
-      console.log(localStorage.getItem('userId'));
-      
-
-      // if (localStorage.getItem('token') !== null) {
-      //   this.dialog.open(LoginComponent, { disableClose: true });
-      // }
-
-
+    // GET call to fetch all the pharmacy names from pharmacylists table
     this.orderMedicineService.getPharmacyList().subscribe(
       pharmacyNamesdata => {
-        console.log(pharmacyNamesdata);
         this.pharmacyNames = pharmacyNamesdata['data'];
       }
     )
 
+    //constucting the form and its validations
     this.formPersonalRecord = this.builder.group({
       pharmacyName: ['', [Validators.required]],
       apartmentNo: ['', Validators.required],
       streetAddress: ['', Validators.required],
       postalCode: ['', [Validators.required, Validators.minLength(6),
       Validators.maxLength(6)]],
-
       mobileNumber: ['', [Validators.required, Validators.minLength(10),
       Validators.maxLength(10)]],
       prescriptionFile: ['', Validators.required],
@@ -93,6 +85,7 @@ export class MedicineDeliveryComponent implements OnInit {
     };
   }
 
+  // checking forms validity and showing necessary error messages
   onFormValuesChanged() {
     for (const field in this.formErrors) {
       if (!this.formErrors.hasOwnProperty(field)) {
@@ -107,25 +100,30 @@ export class MedicineDeliveryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // setting up pharmacy names in the form
     this.stateGroupOptions = this.formPersonalRecord.get('pharmacyName')!.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filterGroup(value))
       );
+    // validating user input 
     this.formPersonalRecord.valueChanges.subscribe(() => {
       this.onFormValuesChanged();
     });
   }
+
+  // iterating the pharmacy names and returning them
   private _filterGroup(value: string): StateGroup[] {
     if (value) {
       return this.pharmacyNames
         .map(group => ({ letter: group.letter, names: _filter(group.names, value) }))
         .filter(group => group.names.length > 0);
     }
-
     return this.pharmacyNames;
   }
 
+  // converting the prescription image to base64 format
+  // logic referenced from https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
   onFileChange(event) {
     var files1 = event.target.files;
     var file1 = files1[0];
@@ -141,21 +139,35 @@ export class MedicineDeliveryComponent implements OnInit {
     this.formPersonalRecord.value["prescriptionFile"] = btoa(binaryString);
   }
 
+  // submitting the form
   onSubmit(event) {
     event.preventDefault();
-    console.log(this.formPersonalRecord.value);
     var orderData = this.formPersonalRecord.value;
-    console.log(orderData);
+    // subsribing to the service in order to make post request
     this.orderMedicineService.postOrder(JSON.stringify(orderData)).subscribe(
       data => {
-
+        if (data.success) {
+          // everything went fine and data inserted in DB
+          this.snackBar.open('Your order has been placed Succesfully !!', '', {
+            duration: 3000,
+          });
+          // route back to HomePage
+          this.router.navigate(['/']);
+        } else {
+          // unable to post, server error
+          this.snackBar.open('Error: Prescription file should be less than 90kb. Please retry', '', {
+            duration: 7000,
+          });
+          this.router.navigate(['/orderMedicine'])
+        }
       }
     )
+
 
     this.snackBar.open('Your order has been placed Succesfully !!', '', {
       duration: 3000,
     });
 
-    this.router.navigate(['/']);
+
   }
 }

@@ -1,6 +1,7 @@
 const pharmacyNames = require('../models/PharmacyList');
 const { response } = require('express');
 
+// GET pharmacy names
 exports.getPharmacyList = async (req, res, next) => {
     try {
         const pharmacyList = await pharmacyNames.find();

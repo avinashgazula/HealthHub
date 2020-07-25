@@ -1,21 +1,17 @@
+// author: Harshit Trivedi
+
 const express = require("express");
 const router = express.Router();
 const { getOrder, putOrder, postOrder, deleteOrder, getUserOrder } = require('../controllers/orderMedicineController');
-const { getPharmacyList}  = require('../controllers/pharmacyListController');
+const { getPharmacyList } = require('../controllers/pharmacyListController');
 
+// get pharmacy names
 router.route('/getPharmacyList').get(getPharmacyList)
 
-router.route('/getOrders').get(getOrder);
+// post a new order
+router.route('/').post(postOrder)    
 
-router
-    .route('/')
-    .get(getOrder) 
-    .post(postOrder)
-
-router.route('/:id')
-    .get(getUserOrder)
-    .put(putOrder)
-    .delete(deleteOrder);
+// get orders for given user and delete order
+router.route('/:id').get(getUserOrder).delete(deleteOrder);
 
 module.exports = router;
-// return router;
