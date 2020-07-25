@@ -71,7 +71,6 @@ export class QuestionitemComponent implements OnInit {
   {
     if(localStorage.getItem('name') && localStorage.getItem('userId'))
     {
-    console.log(localStorage.getItem('token'));
     this.alert_message = '';
     var ques = new Answer();
     ques.description = form.form.value.question1;
@@ -154,6 +153,7 @@ export class QuestionitemComponent implements OnInit {
 
     this.api.getsimilarquestions(category)
     .subscribe(data => {
+      this.allQuestions = [];
       for (const d of (data as any)) {
         this.allQuestions.push({
           question: d.title,

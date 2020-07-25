@@ -78,7 +78,7 @@ export class ForumComponent implements OnInit {
   //function to submit question
   async submitquestion(ques)
   {
-    await this.api.submitquestion(ques,localStorage.getItem('token'));
+    await this.api.submitquestion(ques);
     this.getquestionsdata();
   }
 

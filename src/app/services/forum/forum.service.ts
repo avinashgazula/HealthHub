@@ -22,15 +22,10 @@ export class ForumService {
     return this.http.get(this.serverUrl +'/questions/category/'+category);
   }
 
-  submitquestion(dataobject:Question,token)
+  submitquestion(dataobject:Question)
   {
-    const httptoken = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Token': token
-      })
-    }
-    return this.http.post(this.serverUrl +'/questions/', dataobject,httptoken).toPromise().then(data => {
+
+    return this.http.post(this.serverUrl +'/questions/', dataobject).toPromise().then(data => {
       console.log(data);
     });
   }
@@ -54,7 +49,6 @@ export class ForumService {
 
   upvotequestion(id,dataobject:Upvote)
   {
-
     return this.http.post(this.serverUrl +'/questions/upvote/'+id, dataobject).toPromise().then(data => {
       console.log(data);
     });
