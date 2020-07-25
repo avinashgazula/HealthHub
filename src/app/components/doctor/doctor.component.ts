@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 
 export interface Card {
     title: string;
@@ -66,11 +68,11 @@ const DATA: Card[] = [
 
 const data: Doctor[] = [
     {
-        type: 'General Physician',
+        type: 'All Doctors',
         values: DATA
     },
     {
-        type: 'Pediatricians',
+        type: 'General Physician',
         values: DATA
     },
     {
@@ -91,18 +93,33 @@ export class DoctorComponent implements OnInit {
     searchForm: FormGroup;
 
     filterValues: string[] = ['Specialization', 'Name'];
+    selected = 'Name';
+    constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar, private router: Router, private http: HttpClient) {
 
-    constructor(private fb: FormBuilder, private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) { }
+     }
 
-    ngOnInit() {
+    resultsAll;
+    resultPhysician;
+    resultSurgeons;
+    body;
+    ngOnInit() :void {
         this.searchForm = this.fb.group({
             search: ['', [Validators.required]]
-        })
-
+        });
+        this.body = {type: "doctor"}
         this.changeDetectorRef.detectChanges();
         this.obs = this.dataSource.connect();
+        this.http.post<any>('http://localhost:8080/search/alldoctors', this.body).subscribe(data => {
+            this.resultsAll = data;
+        });
+        this.http.post<any>('http://localhost:8080/search/all-physicians', this.body).subscribe(data => {
+            this.resultPhysician = data;
+        });
+        this.http.post<any>('http://localhost:8080/search/all-surgeons', this.body).subscribe(data => {
+            this.resultSurgeons = data;
+        });
     }
-
+    
     ngOnDestroy() {
         if (this.dataSource) {
             this.dataSource.disconnect();
@@ -113,9 +130,23 @@ export class DoctorComponent implements OnInit {
         return this.searchForm.get('search');
     }
 
-    click = (name) => {
-        this.snackBar.open(name, '', {
+    name;
+    id;
+    click = (doctor) => {
+        this.snackBar.open(doctor.name, '', {
             duration: 3000,
         });
+        this.name = doctor.name;
+        this.id = doctor._id;
+        this.router.navigateByUrl('/doctor', {state: {doctorObject: doctor}});
     };
+
+    onSearch(filterValue, keywordValue){
+        if(keywordValue.length!=0){
+            this.router.navigateByUrl('/searchresult', {state: {filter: filterValue, keyword: keywordValue}});
+        } else{
+            alert("Write in search box");
+        }
+    }
+
 }

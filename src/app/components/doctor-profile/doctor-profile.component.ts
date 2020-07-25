@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, Validators } from '@angular/forms';
+import { Router,ActivatedRoute } from '@angular/router';
 
 export interface Review {
   user: string;
@@ -38,7 +39,9 @@ export class DoctorProfileComponent implements OnInit {
   time3: Boolean = false;
   time4: Boolean = false;
 
-  constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
+    this.router.getCurrentNavigation().extras.state;
+   }
 
   getReviewErrorMessage = () => {
     if (this.review.hasError('required')) {
@@ -46,9 +49,20 @@ export class DoctorProfileComponent implements OnInit {
     }
   };
 
-  ngOnInit() {
+  doctorName;
+  doctorID;
+  doctor;
+  ngOnInit() : void {
     this.changeDetectorRef.detectChanges();
     this.obs = this.dataSource.connect();
+    this.doctor = history.state.doctorObject;
+    
+    if( this.doctor == null ){
+      this.router.navigate(['/consult']);
+    } else {
+      this.doctorID = this.doctor._id;
+      this.doctorName = this.doctor.name;
+    }
   }
 
   ngOnDestroy() {

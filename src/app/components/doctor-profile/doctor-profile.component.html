@@ -1,11 +1,14 @@
 <body fxLayout="column">
+    {{doctor | json}}
+    <br>
+    {{doctorID}}
     <section style="margin-top: 10px;" fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
         fxLayoutGap="5%">
         <img class="profile-picture"
             src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
             alt="Profile Picture">
         <article class="details-container">
-            <h2>Dr. Rishi Henson</h2>
+            <h2>{{doctorName}}</h2>
             <h3>General Physician</h3>
             <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta repellendus quaerat eos dolores deserunt
                 laborum non id? Assumenda quo voluptate dignissimos ullam ipsum non tenetur, rem molestiae cum illo
