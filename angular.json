@@ -28,8 +28,11 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+            "showCircularDependencies": false
           },
           "configurations": {
             "production": {
@@ -125,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "healthhub"
+  "defaultProject": "healthhub",
+  "cli": {
+    "analytics": "7928de13-dbb2-4b23-a847-787daef6f30b"
+  }
 }

@@ -1,3 +1,5 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
 body {
     width: 100%;
 }
@@ -107,3 +109,47 @@ mat-divider {
     margin: 0 auto;
 }
 
+#submit-button{
+
+    background: #09335e;
+    border: 2px solid #001F3F;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+  
+    font-family:Helvetica;
+    height: fit-content;
+    transition: transform .2s;
+    
+}
+
+#reset-button{
+    background: #09335e;
+    border: 2px solid #001F3F;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+  
+    font-family:Helvetica;
+    height: fit-content;
+    transition: transform .2s;
+
+}
+
+#doctor-col{
+padding: 30px;
+}
+
+.card{
+background: linear-gradient(135deg,#09335e ,white);
+
+
+height: fit-content;
+
+border: 2px solid #09335e;
+vertical-align: middle;
+
+
+
+
+}

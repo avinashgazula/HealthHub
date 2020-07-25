@@ -1,3 +1,5 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
 @import url('//fonts.googleapis.com/css?family=Roboto|Material+Icons');
 .menu-item{
     font-family: 'Roboto', sans-serif;
@@ -6,6 +8,13 @@
 
 .menu-spacer {
   flex: 1 1 auto;
+}
+
+.parent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 mat-toolbar {
@@ -33,9 +42,35 @@ div {
 }
 
 .mat-button:hover {
-  color: #fef8f2;
-  text-decoration: none;
-  box-shadow: 1px 1px wheat;
+  background-color: #72879c;
   
  }
+
+ .notifications{
+   margin-left: 20px;
+   
+ }
+
+ .notificationMenu{
+   max-height: 250px !important;
+   overflow-y: scroll;
+ }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #001F3F #fff;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 20px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #001F3F;
+  border-radius: 20px;
+  border: 3px solid #fff;
+}
 

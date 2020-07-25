@@ -1,25 +1,29 @@
+<!--  @author Avinash Gazula <agazula@dal.ca>  -->
+
 <div class="parent">
     <div class="container">
         <div class="register">
-            <h3>Register</h3>
+            <h3>Create a new Account</h3>
+            <mat-card-actions>
+                <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
+                    Consumers</button>
+                <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
+                    Doctors</button>
+            </mat-card-actions>
             <form [formGroup]="registerForm">
-                <mat-card-actions>
-                    <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
-                        Consumers</button>
-                    <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
-                        Doctors</button>
-                </mat-card-actions>
+
                 <mat-form-field class="first" appearance="standard">
                     <mat-label>Enter your name</mat-label>
                     <input matInput formControlName="name">
-                    <mat-error *ngIf="name.invalid && name.touched">Name is required
+                    <mat-error *ngIf="name.invalid">Name is required
                     </mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field appearance="standard">
                     <mat-label>Enter your email</mat-label>
                     <input matInput placeholder="pat@example.com" formControlName="email" required>
-                    <mat-error *ngIf="email.invalid && email.touched">{{getEmailError()}}
+                    <mat-error *ngIf="registrationErrorMessage || email.invalid">
+                        {{ getEmailError() }}
                     </mat-error>
                 </mat-form-field>
                 <br>
@@ -30,8 +34,8 @@
                         <button mat-icon-button matSuffix (click)="hide = !hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-hint align="end">Min Length 8. At least 1 Uppercase, Lowercase and Number</mat-hint>
-                        <mat-error *ngIf="password.invalid && password.touched">{{getPasswordError()}}
+                        <mat-hint align="end">Min Length 8. At least 1 Uppercase</mat-hint>
+                        <mat-error *ngIf="password.invalid">{{getPasswordError()}}
                         </mat-error>
                     </mat-form-field>
                     <br>
@@ -41,15 +45,15 @@
                         <button mat-icon-button matSuffix (click)="hide = !hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-error *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                        <mat-error *ngIf="confirmPassword.invalid">
                             {{getConfirmPasswordError()}}
                         </mat-error>
                     </mat-form-field>
                 </div>
 
                 <br>
-                <br>
                 <mat-card-actions>
+
                     <button (click)="register()" mat-raised-button type="submit" color="primary">REGISTER</button>
                     <br>
                     <br>

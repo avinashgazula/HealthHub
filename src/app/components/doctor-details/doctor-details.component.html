@@ -1,0 +1,51 @@
+<!-- /* @author Avinash Gazula <agazula@dal.ca> */ -->
+
+<div class="parent">
+    <div class="container">
+        <div class="doctor-details">
+            <h3>Enter Additional Details</h3>
+
+            <form [formGroup]="detailsForm">
+                <mat-label>Upload your image: </mat-label>
+                <input type="file" (change)="onFileChange($event)" />
+
+                <mat-form-field class="first" appearance="standard">
+                    <mat-label>Enter your Specialization</mat-label>
+                    <input matInput formControlName="specialization" required>
+                    <mat-error *ngIf="specialization.invalid">Specialization is required
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Enter your Office location</mat-label>
+                    <input matInput formControlName="location" required>
+                    <button mat-icon-button matSuffix (click)="getLocation()">
+                        <mat-icon>my_location</mat-icon>
+                    </button>
+                    <mat-error *ngIf="location.invalid">Location is required
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Enter Consultation Fee ($)</mat-label>
+                    <input matInput formControlName="fee" required type="number">
+                    <mat-error *ngIf="fee.invalid">Fee is required
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="standard">
+                    <mat-label>Enter your Description</mat-label>
+                    <input matInput formControlName="description">
+                </mat-form-field>
+                <br>
+
+                <br>
+                <mat-card-actions>
+                    <button (click)="save()" mat-raised-button type="submit" color="primary">SAVE</button>
+                    <br>
+                </mat-card-actions>
+            </form>
+
+        </div>
+    </div>
+</div>

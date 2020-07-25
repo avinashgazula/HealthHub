@@ -1,3 +1,5 @@
+/* @author Swarali Ghalwadkar <swarali.ghalwadkar@dal.ca> */
+
 h1{
   color: black;
   font-weight: 600;
@@ -22,9 +24,7 @@ h1{
 
 
 
-  .section-0{
-      margin-top: 70px;
-  }
+  
   .section-1{
       margin-top: 30px;
   }
@@ -34,9 +34,8 @@ h1{
   }
 
   .section-0{
-
-margin-top: 150px;
-}  
+    margin-top: 30px;
+  }
   
 
   #banner{

@@ -1,0 +1,53 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-divider {
+    border-style: inset;
+    border-width: 1px;
+    height: 200px;
+}
+
+button {
+    margin-left: 0 !important;
+}
+
+mat-card-actions{
+    padding: 0 !important;
+}
+
+.mat-raised-button {
+    background-color: #001F3F;
+    color: white;
+}
+
+.mat-button {
+    color: #001F3F;
+}
+
+h1 {
+    margin: 0 150px;
+}
+
+.link {
+    text-align: left;
+}
+
+.parent {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-basis: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.doctor-details {
+    text-align: center;
+}

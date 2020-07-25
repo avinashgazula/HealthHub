@@ -1,57 +1,84 @@
-<body fxLayout="column">
+<!-- /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */ -->
 
-<div class="container" style="width:50%;">
+<body fxLayout="column">
+  <!--This page is main for Forum Page, having all questions and option to post a new question, any offline user can also see questions and answers-->
+  <div class="container" style="width:50%;">
     <br>
     <form #QuestionForm="ngForm" (ngSubmit)="onSubmit(QuestionForm)" autocomplete="off">
-        <div class="form-group">
-            <h2 style="text-align: center;">Post Your Question Here</h2>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name ="question1" #question1="ngModel" [(ngModel)]="question" (ngModelChange)="dataChanged(question1)" required></textarea>
-            <div class="alert alert-danger" *ngIf="question1.touched && !question1.valid">Question is required</div>
-        </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Select Category</label>
-            <select class="form-control" id="exampleFormControlSelect1" name ="category1"  #category1="ngModel" [(ngModel)]="category" (ngModelChange)="dataChanged($event)" required="true">
-              <option value="COVID">COVID</option>
-              <option value="Dental">Dental</option>
-              <option value="Ortho">Ortho</option>
-              <option value="Digestive">Digestive</option>
-              <option value="Eyes">Eyes</option>
-            </select>
-            <div class="alert alert-danger" *ngIf="category1.touched && !category1.valid">Category is required</div>
-          </div>
-          <button type="submit" class="btn btn-success" style="width:200px; margin-left: 34%;"  [disabled]="question === '' || category === ''">Post</button>
-        </form>
-</div>
-<br>
-<div class="container" style="width:80%;  margin-bottom: 24%;">
+
+      <div class="form-group">
+        <h2 style="text-align: center;">Post Your Question Here</h2>
+        <textarea class="form-control" id="exampleFormControlTextarea2" rows="2" name="question2" #question2="ngModel"
+          [(ngModel)]="question_model" placeholder="Title of Question" required></textarea>
+        <div class="alert alert-danger" *ngIf="question2.touched && !question2.valid">Question is required</div>
+      </div>
+
+      <div class="form-group">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="question1" #question1="ngModel"
+          [(ngModel)]="question" placeholder="Put your detailed query here" required></textarea>
+        <div class="alert alert-danger" *ngIf="question1.touched && !question1.valid">Question is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Select Category</label>
+        <select class="form-control" id="exampleFormControlSelect1" name="category1" #category1="ngModel"
+          [(ngModel)]="category" required="true">
+          <option value="COVID">COVID</option>
+          <option value="Dental">Dental</option>
+          <option value="Ortho">Ortho</option>
+          <option value="Digestive">Digestive</option>
+          <option value="Eyes">Eyes</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="category1.touched && !category1.valid">Category is required</div>
+      </div>
+      <button type="submit" class="btn btn-success" style="width:200px; margin-left: 34%;"
+        [disabled]="question === '' || category === ''">Post</button>
+      <br>
+      <p style="text-align: center; color: red;">{{alert_message}}</p>
+    </form>
+  </div>
+  <br>
+  <div class="container" style="width:80%;  margin-bottom: 24%;">
     <br>
-    
+
     <div class="row">
       <div class="col-8" style="background-color: #f6f7f8;">
-        <h2>Trending Questions</h2>
-       <table>
-            <tr *ngFor="let data of forumData" style=" border-bottom: 1px solid grey;">
-                <br>
-                <span (click)="onSelect(data)" style="color: blue; cursor: -webkit-grab; cursor: grab;"><h2>{{data.question}} ?</h2></span>
-                <p><span style="color: grey;">Asked By:</span> {{data.askedby}}</p>
-                <p><span style="color: green;">{{data.answer_count}}</span> answer &nbsp;&nbsp; <span style="color: green;">{{data.votes}}</span> votes &nbsp;&nbsp; Category: <span style="color: blue;">{{data.category}}</span></p>
-            </tr>
+        <h2>Questions</h2>
+        <table>
+          <tr *ngFor="let data of forumData | paginate: {itemsPerPage: 4, currentPage:page}"
+            style=" border-bottom: 1px solid grey;">
+            <br>
+            <span routerLink="/question/{{data.questionId}}/{{data.category}}"
+              style="color: blue; cursor: -webkit-grab; cursor: grab;">
+              <h2>{{data.question}} ?</h2>
+            </span>
+            <p><span style="color: grey;">Asked By:</span> {{data.askedby}}</p>
+            <p><span style="color: red;" *ngIf="data.answerval==0 else elblock">No Answers</span>
+              <ng-template #elblock>Answers posted</ng-template> &nbsp;&nbsp; <span
+                style="color: green;">{{data.votes}}</span> votes &nbsp;&nbsp; Category: <span
+                style="color: blue;">{{data.category}}</span>
+            </p>
+          </tr>
         </table>
+        <br>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
       </div>
       <div class="col-sm">
         <h2>Filters</h2>
         <br>
-          <br>
-          <div class="card">
-            <div class="card-body">
-              Filter By Category:
-              <div class="form-group">
-                <select class="form-control"   name="category" [(ngModel)]="category" (ngModelChange)="dataChanged($event)" required="true">
-                    <option  *ngFor="let data of forumFilter" value="{{data.category}}">{{data.category}}</option>
-                  </select>
-                </div>
+        <br>
+        <div class="card">
+          <div class="card-body">
+            Filter By Category:
+            <div class="form-group">
+              <select class="form-control" name="category" [(ngModel)]="category" (ngModelChange)="dataChanged($event)"
+                required="true">
+                <option *ngFor="let data of forumFilter" value="{{data}}">{{data}}</option>
+              </select>
             </div>
+            <button type="button" class="btn btn-success" style="width:150px;" (click)="refresh()">Refresh</button>
           </div>
+        </div>
       </div>
     </div>
   </div>

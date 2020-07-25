@@ -1,9 +1,9 @@
-# Assignment 2
+# Group 12 - Project Proposal
 
-Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, view blogs and access forum where the questions are answered by medical professionals.
+Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, book health plans, have intercation in forum and view blogs where the questions are answered by medical professionals.
 
 * *Date Created*: 07 Jun 2020
-* *Last Modification Date*: 15 Jun 2020
+* *Last Modification Date*: 24 Jun 2020
 
 ## Authors
 
@@ -11,6 +11,8 @@ Health Hub allows users to book in-clinic appointments with doctors, purchase me
 * [Harshit Trivedi](harshit.trivedi@dal.ca) 
 * [Sai Sunil Menta](ss734478@dal.ca)
 * [Vidip Malhotra](vidip.malhotra@dal.ca)
+* [Rudra Makwana](Rudra.Makwana@dal.ca)
+* [Swarali Ghalwadkar](swaralisg22@gmail.com)
 
 ## Getting Started
 
@@ -47,17 +49,18 @@ NodeJs and Angular must be installed on the system
 
 * Login - Can be accessed using the icon on the header
 * Signup - Can be accessed using the icon on the header
-* Home Page - https://health-hub-a2.herokuapp.com/
-* About Us - https://health-hub-a2.herokuapp.com/aboutUs
-* Contact Us - https://health-hub-a2.herokuapp.com/contactUs
-* Consult Doctor - https://health-hub-a2.herokuapp.com/consult
-* Doctor's Profile - https://health-hub-a2.herokuapp.com/doctor
-* Home Care - https://health-hub-a2.herokuapp.com/homeCare
-* Medicine Delivery - https://health-hub-a2.herokuapp.com/orderMedicine
-* Schedule Care - https://health-hub-a2.herokuapp.com/homeCare
-* Insurance - 
-* Forum
-* Forum Question Answer Page - 
+* Home Page - https://health-hub-5709-test.herokuapp.com/
+* About Us - https://health-hub-5709-test.herokuapp.com/aboutUs
+* Contact Us - https://health-hub-5709-test.herokuapp.com/contactUs
+* Consult Doctor - https://health-hub-5709-test.herokuapp.com/consult
+* Doctor's Profile - https://health-hub-5709-test.herokuapp.com/doctor
+* Home Care - https://health-hub-5709-test.herokuapp.com/homeCare
+* Medicine Delivery - https://health-hub-5709-test.herokuapp.com/orderMedicine
+* Schedule Care - https://health-hub-5709-test.herokuapp.com/homeCare
+* Insurance - https://health-hub-5709-test.herokuapp.com/insurance
+* Forum - https://health-hub-5709-test.herokuapp.com/forum
+* Forum Question Answer Page - https://health-hub-5709-test.herokuapp.com/question/1
+* Edit Profile Page - https://health-hub-5709-test.herokuapp.com/edit-profile
 
 ### Directory Structure
 
@@ -86,6 +89,18 @@ NodeJs and Angular must be installed on the system
 `components/schedule-care` - This folder container files related to book home care page
 
 `components/medicine-delivery` - This folder container files related to medicine delivery page
+
+`components/medicine-delivery/my-orders` - This folder contains files related to orders placed by registered user along with order deletion
+
+`components/insurancefinder` - This folder container files related to insurance finder and comparision
+
+`components/forum` - This folder container files related to forum
+
+`components/insuranceitem` - This folder container files related to each insurance recommendation
+
+`components/questionitem` - This folder container files related to each question
+
+`components/edit-profile` - This folder contains files related to edit-profile
 
 `helpers` - This folder contains all the helper methods
 
@@ -187,7 +202,28 @@ export function MatchPasswords(password: string, confirmPassword: string) {
 
 [9] "How to Deploy Angular Application to Heroku". [Online]. Available: https://itnext.io/how-to-deploy-angular-application-to-heroku-1d56e09c5147 [Accessed: 14-Jun-2020]
 
+[10] "Pharmacy Finder | Pharmacy Association of Nova Scotia", Pans.ns.ca, 2020. [Online]. Available: https://pans.ns.ca/public/you-your-pharmacist/pharmacy-finder. [Accessed: 20- Jul- 2020].
 
+[11] H. JavaScript?, Д. Васильев, D. Pavlutin, A. P and P. Maniar, "How to convert file to base64 in JavaScript?", Stack Overflow, 2020. [Online]. Available: https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript. [Accessed: 21- Jul- 2020].
+
+### /src/app/components/medicine-delivery/medicine-delivery.component.ts
+
+```javascript
+onFileChange(event) {
+    var files1 = event.target.files;
+    var file1 = files1[0];
+    if (files1 && file1) {
+      var reader1 = new FileReader();
+      reader1.onload = this._handleReaderLoaded.bind(this);
+      reader1.readAsBinaryString(file1);
+    }
+  }
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.formPersonalRecord.value["prescriptionFile"] = btoa(binaryString);
+  }
+```
 
 ## Image Sources
 
@@ -203,7 +239,7 @@ export function MatchPasswords(password: string, confirmPassword: string) {
 
 [6] "Doctor". [Image]. Available: https://unsplash.com/photos/wzV17t-k3k0 [Accessed: 12-Jun-2020]
 
-[7] "Home-Care". [Image]. Available: https://lh3.googleusercontent.com/proxy/pYuLu4Lt0tZnX5YvOd8-UsMO-k5KspYkZoHxIpNZzbVkwqZD5uH6io2kRuXkaInvAXzoiuKSqmKTkkd9fMRjYwS3WjmWEoyCfldNwml_eFHGoqQly7bMps7wsQ [Accessed: 22-Jun-2020]
+[7] "Home-Care". [Image]. Available: https://lh3.googleusercontent.com/proxy/gPuENzsO8dvZGIkmqAuCf1a04_CU05mj8Wi6Nzu07qoDpikHi3iq8DgTHWzPjndJXtDHM4ahT4zfu5UyEEFfFPPck0owZHfS7aL5ZHd02ljCwUU_v-Eb0SN-2g [Accessed: 22-Jun-2020]
 
 [8] "Order-Medicine" [Image]. Available: https://d.newsweek.com/en/full/1541364/prescription-pills.jpg [Accessed: 22-Jun-2020] 
 
@@ -231,8 +267,12 @@ Healthcare. Isolated on white background. Vector illustr. by Borokh,” VectorGr
 
 [20] user.png (“User Icon Svg,” OnlineWebFonts.COM. [Online]. Available: https://www.onlinewebfonts.com/icon/184513. [Accessed: 15-Jun-2020].)
 
+[21] emptyCart.jpg. Vinsolutions.com, 2020. [Online]. Available: https://www.vinsolutions.com/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg?ext=.jpg. [Accessed: 23- Jul- 2020].
+
 Icons References:
 [1] “Icons Reference,” Icons from Font Awesome, Bootstrap and Google. [Online]. Available: https://www.w3schools.com/icons/icons_reference.asp. [Accessed: 15-Jun-2020].
+
+[2] "Cart Icon," Cdn4.iconfinder.com, 2020. [Online]. Available: https://cdn4.iconfinder.com/data/icons/medical-set-glyph-silhouettes/300/142732197Untitled-31-512.png. [Accessed: 23- Jul- 2020].
 
 ## Acknowledgements
 * https://www.traversymedia.com/

@@ -1,5 +1,11 @@
+/* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ForumService } from '../../services/forum/forum.service';
+import { Answer } from '../../model/answer';
+import { Upvote } from '../../model/upvote';
+
 
 @Component({
   selector: 'app-questionitem',
@@ -9,60 +15,157 @@ import { ActivatedRoute } from '@angular/router';
 export class QuestionitemComponent implements OnInit {
 
   counter = 0;
+  id: string;
+  category: string;
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private api: ForumService) { }
 
-  forumData:any=[
-    {id:1,question:"What are some precautions for COVID, also natural home remedies for COVID",askedby:"Vidip",answer_count:"1",votes:200,category:"covid",answers:[1,3]},
-    {id:2,question:"I have pain on right side of tooth ",askedby:"Vidip",answer_count:"2",votes:300,category:"ortho",answers:[2]},
-    {id:3,question:"What are general home remedies for being fit",askedby:"Vidip",answer_count:"3",votes:1000,category:"dental",answers:[1,3]},
-  ]
+  forumData: any = [{
+    question: '',
+    description: '',
+    askedby: '',
+    votes: '',
+    category: ''
+  }]
+  data: Object = { title: '', description: '', user_by: '', upvotes: '', category: '' };
+  allQuestions: any = []
+  answers: any = []
+  question: any = "";
+  alert_message: string;
+  vote_alert: string;
+  vote_alert_message: string;
 
-  allQuestions:any=[
-    {id:1,question:"What are some precautions for COVID, also natural home remedies for COVID",askedby:"Vidip",answer_count:"1",votes:"200",category:"covid",answers:[1,3]},
-    {id:2,question:"I have pain on right side of tooth ",askedby:"Vidip",answer_count:"2",votes:"300",category:"ortho",answers:['haldi','aa']},
-    {id:3,question:"How to have fit leg muscles",askedby:"Vidip",answer_count:"3",votes:"1000",category:"dental",answers:['haldi','aa']},
-  ]
-
-  answers:any = [
-    {id:1,answer:"You should always wear mask, and gloves when travlleing outside.Wash your hands often with soap and water for at least 20 seconds, especially after going to the bathroom; before eating; and after blowing your nose, coughing, or sneezing.Wash your hands often with soap and water for at least 20 seconds, especially after going to the bathroom; before eating; and after blowing your nose, coughing, or sneezing.",by:"Vidpppp",vote:0},
-    {id:2,answer:"Brush your teeth at least twice a day with a fluoride-containing toothpaste. Preferably, brush after each meal and especially before going to bed.Clean between your teeth daily with dental floss or interdental cleaners, such as the Oral-B Interdental Brush, Reach Stim-U-Dent, or Sulcabrush.",by:"Vidipppp",vote:0},
-    {id:3,answer:"golden milk is often used as a home remedy against colds. In fact, the yellow drink is touted for its immune-boosting properties.Test-tube studies suggest that curcumin has antibacterial, antiviral and antifungal properties which may help prevent and fight infections",by:"Vidipppp2",vote:0}
-  ]
-  question:any="";
-
-  dataChanged(newObj)
-  {
-
-  }
-
-  voted(id)
-  {
+  voted(id) {
     let item = this.answers.find(option => option.id == id);
-    item.vote += 1;
+    if (item.user_id != localStorage.getItem('userId') && localStorage.getItem('userId')) {
+      item.vote += 1;
+      var ques = new Upvote();
+      ques.upvote = item.vote;
+      this.api.upvoteanswer(id, ques);
+    }
+    else {
+      this.vote_alert = 'You can not upvote your own Question/Answer';
+      setTimeout(() => {
+        this.vote_alert = '';
+      }, 2000);
+    }
   }
 
-  votequestion(id)
-  {
+  votequestion(id) {
     let item = this.forumData.find(option => option.id == id);
-    item.votes += 1;
+    if (item.user_id != localStorage.getItem('userId') && localStorage.getItem('userId')) {
+      item.votes += 1;
+      var ques = new Upvote();
+      ques.upvote = item.votes;
+      this.api.upvotequestion(this.id, ques);
+    }
+    else {
+      this.vote_alert_message = 'You can not upvote your own Question/Answer';
+      setTimeout(() => {
+        this.vote_alert_message = '';
+      }, 2000);
+    }
   }
-  onSubmit(form)
-  {
 
+  onSubmit(form) {
+    if (localStorage.getItem('name') && localStorage.getItem('userId')) {
+      this.alert_message = '';
+      var ques = new Answer();
+      ques.description = form.form.value.question1;
+      ques.user_by = localStorage.getItem('name')
+      ques.upvotes = 0;
+      ques.question_id = this.id;
+      ques.user_id = localStorage.getItem('userId');
+      this.submitanswer(ques);
+    }
+    else {
+      this.alert_message = 'User is not logged in. Please LogIn To Continue';
+      setTimeout(() => {
+        this.alert_message = '';
+      }, 2000);
+    }
   }
-
 
   ngOnInit(): void {
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    console.log(id);
-    this.forumData = this.forumData.filter(option => option.id == id);
-    console.log(this.forumData);
-    var ids = this.forumData[0].answers;
-    this.answers = this.answers.filter(function(itm){
-      return ids.indexOf(itm.id) > -1;
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+      this.category = params.category;
+      this.getquestiondetails(this.id);
+      this.getanswers(this.id, this.category);
     });
-    console.log(this.answers);
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.category = this.route.snapshot.paramMap.get('category');
   }
 
+  getsimilarquestions(category) {
+    this.allQuestions = [];
+    this.api.getsimilarquestions(category)
+      .subscribe(data => {
+        for (const d of (data as any)) {
+          this.allQuestions.push({
+            question: d.title,
+            description: d.description,
+            askedby: d.user_by,
+            votes: d.upvotes,
+            category: d.category
+          });
+        }
+      });
+  }
+
+  getquestiondetails(id) {
+    this.api.getquestionbyid(id)
+      .subscribe(data => {
+        this.forumData = [];
+        for (const d of (data as any)) {
+          this.forumData.push({
+            question: d.title,
+            description: d.description,
+            askedby: d.user_by,
+            votes: d.upvotes,
+            category: d.category,
+            user_id: d.user_id
+          });
+        }
+      });
+  }
+
+  getanswers(id, category) {
+    this.api.getanswersquestion(id)
+      .subscribe(data => {
+        this.answers = [];
+        for (const d of (data as any)) {
+          this.answers.push({
+            id: d._id,
+            answer: d.description,
+            by: d.user_by,
+            vote: d.upvotes,
+            user_id: d.user_id
+          });
+        }
+
+      });
+
+    this.api.getsimilarquestions(category)
+      .subscribe(data => {
+        this.allQuestions = [];
+        for (const d of (data as any)) {
+          this.allQuestions.push({
+            question: d.title,
+            description: d.description,
+            askedby: d.user_by,
+            votes: d.upvotes,
+            category: d.category,
+            question_id: d._id
+          });
+        }
+        this.allQuestions = this.allQuestions.filter(option => option.question_id != id);
+      });
+
+  }
+
+  async submitanswer(ques) {
+    await this.api.submitanswer(ques);
+    this.getanswers(this.id, this.category);
+  }
 }

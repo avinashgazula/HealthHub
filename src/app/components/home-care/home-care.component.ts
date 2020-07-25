@@ -1,3 +1,5 @@
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
@@ -12,11 +14,9 @@ export class HomeCareComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onScheduleCare = () => {
     this.dialog.open(ScheduleCareComponent)
   }
-
 }

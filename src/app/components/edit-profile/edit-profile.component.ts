@@ -1,6 +1,8 @@
+/* @author Rudra Makwana <rd851601@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup,  FormBuilder,  Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
 
 @Component({
@@ -15,28 +17,28 @@ export class EditProfileComponent implements OnInit {
   submitted = false;
 
   editProfileForm: FormGroup;
-  
+
   constructor(private router: Router, private formBuilder: FormBuilder) {
     this.createForm();
-   }
+  }
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.editProfileForm = this.formBuilder.group({
-      firstName:['FirstName',Validators.required],
-      lastName:['LastName',Validators.required],
-      emailID:['someone@dal.ca',[Validators.required, Validators.email]],
-      password:['Abcd@123',[Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
-      confirmPassword:['Abcd@123',[Validators.required]]
-    },{
-       validator: MatchPasswords('password','confirmPassword')
+      firstName: ['FirstName', Validators.required],
+      lastName: ['LastName', Validators.required],
+      emailID: ['someone@dal.ca', [Validators.required, Validators.email]],
+      password: ['Abcd@123', [Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
+      confirmPassword: ['Abcd@123', [Validators.required]]
+    }, {
+      validator: MatchPasswords('password', 'confirmPassword')
     });
   }
 
-  cancel(){
+  cancel() {
     this.router.navigate(['/'])
   }
 
@@ -46,7 +48,7 @@ export class EditProfileComponent implements OnInit {
     this.submitted = true;
 
     if (this.editProfileForm.invalid) {
-        return;
+      return;
     }
 
     // display form values on success
@@ -54,35 +56,35 @@ export class EditProfileComponent implements OnInit {
   }
 
   get emailID() {
-      return this.editProfileForm.get('email');
+    return this.editProfileForm.get('email');
   }
 
   get password() {
-      return this.editProfileForm.get('password')
+    return this.editProfileForm.get('password')
   }
 
   get confirmPassword() {
-      return this.editProfileForm.get('confirmPassword')
+    return this.editProfileForm.get('confirmPassword')
   }
-    getEmailIDError = () => {
-      if (this.emailID.hasError('required')) {
-          return 'Email is required';
-      }
-      return this.emailID.hasError('email') ? 'Not a valid email' : '';
+  getEmailIDError = () => {
+    if (this.emailID.hasError('required')) {
+      return 'Email is required';
+    }
+    return this.emailID.hasError('email') ? 'Not a valid email' : '';
   };
 
   getPasswordError = () => {
-      if (this.password.hasError('required')) {
-          return 'Password is required';
-      }
-      return 'Password must be atleast 8 characters long and have at least one uppercase, lowercase character and a symbol'
+    if (this.password.hasError('required')) {
+      return 'Password is required';
+    }
+    return 'Password must be atleast 8 characters long and have at least one uppercase, lowercase character and a symbol'
   }
 
   getConfirmPasswordError = () => {
-      if (this.confirmPassword.hasError('required')) {
-          return 'Password is required';
-      }
-      return 'Passwords do not match'
+    if (this.confirmPassword.hasError('required')) {
+      return 'Password is required';
+    }
+    return 'Passwords do not match'
   }
 
 }

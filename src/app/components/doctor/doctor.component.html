@@ -1,3 +1,6 @@
+<!-- /* @author Avinash Gazula <agazula@dal.ca> */ -->
+<!-- /* @author Rudra Makwana <rd851601@dal.ca> */ -->
+
 <body fxLayoutAlign="center" fxLayout="column">
 
     <form [formGroup]="searchForm" class="search-container" fxLayout fxLayoutAlign="space-around" fxLayout="row"
@@ -7,7 +10,7 @@
             <span matPrefix style="margin-right: 8px;">
                 <mat-icon>filter_list</mat-icon>
             </span>
-            <mat-select disableOptionCentering>
+            <mat-select [(value)]="selected" disableOptionCentering #filterField>
                 <mat-option *ngFor="let value of filterValues" [value]="value">{{value}}</mat-option>
             </mat-select>
 
@@ -15,29 +18,69 @@
 
         <mat-form-field>
             <mat-label>Search</mat-label>
-            <input formControlName="search" matInput placeholder="Ex. Dr.Simon">
+            <input required formControlName="search" matInput placeholder="Ex. Dr.Simon" #searchField>
             <mat-error *ngIf="search.invalid">Enter a keyword</mat-error>
         </mat-form-field>
 
-        <button type="submit" mat-raised-button>
+        <button type="submit" mat-raised-button (click)="onSearch(filterField.value, searchField.value)">
             Search
         </button>
 
     </form>
 
-    <div class="type-container" fxLayout="column" *ngFor="let data of obs | async">
+    <div class="type-container" fxLayout="column">
         <div fxLayout="row">
-            <h3>{{data.type}}</h3>
+            <h3>All Doctors</h3>
             <mat-divider></mat-divider>
         </div>
         <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
-            <mat-card [routerLink]="['/doctor']" (click)="click(card.title)" class="example-card"
-                *ngFor="let card of data.values">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultsAll" (click)="click(data)"
+                class="example-card">
                 <mat-card-header class="card-header">
-                    <mat-card-title>{{card.title}}</mat-card-title>
-                    <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle>
+                    <mat-card-title>{{data.name}}</mat-card-title>
+                    <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image src={{card.image}}>
+                <img mat-card-image src={{data.image_url}}>
+            </mat-card>
+            <br>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div class="type-container" fxLayout="column">
+        <div fxLayout="row">
+            <h3>General Physicians</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultPhysician" (click)="click(data)"
+                class="example-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>{{data.name}}</mat-card-title>
+                    <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{data.image_url}}>
+            </mat-card>
+            <br>
+        </div>
+        <br>
+        <mat-divider></mat-divider>
+    </div>
+
+    <div class="type-container" fxLayout="column">
+        <div fxLayout="row">
+            <h3>Surgeon</h3>
+            <mat-divider></mat-divider>
+        </div>
+        <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
+            <mat-card [routerLink]="['/doctor']" *ngFor="let data of resultSurgeons" (click)="click(data)"
+                class="example-card">
+                <mat-card-header class="card-header">
+                    <mat-card-title>{{data.name}}</mat-card-title>
+                    <mat-card-subtitle>{{data.specialization}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src={{data.image_url}}>
             </mat-card>
             <br>
         </div>

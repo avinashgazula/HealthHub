@@ -1,70 +1,80 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LoginComponent } from './components/login/login.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { RegisterComponent } from './components/register/register.component';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClient } from '@angular/common/http';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { HttpClientModule } from '@angular/common/http';
-
-//Angular Material imports
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from "@angular/fire/storage";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// Angular Material imports 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { DoctorComponent } from './components/doctor/doctor.component';
-import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
-import { HomeComponent } from './components/home/home.component';
-import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
-import { HomeCareComponent } from './components/home-care/home-care.component';
-import { ScheduleCareComponent } from './components/schedule-care/schedule-care.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { BlogComponent } from './components/blog/blog.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
-import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
+import { DoctorComponent } from './components/doctor/doctor.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
-import { InsuranceService } from './insurance.service';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { ForumComponent } from './components/forum/forum.component';
-import { QuestionitemComponent } from './components/questionitem/questionitem.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeCareComponent } from './components/home-care/home-care.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
+import { LoginComponent } from './components/login/login.component';
+import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
+import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
+import { QuestionitemComponent } from './components/questionitem/questionitem.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ScheduleCareComponent } from './components/schedule-care/schedule-care.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
+import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { InsuranceService } from './services/insurance/insurance.service';
+import { LoginService } from './services/login/login.service';
+import { RegistrationService } from './services/registration/registration.service';
+import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +84,6 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     RegisterComponent,
     DoctorComponent,
     DoctorProfileComponent,
-    HomeComponent,
     MedicineDeliveryComponent,
     HomeCareComponent,
     ScheduleCareComponent,
@@ -89,17 +98,25 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     InsuranceitemComponent,
     BlogshomeComponent,
     ViewDoctorAppointmentsComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    SuggestdoctorComponent,
+    DoctorDetailsComponent,
+    ResetPasswordComponent,
+    SearchResultComponent,
+    MyOrdersComponent,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatCheckboxModule,
-    MatCheckboxModule,
+    MatBadgeModule,
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
@@ -130,9 +147,12 @@ import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBadgeModule,
+    NgxPaginationModule,
+    CdkScrollableModule,
   ],
-  providers: [InsuranceService],
+  providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })
