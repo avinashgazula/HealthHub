@@ -7,79 +7,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 
-export interface Card {
-    title: string;
-    subtitle: string;
-    image: string;
-}
-
-export interface Doctor {
-    type: string;
-    values: Card[];
-}
-
-const DATA: Card[] = [
-    {
-        title: 'Dr. Shea Reeves',
-        subtitle: '⭐⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-    },
-    {
-        title: 'Dr. Rishi Henson',
-        subtitle: '⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-        title: 'Dr. Codie Sullivan',
-        subtitle: '⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1588776813677-77aaf5595b83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-        title: 'Dr. Anastasia Tierney',
-        subtitle: '⭐⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-    },
-    {
-        title: 'Dr. Viktor Hills',
-        subtitle: '⭐⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1587716351184-4a2a1c161efd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-    },
-    {
-        title: 'Dr. Amelia-Grace Hendricks',
-        subtitle: '⭐⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1035&q=80'
-    },
-    {
-        title: 'Dr. Rishi Henson',
-        subtitle: '⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-        title: 'Dr. Codie Sullivan',
-        subtitle: '⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1588776813677-77aaf5595b83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-        title: 'Dr. Anastasia Tierney',
-        subtitle: '⭐⭐⭐⭐⭐',
-        image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-    }
-];
-
-const data: Doctor[] = [
-    {
-        type: 'All Doctors',
-        values: DATA
-    },
-    {
-        type: 'General Physician',
-        values: DATA
-    },
-    {
-        type: 'Cardiologists',
-        values: DATA
-    }
-]
 
 @Component({
     selector: 'app-doctor',
@@ -88,8 +15,6 @@ const data: Doctor[] = [
 })
 
 export class DoctorComponent implements OnInit {
-    obs: Observable<any>;
-    dataSource: MatTableDataSource<Doctor> = new MatTableDataSource<Doctor>(data);
     searchForm: FormGroup;
 
     filterValues: string[] = ['Specialization', 'Name'];
@@ -108,7 +33,6 @@ export class DoctorComponent implements OnInit {
         });
         this.body = {type: "doctor"}
         this.changeDetectorRef.detectChanges();
-        this.obs = this.dataSource.connect();
         this.http.post<any>('http://localhost:8080/search/alldoctors', this.body).subscribe(data => {
             this.resultsAll = data;
         });
@@ -121,9 +45,7 @@ export class DoctorComponent implements OnInit {
     }
     
     ngOnDestroy() {
-        if (this.dataSource) {
-            this.dataSource.disconnect();
-        }
+        
     }
 
     get search() {

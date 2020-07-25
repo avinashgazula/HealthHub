@@ -51,6 +51,10 @@ export class DoctorProfileComponent implements OnInit {
 
   doctorName;
   doctorID;
+  doctorSpecialization;
+  doctorDescription;
+  doctorLocation;
+  doctorFee;
   doctor;
   ngOnInit() : void {
     this.changeDetectorRef.detectChanges();
@@ -62,6 +66,10 @@ export class DoctorProfileComponent implements OnInit {
     } else {
       this.doctorID = this.doctor._id;
       this.doctorName = this.doctor.name;
+      this.doctorSpecialization = this.doctor.specialization;
+      this.doctorDescription = this.doctor.description;
+      this.doctorLocation = this.doctor.location;
+      this.doctorFee = this.doctor.fee;
     }
   }
 
