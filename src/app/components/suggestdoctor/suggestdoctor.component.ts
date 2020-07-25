@@ -3,6 +3,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
 import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 
 @Component({
@@ -28,7 +30,13 @@ export class SuggestdoctorComponent implements OnInit {
         { value: 'Vancouver' }
     ];
 
-    constructor(private suggestDoctorService: SuggestDoctorService) { }
+    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog) {
+        if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
+            localStorage.getItem('token') === undefined) {
+            this.dialog.closeAll();
+            this.dialog.open(LoginComponent, { disableClose: true });
+        }
+    }
 
     ngOnInit() {
 
