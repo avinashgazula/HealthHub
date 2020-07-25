@@ -76,6 +76,7 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
 
 import { environment } from '../environments/environment'
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ViewDoctorAppointmentsComponent,
     EditProfileComponent,
     SuggestdoctorComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

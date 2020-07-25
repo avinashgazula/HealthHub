@@ -14,7 +14,8 @@ export const environment = {
     appId: "1:294870414372:web:47f5a9e8ce6ae9df4a14b1"
   },
   googleMapsApiKey: "AIzaSyC-ZNNBX0x-yt8fKtvOIZludcYxR6PRixQ",
-  serverUrl: 'http://localhost:8080'
+  serverUrl: 'http://localhost:8080',
+  passwordRegex: '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
 };
 
 /*
