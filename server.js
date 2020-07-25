@@ -1,18 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cors = require('cors');
-
-
-const DB_URI = require('./config/keys').MONGO_URI;
-mongoose.connect(DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log("Connected to MongoDB"))
-    .catch(err => console.error(err))
 
 app.use(morgan('dev'));
 app.use(cors());
