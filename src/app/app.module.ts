@@ -57,7 +57,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeCareComponent } from './components/home-care/home-care.component';
-import { HomeComponent } from './components/home/home.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
@@ -85,7 +84,6 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
     RegisterComponent,
     DoctorComponent,
     DoctorProfileComponent,
-    HomeComponent,
     MedicineDeliveryComponent,
     HomeCareComponent,
     ScheduleCareComponent,
