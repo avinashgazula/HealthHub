@@ -8,12 +8,14 @@
             <h3><span style="font-size: 15px;">Asked By: </span>{{forumData[0].askedby}}</h3>
             <h3><span style="font-size: 15px;">Category: </span>{{forumData[0].category}}</h3>
             <span class="badge badge-primary" (click)="votequestion(forumData[0].id)">Upvote</span> &nbsp;&nbsp;&nbsp; <span>{{forumData[0].votes}} Upvotes</span>
+            <br>
+            <p style="text-align: center; color: red;"> {{this.vote_alert_message}}</p>
         </div>
         <br>
         <form #QuestionForm="ngForm" (ngSubmit)="onSubmit(QuestionForm)" autocomplete="off">
             <div class="form-group">
                 <h3>Post Your Answer Here</h3>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name ="question1" #question1="ngModel" [(ngModel)]="question" (ngModelChange)="dataChanged(question1)" required></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  name ="question1" #question1="ngModel" [(ngModel)]="question"  required></textarea>
                 <div class="alert alert-danger" *ngIf="question1.touched && !question1.valid">Answer is required</div>
             </div>
             <p style="text-align: center; color: red;">{{alert_message}}</p>
@@ -36,7 +38,8 @@
                <h3 style="padding-top: 10px;">{{data.answer}}</h3>
                <br>
                <span class="badge badge-primary" (click)="voted(data.id)">Upvote</span> &nbsp;&nbsp;&nbsp; <span>{{data.vote}}: Upvotes</span>
-               <br><br><br>
+               <br>
+               <p style="text-align: center; color: red;">{{vote_alert}}</p><br><br>
               </div>
             </div>
           </div>

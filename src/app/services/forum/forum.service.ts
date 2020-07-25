@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Question } from '../../model/question';
 import { Answer } from '../../model/answer';
 import { Upvote } from '../../model/upvote';
@@ -19,14 +19,18 @@ export class ForumService {
 
   getsimilarquestions(category)
   {
-    console.log("into similar questions"+category);
     return this.http.get(this.serverUrl +'/questions/category/'+category);
   }
 
-  submitquestion(dataobject:Question)
+  submitquestion(dataobject:Question,token)
   {
-    console.log("in submit question",dataobject);
-    return this.http.post(this.serverUrl +'/questions/', dataobject).toPromise().then(data => {
+    const httptoken = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Token': token
+      })
+    }
+    return this.http.post(this.serverUrl +'/questions/', dataobject,httptoken).toPromise().then(data => {
       console.log(data);
     });
   }
@@ -43,7 +47,6 @@ export class ForumService {
 
   submitanswer(dataobject:Answer)
   {
-    console.log("in submit answer",dataobject);
     return this.http.post(this.serverUrl +'/answers/', dataobject).toPromise().then(data => {
       console.log(data);
     });
@@ -51,8 +54,7 @@ export class ForumService {
 
   upvotequestion(id,dataobject:Upvote)
   {
-    console.log("into upvote frontend");
-    console.log(dataobject);
+
     return this.http.post(this.serverUrl +'/questions/upvote/'+id, dataobject).toPromise().then(data => {
       console.log(data);
     });
@@ -60,8 +62,6 @@ export class ForumService {
 
   upvoteanswer(id,dataobject:Upvote)
   {
-    console.log("into upvote answer");
-    console.log(dataobject);
     return this.http.post(this.serverUrl +'/answers/upvote/'+id, dataobject).toPromise().then(data => {
       console.log(data);
     });
