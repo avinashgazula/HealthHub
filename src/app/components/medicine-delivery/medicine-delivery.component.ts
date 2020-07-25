@@ -155,14 +155,20 @@ export class MedicineDeliveryComponent implements OnInit {
           this.router.navigate(['/']);
         } else {
           // unable to post, server error
-          this.snackBar.open('Error: Prescription file should be less than 90kb. Please retry', '', {
+          this.snackBar.open('Oops, server error occured. Please retry', '', {
             duration: 7000,
           });
           this.router.navigate(['/orderMedicine'])
         }
+      },
+      error => {
+        // handling payload too large error, status 413
+        this.snackBar.open('Error: Prescription file should be less than 90kb. Please retry', '', {
+          duration: 7000,
+        });
+        this.router.navigate(['/orderMedicine'])
       }
     )
-
 
     this.snackBar.open('Your order has been placed Succesfully !!', '', {
       duration: 3000,
