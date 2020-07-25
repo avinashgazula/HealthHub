@@ -1,3 +1,4 @@
+//author: Vidip Malhotra
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ForumService } from '../../services/forum/forum.service';
