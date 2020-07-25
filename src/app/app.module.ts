@@ -80,6 +80,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { SearchResultComponent } from './components/search-result/search-result.component'
+import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { SearchResultComponent } from './components/search-result/search-result.
     DoctorDetailsComponent,
     ResetPasswordComponent,
     SearchResultComponent,
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,

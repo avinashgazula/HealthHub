@@ -1,16 +1,32 @@
+<!-- author: Harshit Trivedi -->
+<!-- From here, the user can order medicines by filling the order details and uploading a valid prescription image-->
+
 <div class="orderMedicine-container">
 
     <div class="text-center">
-        <img src="https://d.newsweek.com/en/full/1541364/prescription-pills.jpg" width="100%" height="350px">
+        <img src="./assets/orderMedicine.jpg" width="100%" height="350px">
         <br>
         <div class="custom-tab">
-            <form (ngSubmit)="onSubmit()" [formGroup]="formPersonalRecord">
-                <h2>Upload your medical prescription here</h2>
+            <h2>Enter your order details and prescription here</h2>
+            <form [formGroup]="formPersonalRecord">
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Enter Pharmacy name" formControlName="pharmacyName"
+                        required [matAutocomplete]="autoGroup">
+                    <mat-autocomplete #autoGroup="matAutocomplete">
+                        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                            <mat-option *ngFor="let name of group.names" [value]="name">
+                                {{name}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+            <form (ngSubmit)="onSubmit($event)" [formGroup]="formPersonalRecord">
                 <div class="row parentCss content-center">
                     <div>
                         <mat-form-field>
                             <mat-label>Apartment Number</mat-label>
-                            <input matInput formControlName="aptNumber" required>
+                            <input matInput formControlName="apartmentNo" required>
                             <mat-error>
                                 Please provide Apartment number.
                             </mat-error>
@@ -30,19 +46,17 @@
                     <div>
                         <mat-form-field>
                             <mat-label>Postal Code</mat-label>
-                            <input matInput formControlName="postalCode" 
-                            required>
+                            <input matInput formControlName="postalCode" required>
                             <mat-error>
                                 Please provide postal code of 6 chararcters.
                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field>
                             <mat-label>Mobile Number</mat-label>
-                            <input type="tel" matInput formControlName="mobileNumber" 
-                            required 
-                            placeholder="902-555-1234">
+                            <input type="tel" matInput formControlName="mobileNumber" required
+                                placeholder="902-555-1234">
                             <mat-error>
                                 Please provide a 10-digit mobile number.
                             </mat-error>
@@ -51,22 +65,29 @@
                 </div>
                 <div class="row parentCss " style="justify-content: center;">
                     <div>
-                        <label for="uploadPrescription" class="text-style">Upload Prescription File*</label>
-                    </div>
-                    <div>
-                        <input id="uploadPrescription" type="file"/>
-                    </div>
+                        <label for="uploadPrescription" class="text-style">Upload Prescription*</label>
+                        <input id="uploadPrescription" formControlName="prescriptionFile" type="file"
+                            (change)="onFileChange($event)" required #fileInput/>
+                        </div>
                 </div>
                 <br>
                 <mat-form-field class="myTextArea">
                     <mat-label>Additional Comments</mat-label>
-                    <textarea matInput></textarea>
+                    <textarea formControlName="comments" matInput></textarea>
                 </mat-form-field>
-                <br>
-                <button type="submit" mat-raised-button 
-                [disabled]="!formPersonalRecord.valid">
-                    Submit
-                </button>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="reset" mat-raised-button>
+                            Clear
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="submit" mat-raised-button color="primary" [disabled]="!formPersonalRecord.valid">
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

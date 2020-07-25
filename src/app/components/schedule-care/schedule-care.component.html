@@ -1,11 +1,13 @@
+<!-- author: Harshit Trivedi -->
+
 <div class="container">
     <div class="text-center">
         <h2>Book Home Care</h2>
         <form [formGroup]="scheduleCare" (ngSubmit)="onScheduleAssessment()">
             <mat-form-field>
                 <mat-label>Enter your Name</mat-label>
-                <input formControlName="name" matInput required>
-                <mat-error *ngIf="name.invalid">{{getNameError()}}</mat-error>
+                <input formControlName="userName" matInput required>
+                <mat-error *ngIf="userName.invalid">{{getNameError()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field>
@@ -16,15 +18,23 @@
             <br>
             <mat-form-field>
                 <mat-label>Enter Home Care Date</mat-label>
-                <input formControlName="careDate" matInput required [matDatepicker]="picker">
+                <input formControlName="homeCareDate" matInput required [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-                <mat-error *ngIf="careDate.invalid">{{getDateError()}}</mat-error>
+                <mat-error *ngIf="homeCareDate.invalid">{{getDateError()}}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Mobile Number</mat-label>
+                <input type="tel" matInput formControlName="mobileNumber" required placeholder="902-555-1234">
+                <mat-error *ngIf="mobileNumber.invalid">
+                    {{getMobileNumberError()}}
+                </mat-error>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Additional Comments</mat-label>
-                <textarea matInput></textarea>
+                <textarea formControlName="comments" matInput></textarea>
             </mat-form-field>
             <button mat-raised-button type="submit" color="primary" [disabled]="!scheduleCare.valid">
                 Schedule Home Care</button>

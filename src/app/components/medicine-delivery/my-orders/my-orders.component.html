@@ -1,0 +1,46 @@
+<!-- author: Harshit Trivedi -->
+<!-- From here, the user can view their pending orders and can also delete them -->
+
+<div class="container">
+    <div class="style1">
+        <mat-card class="example-card" *ngFor="let data of orderData">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Order Date: {{ data.date | date }} </mat-card-title>
+                <mat-card-subtitle> Order placed at: {{ data.date | date: 'shortTime' }} </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    Pharmacy Name: {{ data.pharmacyName }}
+                </p>
+                <p>
+                    Apartment Number: {{ data.apartmentNo }}
+                </p>
+                <p>
+                    Street Address: {{ data.streetAddress }}
+                </p>
+                <p>
+                    Postal Code: {{ data.postalCode }}
+                </p>
+                <p>
+                    Mobile Number: {{ data.mobileNumber }}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button style="color: #FF0000" (click)="deleteOrder(data._id)"
+                >DELETE ORDER</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class= "style2" *ngIf="orderLength==0">
+        <div>
+            <img src="../../../../assets/emptyCart.jpg">
+        </div>
+        <br>
+        <div>
+            <button mat-raised-button color="primary" (click)="goToOrderMedicine()"
+                >Order Medicines Now !</button>
+        </div>
+        <br>
+    </div>
+</div>

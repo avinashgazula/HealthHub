@@ -18,13 +18,15 @@ import { QuestionitemComponent } from './components/questionitem/questionitem.co
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
-import {SearchResultComponent} from './components/search-result/search-result.component'
+import { SearchResultComponent } from './components/search-result/search-result.component'
+import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 
 const routes: Routes = [
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'consult', component: DoctorComponent },
   { path: 'single-blog', component: BlogComponent },
   { path: 'orderMedicine', component: MedicineDeliveryComponent },
+  { path: 'my-orders', component: MyOrdersComponent },
   { path: 'homeCare', component: HomeCareComponent },
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'contactUs', component: ContactUsComponent },
@@ -40,7 +42,7 @@ const routes: Routes = [
   { path: 'edit-profile', component: EditProfileComponent },
   { path: 'suggest', component: SuggestdoctorComponent },
   { path: 'details', component: DoctorDetailsComponent },
-  { path: 'searchresult', component: SearchResultComponent }
+  { path: 'searchresult', component: SearchResultComponent },
 ];
 
 @NgModule({
