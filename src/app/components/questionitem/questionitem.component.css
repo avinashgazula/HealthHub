@@ -1,0 +1,15 @@
+#alertmessage{
+    text-align: center; color: red;
+}
+
+#similarques{
+    color: blue; cursor: -webkit-grab; cursor: grab;
+}
+
+#emptyp{
+    border-bottom: 1px solid #dedee3;
+}
+
+#fontstyle{
+    font-size: 15px;
+}
