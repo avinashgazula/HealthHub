@@ -1,16 +1,7 @@
-
-
-import { FeedbackService } from '../shared/feedback.service';
-import { Feedback } from '../shared/feedback.model';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-
-
+import { Feedback } from '../../model/feedback.model';
+import { FeedbackService } from '../../services/feedback/feedback.service';
 
 
 declare var M: any;
@@ -19,11 +10,10 @@ declare var M: any;
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.css'],
   providers: [FeedbackService]
-  
-
 })
+
 export class FeedbackComponent implements OnInit {
- 
+
   constructor(public feedbackService: FeedbackService) { }
 
   ngOnInit() {
@@ -39,7 +29,7 @@ export class FeedbackComponent implements OnInit {
       name: "",
       date: "",
       feedback: ""
-     
+
     }
   }
 
