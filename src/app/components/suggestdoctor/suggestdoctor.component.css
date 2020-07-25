@@ -28,7 +28,7 @@
 }
 
 .example-card {
-    width: 600px;
+    width: 800px;
     transform: scale(1);
     transform: transition 0.5s ease;
 }
@@ -51,7 +51,6 @@ mat-card:hover {}
 .raised {
     background-color: #001F3F;
     color: #fef8f2;
-    width: 200px;
 }
 
 .mat-step-header {
