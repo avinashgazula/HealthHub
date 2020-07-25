@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Feedback } from './feedback.model';  
+import { Feedback } from '../../model/feedback.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class FeedbackService {
   selectedFeedback: Feedback;
   feedback: Feedback[];
-  readonly baseURL = 'http://localhost:8080/feedback';
+  readonly baseURL = environment.serverUrl + '/feedback';
 
   constructor(private http: HttpClient) { }
 

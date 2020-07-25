@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
 import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';
 
@@ -24,7 +23,7 @@ export class SuggestdoctorComponent implements OnInit {
         { value: 'Toronto' },
         { value: 'Halifax' },
         { value: 'Montreal' },
-        { value: 'Vancouver'}
+        { value: 'Vancouver' }
     ];
 
     constructor(private suggestDoctorService: SuggestDoctorService) { }

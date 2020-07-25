@@ -2,19 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
+import { environment } from './../../../environments/environment';
 
 @Injectable()
 export class SuggestDoctorService {
+    serverUrl: string = environment.serverUrl;
 
-    url = 'http://localhost:8080/getSymptomsList';
-    suggestUrl = 'http://localhost:8080/suggestDoctor';
-
-    constructor(private httpClient: HttpClient) {
-
-    }
+    constructor(private httpClient: HttpClient) { }
 
     getSymtomList(): Observable<string[]> {
-        return this.httpClient.get<string[]>(this.url);
+        return this.httpClient.get<string[]>(this.serverUrl + '/getSymptomsList');
     }
 
     getSuggestedDoctor(suggestQuery: SuggestDoctorModel): Observable<any[]> {
@@ -24,6 +21,6 @@ export class SuggestDoctorService {
             "price": suggestQuery.price,
             "symptoms": Array.from(suggestQuery.symptoms)
         };
-        return this.httpClient.post<any[]>(this.suggestUrl, body);
+        return this.httpClient.post<any[]>(this.serverUrl + '/suggestDoctor', body);
     }
 }
