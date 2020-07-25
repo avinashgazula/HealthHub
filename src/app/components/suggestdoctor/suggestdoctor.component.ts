@@ -22,7 +22,9 @@ export class SuggestdoctorComponent implements OnInit {
     cities: any[] = [
         { value: 'Ontario' },
         { value: 'Toronto' },
-        { value: 'Halifax' }
+        { value: 'Halifax' },
+        { value: 'Montreal' },
+        { value: 'Vancouver'}
     ];
 
     constructor(private suggestDoctorService: SuggestDoctorService) { }
