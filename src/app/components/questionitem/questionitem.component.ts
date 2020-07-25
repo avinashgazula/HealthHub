@@ -18,7 +18,11 @@ export class QuestionitemComponent implements OnInit {
 
   constructor(private router: Router,private route:ActivatedRoute, private api:ForumService) { }
 
-  forumData:any=[]
+  forumData:any=[{question: '',
+    description: '',
+    askedby: '',
+    votes:'',
+    category: ''}]
   data : Object = {title:'',description:'',user_by:'',upvotes:'',category:''};
   allQuestions:any=[]
   answers:any = []
@@ -32,10 +36,8 @@ export class QuestionitemComponent implements OnInit {
 
   voted(id)
   {
-    console.log(id);
     let item = this.answers.find(option => option.id == id);
     item.vote += 1;
-    console.log(item.vote);
     var ques = new Upvote();
     ques.upvote = item.vote;
     this.api.upvoteanswer(id,ques);
@@ -44,32 +46,24 @@ export class QuestionitemComponent implements OnInit {
 
   votequestion(id)
   {
-    console.log("upvote questio called");
     let item = this.forumData.find(option => option.id == id);
     item.votes += 1;
-    console.log(item.votes);
     var ques = new Upvote();
     ques.upvote = item.votes;
     this.api.upvotequestion(this.id,ques);
   }
 
-  gotoquestion(id,category)
-  {
-    console.log(id,category);
-   // this.getquestiondetails(id);
-   // this.getanswers(id,category);
-  }
   onSubmit(form)
   {
     if(localStorage.getItem('name'))
     {
     this.alert_message = '';
-    console.log("insert answer submit function");
     var ques = new Answer();
     ques.description = form.form.value.question1;
     ques.user_by = localStorage.getItem('name')
     ques.upvotes = 0;
     ques.question_id = this.id;
+    ques.user_id = localStorage.getItem('userId');
     this.submitanswer(ques);
     }
     else{
@@ -79,25 +73,18 @@ export class QuestionitemComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log('URL Params', params);
       this.id = params.id;
       this.category = params.category;
       this.getquestiondetails(this.id);
       this.getanswers(this.id,this.category);
     });
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
     this.category = this.route.snapshot.paramMap.get('category');
-    console.log(this.category);
-   // this.forumData = this.forumData.filter(option => option.id == id);
-    
-    //this.getsimilarquestions(category);
    
   }
 
   getsimilarquestions(category)
   {
-    console.log("component similar questions");
     this.allQuestions = [];
     this.api.getsimilarquestions(category)
     .subscribe(data => {
@@ -110,16 +97,13 @@ export class QuestionitemComponent implements OnInit {
           category: d.category
         });
       }
-      console.log(this.allQuestions);
     });
   }
   
   getquestiondetails(id)
   {
-    console.log('get particular question');
     this.api.getquestionbyid(id)
     .subscribe(data => {
-      console.log(data);
       this.forumData = [];
       for (const d of (data as any)) {
         this.forumData.push({
@@ -130,17 +114,14 @@ export class QuestionitemComponent implements OnInit {
           category: d.category
         });
       }
-      console.log(this.forumData);
     });
   }
 
   getanswers(id,category)
   {
-    console.log("get answers called");
     this.api.getanswersquestion(id)
     .subscribe(data => {
       this.answers = [];
-      console.log(data);
       for (const d of (data as any)) {
         this.answers.push({
           id: d._id,
@@ -149,17 +130,9 @@ export class QuestionitemComponent implements OnInit {
           vote: d.upvotes
         });
       }
-      console.log(this.answers);
 
     });
 
-  /*  var ids = this.forumData[0].answers;
-    this.answers = this.answers.filter(function(itm){
-      return ids.indexOf(itm.id) > -1;
-    });
-    console.log(this.answers);*/
-
-    console.log("component similar questions");
     this.api.getsimilarquestions(category)
     .subscribe(data => {
       for (const d of (data as any)) {
@@ -179,7 +152,6 @@ export class QuestionitemComponent implements OnInit {
 
   async submitanswer(ques)
   {
-    console.log(ques);
     await this.api.submitanswer(ques);
     this.getanswers(this.id,this.category);
   }
