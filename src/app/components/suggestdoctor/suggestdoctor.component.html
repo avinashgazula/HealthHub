@@ -3,270 +3,85 @@
   Mat-Icons are adopted from Angular material and the CSS for it is customized.
  -->
 
-<div class="container">
+<div class="container" style="padding-bottom: 500px;">
     <div class="row myrow justify-content-center">
-        <mat-horizontal-stepper labelPosition="bottom" #stepper>
-            <mat-step [stepControl]="firstFormGroup" class="mat">
-                <form [formGroup]="firstFormGroup">
-                    <ng-template matStepLabel>Enter the location</ng-template>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Location</mat-label>
-                        <mat-select name="food">
-                            <mat-option *ngFor="let food of foods" [value]="food.value">
-                                {{food.value}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <div>
-                        <button mat-stroked-button matStepperNext class="stroked align-items-end">Next</button>
+        <div class="col-3">
+            <div class="row">
+                <mat-vertical-stepper labelPosition="bottom" #stepper>
+                    <mat-step class="mat">
+                        <div style="padding-bottom: 20px;"></div>
+                        <ng-template matStepLabel>Enter the location</ng-template>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Location</mat-label>
+                            <mat-select name="food" [(ngModel)]="suggestQuery.location">
+                                <mat-option *ngFor="let city of cities" [value]="city.value">
+                                    {{city.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Price range</ng-template>
+                        <div style="padding-bottom: 20px;"></div>
+                        <div>
+                            <mat-slider thumbLabel style="width: 100%; color: #001F3F;" min="10" max="500" [displayWith]="priceRange" tickInterval="1" [(ngModel)]="suggestQuery.price" color="primary" style="padding-top:50px;">
+                            </mat-slider>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Enter the Symptoms</ng-template>
+                        <div style="padding-bottom: 20px;"></div>
+                        <div style="height: 200px;" class="scroll-container">
+                            <section class="example-section">
+                                <mat-checkbox color="primary" class="example-margin" style="padding:10px;" *ngFor="let symptom of symptoms" (change)="checkAndUncheckSymptoms($event,symptom)" [value]="symptom">
+                                    {{symptom}}
+                                </mat-checkbox>
+                            </section>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </div>
+            <div style="padding-bottom: 10px; "></div>
+            <div class="row justify-content-center ">
+                <button mat-raised-button class="raised align-items-end " style="width: 300px; " (click)="suggestDoctor() ">suggest</button>
+            </div>
+        </div>
+
+        <div class="col-8 ">
+
+
+            <div class="row mycolumn" *ngFor=" let doctor of doctorList">
+                <mat-card class="example-card ">
+                    <div class="row mycolumn">
+
+                        <div class="col-3">
+                            <div class="row"><img mat-card-image src={{doctor.image}} style="height: 150px; width: 150px;"></div>
+                        </div>
+                        <div class="col-8">
+                            <mat-card-header>
+                                <mat-card-title>Dr. {{ doctor.name }}</mat-card-title>
+                                <mat-card-subtitle>{{doctor.specialization}}</mat-card-subtitle>
+                                <mat-card-subtitle>${{doctor.fee}}</mat-card-subtitle>
+                                <mat-card-subtitle>${{doctor.location}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>
+                                    {{doctor.description}}
+                                </p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button (click)="viewDoctor() " mat-stroked-button class="stroked align-items-end ">view more
+                                    details</button>
+                            </mat-card-actions>
+                        </div>
                     </div>
-                </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup" optional>
-                <form [formGroup]="secondFormGroup">
-                    <ng-template matStepLabel>Price range</ng-template>
-                    <mat-slider style="width: 400px; align-self: center; color: #001F3F;"></mat-slider>
-                    <div>
-                        <button mat-stroked-button matStepperPrevious class="stroked align-items-end">Back</button>
-                        <button mat-stroked-button matStepperNext class="stroked align-items-end">Next</button>
-                    </div>
-                </form>
-            </mat-step>
-            <mat-step optional>
-                <ng-template matStepLabel>Enter the Symptoms</ng-template>
-                <section class="example-section">
-                    <mat-checkbox class="example-margin" style="padding:10px;">Fever</mat-checkbox>
-                    <mat-checkbox class="example-margin" style="padding:10px;">Cold</mat-checkbox>
-                    <mat-checkbox class="example-margin" style="padding:10px;">Heart problem</mat-checkbox>
-                    <mat-checkbox class="example-margin" style="padding:10px;">Bone fractures</mat-checkbox>
-                  </section>
-                <div>
-                    <button mat-stroked-button matStepperPrevious class="stroked align-items-end">Back</button>
-                </div>
-            </mat-step>
-        </mat-horizontal-stepper>
+                </mat-card>
+            </div>
+        </div>
+
     </div>
-    <div class="row justify-content-center">
-        <button mat-raised-button class="raised align-items-end" style="width: 300px;">suggest</button>
-    </div>
-    <hr class="h-10">
     <!-- search end  -->
-
-
-    <div class="row resultrow justify-content-center">
-        <div class="row">
-            <div class="col-lg-04 col-sm-02 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-            <div class="col-lg-04 col-sm-02 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-            <div class="col-lg-04 col-sm-02 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-
-                </mat-card>
-            </div>
-
-        </div>
-
-        <div class="row justify-content-center">
-
-            <div class="col-04 col-sm-04 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-            <div class="col-04 col-sm-04 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-            <div class="col-04 col-sm-04 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-        </div>
-        <!-- enter -->
-        <div class="row justify-content-center">
-
-            <div class="col-04 col-sm-04 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-            <div class="col-04 col-sm-04 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-            <div class="col-04 col-sm-04 col-md-4 mycolumn">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>Dr.Shiba Inu</mat-card-title>
-                        <mat-card-subtitle>Nuerologist</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>
-                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                            Japan.
-                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                            originally
-                            bred for hunting.
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button (click)="viewDoctor()" mat-stroked-button class="stroked align-items-end">view more
-                            details</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-        </div>
-    </div>
-    <hr class="h-25 invisible">
+    <hr class="h-25 invisible ">
 
 
 </div>

@@ -77,6 +77,8 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
 import { environment } from '../environments/environment'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -149,9 +151,10 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     MatPaginatorModule,
     HttpClientModule,
     MatBadgeModule,
-    NgxPaginationModule 
+    NgxPaginationModule,
+    CdkScrollableModule,
   ],
-  providers: [InsuranceService, RegistrationService, LoginService],
+  providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })
