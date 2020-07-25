@@ -55,6 +55,7 @@ export class DoctorProfileComponent implements OnInit {
   doctorDescription;
   doctorLocation;
   doctorFee;
+  doctorImageSrc;
   doctor;
   ngOnInit() : void {
     this.changeDetectorRef.detectChanges();
@@ -70,6 +71,7 @@ export class DoctorProfileComponent implements OnInit {
       this.doctorDescription = this.doctor.description;
       this.doctorLocation = this.doctor.location;
       this.doctorFee = this.doctor.fee;
+      this.doctorImageSrc = this.doctor.image_url;
     }
   }
 

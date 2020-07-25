@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'healthhub-search-result',
@@ -12,7 +13,8 @@ export class SearchResultComponent implements OnInit {
   constructor(
     private router: Router, 
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private snackBar: MatSnackBar
     ) {
       this.router.getCurrentNavigation().extras.state;
    }
@@ -37,8 +39,15 @@ export class SearchResultComponent implements OnInit {
       }  
   }
   
+  name;
+  id;
   onClick(doctor){
-    
+    this.snackBar.open(doctor.name, '', {
+      duration: 3000,
+  });
+  this.name = doctor.name;
+  this.id = doctor._id;
+  this.router.navigateByUrl('/doctor', {state: {doctorObject: doctor}});
   }
 
 }
