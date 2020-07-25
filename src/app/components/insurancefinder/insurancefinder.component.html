@@ -1,159 +1,190 @@
+<!-- /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */ -->
+
 <body fxLayout="column">
-    <div [ngStyle]="{background:'url(./assets/healthcare.jpg)'}" id="backmain">
-        <h2 id="mainheading">Find Health Insurance easily</h2>
-       </div>
+  <div [ngStyle]="{background:'url(./assets/healthcare.jpg)'}" id="backmain">
+    <h2 id="mainheading">Find Health Insurance easily</h2>
+  </div>
 
-    <div class="card" id="maincard">
-        <h2 style="text-align: center; margin-top: 5%;">Find Personalized Health Insurance:</h2>
-        <div class="card-body" style="overflow-y: scroll;">
-            <div class="container">
-                <form  #insuranceForm="ngForm" [hidden]="checker" (ngSubmit)="onSubmit(insuranceForm)">
-                <div class="row">
-                  <div class="col-sm">
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="user name" id="fullName" name="fullNameControl" #fullNameControl="ngModel" (change)="log(fullNameControl)"  [(ngModel)]="fName" required>
-                        <div class="alert alert-danger" *ngIf="fullNameControl.touched && !fullNameControl.valid">Full Name is required</div>
-
-                    </div>
-                  </div>
-                  <div class="col-sm">
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput2"  name="userEmails" placeholder="name@example.com" #userEmails="ngModel" (change)="checkEmail(userEmails)"  email="true" [(ngModel)]="uemail" required>
-                        <div class="alert alert-danger" *ngIf="userEmails.touched && !userEmails.valid">Email is Required</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                      <div class="form-group">
-                          <label for="exampleFormControlInput1">Phone Number</label>
-                          <input type="number" class="form-control" [pattern]="mobNumberPattern" id="exampleFormControlInput3" placeholder="999999999" name="UserPhone" #UserPhone="ngModel"  (change)="checkEmail(UserPhone)"  [(ngModel)]="uphone" required minlength="10" maxlength="10" pattern="1111111111">
-                          <div class="alert alert-danger"  *ngIf="UserPhone.touched && !UserPhone.valid && UserPhone.errors.required">Phone Number is Required</div>
-                          <div *ngIf="UserPhone.touched && UserPhone.errors" class="alert alert-danger">
-                            <div *ngIf="UserPhone.errors.pattern">
-                              Mobile number not valid.
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm">
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Age Group</label>
-                        <select class="form-control" name="userage" #userage="ngModel" userage="true" [(ngModel)]="uage" required>
-                            <option value="12-20">12-20</option>
-                            <option value="20-30">20-30</option>
-                            <option value="30-40">35-50</option>
-                            <option value="40-60">50-60</option>
-                            <option value="Above 60">Above 60</option>
-                          </select>
-                          <div class="alert alert-danger"  *ngIf="userage.touched && !userage.valid && userage.errors.required">Age is Required</div>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm">
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Gender</label>
-                        <select class="form-control" name="gender" #gender="ngModel" gender="true" [(ngModel)]="ugender" required>
-                            <option value="Female">Female</option>
-                            <option value="Male">Male</option>
-                            <option value="Other">Others</option>
-                          </select>
-                          <div class="alert alert-danger"  *ngIf="gender.touched && !gender.valid && gender.errors.required">Gender is Required</div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm">
-                      <div class="form-group">
-                        <label for="exampleFormControlInput1">Yearly Salary</label>
-                        <select class="form-control" name="salary" #salary="ngModel" salary="true" [(ngModel)]="usalary" required>
-                            <option value="Not Employed">Not Employed</option>
-                             <option value="40000-50000">40000-50000</option>
-                            <option value="250000-70000">50000-70000</option>
-                            <option value="70000-90000">70000-90000</option>
-                            <option value="90000-120000">90000-120000</option>
-                            <option value="Above 120000">Above 120000</option>
-                          </select>
-                          <div class="alert alert-danger"  *ngIf="salary.touched && !salary.valid && salary.errors.required">Salary is Required</div>
-                        </div>
-                    </div>
-                  </div>
-                <br>
-                  <button type="submit" class="btn btn-info" id="submitbutton" [disabled]="fName === '' || uemail === '' || uphone === '' || uage === '' || usalary === '' || ugender === ''">Submit</button>
-            </form>
-            <div [hidden]="submitted" id="userfield"><img src="assets/greenicon.png" alt="image" style="margin-left: 30%;" />
-            <br>
-            <h2 style="text-align: center;">Your Response has been submitted</h2>
-            <button type="button" class="btn btn-info" id="button" routerLink="/insurance/{{fName}}/{{uage}}/{{uemail}}/{{ugender}}/{{usalary}}" style="text-align: center; margin-left: 11%;">See Peronsalised Health Plans</button></div>
+  <div class="card" id="maincard">
+    <h2 style="text-align: center; margin-top: 5%;">Find Personalized Health Insurance:</h2>
+    <div class="card-body" style="overflow-y: scroll;">
+      <div class="container">
+        <form #insuranceForm="ngForm" [hidden]="checker" (ngSubmit)="onSubmit(insuranceForm)">
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="user name"
+                  id="fullName" name="fullNameControl" #fullNameControl="ngModel" (change)="log(fullNameControl)"
+                  [(ngModel)]="fName" required>
+                <div class="alert alert-danger" *ngIf="fullNameControl.touched && !fullNameControl.valid">Full Name is
+                  required</div>
 
               </div>
-          </div>
-    </div>
-    <br>
-    <div class="container-fluid" style="width: 90%;">
-        <div class="row">
-          <div class="col-sm-8" style="background-color: #f6f7f8;">
-              <h2>Top Health Plans</h2>
-              <div  *ngFor="let data of insuranceData">
-            <div class="card">
-                <div class="card-header">
-                  {{data.insurancecompany}}
-                </div>
-                <div class="card-body">
-                    <div class="container">
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <img src="assets/insurance.jpg" alt="image" />
-                          </div>
-                          <div class="col-sm-8">
-                            <h3 class="card-title">{{data.insurancename}} &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-info">{{data.type}}</span></h3>
-                            <p class="card-text">{{data.insurancedetails}}</p>
-                            <h2 style="text-align: right;">Price:  CAD {{data.premium}} <span style="font-size: 12px;">per {{data.payduration}}</span></h2>
-                            <a href="#" class="btn btn-primary">Take me to Company's Website</a>
-                          </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <br>
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput2" name="userEmails"
+                  placeholder="name@example.com" #userEmails="ngModel" (change)="checkEmail(userEmails)" email="true"
+                  [(ngModel)]="uemail" required>
+                <div class="alert alert-danger" *ngIf="userEmails.touched && !userEmails.valid">Email is Required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Phone Number</label>
+                <input type="number" class="form-control" [pattern]="mobNumberPattern" id="exampleFormControlInput3"
+                  placeholder="999999999" name="UserPhone" #UserPhone="ngModel" (change)="checkEmail(UserPhone)"
+                  [(ngModel)]="uphone" required minlength="10" maxlength="10" pattern="1111111111">
+                <div class="alert alert-danger"
+                  *ngIf="UserPhone.touched && !UserPhone.valid && UserPhone.errors.required">Phone Number is Required
+                </div>
+                <div *ngIf="UserPhone.touched && UserPhone.errors" class="alert alert-danger">
+                  <div *ngIf="UserPhone.errors.pattern">
+                    Mobile number not valid.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Age Group</label>
+                <select class="form-control" name="userage" #userage="ngModel" userage="true" [(ngModel)]="uage"
+                  required>
+                  <option value="12-20">12-20</option>
+                  <option value="20-30">20-30</option>
+                  <option value="30-40">35-50</option>
+                  <option value="40-60">50-60</option>
+                  <option value="Above 60">Above 60</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="userage.touched && !userage.valid && userage.errors.required">Age
+                  is Required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Gender</label>
+                <select class="form-control" name="gender" #gender="ngModel" gender="true" [(ngModel)]="ugender"
+                  required>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Others</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="gender.touched && !gender.valid && gender.errors.required">Gender
+                  is Required</div>
+              </div>
+            </div>
+
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Yearly Salary</label>
+                <select class="form-control" name="salary" #salary="ngModel" salary="true" [(ngModel)]="usalary"
+                  required>
+                  <option value="Not Employed">Not Employed</option>
+                  <option value="40000-50000">40000-50000</option>
+                  <option value="250000-70000">50000-70000</option>
+                  <option value="70000-90000">70000-90000</option>
+                  <option value="90000-120000">90000-120000</option>
+                  <option value="Above 120000">Above 120000</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="salary.touched && !salary.valid && salary.errors.required">Salary
+                  is Required</div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-info" id="submitbutton"
+            [disabled]="fName === '' || uemail === '' || uphone === '' || uage === '' || usalary === '' || ugender === ''">Submit</button>
+        </form>
+        <div [hidden]="submitted" id="userfield"><img src="assets/greenicon.png" alt="image"
+            style="margin-left: 30%;" />
+          <br>
+          <h2 style="text-align: center;">Your Response has been submitted</h2>
+          <button type="button" class="btn btn-info" id="button"
+            routerLink="/insurance/{{fName}}/{{uage}}/{{uemail}}/{{ugender}}/{{usalary}}"
+            style="text-align: center; margin-left: 11%;">See Peronsalised Health Plans</button>
         </div>
 
-          </div>
-          <div class="col-sm">
-              <p>Filters</p>
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Insurance Provider Name</label>
-                  <select class="form-control" id="exampleFormControlSelect1" name ="insurancecompany"  #insurancecompany="ngModel" [(ngModel)]="company" (ngModelChange)="dataChanged($event,'company')" required="true">
-                    <option *ngFor="let data of insuranceDatafilter" value={{data.insurancecompany}}>{{data.insurancecompany}}</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Insurance Name</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name ="insurancename"  #insurancename="ngModel" [(ngModel)]="iname" (ngModelChange)="dataChanged($event,'name')" required="true">
-                      <option *ngFor="let data of insuranceDatafilter" value={{data.insurancename}}>{{data.insurancename}}</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">Age Group</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="agegroup" #agegroup="ngModel" [(ngModel)]="age" (ngModelChange)="dataChanged($event,'age')" required="true">
-                      <option *ngFor="let data of insuranceDatafilter" value={{data.agegroup}}>{{data.agegroup}}</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">Premium</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="premium" #premium="ngModel" [(ngModel)]="premiums" (ngModelChange)="dataChanged($event,'premium')" required="true">
-                      <option *ngFor="let data of insuranceDatafilter" value={{data.premium}}>{{data.premium}}</option>
-                    </select>
-                  </div>
-              </form>
-          </div>
-        </div>
       </div>
-    <br>
-  </body>
+    </div>
+  </div>
+  <br>
+  <div class="container-fluid" style="width: 90%;">
+    <div class="row">
+      <div class="col-sm-8" style="background-color: #f6f7f8;">
+        <h2>Top Health Plans</h2>
+        <div *ngFor="let data of insuranceData">
+          <div class="card">
+            <div class="card-header">
+              {{data.insurancecompany}}
+            </div>
+            <div class="card-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img src="assets/insurance.jpg" alt="image" />
+                  </div>
+                  <div class="col-sm-8">
+                    <h3 class="card-title">{{data.insurancename}} &nbsp;&nbsp;&nbsp;&nbsp;<span
+                        class="badge badge-info">{{data.type}}</span></h3>
+                    <p class="card-text">{{data.insurancedetails}}</p>
+                    <h2 style="text-align: right;">Price: CAD {{data.premium}} <span style="font-size: 12px;">per
+                        {{data.payduration}}</span></h2>
+                    <a href="#" class="btn btn-primary">Take me to Company's Website</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+
+      </div>
+      <div class="col-sm">
+        <p>Filters</p>
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Insurance Provider Name</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="insurancecompany"
+              #insurancecompany="ngModel" [(ngModel)]="company" (ngModelChange)="dataChanged($event,'company')"
+              required="true">
+              <option *ngFor="let data of insuranceDatafilter" value={{data.insurancecompany}}>{{data.insurancecompany}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Insurance Name</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="insurancename" #insurancename="ngModel"
+              [(ngModel)]="iname" (ngModelChange)="dataChanged($event,'name')" required="true">
+              <option *ngFor="let data of insuranceDatafilter" value={{data.insurancename}}>{{data.insurancename}}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Age Group</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="agegroup" #agegroup="ngModel"
+              [(ngModel)]="age" (ngModelChange)="dataChanged($event,'age')" required="true">
+              <option *ngFor="let data of insuranceDatafilter" value={{data.agegroup}}>{{data.agegroup}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Premium</label>
+            <select class="form-control" id="exampleFormControlSelect1" name="premium" #premium="ngModel"
+              [(ngModel)]="premiums" (ngModelChange)="dataChanged($event,'premium')" required="true">
+              <option *ngFor="let data of insuranceDatafilter" value={{data.premium}}>{{data.premium}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+</body>

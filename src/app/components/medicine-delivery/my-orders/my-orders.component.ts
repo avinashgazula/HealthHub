@@ -1,4 +1,4 @@
-// author: Harshit Trivedi
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
 import { OrderMedicineService } from 'src/app/services/orderMedicine/orderMedicine.service';
@@ -55,7 +55,7 @@ export class MyOrdersComponent implements OnInit {
     )
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // deleting an order by orderID
   deleteOrder(id) {
@@ -75,7 +75,7 @@ export class MyOrdersComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  goToOrderMedicine(){
+  goToOrderMedicine() {
     this.router.navigate(['/orderMedicine'])
   }
 }

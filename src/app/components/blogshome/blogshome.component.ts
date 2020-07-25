@@ -1,3 +1,5 @@
+/* @author Sai Sunil Menta <ss734478@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,7 +15,7 @@ export class BlogshomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  viewBlog(){
+  viewBlog() {
 
     this.router.navigate(['/single-blog']);
   }

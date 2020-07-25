@@ -1,4 +1,4 @@
-// author: Harshit Trivedi
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -31,7 +31,7 @@ export class ScheduleCareComponent implements OnInit {
       address: ['', [Validators.required]],
       homeCareDate: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required, Validators.minLength(10),
-        Validators.maxLength(10)]],
+      Validators.maxLength(10)]],
       comments: ['']
     })
   }
@@ -75,7 +75,7 @@ export class ScheduleCareComponent implements OnInit {
     }
   }
 
-  get mobileNumber(){
+  get mobileNumber() {
     return this.scheduleCare.get('mobileNumber')
   }
 

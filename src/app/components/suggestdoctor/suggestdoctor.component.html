@@ -1,3 +1,5 @@
+<!-- /* @author Sai Sunil Menta <ss734478@dal.ca> */ -->
+
 <!-- Mat-Card element is adopted from Angular Material and made lot of changes by customizing with css.
   Form elemnts from Angular Material is also been used while designing form elemnts like buttons.
   Mat-Icons are adopted from Angular material and the CSS for it is customized.
@@ -24,7 +26,9 @@
                         <ng-template matStepLabel>Price range</ng-template>
                         <div style="padding-bottom: 20px;"></div>
                         <div>
-                            <mat-slider thumbLabel style="width: 100%; color: #001F3F;" min="10" max="500" [displayWith]="priceRange" tickInterval="1" [(ngModel)]="suggestQuery.price" color="primary" style="padding-top:50px;">
+                            <mat-slider thumbLabel style="width: 100%; color: #001F3F;" min="10" max="500"
+                                [displayWith]="priceRange" tickInterval="1" [(ngModel)]="suggestQuery.price"
+                                color="primary" style="padding-top:50px;">
                             </mat-slider>
                         </div>
                     </mat-step>
@@ -33,7 +37,9 @@
                         <div style="padding-bottom: 20px;"></div>
                         <div style="height: 200px;" class="scroll-container">
                             <section class="example-section">
-                                <mat-checkbox color="primary" class="example-margin" style="padding:10px;" *ngFor="let symptom of symptoms" (change)="checkAndUncheckSymptoms($event,symptom)" [value]="symptom">
+                                <mat-checkbox color="primary" class="example-margin" style="padding:10px;"
+                                    *ngFor="let symptom of symptoms" (change)="checkAndUncheckSymptoms($event,symptom)"
+                                    [value]="symptom">
                                     {{symptom}}
                                 </mat-checkbox>
                             </section>
@@ -43,7 +49,8 @@
             </div>
             <div style="padding-bottom: 10px; "></div>
             <div class="row justify-content-center ">
-                <button mat-raised-button class="raised align-items-end " style="width: 300px; " (click)="suggestDoctor() ">suggest</button>
+                <button mat-raised-button class="raised align-items-end " style="width: 300px; "
+                    (click)="suggestDoctor() ">suggest</button>
             </div>
         </div>
 
@@ -53,7 +60,8 @@
                     <div class="row mycolumn">
 
                         <div class="col-3">
-                            <img mat-card-image src={{doctor.image}} style="height: 150px; width: 150px; border-radius: 8px;">
+                            <img mat-card-image src={{doctor.image}}
+                                style="height: 150px; width: 150px; border-radius: 8px;">
                         </div>
                         <div class="col-5">
                             <mat-card-header>
@@ -65,7 +73,8 @@
                         </div>
                         <div class="col-3">
                             <mat-card-actions>
-                                <button (click)="viewDoctor() " mat-raised-button class="raised align-items-end ">view more
+                                <button (click)="viewDoctor() " mat-raised-button class="raised align-items-end ">view
+                                    more
                                     details</button>
                             </mat-card-actions>
                         </div>

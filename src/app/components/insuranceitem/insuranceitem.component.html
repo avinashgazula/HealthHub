@@ -1,48 +1,52 @@
+<!-- /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */ -->
+
 <div class="container-fluid" style="width: 90%;">
-    <h4 style="margin-top:1%; text-align: center;">Specific Health Plans as per your Profile</h4>
-    <div class="row">
-      <div class="col-sm-8" style="background-color: #f6f7f8;">
-          <div  *ngFor="let data of filteredinsuranceData">
+  <h4 style="margin-top:1%; text-align: center;">Specific Health Plans as per your Profile</h4>
+  <div class="row">
+    <div class="col-sm-8" style="background-color: #f6f7f8;">
+      <div *ngFor="let data of filteredinsuranceData">
         <div class="card">
-            <div class="card-header">
-              {{data.insurancecompany}}
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <img src="assets/insurance.jpg" alt="image" />
-                      </div>
-                      <div class="col-sm-8">
-                        <h5 class="card-title">{{data.insurancename}} &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-info">{{data.type}}</span></h5>
-                        <p class="card-text">{{data.insurancedetails}}</p>
-                        <h4 style="text-align: right;">Price:  CAD {{data.premium}} <span style="font-size: 12px;">per {{data.payduration}}</span></h4>
-                        <a href="#" class="btn btn-primary">Take me to Company's Website</a>
-                      </div>
-                    </div>
+          <div class="card-header">
+            {{data.insurancecompany}}
+          </div>
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="assets/insurance.jpg" alt="image" />
                 </div>
-            </div>
-        </div>
-        <br>
-    </div>
-          
-      </div>
-      <div class="col-sm-4">
-        <div class="card" style="width: 18rem;">
-            <img src="assets/usericon.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Your Profile</h5>
-              <p class="card-text"><i class="fa fa-th"></i>&nbsp;{{recommendation}}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><i class="fa fa-user-circle"></i>&nbsp;{{username}}</li>
-              <li class="list-group-item"><i class="fa fa-user-circle"></i>&nbsp;Age Group: {{age}}</li>
-              <li class="list-group-item"><i class="fa fa-money"></i>&nbsp;Yearly Salary: CAD {{salary}}</li>
-            </ul>
-            <div class="card-body">
-              <a href="/insurance" class="card-link"><i class="fa fa-edit"></i>Edit Profile</a>
+                <div class="col-sm-8">
+                  <h5 class="card-title">{{data.insurancename}} &nbsp;&nbsp;&nbsp;&nbsp;<span
+                      class="badge badge-info">{{data.type}}</span></h5>
+                  <p class="card-text">{{data.insurancedetails}}</p>
+                  <h4 style="text-align: right;">Price: CAD {{data.premium}} <span style="font-size: 12px;">per
+                      {{data.payduration}}</span></h4>
+                  <a href="#" class="btn btn-primary">Take me to Company's Website</a>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+        <br>
+      </div>
+
+    </div>
+    <div class="col-sm-4">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/usericon.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Your Profile</h5>
+          <p class="card-text"><i class="fa fa-th"></i>&nbsp;{{recommendation}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa fa-user-circle"></i>&nbsp;{{username}}</li>
+          <li class="list-group-item"><i class="fa fa-user-circle"></i>&nbsp;Age Group: {{age}}</li>
+          <li class="list-group-item"><i class="fa fa-money"></i>&nbsp;Yearly Salary: CAD {{salary}}</li>
+        </ul>
+        <div class="card-body">
+          <a href="/insurance" class="card-link"><i class="fa fa-edit"></i>Edit Profile</a>
+        </div>
       </div>
     </div>
   </div>
+</div>

@@ -1,3 +1,5 @@
+/* @author Swarali Ghalwadkar <swarali.ghalwadkar@dal.ca> */
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';

@@ -1,3 +1,6 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+/* @author Rudra Makwana <rd851601@dal.ca> */
+
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';

@@ -1,4 +1,4 @@
-<!-- author: Harshit Trivedi -->
+<!-- /* @author Harshit Trivedi <harshit.trivedi@dal.ca> */ -->
 <!-- From here, the user can view their pending orders and can also delete them -->
 
 <div class="container">
@@ -27,19 +27,17 @@
                 </p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button style="color: #FF0000" (click)="deleteOrder(data._id)"
-                >DELETE ORDER</button>
+                <button mat-raised-button style="color: #FF0000" (click)="deleteOrder(data._id)">DELETE ORDER</button>
             </mat-card-actions>
         </mat-card>
     </div>
-    <div class= "style2" *ngIf="orderLength==0">
+    <div class="style2" *ngIf="orderLength==0">
         <div>
             <img src="../../../../assets/emptyCart.jpg">
         </div>
         <br>
         <div>
-            <button mat-raised-button color="primary" (click)="goToOrderMedicine()"
-                >Order Medicines Now !</button>
+            <button mat-raised-button color="primary" (click)="goToOrderMedicine()">Order Medicines Now !</button>
         </div>
         <br>
     </div>

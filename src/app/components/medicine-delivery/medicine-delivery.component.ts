@@ -1,4 +1,4 @@
-// author: Harshit Trivedi
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
 
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';

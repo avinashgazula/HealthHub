@@ -1,4 +1,4 @@
-// author: Harshit Trivedi
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';

@@ -1,3 +1,6 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+/* @author Rudra Makwana <rd851601@dal.ca> */
+
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';

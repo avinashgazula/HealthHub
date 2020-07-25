@@ -1,3 +1,5 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
 import { RegisterComponent } from './../register/register.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
