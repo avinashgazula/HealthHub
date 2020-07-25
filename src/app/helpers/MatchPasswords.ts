@@ -1,3 +1,5 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
 import { FormGroup } from '@angular/forms';
 
 export function MatchPasswords(password: string, confirmPassword: string) {

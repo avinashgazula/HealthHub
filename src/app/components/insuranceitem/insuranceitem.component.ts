@@ -1,3 +1,5 @@
+/* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http'
@@ -9,16 +11,16 @@ import { HttpClient } from '@angular/common/http'
 })
 export class InsuranceitemComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private http:HttpClient) { }
-  insuranceData:any=[];
-  filteredinsuranceData:any=[];
-  username:any='';
-  age:any='';
-  salary:any='';
-  gender:any='';
-  email:any='';
-  recommendation:any='';
-  insdata:any=[];
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  insuranceData: any = [];
+  filteredinsuranceData: any = [];
+  username: any = '';
+  age: any = '';
+  salary: any = '';
+  gender: any = '';
+  email: any = '';
+  recommendation: any = '';
+  insdata: any = [];
 
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username');
@@ -29,18 +31,16 @@ export class InsuranceitemComponent implements OnInit {
     this.http.get('./assets/insurancedata.json').toPromise().then(data => {
       this.insdata = data;
       this.loaddata(this.insdata);
-     });
-    this.recommendation='HealthPlan 1 will suit more on the basis of your profile, as evaluated by system on basis of past health problems and your salary range. It would cover most of the health issues including COVID.'
+    });
+    this.recommendation = 'HealthPlan 1 will suit more on the basis of your profile, as evaluated by system on basis of past health problems and your salary range. It would cover most of the health issues including COVID.'
   }
 
-  filterData(username,email,age,gender,salary)
-  {
+  filterData(username, email, age, gender, salary) {
     this.filteredinsuranceData = this.insuranceData.filter(option => option.agegroup == age);
   }
 
-  loaddata(ins)
-  {
-    this.insuranceData=ins;
-    this.filterData(this.username,this.email,this.age,this.gender,this.salary);
+  loaddata(ins) {
+    this.insuranceData = ins;
+    this.filterData(this.username, this.email, this.age, this.gender, this.salary);
   }
 }

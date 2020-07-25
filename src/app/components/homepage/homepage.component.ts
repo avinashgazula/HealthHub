@@ -1,3 +1,5 @@
+/* @author Swarali Ghalwadkar <swarali.ghalwadkar@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

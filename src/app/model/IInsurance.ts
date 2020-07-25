@@ -1,3 +1,5 @@
+/* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
+
 export interface IInsurance {
     insurancename: string,
     insurancecompany: string,
@@ -5,6 +7,6 @@ export interface IInsurance {
     premium: number
     payduration: string,
     insurancedetails: string,
-    type:string
+    type: string
 }
 

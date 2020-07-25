@@ -1,4 +1,4 @@
-<!-- author: Harshit Trivedi -->
+<!-- /* @author Harshit Trivedi <harshit.trivedi@dal.ca> */ -->
 <!-- From here, the user can order medicines by filling the order details and uploading a valid prescription image-->
 
 <div class="orderMedicine-container">
@@ -67,8 +67,8 @@
                     <div>
                         <label for="uploadPrescription" class="text-style">Upload Prescription*</label>
                         <input id="uploadPrescription" formControlName="prescriptionFile" type="file"
-                            (change)="onFileChange($event)" required #fileInput/>
-                        </div>
+                            (change)="onFileChange($event)" required #fileInput />
+                    </div>
                 </div>
                 <br>
                 <mat-form-field class="myTextArea">

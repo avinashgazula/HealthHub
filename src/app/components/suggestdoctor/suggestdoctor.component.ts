@@ -1,3 +1,5 @@
+/* @author Sai Sunil Menta <ss734478@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
 import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';

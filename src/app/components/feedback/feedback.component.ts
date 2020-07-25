@@ -1,3 +1,5 @@
+/* @author Swarali Ghalwadkar <swarali.ghalwadkar@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Feedback } from '../../model/feedback.model';
