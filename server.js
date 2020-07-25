@@ -27,6 +27,7 @@ app.use(passport.session());
 
 app.use("/users", require("./routes/users.js")(passport, jwt));
 app.use("/orderMedicine", require("./routes/orderMedicines.js"));
+app.use("/homeCare", require("./routes/homeCare.js"));
 
 app.use(express.static(__dirname + '/dist/healthhub'));
 
