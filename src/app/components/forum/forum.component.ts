@@ -21,6 +21,7 @@ export class ForumComponent implements OnInit {
   dataobject : Object;
   originalData :any = [];
   alert_message: string;
+  page:number=1;
   constructor(private router: Router, private api:ForumService) { }
 
   ngOnInit(): void {
@@ -53,6 +54,7 @@ export class ForumComponent implements OnInit {
       ques.title = form.form.value.question2;
       ques.description = form.form.value.question1;
       ques.user_by = localStorage.getItem('name');
+      ques.user_id = localStorage.getItem('userId');
       ques.upvotes = 0;
       ques.category = form.form.value.category1;
       ques.answer = 0;

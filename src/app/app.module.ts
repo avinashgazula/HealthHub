@@ -74,7 +74,8 @@ import { RegistrationService } from './services/registration/registration.servic
 import { LoginService } from './services/login/login.service';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
 
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment'
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
@@ -147,7 +148,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     MatSortModule,
     MatPaginatorModule,
     HttpClientModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgxPaginationModule 
   ],
   providers: [InsuranceService, RegistrationService, LoginService],
   bootstrap: [AppComponent],

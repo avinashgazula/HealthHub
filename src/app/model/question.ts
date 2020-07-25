@@ -5,4 +5,5 @@ export class Question{
     upvotes: number;
     category: string;
     answer:number;
+    user_id:string
 }
