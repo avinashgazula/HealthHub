@@ -28,34 +28,48 @@ export class QuestionitemComponent implements OnInit {
   answers:any = []
   question:any="";
   alert_message:string;
-
-  dataChanged(newObj)
-  {
-
-  }
+  vote_alert:string;
+  vote_alert_message:string;
 
   voted(id)
   {
     let item = this.answers.find(option => option.id == id);
+    if(item.user_id != localStorage.getItem('userId') && localStorage.getItem('userId'))
+    {
     item.vote += 1;
     var ques = new Upvote();
     ques.upvote = item.vote;
     this.api.upvoteanswer(id,ques);
-
+    }
+    else{
+      this.vote_alert = 'You can not upvote your own Question/Answer';
+      setTimeout( () => {
+        this.vote_alert = '';
+      }, 2000);
+    }
   }
 
   votequestion(id)
   {
     let item = this.forumData.find(option => option.id == id);
+    if(item.user_id != localStorage.getItem('userId') && localStorage.getItem('userId'))
+    {
     item.votes += 1;
     var ques = new Upvote();
     ques.upvote = item.votes;
     this.api.upvotequestion(this.id,ques);
+    }
+    else{
+      this.vote_alert_message = 'You can not upvote your own Question/Answer';
+      setTimeout( () => {
+        this.vote_alert_message = '';
+      }, 2000);
+    }
   }
 
   onSubmit(form)
   {
-    if(localStorage.getItem('name'))
+    if(localStorage.getItem('name') && localStorage.getItem('userId'))
     {
     this.alert_message = '';
     var ques = new Answer();
@@ -68,6 +82,9 @@ export class QuestionitemComponent implements OnInit {
     }
     else{
       this.alert_message = 'User is not logged in. Please LogIn To Continue';
+      setTimeout( () => {
+        this.alert_message = '';
+      }, 2000);
     }
   }
 
@@ -80,7 +97,6 @@ export class QuestionitemComponent implements OnInit {
     });
     this.id = this.route.snapshot.paramMap.get('id');
     this.category = this.route.snapshot.paramMap.get('category');
-   
   }
 
   getsimilarquestions(category)
@@ -111,7 +127,8 @@ export class QuestionitemComponent implements OnInit {
           description: d.description,
           askedby: d.user_by,
           votes: d.upvotes,
-          category: d.category
+          category: d.category,
+          user_id:d.user_id
         });
       }
     });
@@ -127,7 +144,8 @@ export class QuestionitemComponent implements OnInit {
           id: d._id,
           answer: d.description,
           by: d.user_by,
-          vote: d.upvotes
+          vote: d.upvotes,
+          user_id:d.user_id
         });
       }
 
@@ -135,6 +153,7 @@ export class QuestionitemComponent implements OnInit {
 
     this.api.getsimilarquestions(category)
     .subscribe(data => {
+      this.allQuestions = [];
       for (const d of (data as any)) {
         this.allQuestions.push({
           question: d.title,

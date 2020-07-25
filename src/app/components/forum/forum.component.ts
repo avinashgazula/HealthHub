@@ -30,15 +30,12 @@ export class ForumComponent implements OnInit {
 
   onSelect(data)
   {
-    console.log(data);
     this.router.navigate(['/question',{id: data.questionId, category : data.category}]);
   }
 
   //function to change data
   async dataChanged(newObj)
   {
-    //this.loaddata();
-    console.log(newObj);
     this.forumData = this.originalData;
     this.forumData = this.forumData.filter(option => option.category == this.category);
   }
@@ -46,8 +43,7 @@ export class ForumComponent implements OnInit {
   //function to submit
   onSubmit(form:NgForm)
   {
-    console.log(localStorage.getItem('name'));
-    if(localStorage.getItem('name'))
+    if(localStorage.getItem('name') && localStorage.getItem('userId'))
     {
       this.alert_message = '';
       var ques = new Question();
@@ -62,6 +58,9 @@ export class ForumComponent implements OnInit {
     }
     else{
       this.alert_message = 'User is not logged in. Please LogIn To Continue';
+      setTimeout( () => {
+        this.alert_message = '';
+      }, 2000);
     }
   }
 
@@ -100,7 +99,6 @@ export class ForumComponent implements OnInit {
           answerval:d.answer
         });
       }
-      console.log(this.forumData);
       this.originalData = this.forumData;
       this.forumFilter = ['COVID','Dental','Ortho','Digestive','Eyes'];
     });
