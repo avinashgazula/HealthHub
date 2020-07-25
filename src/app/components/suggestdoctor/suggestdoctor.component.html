@@ -3,9 +3,9 @@
   Mat-Icons are adopted from Angular material and the CSS for it is customized.
  -->
 
-<div class="container" style="padding-bottom: 500px;">
+<div class="container-md" style="padding-bottom: 500px;">
     <div class="row myrow justify-content-center">
-        <div class="col-3">
+        <div class="col-3 col-sm-3">
             <div class="row">
                 <mat-vertical-stepper labelPosition="bottom" #stepper>
                     <mat-step class="mat">
@@ -47,30 +47,25 @@
             </div>
         </div>
 
-        <div class="col-8 ">
-
-
+        <div class="col-8 col-sm-6">
             <div class="row mycolumn" *ngFor=" let doctor of doctorList">
                 <mat-card class="example-card ">
                     <div class="row mycolumn">
 
                         <div class="col-3">
-                            <div class="row"><img mat-card-image src={{doctor.image}} style="height: 150px; width: 150px;"></div>
+                            <img mat-card-image src={{doctor.image}} style="height: 150px; width: 150px; border-radius: 8px;">
                         </div>
-                        <div class="col-8">
+                        <div class="col-5">
                             <mat-card-header>
                                 <mat-card-title>Dr. {{ doctor.name }}</mat-card-title>
                                 <mat-card-subtitle>{{doctor.specialization}}</mat-card-subtitle>
                                 <mat-card-subtitle>${{doctor.fee}}</mat-card-subtitle>
-                                <mat-card-subtitle>${{doctor.location}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{doctor.location}}</mat-card-subtitle>
                             </mat-card-header>
-                            <mat-card-content>
-                                <p>
-                                    {{doctor.description}}
-                                </p>
-                            </mat-card-content>
+                        </div>
+                        <div class="col-3">
                             <mat-card-actions>
-                                <button (click)="viewDoctor() " mat-stroked-button class="stroked align-items-end ">view more
+                                <button (click)="viewDoctor() " mat-raised-button class="raised align-items-end ">view more
                                     details</button>
                             </mat-card-actions>
                         </div>
@@ -82,6 +77,4 @@
     </div>
     <!-- search end  -->
     <hr class="h-25 invisible ">
-
-
 </div>
