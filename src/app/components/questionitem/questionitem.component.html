@@ -1,5 +1,4 @@
 <!-- /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */ -->
-
 <div class="container" style="margin-bottom:35%; font-family: Lato;">
   <br>
   <div class="row">
@@ -8,12 +7,12 @@
         style="background-color: #F4E2DE;  font-family: Charcoal; padding-top: 10px; padding-bottom: 10px;  padding-left:10px;  padding-right:10px;">
         <h2>Q: {{forumData[0].question}} ?</h2>
         <h3>{{forumData[0].description}}</h3>
-        <h3><span style="font-size: 15px;">Asked By: </span>{{forumData[0].askedby}}</h3>
-        <h3><span style="font-size: 15px;">Category: </span>{{forumData[0].category}}</h3>
+        <h3><span id="fontstyle">Asked By: </span>{{forumData[0].askedby}}</h3>
+        <h3><span id="fontstyle">Category: </span>{{forumData[0].category}}</h3>
         <span class="badge badge-primary" (click)="votequestion(forumData[0].id)">Upvote</span> &nbsp;&nbsp;&nbsp;
         <span>{{forumData[0].votes}} Upvotes</span>
         <br>
-        <p style="text-align: center; color: red;"> {{this.vote_alert_message}}</p>
+        <p id="alertmessage"> {{this.vote_alert_message}}</p>
       </div>
       <br>
       <form #QuestionForm="ngForm" (ngSubmit)="onSubmit(QuestionForm)" autocomplete="off">
@@ -23,7 +22,7 @@
             [(ngModel)]="question" required></textarea>
           <div class="alert alert-danger" *ngIf="question1.touched && !question1.valid">Answer is required</div>
         </div>
-        <p style="text-align: center; color: red;">{{alert_message}}</p>
+        <p id="alertmessage">{{alert_message}}</p>
         <button type="submit" class="btn btn-success" style="width:200px; margin-left: 34%;"
           [disabled]="question === ''">Answer</button>
       </form>
@@ -31,10 +30,10 @@
       <br>
       <h2> Answers</h2>
       <br>
-      <p style="border-bottom: 1px solid #dedee3;"></p>
+      <p id="emptyp"></p>
       <div class="container">
         <br>
-        <div class="row" *ngFor="let data of answers" style="border-bottom: 1px solid #dedee3;">
+        <div class="row" *ngFor="let data of answers" id="emptyp">
           <br><br><br><br>
           <div class="col-sm-3" style="margin-top: 5%;">
             <img src="assets/user.png" alt="image" />
@@ -46,7 +45,7 @@
             <span class="badge badge-primary" (click)="voted(data.id)">Upvote</span> &nbsp;&nbsp;&nbsp;
             <span>{{data.vote}}: Upvotes</span>
             <br>
-            <p style="text-align: center; color: red;">{{vote_alert}}</p><br><br>
+            <p id="alertmessage">{{vote_alert}}</p><br><br>
           </div>
         </div>
       </div>
@@ -55,7 +54,7 @@
     <div class="col-4">
       <h3 style="">Similar Questions</h3>
       <p *ngFor="let data of allQuestions"> <span routerLink="/question/{{data.question_id}}/{{data.category}}"
-          style="color: blue; cursor: -webkit-grab; cursor: grab;">{{data.question}}</span></p>
+          id="similarques">{{data.question}}</span></p>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
 /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Question } from '../../model/question';

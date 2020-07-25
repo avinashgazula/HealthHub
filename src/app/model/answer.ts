@@ -1,5 +1,4 @@
 /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
-
 export class Answer {
     description: string;
     user_by: string;
