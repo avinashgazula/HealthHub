@@ -1,3 +1,5 @@
+/* @author Sai Sunil Menta <ss734478@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

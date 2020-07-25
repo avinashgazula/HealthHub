@@ -1,3 +1,5 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocationService } from './../../services/location/location.service';

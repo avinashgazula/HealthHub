@@ -1,44 +1,86 @@
+/* @author Sai Sunil Menta <ss734478@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
+import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'healthhub-suggestdoctor',
-  templateUrl: './suggestdoctor.component.html',
-  styleUrls: ['./suggestdoctor.component.css']
+    // tslint:disable-next-line: component-selector
+    selector: 'healthhub-suggestdoctor',
+    templateUrl: './suggestdoctor.component.html',
+    styleUrls: ['./suggestdoctor.component.css']
 })
+
 export class SuggestdoctorComponent implements OnInit {
 
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
+    suggestQuery: SuggestDoctorModel = new SuggestDoctorModel();
 
-  foods: any[] = [
-    {value: 'Ontario'},
-    {value: 'Toronto'},
-    {value: 'Halifax'}
-  ];
+    symptoms: string[];
+    selectedSymptoms;
+    doctorList: any[];
 
-  formatLabel(value: number) {
-    if (value >= 1000) {
-      return Math.round(value / 1000) + 'k';
+    cities: any[] = [
+        { value: 'Ontario' },
+        { value: 'Toronto' },
+        { value: 'Halifax' },
+        { value: 'Montreal' },
+        { value: 'Vancouver' }
+    ];
+
+    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog) {
+        if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
+            localStorage.getItem('token') === undefined) {
+            this.dialog.closeAll();
+            this.dialog.open(LoginComponent, { disableClose: true });
+        }
     }
-
-    return value;
-  }
-
-    constructor(private formBuilder: FormBuilder) {}
 
     ngOnInit() {
-      this.firstFormGroup = this.formBuilder.group({
-        firstCtrl: ['', Validators.required]
-      });
-      this.secondFormGroup = this.formBuilder.group({
-        secondCtrl: ['', Validators.required]
-      });
+
+        this.suggestDoctorService.getSymtomList().subscribe((data) => {
+            this.symptoms = data;
+        });
+
+        this.selectedSymptoms = new Set();
     }
 
-  viewDoctor(){
+    viewDoctor() {
 
-  }
+    }
+
+    priceRange(value: number) {
+        return value;
+    }
+
+    suggestDoctor() {
+
+        this.suggestDoctorService.getSuggestedDoctor(this.suggestQuery).subscribe((doctorlist) => {
+
+            this.doctorList = doctorlist;
+            console.log(this.doctorList);
+            this.doctorList.forEach((data) => {
+                console.log('Name' + data.image);
+            });
+        }
+        );
+    }
+
+    checkAndUncheckSymptoms(event: any, value: string) {
+
+        if (event.checked) {
+            if (!this.suggestQuery.symptoms.has(value)) {
+                this.suggestQuery.symptoms.add(value);
+            }
+        } else {
+
+            if (this.suggestQuery.symptoms.has(value)) {
+                this.suggestQuery.symptoms.delete(value);
+            }
+        }
+
+    }
 
 }

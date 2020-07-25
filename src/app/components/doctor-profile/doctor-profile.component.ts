@@ -1,36 +1,20 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+/* @author Avinash Gazula <agazula@dal.ca> */
+/* @author Rudra Makwana <rd851601@dal.ca> */
+
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-
-export interface Review {
-  user: string;
-  rating: number;
-  review: string;
-}
-
-const DATA: Review[] = [
-  {
-    user: 'Harrison O\'Ryan',
-    rating: 5,
-    review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed sollicitudin purus'
-  },
-  {
-    user: 'Bruce Wayne',
-    rating: 4,
-    review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed sollicitudin purus. Pellentesque ac nisl ut massa tempus faucibus. Suspendisse mi enim, tincidunt eget iaculis ac, fermentum vel quam.'
-  }
-]
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-doctor-profile',
   templateUrl: './doctor-profile.component.html',
   styleUrls: ['./doctor-profile.component.css']
+
 })
 export class DoctorProfileComponent implements OnInit {
   obs: Observable<any>;
-  dataSource: MatTableDataSource<Review> = new MatTableDataSource<Review>(DATA);
   review = new FormControl('', [Validators.required]);
 
   time1: Boolean = false;
@@ -38,7 +22,9 @@ export class DoctorProfileComponent implements OnInit {
   time3: Boolean = false;
   time4: Boolean = false;
 
-  constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
+    this.router.getCurrentNavigation().extras.state;
+  }
 
   getReviewErrorMessage = () => {
     if (this.review.hasError('required')) {
@@ -46,14 +32,28 @@ export class DoctorProfileComponent implements OnInit {
     }
   };
 
-  ngOnInit() {
+  doctorName;
+  doctorID;
+  doctorSpecialization;
+  doctorDescription;
+  doctorLocation;
+  doctorFee;
+  doctorImageSrc;
+  doctor;
+  ngOnInit(): void {
     this.changeDetectorRef.detectChanges();
-    this.obs = this.dataSource.connect();
-  }
+    this.doctor = history.state.doctorObject;
 
-  ngOnDestroy() {
-    if (this.dataSource) {
-      this.dataSource.disconnect();
+    if (this.doctor == null) {
+      this.router.navigate(['/consult']);
+    } else {
+      this.doctorID = this.doctor._id;
+      this.doctorName = this.doctor.name;
+      this.doctorSpecialization = this.doctor.specialization;
+      this.doctorDescription = this.doctor.description;
+      this.doctorLocation = this.doctor.location;
+      this.doctorFee = this.doctor.fee;
+      this.doctorImageSrc = this.doctor.image_url;
     }
   }
 

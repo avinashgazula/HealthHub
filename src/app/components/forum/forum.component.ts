@@ -1,3 +1,5 @@
+/* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -12,40 +14,36 @@ import { Question } from '../../model/question';
 })
 export class ForumComponent implements OnInit {
 
-  question:any="";
-  question_model:any="";
-  category:any="";
-  answerstring:string;
-  forumData:any = [];
-  questionsdata : any = [];
-  forumFilter : any = [];
-  dataobject : Object;
-  originalData :any = [];
+  question: any = "";
+  question_model: any = "";
+  category: any = "";
+  answerstring: string;
+  forumData: any = [];
+  questionsdata: any = [];
+  forumFilter: any = [];
+  dataobject: Object;
+  originalData: any = [];
   alert_message: string;
-  page:number=1;
-  constructor(private router: Router, private api:ForumService) { }
+  page: number = 1;
+  constructor(private router: Router, private api: ForumService) { }
 
   ngOnInit(): void {
     this.getquestionsdata();
   }
 
-  onSelect(data)
-  {
-    this.router.navigate(['/question',{id: data.questionId, category : data.category}]);
+  onSelect(data) {
+    this.router.navigate(['/question', { id: data.questionId, category: data.category }]);
   }
 
   //function to change data
-  async dataChanged(newObj)
-  {
+  async dataChanged(newObj) {
     this.forumData = this.originalData;
     this.forumData = this.forumData.filter(option => option.category == this.category);
   }
 
   //function to submit
-  onSubmit(form:NgForm)
-  {
-    if(localStorage.getItem('name') && localStorage.getItem('userId'))
-    {
+  onSubmit(form: NgForm) {
+    if (localStorage.getItem('name') && localStorage.getItem('userId')) {
       this.alert_message = '';
       var ques = new Question();
       ques.title = form.form.value.question2;
@@ -57,51 +55,47 @@ export class ForumComponent implements OnInit {
       ques.answer = 0;
       this.submitquestion(ques);
     }
-    else{
+    else {
       this.alert_message = 'User is not logged in. Please LogIn To Continue';
-      setTimeout( () => {
+      setTimeout(() => {
         this.alert_message = '';
       }, 2000);
     }
   }
 
   //function to refresh the data
-  refresh()
-  {
+  refresh() {
     this.getquestionsdata();
   }
-  
-  loaddata()
-  {
-   
+
+  loaddata() {
+
   }
 
   //function to submit question
-  async submitquestion(ques)
-  {
+  async submitquestion(ques) {
     await this.api.submitquestion(ques);
     this.getquestionsdata();
   }
 
   //Function to get questions data
-  getquestionsdata()
-  {
+  getquestionsdata() {
     this.forumData = [];
     this.api.getQuestions()
-    .subscribe(data => {
-      for (const d of (data as any)) {
-        this.forumData.push({
-          questionId:d._id,
-          question: d.title,
-          description: d.description,
-          askedby: d.user_by,
-          votes: d.upvotes,
-          category: d.category,
-          answerval:d.answer
-        });
-      }
-      this.originalData = this.forumData;
-      this.forumFilter = ['COVID','Dental','Ortho','Digestive','Eyes'];
-    });
+      .subscribe(data => {
+        for (const d of (data as any)) {
+          this.forumData.push({
+            questionId: d._id,
+            question: d.title,
+            description: d.description,
+            askedby: d.user_by,
+            votes: d.upvotes,
+            category: d.category,
+            answerval: d.answer
+          });
+        }
+        this.originalData = this.forumData;
+        this.forumFilter = ['COVID', 'Dental', 'Ortho', 'Digestive', 'Eyes'];
+      });
   }
 }

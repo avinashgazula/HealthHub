@@ -1,6 +1,7 @@
+/* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IInsurance} from '../../model/IInsurance';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,10 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class InsuranceService {
 
-  private _http: HttpClient;
-  constructor(private http:HttpClient) { }
-   readJsondata() : Observable<any>
-   {
-     return this.http.get('./assets/insurancedata.json');
-   }
+  constructor(private http: HttpClient) { }
+  readJsondata(): Observable<any> {
+    return this.http.get('./assets/insurancedata.json');
+  }
 }

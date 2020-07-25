@@ -1,3 +1,5 @@
+/* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -10,6 +10,6 @@ export const environment = {
     appId: "1:294870414372:web:47f5a9e8ce6ae9df4a14b1"
   },
   googleMapsApiKey: "AIzaSyC-ZNNBX0x-yt8fKtvOIZludcYxR6PRixQ",
-  serverUrl: '' /*TODO: Add production URL*/,
+  serverUrl: 'https://health-hub-5709-server.herokuapp.com',
   passwordRegex: '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
 };
