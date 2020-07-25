@@ -79,6 +79,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
+import { SearchResultComponent } from './components/search-result/search-result.component'
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
     EditProfileComponent,
     SuggestdoctorComponent,
     DoctorDetailsComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,

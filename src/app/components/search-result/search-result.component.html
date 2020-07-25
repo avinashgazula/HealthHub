@@ -1,0 +1,30 @@
+<div style="margin-top: 100px; text-align: center;" >
+    <h2>Your search result: {{keyword}}</h2>
+    <hr>
+</div>
+<div *ngIf="result.length == 0" style="text-align: center;">
+    <h3>No results</h3>
+</div>
+<div style="text-align: center; " class="container">
+    <div *ngFor="let doctor of result; let i = index ">
+        <div style="text-align: left;">
+            <div class="row">
+                <div class="column"  style="float: left;">
+                    <div class="image" style="height: 200px;"><img src={{doctor.image_url}} alt="Image" class="img-thumbnail"></div>
+                </div>
+                <div class="column" style="margin-left: 15px;">
+                    <h4 style="font-weight: bold;">Name: <h4>{{doctor.name}}</h4></h4>
+                    <h5 style="font-weight: bold;">Speciality: {{doctor.specialization}}</h5>
+                    <h5 style="font-weight: bold;">Location: {{doctor["location"]}}</h5>
+                    <h5 style="font-weight: bold;">Fee: {{doctor["fee"]}}</h5>
+                    <h5 style="font-weight: bold;">Description:</h5>
+                    <p style="height: 1cm;">{{doctor["description"]}}</p>
+                </div>
+                <div class="column" style="float: right;">
+                    <button class="btn btn-light" style="float: right;" (click)="onClick(doctor)">Book Appointment</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
