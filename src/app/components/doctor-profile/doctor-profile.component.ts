@@ -3,6 +3,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormControl, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+
+
 
 export interface Review {
   user: string;
@@ -27,6 +30,7 @@ const DATA: Review[] = [
   selector: 'app-doctor-profile',
   templateUrl: './doctor-profile.component.html',
   styleUrls: ['./doctor-profile.component.css']
+  
 })
 export class DoctorProfileComponent implements OnInit {
   obs: Observable<any>;
@@ -40,6 +44,10 @@ export class DoctorProfileComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef) { }
 
+  
+
+    
+  
   getReviewErrorMessage = () => {
     if (this.review.hasError('required')) {
       return 'You must enter a value';
@@ -49,6 +57,7 @@ export class DoctorProfileComponent implements OnInit {
   ngOnInit() {
     this.changeDetectorRef.detectChanges();
     this.obs = this.dataSource.connect();
+   
   }
 
   ngOnDestroy() {

@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "healthhub"
+  "defaultProject": "healthhub",
+  "cli": {
+    "analytics": "7928de13-dbb2-4b23-a847-787daef6f30b"
+  }
 }

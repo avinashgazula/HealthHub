@@ -31,7 +31,7 @@
             <mat-divider></mat-divider>
         </div>
         <div class="scroll-container" id="style-1" fxLayout="row" fxLayoutGap="0.5%">
-            <mat-card [routerLink]="['/doctor']" (click)="click(card.title)" class="example-card"
+            <mat-card [routerLink]="['/profile']" (click)="click(card.title)" class="example-card"
                 *ngFor="let card of data.values">
                 <mat-card-header class="card-header">
                     <mat-card-title>{{card.title}}</mat-card-title>

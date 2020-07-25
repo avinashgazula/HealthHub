@@ -25,7 +25,11 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/users", require("./routes/users.js")(passport, jwt));
+const usersRoute = require("./routes/users.js");
+const feedbackRoute = require("./routes/feedback.js");
+
+app.use("/users", usersRoute(passport, jwt));
+app.use("/", feedbackRoute);
 
 app.use(express.static(__dirname + '/dist/healthhub'));
 

@@ -69,7 +69,8 @@ import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor
 
 import { RegistrationService } from './services/registration/registration.service'
 import { LoginService } from './services/login/login.service';
-import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component'
+import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { FeedbackComponent } from './components/feedback/feedback.component'
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
     ViewDoctorAppointmentsComponent,
     EditProfileComponent,
     SuggestdoctorComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

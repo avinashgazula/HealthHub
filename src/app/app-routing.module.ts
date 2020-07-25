@@ -18,10 +18,13 @@ import { QuestionitemComponent } from './components/questionitem/questionitem.co
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 const routes: Routes = [
-  { path: 'doctor', component: DoctorProfileComponent },
+  
   { path: 'consult', component: DoctorComponent },
+  { path: 'profile', component: DoctorProfileComponent },
+  { path: 'feedback', component: FeedbackComponent },
   { path: 'single-blog', component: BlogComponent },
   { path: 'orderMedicine', component: MedicineDeliveryComponent },
   { path: 'homeCare', component: HomeCareComponent },
@@ -32,7 +35,7 @@ const routes: Routes = [
   { path: 'forum', component: ForumComponent },
   { path: 'question/:id', component: QuestionitemComponent },
   { path: 'insurance/:username/:age/:email/:gender/:salary', component: InsuranceitemComponent },
-  { path: 'doctor', component: DoctorProfileComponent },
+ 
   { path: 'consult', component: DoctorComponent },
   { path: 'blogs', component: BlogshomeComponent },
   { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent },
