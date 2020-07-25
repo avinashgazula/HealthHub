@@ -7,7 +7,7 @@ import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
 import { RegistrationService } from '../../services/registration/registration.service';
 import { DoctorDetailsComponent } from './../doctor-details/doctor-details.component';
 
-
+import { environment } from '../../../environments/environment'
 
 @Component({
     selector: 'app-register',
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         this.registerForm = this.fb.group({
             name: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.email]],
-            password: ['', [Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
+            password: ['', [Validators.required, Validators.pattern(environment.passwordRegex)]],
             confirmPassword: ['', [Validators.required]]
         }, {
             validator: MatchPasswords('password', 'confirmPassword')
