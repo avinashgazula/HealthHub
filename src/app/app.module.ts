@@ -2,10 +2,10 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// Angular Material imports 
+// Angular Material imports
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
