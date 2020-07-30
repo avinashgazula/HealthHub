@@ -5,6 +5,8 @@ import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
 import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -21,6 +23,7 @@ export class SuggestdoctorComponent implements OnInit {
     symptoms: string[];
     selectedSymptoms;
     doctorList: any[];
+    count: number;
 
     cities: any[] = [
         { value: 'Ontario' },
@@ -30,7 +33,7 @@ export class SuggestdoctorComponent implements OnInit {
         { value: 'Vancouver' }
     ];
 
-    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog) {
+    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
         if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
             localStorage.getItem('token') === undefined) {
             this.dialog.closeAll();
@@ -44,11 +47,20 @@ export class SuggestdoctorComponent implements OnInit {
             this.symptoms = data;
         });
 
+        this.count = -1;
+
         this.selectedSymptoms = new Set();
     }
 
-    viewDoctor() {
-
+    name;
+    id;
+    viewDoctor(doctor) {
+        this.snackBar.open(doctor.name, '', {
+            duration: 3000,
+        });
+        this.name = doctor.name;
+        this.id = doctor._id;
+        this.router.navigateByUrl('/doctor', { state: { doctorObject: doctor } });
     }
 
     priceRange(value: number) {
@@ -58,14 +70,13 @@ export class SuggestdoctorComponent implements OnInit {
     suggestDoctor() {
 
         this.suggestDoctorService.getSuggestedDoctor(this.suggestQuery).subscribe((doctorlist) => {
-
             this.doctorList = doctorlist;
+            this.count = doctorlist.length;
+            console.log('length ' + this.count);
             console.log(this.doctorList);
-            this.doctorList.forEach((data) => {
-                console.log('Name' + data.image);
-            });
         }
         );
+
     }
 
     checkAndUncheckSymptoms(event: any, value: string) {
