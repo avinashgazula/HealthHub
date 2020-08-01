@@ -2,10 +2,12 @@
 /* @author Rudra Makwana <rd851601@dal.ca> */
 
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AppointmentService } from './../../services/appointment/appointment.service';
 
 @Component({
   selector: 'app-doctor-profile',
@@ -15,31 +17,31 @@ import { Observable } from 'rxjs';
 })
 export class DoctorProfileComponent implements OnInit {
   obs: Observable<any>;
-  review = new FormControl('', [Validators.required]);
+  todayDate = new Date();
+  appointmentForm: FormGroup
+  timeSlots: Array<Boolean> = Array(4).fill(false);
+  allowedTimeSlots: Array<String> = ['09:00 AM', '11:00 AM', '02:00 PM', '04:00 PM']
+  reservedSlotsIndex: Array<Boolean> = Array(4).fill(false)
+  userId: string = localStorage.getItem('userId')
+  userName: string = localStorage.getItem('name')
 
-  time1: Boolean = false;
-  time2: Boolean = false;
-  time3: Boolean = false;
-  time4: Boolean = false;
-
-  constructor(private snackBar: MatSnackBar, private changeDetectorRef: ChangeDetectorRef, private router: Router) {
+  constructor(
+    private snackBar: MatSnackBar,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router,
+    private fb: FormBuilder,
+    private appointmentService: AppointmentService,
+    private dateAdapter: DateAdapter<Date>) {
+    dateAdapter.setLocale('en-CA')
     this.router.getCurrentNavigation().extras.state;
+    this.todayDate.setDate(this.todayDate.getDate())
+
+    this.appointmentForm = this.fb.group({
+      date: [null, [Validators.required]],
+    })
   }
 
-  getReviewErrorMessage = () => {
-    if (this.review.hasError('required')) {
-      return 'You must enter a value';
-    }
-  };
-
-  doctorName;
-  doctorID;
-  doctorSpecialization;
-  doctorDescription;
-  doctorLocation;
-  doctorFee;
-  doctorImageSrc;
-  doctor;
+  doctor: any;
   ngOnInit(): void {
     this.changeDetectorRef.detectChanges();
     this.doctor = history.state.doctorObject;
@@ -47,50 +49,83 @@ export class DoctorProfileComponent implements OnInit {
     if (this.doctor == null) {
       this.router.navigate(['/consult']);
     } else {
-      this.doctorID = this.doctor._id;
-      this.doctorName = this.doctor.name;
-      this.doctorSpecialization = this.doctor.specialization;
-      this.doctorDescription = this.doctor.description;
-      this.doctorLocation = this.doctor.location;
-      this.doctorFee = this.doctor.fee;
-      this.doctorImageSrc = this.doctor.image_url;
+      this.getDoctorAppointmentSlots();
     }
   }
 
-  selectTime1 = () => {
-    console.log("test");
+  getDoctorAppointmentSlots = () => {
+    if (this.date.value != null) {
+      let date = new Date(this.date.value).toLocaleDateString('en-CA');
+      let params = {
+        doctorId: this.doctor._id,
+        date: date
+      }
+      this.appointmentService.getReservedSlots(params).subscribe(data => {
+        if (data.success) {
+          this.reservedSlotsIndex = Array(4).fill(false)
+          for (let i = 0; i < this.allowedTimeSlots.length; i++) {
+            if (data.reservedSlots.includes(this.allowedTimeSlots[i])) {
+              this.reservedSlotsIndex[i] = true
+            }
+          }
+        }
+      })
+    }
 
-    this.time1 = true;
-    this.time2 = false;
-    this.time3 = false;
-    this.time4 = false;
+  }
+
+  get date() {
+    return this.appointmentForm.get('date')
+  }
+
+  selectTime1 = () => {
+    this.timeSlots = Array(4).fill(false);
+    this.timeSlots[0] = true;
   }
   selectTime2 = () => {
-    console.log("test");
-    this.time1 = false;
-    this.time2 = true;
-    this.time3 = false;
-    this.time4 = false;
+    this.timeSlots = Array(4).fill(false);
+    this.timeSlots[1] = true;
   }
   selectTime3 = () => {
-    console.log("test");
-    this.time1 = false;
-    this.time2 = false;
-    this.time3 = true;
-    this.time4 = false;
+    this.timeSlots = Array(4).fill(false);
+    this.timeSlots[2] = true;
   }
   selectTime4 = () => {
-    console.log("test");
-    this.time1 = false;
-    this.time2 = false;
-    this.time3 = false;
-    this.time4 = true;
+    this.timeSlots = Array(4).fill(false);
+    this.timeSlots[3] = true;
+  }
+
+  onDateChange = () => {
+    this.getDoctorAppointmentSlots();
   }
 
   confirmAppointment = () => {
-    this.snackBar.open('Appointment Confirmed', '', {
-      duration: 3000,
-    });
+    let timeIndex: number = this.timeSlots.indexOf(true);
+    if (timeIndex === -1) {
+      this.snackBar.open('Please select a time for the appointment', '', {
+        duration: 3000,
+      });
+    } else {
+      let date = new Date(this.date.value).toLocaleDateString('en-CA');
+      let formData = {
+        'date': date,
+        'doctorId': this.doctor._id,
+        'patientId': this.userId,
+        'patientName': this.userName,
+        'time': this.allowedTimeSlots[timeIndex]
+      }
+      console.log(formData);
+
+      this.appointmentService.requestAppointment(formData).subscribe(data => {
+        if (data.success) {
+          this.getDoctorAppointmentSlots()
+          this.snackBar.open('Appointment Reserved! You will receive a notification if the Doctor accepts your appoinment', '', {
+            duration: 3000,
+          });
+        }
+      })
+    }
+
   };
 
 }

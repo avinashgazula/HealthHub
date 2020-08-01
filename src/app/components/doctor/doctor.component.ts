@@ -1,14 +1,11 @@
 /* @author Avinash Gazula <agazula@dal.ca> */
 /* @author Rudra Makwana <rd851601@dal.ca> */
 
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 
 
@@ -60,9 +57,6 @@ export class DoctorComponent implements OnInit {
     name;
     id;
     click = (doctor) => {
-        this.snackBar.open(doctor.name, '', {
-            duration: 3000,
-        });
         this.name = doctor.name;
         this.id = doctor._id;
         this.router.navigateByUrl('/doctor', { state: { doctorObject: doctor } });
