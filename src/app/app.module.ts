@@ -75,6 +75,7 @@ import { LoginService } from './services/login/login.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
 import { NotificationService } from './services/notifications/notification.service';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { NotificationService } from './services/notifications/notification.servi
         SearchResultComponent,
         MyOrdersComponent,
         FeedbackComponent,
+        MedicalHistoryComponent,
     ],
     imports: [
         BrowserModule,

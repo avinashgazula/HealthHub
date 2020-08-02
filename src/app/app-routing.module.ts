@@ -20,6 +20,7 @@ import { QuestionitemComponent } from './components/questionitem/questionitem.co
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import {MedicalHistoryComponent} from './components/medical-history/medical-history.component';
 
 const routes: Routes = [
 
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'suggest', component: SuggestdoctorComponent },
   { path: 'details', component: DoctorDetailsComponent },
   { path: 'searchresult', component: SearchResultComponent },
+  { path: 'medical-history', component: MedicalHistoryComponent },
 ];
 
 @NgModule({
