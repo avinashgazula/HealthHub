@@ -16,7 +16,7 @@ export class DoctorAppointmentsService {
 
     getAllAppointments(): Observable<any[]> {
         
-        return this.httpClient.get<any[]>(this.serverUrl + '/appointment/getAppointments/5f1b7dc5664cfe07cca109fc');
+        return this.httpClient.get<any[]>(this.serverUrl + '/appointment/getAppointments/5f19e5d03ab922452c38632c');
     }
 
     acceptAppointment(id) {

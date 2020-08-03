@@ -40,6 +40,7 @@ export class SuggestdoctorComponent implements OnInit {
             this.symptoms = data;
         });
 
+        console.log(this.symptoms)
         this.count = -1;
 
         this.selectedSymptoms = new Set();

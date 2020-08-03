@@ -20,7 +20,6 @@ export class ViewDoctorAppointmentsComponent implements OnInit {
     ngOnInit(): void {
 
         this.loadAppointments();
-        this.getUserName('1');
     }
 
     acceptAppointment(id){
@@ -44,10 +43,4 @@ export class ViewDoctorAppointmentsComponent implements OnInit {
         
     }
 
-    getUserName(id){
-        this.doctorAppointmentsService.getUserById(id).subscribe((data)=>{
-            this.userDetails=data;
-        });
-        return(this.userDetails)
-    }
 }
