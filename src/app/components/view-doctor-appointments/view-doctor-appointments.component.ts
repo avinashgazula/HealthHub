@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { DoctorAppointmentsService } from 'src/app/services/appointment/doctorappointments.service';
+import { database } from 'firebase';
 
 @Component({
     selector: 'healthhub-view-doctor-appointments',
@@ -11,22 +12,42 @@ import { DoctorAppointmentsService } from 'src/app/services/appointment/doctorap
 export class ViewDoctorAppointmentsComponent implements OnInit {
 
     appointmentList: any[];
+    userDetails: any;
+
 
     constructor(private doctorAppointmentsService: DoctorAppointmentsService) { }
 
     ngOnInit(): void {
 
-        this.doctorAppointmentsService.getAllAppointments().subscribe((data) => {
-            this.appointmentList = data;
-        });
+        this.loadAppointments();
+        this.getUserName('1');
     }
 
     acceptAppointment(id){
-
+        this.appointmentList=null
+        this.doctorAppointmentsService.acceptAppointment(id).subscribe((data)=>{
+            this.loadAppointments();
+        });   
     }
 
     deleteAppoinment(id){
-
+        this.appointmentList=null
+        this.doctorAppointmentsService.declineAppointment(id).subscribe((data)=>{
+            this.loadAppointments();
+        });
     }
 
+    loadAppointments(){
+        this.doctorAppointmentsService.getAllAppointments().subscribe((data) => {
+            this.appointmentList = data;
+        });
+        
+    }
+
+    getUserName(id){
+        this.doctorAppointmentsService.getUserById(id).subscribe((data)=>{
+            this.userDetails=data;
+        });
+        return(this.userDetails)
+    }
 }

@@ -15,7 +15,8 @@ export class DoctorAppointmentsService {
     }
 
     getAllAppointments(): Observable<any[]> {
-        return this.httpClient.get<any[]>(this.serverUrl + '/appointment/getAppointments/' + localStorage.getItem('userId'));
+        
+        return this.httpClient.get<any[]>(this.serverUrl + '/appointment/getAppointments/5f1b7dc5664cfe07cca109fc');
     }
 
     acceptAppointment(id) {
@@ -26,5 +27,9 @@ export class DoctorAppointmentsService {
     declineAppointment(id) {
 
         return this.httpClient.post(this.serverUrl + '/appointment/deleteAppointment/' + id, '');
+    }
+
+    getUserById(id){
+        return this.httpClient.get(this.serverUrl+'/users/getUser/'+'5f25c424a2d11f453c1893f0');
     }
 }

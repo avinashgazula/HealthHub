@@ -3,21 +3,22 @@
   Form elemnts from Angular Material is also been used while designing form elemnts like buttons.
  -->
 <div class="container justify-content-center">
-    <div class="row" style="padding: 10px;">
+    <div class="row" style="padding: 10px;" *ngFor="let appointment of appointmentList">
         <mat-card class="example-card">
             <mat-card-header>
-                <div mat-card-avatar class="avatar"></div>
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>dui vivamus</mat-card-subtitle>
+                <mat-card-title>Patient Name: {{appointment.patientId}}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
+                <p>Appointment Date : {{appointment.date}}</p>
+                <p>Appointment time : {{appointment.time}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button class="raised" (click)="acceptAppointment('a')">Accept Appointment</button>
-                <button mat-raised-button class="raised" (click)="deleteAppoinment('a')">Decline Appointment</button>
+                <button mat-stroked-button class="stroked" (click)="acceptAppointment('a')">View Patient
+                    History</button>
+                <button mat-raised-button class="raised" (click)="acceptAppointment(appointment._id)">Accept
+                    Appointment</button>
+                <button mat-raised-button class="raised" (click)="deleteAppoinment(appointment._id)">Decline
+                    Appointment</button>
             </mat-card-actions>
         </mat-card>
     </div>

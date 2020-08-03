@@ -1,12 +1,11 @@
 /* @author Sai Sunil Menta <ss734478@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
 import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';
-import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -33,13 +32,7 @@ export class SuggestdoctorComponent implements OnInit {
         { value: 'Vancouver'}
     ];
 
-    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
-        if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
-            localStorage.getItem('token') === undefined) {
-            this.dialog.closeAll();
-            this.dialog.open(LoginComponent, { disableClose: true });
-        }
-    }
+    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) { }
 
     ngOnInit() {
 
