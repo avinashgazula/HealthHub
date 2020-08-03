@@ -61,6 +61,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { LoginComponent } from './components/login/login.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
 import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
@@ -70,12 +71,13 @@ import { ScheduleCareComponent } from './components/schedule-care/schedule-care.
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { AuthGuard } from './guard/auth.guard';
 import { InsuranceService } from './services/insurance/insurance.service';
 import { LoginService } from './services/login/login.service';
+import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
-import { NotificationService } from './services/notifications/notification.service';
-import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
+
 
 
 @NgModule({
@@ -155,7 +157,7 @@ import { MedicalHistoryComponent } from './components/medical-history/medical-hi
         NgxPaginationModule,
         CdkScrollableModule,
     ],
-    providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService],
+    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService],
     bootstrap: [AppComponent],
     entryComponents: [LoginComponent, RegisterComponent]
 })

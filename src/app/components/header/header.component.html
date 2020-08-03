@@ -9,11 +9,11 @@
 
                 <div fxLayout="column">
                     <button href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></button>
-                    <button href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
+                    <button href="#" *ngIf="isDoctor" mat-button [routerLink]="['/view-doctor-appointments']"><span
                             class="menu-item">Appointments</span></button>
-                    <button href="#" mat-button [routerLink]="['/orderMedicine']"><span
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/orderMedicine']"><span
                             class="menu-item">Medicines</span></button>
-                    <button href="#" mat-button [routerLink]="['/consult']"><span
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/consult']"><span
                             class="menu-item">Consult</span></button>
                     <button href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home
                             Care</span></button>
@@ -36,11 +36,11 @@
                 <span class="menu-spacer"></span>
                 <div fxShow="true" fxLayout="row" fxHide.lt-md="true">
                     <button href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></button>
-                    <button href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
+                    <button href="#" *ngIf="isDoctor" mat-button [routerLink]="['/view-doctor-appointments']"><span
                             class="menu-item">Appointments</span></button>
-                    <button href="#" mat-button [routerLink]="['/orderMedicine']"><span
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/orderMedicine']"><span
                             class="menu-item">Medicines</span></button>
-                    <button href="#" mat-button [routerLink]="['/insurance']"><span
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/insurance']"><span
                             class="menu-item">Insurance</span></button>
                     <button href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></button>
                     <button href="#" mat-button [routerLink]="['/consult']"><span
@@ -69,7 +69,8 @@
                                 </div>
                                 <div class="col-2">
                                     <mat-card-actions fxLayout="row">
-                                        <mat-icon matBadgeSize="small" (click)="markAsRead(notofication._id)">cancel</mat-icon>
+                                        <mat-icon matBadgeSize="small" (click)="markAsRead(notofication._id)">cancel
+                                        </mat-icon>
                                     </mat-card-actions>
                                 </div>
                             </div>
@@ -81,7 +82,8 @@
                 </button>
                 <mat-menu #profileMenu="matMenu" yPosition="below">
                     <div fxLayout="column">
-                        <button mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit
+                        <button mat-button (click)="openEditProfilePage()"><span class="
+                            menu-item">Edit
                                 Profile</span></button>
                         <button mat-button [routerLink]="['/my-orders']"><span class="menu-item">My
                                 Orders</span></button>

@@ -7,6 +7,7 @@ import { DateAdapter } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthGuard } from './../../guard/auth.guard';
 import { AppointmentService } from './../../services/appointment/appointment.service';
 
 @Component({
@@ -31,6 +32,7 @@ export class DoctorProfileComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private appointmentService: AppointmentService,
+    private authGuard: AuthGuard,
     private dateAdapter: DateAdapter<Date>) {
     dateAdapter.setLocale('en-CA')
     this.router.getCurrentNavigation().extras.state;
@@ -100,6 +102,15 @@ export class DoctorProfileComponent implements OnInit {
   }
 
   confirmAppointment = () => {
+    this.authGuard.canActivate().then(status => {
+      if (status) {
+        this.requestAppointment()
+      }
+    })
+  }
+
+
+  requestAppointment = () => {
     let timeIndex: number = this.timeSlots.indexOf(true);
     if (timeIndex === -1) {
       this.snackBar.open('Please select a time for the appointment', '', {
@@ -114,13 +125,12 @@ export class DoctorProfileComponent implements OnInit {
         'patientName': this.userName,
         'time': this.allowedTimeSlots[timeIndex]
       }
-      console.log(formData);
 
       this.appointmentService.requestAppointment(formData).subscribe(data => {
         if (data.success) {
           this.getDoctorAppointmentSlots()
           this.snackBar.open('Appointment Reserved! You will receive a notification if the Doctor accepts your appoinment', '', {
-            duration: 3000,
+            duration: 5000,
           });
         }
       })
