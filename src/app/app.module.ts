@@ -77,6 +77,7 @@ import { LoginService } from './services/login/login.service';
 import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+import { DoctorAppointmentsService } from './services/appointment/doctorappointments.service';
 
 
 
@@ -157,7 +158,7 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
         NgxPaginationModule,
         CdkScrollableModule,
     ],
-    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService],
+    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService,DoctorAppointmentsService],
     bootstrap: [AppComponent],
     entryComponents: [LoginComponent, RegisterComponent]
 })
