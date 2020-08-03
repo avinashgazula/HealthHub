@@ -15,7 +15,7 @@ body {
     overflow: hidden;
     display: block;
     position: relative;
-    padding-bottom: 207px;
+    padding-bottom: 50px; /* footer height*/
 }
 footer {
     position: absolute;
