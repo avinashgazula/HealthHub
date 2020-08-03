@@ -1,0 +1,218 @@
+<!-- /* @author Rudra Makwana <rd851601@dal.ca> */ -->
+<div class="container" *ngIf="booleanUserType==true" style="text-align: center; margin-top: 15px;">
+    <div class="column" style="text-align: center;">
+        <h2 style="font-weight: bold;">
+            Patient's Information:
+        </h2>
+    </div>
+    <div class="column" style="text-align: center;">
+        <table>
+            <tr>
+                <td><h3 style="font-weight: bold; margin: 5px;">Full Name: </h3></td>
+                <td><h3 style="margin: 5px;">{{personalInfo.name}}</h3></td>
+            </tr>
+            <tr>
+                <td><h3 style="font-weight: bold; margin: 5px;">Email Address: </h3></td>
+                <td><h3 style="margin: 5px;">{{personalInfo.email}}</h3></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="column" style="text-align: center;">
+        <h2 style="font-weight: bold;">
+            Medical Information:
+        </h2>
+    </div>
+    <div class="column" style="text-align: center;">
+        <form [formGroup]="medicalHistoryForm">
+
+            <table>
+                <tr style="visibility: collapse;">
+                    <td><mat-label>User ID: </mat-label></td>
+                    <td colspan="2"><input type="text" formControlName="userID" value="{{userID}}" readonly #uID></td>      
+                </tr>
+                <tr>
+                    <td>
+                        <mat-label>Height: </mat-label>
+                    </td>
+                    <td>
+                        <input type="text" formControlName="height" value="{{result.Height}}" (change)="heightChange(height.value)" #height>
+                    </td>
+                    <td><mat-label>cm</mat-label></td>
+                </tr>            
+            
+                <tr>
+                    <td><mat-label>Weight: </mat-label></td>
+                    <td><input type="text" formControlName="weight" value="{{result.Weight}}" (change)="weightChange(weight.value)" #weight></td>  
+                    <td><mat-label>kg</mat-label></td>          
+                </tr>
+                
+                <tr>
+                    <td><mat-label>Blood Pressure: </mat-label></td>
+                    <td><input type="text" formControlName="bloodPressure" value="{{result.bloodPressure}}" (change)="bpChange(bp.value)" #bp></td>
+                    <td><mat-label>mmHg</mat-label></td>
+                </tr>
+                
+                <tr>    
+                    <td><mat-label>Heart Rate: </mat-label></td>
+                    <td><input type="text" formControlName="heartRate" value="{{result.heartRate}}" (change)="hrChange(hr.value)" #hr></td>
+                    <td><mat-label>BPM</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td><mat-label>Hemoglobin: </mat-label></td>
+                    <td><input type="text" formControlName="hemo" value="{{result.hemoglobin}}" (change)="hemoChange(hemo.value)" #hemo></td>
+                    <td><mat-label>gm/dL</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td><mat-label>Hemoglobin A1c: </mat-label></td>
+                    <td><input type="text" formControlName="hemoA1c" value="{{result.hemoglobinA1c}}" (change)="hemoaChange(hemoa.value)" #hemoa></td>
+                    <td><mat-label>%</mat-label></td>
+                </tr>
+            
+                <tr>
+                    <td><mat-label>Hematocrit (HCT): </mat-label></td>
+                    <td><input type="text" formControlName="hemato" value="{{result.hematocrit}}" (change)="hemaChange(hema.value)" #hema></td>
+                    <td><mat-label>%</mat-label></td>
+                </tr>
+                
+                <tr>
+                    <td><mat-label>Red Blood Cells (RBC): </mat-label></td>
+                    <td><input type="text" formControlName="redBloodCell" value="{{result.rbc}}" (change)="rbcChange(rbc.value)" #rbc></td>
+                    <td><mat-label>10^6/uL</mat-label></td>
+                </tr>
+                
+                <tr>
+                    <td><mat-label>White Blood Cells (WBC): </mat-label></td>
+                    <td><input type="text" formControlName="whiteBloodCell" value="{{result.wbc}}" (change)="wbcChange(wbc.value)" #wbc></td>
+                    <td><mat-label>10^3/uL</mat-label></td>
+                </tr>
+                
+                <tr>
+                    <td><mat-label>Platelets: </mat-label></td>
+                    <td><input type="text" formControlName="platelets" value="{{result.plt}}" (change)="pltChange(plt.value)" #plt></td>
+                    <td><mat-label>10^3/uL</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td><mat-label>BMI: </mat-label></td>
+                    <td><input type="text" formControlName="bmi" value="{{BMI}}" readonly></td>
+                    <td><mat-label>kg/m^2</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" style="text-align: center;">
+                        <mat-card-actions>
+                            <button mat-raised-button type="submit" color="primary" (click)="onSubmit(uID.value ,result)">Submit</button>
+                        </mat-card-actions>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<div class="container" *ngIf="booleanUserType==false">
+    <div class="column" style="text-align: center;">
+        <h2 style="font-weight: bold;">
+            Your Information:
+        </h2>
+    </div>
+    <div class="column" style="text-align: center;">
+        <table>
+            <tr>
+                <td><h3 style="font-weight: bold; margin: 5px;">Full Name: </h3></td>
+                <td><h3 style="margin: 5px;">{{currentUserName}}</h3></td>
+            </tr>
+            <tr>
+                <td><h3 style="font-weight: bold; margin: 5px;">Email Address: </h3></td>
+                <td><h3 style="margin: 5px;">{{personalInfo.email}}</h3></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div class="column" style="text-align: center;">
+        <h2 style="font-weight: bold;">
+            Medical Information:
+        </h2>
+    </div>
+    <div class="column" style="text-align: center;">
+        <form [formGroup]="medicalHistoryForm">
+            <table>
+                <tr style="visibility: collapse;">
+                    <td><mat-label>User ID: </mat-label></td>
+                    <td colspan="2"><input type="text" formControlName="userID" value="{{userID}}" readonly #uID></td>      
+                </tr>
+                <tr>
+                    <td>
+                        <mat-label>Height: </mat-label>
+                    </td>
+                    <td>
+                        <input type="text" formControlName="height" value="{{result.Height}}" readonly>
+                    </td>
+                    <td><mat-label>cm</mat-label></td>
+                </tr>            
+            
+                <tr>
+                    <td><mat-label>Weight: </mat-label></td>
+                    <td><input type="text" formControlName="weight" value="{{result.Weight}}" readonly></td>  
+                    <td><mat-label>kg</mat-label></td>          
+                </tr>
+                
+                <tr>
+                    <td><mat-label>Blood Pressure: </mat-label></td>
+                    <td><input type="text" formControlName="bloodPressure" value="{{result.bloodPressure}}" readonly></td>
+                    <td><mat-label>mmHg</mat-label></td>
+                </tr>
+                
+                <tr>    
+                    <td><mat-label>Heart Rate: </mat-label></td>
+                    <td><input type="text" formControlName="heartRate" value="{{result.heartRate}}" readonly></td>
+                    <td><mat-label>BPM</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td><mat-label>Hemoglobin: </mat-label></td>
+                    <td><input type="text" formControlName="hemo" value="{{result.hemoglobin}}" readonly></td>
+                    <td><mat-label>gm/dL</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td><mat-label>Hemoglobin A1c: </mat-label></td>
+                    <td><input type="text" formControlName="hemoA1c" value="{{result.hemoglobinA1c}}" readonly></td>
+                    <td><mat-label>%</mat-label></td>
+                </tr>
+            
+                <tr>
+                    <td><mat-label>Hematocrit (HCT): </mat-label></td>
+                    <td><input type="text" formControlName="hemato" value="{{result.hematocrit}}" readonly></td>
+                    <td><mat-label>%</mat-label></td>
+                </tr>
+                
+                <tr>
+                    <td><mat-label>Red Blood Cells (RBC): </mat-label></td>
+                    <td><input type="text" formControlName="redBloodCell" value="{{result.rbc}}" readonly></td>
+                    <td><mat-label>10^6/uL</mat-label></td>
+                </tr>
+                
+                <tr>
+                    <td><mat-label>White Blood Cells (WBC): </mat-label></td>
+                    <td><input type="text" formControlName="whiteBloodCell" value="{{result.wbc}}" readonly></td>
+                    <td><mat-label>10^3/uL</mat-label></td>
+                </tr>
+                
+                <tr>
+                    <td><mat-label>Platelets: </mat-label></td>
+                    <td><input type="text" formControlName="platelets" value="{{result.plt}}" readonly></td>
+                    <td><mat-label>10^3/uL</mat-label></td>
+                </tr>
+
+                <tr>
+                    <td><mat-label>BMI: </mat-label></td>
+                    <td><input type="text" formControlName="bmi" value="{{BMI}}" readonly></td>
+                    <td><mat-label>kg/m^2</mat-label></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

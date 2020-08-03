@@ -61,6 +61,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { LoginComponent } from './components/login/login.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
 import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
@@ -108,6 +109,7 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
         SearchResultComponent,
         MyOrdersComponent,
         FeedbackComponent,
+        MedicalHistoryComponent,
     ],
     imports: [
         BrowserModule,

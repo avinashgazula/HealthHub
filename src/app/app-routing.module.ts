@@ -14,6 +14,7 @@ import { HomeCareComponent } from './components/home-care/home-care.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
 import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'suggest', component: SuggestdoctorComponent, canActivate: [AuthGuard] },
   { path: 'details', component: DoctorDetailsComponent },
   { path: 'searchresult', component: SearchResultComponent },
+  { path: 'medical-history', component: MedicalHistoryComponent },
 ];
 
 @NgModule({
