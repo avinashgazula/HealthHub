@@ -8,10 +8,13 @@
             <form [formGroup]="detailsForm">
                 <mat-label>Upload your image: </mat-label>
                 <input type="file" (change)="onFileChange($event)" />
-
-                <mat-form-field class="first" appearance="standard">
+                <mat-form-field appearance="standard">
                     <mat-label>Enter your Specialization</mat-label>
-                    <input matInput formControlName="specialization" required>
+                    <mat-select formControlName="specialization">
+                        <mat-option *ngFor="let type of doctorTypes" [value]="type">
+                            {{type}}
+                        </mat-option>
+                    </mat-select>
                     <mat-error *ngIf="specialization.invalid">Specialization is required
                     </mat-error>
                 </mat-form-field>

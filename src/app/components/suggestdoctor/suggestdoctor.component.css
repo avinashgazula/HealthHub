@@ -5,7 +5,6 @@
     padding-top: 50px;
 }
 
-
 /* .mat-form-field{
     width: 100%;
   } */
@@ -36,27 +35,29 @@
 }
 
 .example-header-image {
-    background-image: url('https://pickaface.net/gallery/avatar/InspireBuddy5290e4bdc07a4.png');
+    background-image: url("https://pickaface.net/gallery/avatar/InspireBuddy5290e4bdc07a4.png");
     background-size: cover;
 }
 
-mat-card:hover {}
+mat-card-header {
+    min-width: 200px !important;
+}
 
 .hardline {
     border: solid #4f4d49;
 }
 
 .stroke {
-    color: #001F3F;
+    color: #001f3f;
 }
 
 .raised {
-    background-color: #001F3F;
+    background-color: #001f3f;
     color: #fef8f2;
 }
 
 .mat-step-header {
-    color: #001F3F;
+    color: #001f3f;
 }
 
 .scroll-container {
@@ -65,7 +66,7 @@ mat-card:hover {}
 
 * {
     scrollbar-width: thin;
-    scrollbar-color: #001F3F #F5F5F5;
+    scrollbar-color: #001f3f #f5f5f5;
 }
 
 *::-webkit-scrollbar {
@@ -73,12 +74,12 @@ mat-card:hover {}
 }
 
 *::-webkit-scrollbar-track {
-    background: #F5F5F5;
+    background: #f5f5f5;
     border-radius: 20px;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #001F3F;
+    background-color: #001f3f;
     border-radius: 20px;
-    border: 3px solid #F5F5F5;
+    border: 3px solid #f5f5f5;
 }

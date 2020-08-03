@@ -1,15 +1,14 @@
 /* @author Avinash Gazula <agazula@dal.ca> */
 
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LocationService } from './../../services/location/location.service';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { finalize } from "rxjs/operators";
-import { AngularFireStorage } from '@angular/fire/storage';
+import { LocationService } from './../../services/location/location.service';
 import { RegistrationService } from './../../services/registration/registration.service';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Inject } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginComponent } from './../login/login.component';
 
 @Component({
@@ -22,6 +21,7 @@ export class DoctorDetailsComponent implements OnInit {
   detailsForm: FormGroup;
   downloadURL: Observable<string>;
   imageUrl: string = '';
+  doctorTypes = [];
 
   constructor(private fb: FormBuilder,
     private dialog: MatDialog,
@@ -35,11 +35,16 @@ export class DoctorDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.detailsForm = this.fb.group({
       image: [null, Validators.required],
-      specialization: ['', [Validators.required]],
+      specialization: [null, [Validators.required]],
       location: ['', [Validators.required]],
       fee: [null, Validators.required],
       description: ['']
     });
+    this.registrationService.getDoctorTypes().subscribe(data => {
+      if (data.success) {
+        this.doctorTypes = data.types
+      }
+    })
   }
 
   getFeeError = () => {
@@ -93,6 +98,7 @@ export class DoctorDetailsComponent implements OnInit {
     formData.image = this.imageUrl;
     formData.email = this.dialogData.email;
     formData.type = this.dialogData.type;
+
     this.registrationService.registerDoctor(JSON.stringify(formData)).subscribe(
       data => {
         if (data.success) {

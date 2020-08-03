@@ -5,8 +5,10 @@
   Mat-Icons are adopted from Angular material and the CSS for it is customized.
  -->
 
-<div class="container-md" style="padding-bottom: 500px;">
-    <div class="row myrow justify-content-center">
+<div fxLayout fxLayout.lt-md="column" fxLayout="row">
+
+    <div class="container-md" fxLayoutAlign.gt-md="center" style="padding-bottom: 20px;">
+
         <div class="col-3 col-sm-3">
             <div class="row">
                 <mat-vertical-stepper labelPosition="bottom" #stepper>
@@ -26,7 +28,9 @@
                         <ng-template matStepLabel>Price range</ng-template>
                         <div style="padding-bottom: 20px;"></div>
                         <div>
-                            <mat-slider thumbLabel style="width: 100%; color: #001F3F;" min="10" max="500" [displayWith]="priceRange" tickInterval="1" [(ngModel)]="suggestQuery.price" color="primary" style="padding-top:50px;">
+                            <mat-slider thumbLabel style="width: 100%; color: #001F3F;" min="10" max="500"
+                                [displayWith]="priceRange" tickInterval="1" [(ngModel)]="suggestQuery.price"
+                                color="primary" style="padding-top:50px;">
                             </mat-slider>
                         </div>
                     </mat-step>
@@ -35,7 +39,9 @@
                         <div style="padding-bottom: 20px;"></div>
                         <div style="height: 200px;" class="scroll-container">
                             <section class="example-section">
-                                <mat-checkbox color="primary" class="example-margin" style="padding:10px;" *ngFor="let symptom of symptoms" (change)="checkAndUncheckSymptoms($event,symptom)" [value]="symptom">
+                                <mat-checkbox color="primary" class="example-margin" style="padding:10px;"
+                                    *ngFor="let symptom of symptoms" (change)="checkAndUncheckSymptoms($event,symptom)"
+                                    [value]="symptom">
                                     {{symptom}}
                                 </mat-checkbox>
                             </section>
@@ -45,46 +51,52 @@
             </div>
             <div style="padding-bottom: 10px; "></div>
             <div class="row justify-content-center ">
-                <button mat-raised-button class="raised align-items-end " style="width: 300px; " (click)="suggestDoctor() ">suggest</button>
+                <button mat-raised-button class="raised align-items-end " style="width: 300px; "
+                    (click)="suggestDoctor() ">suggest</button>
             </div>
         </div>
 
-        <div class="col-8 col-sm-6">
-            <!--    <p>{{doctorList.length}}</p> -->
-            <ng-container *ngIf="count===0">
-                <h2>Unfortunately, There are no doctors matching your requirment</h2>
-            </ng-container>
-            <ng-container *ngIf="count<0">
-                <h2>Select the location, price, symptoms to get the doctor list</h2>
-            </ng-container>
-            <div class="row mycolumn" *ngFor="let doctor of doctorList">
-                <ng-container *ngIf="count>0">
-                    <mat-card class="example-card ">
-                        <div class="row mycolumn ">
 
-                            <div class="col-3 ">
-                                <img mat-card-image src={{doctor.image}} style="height: 150px; width: 150px; border-radius: 8px; ">
-                            </div>
-                            <div class="col-5 ">
-                                <mat-card-header>
-                                    <mat-card-title>Dr. {{ doctor.name }}</mat-card-title>
-                                    <mat-card-subtitle>{{doctor.specialization}}</mat-card-subtitle>
-                                    <mat-card-subtitle>${{doctor.fee}}</mat-card-subtitle>
-                                    <mat-card-subtitle>{{doctor.location}}</mat-card-subtitle>
-                                </mat-card-header>
-                            </div>
-                            <div class="col-3 ">
-                                <mat-card-actions>
-                                    <button (click)="viewDoctor(doctor) " mat-raised-button class="raised align-items-end ">view
-                                        more
-                                        details</button>
-                                </mat-card-actions>
-                            </div>
-                        </div>
-                    </mat-card>
-                </ng-container>
-            </div>
-        </div>
         <!-- search end  -->
-        <hr class="h-25 invisible ">
+
+
+
     </div>
+
+    <div class="col-8 col-sm-6">
+        <!--    <p>{{doctorList.length}}</p> -->
+        <ng-container *ngIf="count===0">
+            <h2>Unfortunately, There are no doctors matching your requirment</h2>
+        </ng-container>
+        <div class="row mycolumn" *ngFor="let doctor of doctorList">
+            <ng-container *ngIf="count>0">
+                <mat-card class="example-card ">
+                    <div fxLayout="row" fxLayout.lt-sm="column" class="row mycolumn ">
+
+                        <div class="col-3 ">
+                            <img mat-card-image src={{doctor.image}}
+                                style="height: 150px; width: 150px; border-radius: 8px; ">
+                        </div>
+                        <div class="col-5 ">
+                            <mat-card-header>
+                                <mat-card-title>Dr. {{ doctor.name }}</mat-card-title>
+                                <mat-card-subtitle>{{doctor.specialization}}</mat-card-subtitle>
+                                <mat-card-subtitle>${{doctor.fee}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{doctor.location}}</mat-card-subtitle>
+                            </mat-card-header>
+                        </div>
+                        <div class="col-3 ">
+                            <mat-card-actions>
+                                <button (click)="viewDoctor(doctor) " mat-raised-button
+                                    class="raised align-items-end ">view
+                                    more
+                                    details</button>
+                            </mat-card-actions>
+                        </div>
+                    </div>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+
+</div>

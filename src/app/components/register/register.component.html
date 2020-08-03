@@ -34,7 +34,7 @@
                     <mat-form-field appearance="standard">
                         <mat-label>Enter your password</mat-label>
                         <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
-                        <button mat-icon-button matSuffix (click)="hide = !hide">
+                        <button tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                         <mat-hint align="end">Min Length 8. At least 1 Uppercase, Lowercase and Number</mat-hint>
@@ -45,7 +45,7 @@
                     <mat-form-field appearance="standard">
                         <mat-label>Confirm Password</mat-label>
                         <input formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'">
-                        <button mat-icon-button matSuffix (click)="hide = !hide">
+                        <button tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                         <mat-error *ngIf="confirmPassword.invalid">
