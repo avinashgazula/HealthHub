@@ -20,6 +20,8 @@ import { QuestionitemComponent } from './components/questionitem/questionitem.co
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { AuthGuard } from './guard/auth.guard';
+
 
 const routes: Routes = [
 
@@ -27,7 +29,7 @@ const routes: Routes = [
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'single-blog', component: BlogComponent },
-  { path: 'orderMedicine', component: MedicineDeliveryComponent },
+  { path: 'orderMedicine', component: MedicineDeliveryComponent, canActivate: [AuthGuard] },
   { path: 'my-orders', component: MyOrdersComponent },
   { path: 'homeCare', component: HomeCareComponent },
   { path: 'aboutUs', component: AboutUsComponent },
@@ -41,7 +43,7 @@ const routes: Routes = [
   { path: 'blogs', component: BlogshomeComponent },
   { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent },
   { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'suggest', component: SuggestdoctorComponent },
+  { path: 'suggest', component: SuggestdoctorComponent, canActivate: [AuthGuard] },
   { path: 'details', component: DoctorDetailsComponent },
   { path: 'searchresult', component: SearchResultComponent },
 ];

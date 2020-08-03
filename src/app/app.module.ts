@@ -70,11 +70,13 @@ import { ScheduleCareComponent } from './components/schedule-care/schedule-care.
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { AuthGuard } from './guard/auth.guard';
 import { InsuranceService } from './services/insurance/insurance.service';
 import { LoginService } from './services/login/login.service';
+import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
-import { NotificationService } from './services/notifications/notification.service';
+
 
 
 @NgModule({
@@ -153,7 +155,7 @@ import { NotificationService } from './services/notifications/notification.servi
         NgxPaginationModule,
         CdkScrollableModule,
     ],
-    providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService],
+    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService],
     bootstrap: [AppComponent],
     entryComponents: [LoginComponent, RegisterComponent]
 })
