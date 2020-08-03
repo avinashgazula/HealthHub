@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     isLoggedIn: Boolean = false;
     notifications: any[];
     count: number;
-    isDoctor: boolean;
+    isDoctor: boolean = false;
 
     constructor(
         private dialog: MatDialog,
@@ -39,12 +39,15 @@ export class HeaderComponent implements OnInit {
             this.isLoggedIn = true;
         }
 
+        if (localStorage.getItem('userType') !== null && localStorage.getItem('userType') === "doctor") {
+            this.isDoctor = true;
+        }
+
         this.notificationService.getNotifications().subscribe((data) => {
             this.notifications = data;
             this.count = data.length;
         });
 
-        this.isDoctor = this.authService.isDoctor();
     }
 
     openLoginPage = () => {

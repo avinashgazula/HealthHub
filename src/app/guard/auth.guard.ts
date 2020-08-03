@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
           if (data.success) {
             resolve(true)
           } else {
-            this.dialog.open(LoginComponent)
+            this.dialog.open(LoginComponent, { disableClose: true })
             resolve(false)
           }
         })

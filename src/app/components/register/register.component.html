@@ -7,7 +7,7 @@
     <div class="container">
         <div class="register">
             <h3>Create a new Account</h3>
-            <mat-card-actions>
+            <mat-card-actions style="display: flex; flex-direction: row;">
                 <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
                     Consumers</button>
                 <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
