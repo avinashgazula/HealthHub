@@ -3,19 +3,20 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Writeblog } from '../../model/writeblog.model';
 import { WriteblogService } from '../../services/writeblog/writeblog.service';
+import { FeedbackService } from 'src/app/services/feedback/feedback.service';
 
 
 declare var M: any;
 @Component({
   selector: 'app-writeblog',
-  templateUrl: './writelog.component.html',
+  templateUrl: './writeblog.component.html',
   styleUrls: ['./writeblog.component.css'],
   providers: [WriteblogService]
 })
 
 export class WriteblogComponent implements OnInit {
 
-  constructor(public writeblogService: WriteblogService) { }
+  constructor(public writeblogService: WriteblogService, public feedbackService: FeedbackService) { }
 
   ngOnInit() {
     this.resetForm();
