@@ -77,8 +77,12 @@ import { LoginService } from './services/login/login.service';
 import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+<<<<<<< HEAD
 import { WriteblogComponent } from './writeblog/writeblog.component';
 import { SharedComponent } from './components/shared/shared.component';
+=======
+import { DoctorAppointmentsService } from './services/appointment/doctorappointments.service';
+>>>>>>> fba17a887dca15ab90af73f54d90d82c09d1ff29
 
 
 
@@ -161,7 +165,7 @@ import { SharedComponent } from './components/shared/shared.component';
         NgxPaginationModule,
         CdkScrollableModule,
     ],
-    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService],
+    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService,DoctorAppointmentsService],
     bootstrap: [AppComponent],
     entryComponents: [LoginComponent, RegisterComponent]
 })

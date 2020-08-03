@@ -29,7 +29,7 @@ export class SuggestdoctorComponent implements OnInit {
         { value: 'Toronto' },
         { value: 'Halifax' },
         { value: 'Montreal' },
-        { value: 'Vancouver' }
+        { value: 'Vancouver'}
     ];
 
     constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) { }
@@ -40,6 +40,7 @@ export class SuggestdoctorComponent implements OnInit {
             this.symptoms = data;
         });
 
+        console.log(this.symptoms)
         this.count = -1;
 
         this.selectedSymptoms = new Set();
