@@ -77,6 +77,8 @@ import { LoginService } from './services/login/login.service';
 import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+import { WriteblogComponent } from './writeblog/writeblog.component';
+import { SharedComponent } from './components/shared/shared.component';
 
 
 
@@ -110,6 +112,8 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
         MyOrdersComponent,
         FeedbackComponent,
         MedicalHistoryComponent,
+        WriteblogComponent,
+        SharedComponent,
     ],
     imports: [
         BrowserModule,
