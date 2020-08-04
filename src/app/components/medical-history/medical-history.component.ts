@@ -33,7 +33,7 @@ export class MedicalHistoryComponent implements OnInit {
   constructor(private builder: FormBuilder,
     private dialog: MatDialog,
     private http: HttpClient,
-    private snackBar: MatSnackBar) { 
+    private snackBar: MatSnackBar) {
     if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
       localStorage.getItem('token') === undefined) {
       this.dialog.closeAll();
@@ -42,12 +42,12 @@ export class MedicalHistoryComponent implements OnInit {
       this.currentUserID = localStorage.getItem('userId');
       this.currentUserType = localStorage.getItem('userType');
       this.currentUserName = localStorage.getItem('name');
-      if (this.currentUserType === "doctors" || this.currentUserType === "Doctors" || this.currentUserType === "doctor" || this.currentUserType === "Doctor"){
+      if (this.currentUserType === "doctors" || this.currentUserType === "Doctors" || this.currentUserType === "doctor" || this.currentUserType === "Doctor") {
         this.booleanUserType = true;
-      } else{
+      } else {
         this.booleanUserType = false;
       }
-      if(this.result == null || this.result == undefined){
+      if (this.result == null || this.result == undefined) {
         this.result = {
           Height: 0,
           Weight: 0,
@@ -69,21 +69,21 @@ export class MedicalHistoryComponent implements OnInit {
     this.currentUserType;
     this.currentUserID;
 
-    if(this.booleanUserType) {
+    if (this.booleanUserType) {
       this.body = { uID: this.userID };
       this.http.post<any>(this.serverUrl + '/medical/details', this.body).subscribe(results => {
-        if(results == undefined || results == null){
+        if (results == undefined || results == null) {
           this.result = this.result;
-          
-          if(this.result.Height == 0) {
+
+          if (this.result.Height == 0) {
             this.BMI = 0;
           }
-          else{
-            this.BMI = (this.result.Weight/(Math.pow(this.result.Height, 2))) * 10000;
+          else {
+            this.BMI = (this.result.Weight / (Math.pow(this.result.Height, 2))) * 10000;
           }
 
-        } 
-        else{
+        }
+        else {
           this.result = results;
         }
       });
@@ -91,22 +91,19 @@ export class MedicalHistoryComponent implements OnInit {
         this.personalInfo = results;
       });
     }
-    else
-    {
+    else {
       this.body = { uID: this.currentUserID };
       this.http.post<any>(this.serverUrl + '/medical/details', this.body).subscribe(results => {
-        if(results == undefined || results == null){
+        if (results == undefined || results == null) {
           this.result = this.result;
-          
-          if(this.result.Height == 0) {
+          if (this.result.Height == 0) {
             this.BMI = 0;
           }
-          else{
-            this.BMI = (this.result.Weight/(Math.pow(this.result.Height, 2))) * 10000;
+          else {
+            this.BMI = (this.result.Weight / (Math.pow(this.result.Height, 2))) * 10000;
           }
-
-        } 
-        else{
+        }
+        else {
           this.result = results;
         }
       });
@@ -117,54 +114,54 @@ export class MedicalHistoryComponent implements OnInit {
   }
 
   check;
-  onSubmit = (uID,result) => {
+  onSubmit = (uID, result) => {
     this.body = {
-      userId : uID,
-      Height : result.Height,
-      Weight : result.Weight,
-      bloodPressure : result.bloodPressure,
-      heartRate : result.heartRate,
-      hemoglobin : result.hemoglobin,
-      hemoglobinA1c : result.hemoglobinA1c,
-      hematocrit : result.hematocrit,
-      rbc : result.rbc,
-      wbc : result.wbc,
-      plt : result.plt
+      userId: uID,
+      Height: result.Height,
+      Weight: result.Weight,
+      bloodPressure: result.bloodPressure,
+      heartRate: result.heartRate,
+      hemoglobin: result.hemoglobin,
+      hemoglobinA1c: result.hemoglobinA1c,
+      hematocrit: result.hematocrit,
+      rbc: result.rbc,
+      wbc: result.wbc,
+      plt: result.plt
     }
     this.http.post<any>(this.serverUrl + '/medical/update', this.body).subscribe(results => {
       this.check = results;
-      if (this.check.success){
+      if (this.check.success) {
         this.snackBar.open("Medical History is updated successfully", '', {
           duration: 3000
         });
       }
-      else{
+      else {
         this.snackBar.open("Medical History is not updated Successfully", '', {
           duration: 3000
         });
       }
     });
 
-    
+
   }
 
   heightChange = (value) => {
     this.result.Height = value;
-    
-    if(this.result.Height == 0) {
+
+    if (this.result.Height == 0) {
       this.BMI = 0;
-    } else{
-      this.BMI = (this.result.Weight/(Math.pow(this.result.Height, 2))) * 10000;
+    } else {
+      this.BMI = (this.result.Weight / (Math.pow(this.result.Height, 2))) * 10000;
     }
   }
 
   weightChange = (value) => {
     this.result.Weight = value;
-    if(this.result.Height == 0) {
+    if (this.result.Height == 0) {
       this.BMI = 0;
     }
-    else{
-      this.BMI = (this.result.Weight/(Math.pow(this.result.Height, 2))) * 10000;
+    else {
+      this.BMI = (this.result.Weight / (Math.pow(this.result.Height, 2))) * 10000;
     }
   }
 
@@ -199,5 +196,4 @@ export class MedicalHistoryComponent implements OnInit {
   pltChange = (value) => {
     this.result.plt = value;
   }
-
 }
