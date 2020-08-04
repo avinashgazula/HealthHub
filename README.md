@@ -269,10 +269,19 @@ Healthcare. Isolated on white background. Vector illustr. by Borokh,” VectorGr
 
 [21] emptyCart.jpg. Vinsolutions.com, 2020. [Online]. Available: https://www.vinsolutions.com/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg?ext=.jpg. [Accessed: 23- Jul- 2020].
 
+[22] usericon2.png “Redirect Notice,” Google. [Online]. Available: https://www.google.com/url?sa=i. [Accessed: 04-Aug-2020].
 Icons References:
 [1] “Icons Reference,” Icons from Font Awesome, Bootstrap and Google. [Online]. Available: https://www.w3schools.com/icons/icons_reference.asp. [Accessed: 15-Jun-2020].
 
 [2] "Cart Icon," Cdn4.iconfinder.com, 2020. [Online]. Available: https://cdn4.iconfinder.com/data/icons/medical-set-glyph-silhouettes/300/142732197Untitled-31-512.png. [Accessed: 23- Jul- 2020].
+
+Insurance Data Text References:
+
+[1] [Online]. Available: https://www.surehealth.ca/?gclid=Cj0KCQjw6575BRCQARIsAMp-ksNUyvYowKuJ4GubKISGLFuqX9itKyTK9KjZ5YhYxp4YwpGBgzh-Og0aAjirEALw_wcB. [Accessed: 04-Aug-2020].
+
+[2] “Personal health insurance,” Personal Health Insurance | Sun Life. [Online]. Available: https://www.sunlife.ca/en/explore-products/insurance/health-insurance/personal-health-insurance/. [Accessed: 04-Aug-2020].
+
+[3] “Personal Health &amp; Dental Insurance: Great-West Life in Canada,” Great. [Online]. Available: https://www.greatwestlife.com/you-and-your-family/products/protection-for-your-life/health-and-dental-insurance.html. [Accessed: 04-Aug-2020].
 
 ## Acknowledgements
 * https://www.traversymedia.com/
