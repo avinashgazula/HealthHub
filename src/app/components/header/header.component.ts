@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notifications/notification.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { LoginService } from './../../services/login/login.service';
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
         private loginService: LoginService,
         private snackBar: MatSnackBar,
         private notificationService: NotificationService,
+        private router: Router,
         private authService: AuthService
     ) {
         dialog.afterAllClosed.subscribe(() => {
@@ -66,6 +68,7 @@ export class HeaderComponent implements OnInit {
                     localStorage.clear();
                     this.isLoggedIn = false;
                     this.isDoctor = false;
+                    this.router.navigateByUrl('/')
                     this.snackBar.open('Succesfully logged out', '', {
                         duration: 3000,
                     });
