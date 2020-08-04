@@ -13,7 +13,7 @@
                 <p>Appointment time : {{appointment.time}}</p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-stroked-button class="stroked" (click)="acceptAppointment('a')">View Patient
+                <button mat-stroked-button class="stroked" (click)="viewPatientDetails(appointment.patientId)">View Patient
                     History</button>
                 <button mat-raised-button class="raised" (click)="acceptAppointment(appointment._id)">Accept
                     Appointment</button>
