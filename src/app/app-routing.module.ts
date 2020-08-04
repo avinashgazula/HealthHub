@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'insurance', component: InsurancefinderComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'question/:id/:category', component: QuestionitemComponent },
-  { path: 'insurance/:username/:age/:email/:gender/:salary', component: InsuranceitemComponent },
+  { path: 'insurance/specific', component: InsuranceitemComponent },
   { path: 'consult', component: DoctorComponent },
   { path: 'blogs', component: BlogshomeComponent },
   { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent },
