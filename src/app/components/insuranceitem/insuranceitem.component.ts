@@ -14,7 +14,6 @@ export class InsuranceitemComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private api: InsuranceService,private eRef: ElementRef) { }
   insuranceData: any = [];
-  userData: any = [];
   filteredinsuranceData: any = [];
   username: any = '';
   age: any = '';
@@ -26,10 +25,16 @@ export class InsuranceitemComponent implements OnInit {
   insdata: any = [];
   interested_message:string;
   hidebutton = false;
-  imageurl:any = '';
+  imageurl:any = 'usericon.png';
   error_message: any = '';
   userId:string = '';
   logincheck:string='';
+  userData = [{Id:'',
+    salary:'',
+    age: '',
+    profession: '',
+    email:'',
+    gender:''}]
 
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username');
@@ -100,6 +105,7 @@ export class InsuranceitemComponent implements OnInit {
   {
     this.api.getuserdetails(user_id)
       .subscribe(data => {
+        this.userData = [];
         for (const d of (data as any)) {
           this.userData.push({
             Id: d._id,
