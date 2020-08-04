@@ -40,11 +40,11 @@ export class SearchResultComponent implements OnInit {
       this.body = { keyword: this.keyword, searchfield: this.filter };
       this.http.post<any>(this.serverUrl + '/search/search-doctors', this.body).subscribe(results => {
         this.result = results;
-        if(this.result == null || this.result == undefined) {
+        if(this.result == null || this.result == undefined || this.result.length == 0) {
             this.resultSize = 0;
         }
         else{
-            this.resultSize = this.result.length();
+            this.resultSize = 1;
         }
       })
     }
