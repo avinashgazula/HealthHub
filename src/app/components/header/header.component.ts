@@ -65,6 +65,7 @@ export class HeaderComponent implements OnInit {
                 if (data.success) {
                     localStorage.clear();
                     this.isLoggedIn = false;
+                    this.isDoctor = false;
                     this.snackBar.open('Succesfully logged out', '', {
                         duration: 3000,
                     });

@@ -15,7 +15,8 @@
                             class="menu-item">Medicines</span></button>
                     <button href="#" *ngIf="isDoctor === false" mat-button [routerLink]="['/consult']"><span
                             class="menu-item">Consult</span></button>
-                    <button href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/homeCare']"><span
+                            class="menu-item">Home
                             Care</span></button>
                     <button href="#" mat-button [routerLink]="['/insurance']"><span
                             class="menu-item">Insurance</span></button>
@@ -45,7 +46,8 @@
                     <button href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></button>
                     <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/consult']"><span
                             class="menu-item">Consult</span></button>
-                    <button href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/homeCare']"><span
+                            class="menu-item">Home
                             Care</span></button>
                 </div>
             </div>
