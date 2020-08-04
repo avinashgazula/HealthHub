@@ -46,6 +46,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { BlogcontentComponent } from './components/blogcontent/blogcontent.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
@@ -71,16 +72,18 @@ import { ScheduleCareComponent } from './components/schedule-care/schedule-care.
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { WriteBlogComponent } from './components/write-blog/write-blog.component';
 import { AuthGuard } from './guard/auth.guard';
+import { DoctorAppointmentsService } from './services/appointment/doctorappointments.service';
+import { FeedbackService } from './services/feedback/feedback.service';
 import { InsuranceService } from './services/insurance/insurance.service';
 import { LoginService } from './services/login/login.service';
 import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
-import { DoctorAppointmentsService } from './services/appointment/doctorappointments.service';
 import { WriteblogService } from './services/writeblog/writeblog.service';
-import { FeedbackService } from './services/feedback/feedback.service';
-import { WriteBlogComponent } from './components/write-blog/write-blog.component';
+
+
 
 @NgModule({
     declarations: [
@@ -112,7 +115,8 @@ import { WriteBlogComponent } from './components/write-blog/write-blog.component
         MyOrdersComponent,
         FeedbackComponent,
         MedicalHistoryComponent,
-        WriteBlogComponent
+        WriteBlogComponent,
+        BlogcontentComponent
     ],
     imports: [
         BrowserModule,
@@ -160,7 +164,7 @@ import { WriteBlogComponent } from './components/write-blog/write-blog.component
         NgxPaginationModule,
         CdkScrollableModule,
     ],
-    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService,DoctorAppointmentsService, WriteblogService, FeedbackService],
+    providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService, DoctorAppointmentsService, WriteblogService, FeedbackService],
     bootstrap: [AppComponent],
     entryComponents: [LoginComponent, RegisterComponent]
 })

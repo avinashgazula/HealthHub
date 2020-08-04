@@ -1,22 +1,31 @@
+/* @author Sai Sunil Menta <ss734478@dal.ca> */
+
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Writeblog } from '../../model/writeblog.model';
 import { WriteblogService } from '../../services/writeblog/writeblog.service';
+
+
 declare var M: any;
 @Component({
-  selector: 'healthhub-write-blog',
-  templateUrl: './write-blog.component.html',
-  styleUrls: ['./write-blog.component.css']
+  selector: 'healthhub-blogcontent',
+  templateUrl: './blogcontent.component.html',
+  styleUrls: ['./blogcontent.component.css'],
+  providers:[WriteblogService]
 })
-export class WriteBlogComponent implements OnInit {
+
+
+export class BlogcontentComponent implements OnInit {
 
   constructor(public writeblogService: WriteblogService) { }
 
   ngOnInit() {
+    this.blog = history.state.blogObject;
     this.resetForm();
     this.refreshWriteblogList();
   }
-
+blog:any;
   resetForm(form?: NgForm) {
     if (form)
       form.reset();
@@ -68,5 +77,4 @@ export class WriteBlogComponent implements OnInit {
   }
 
 }
-
 
