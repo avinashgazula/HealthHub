@@ -39,8 +39,6 @@ export class SuggestdoctorComponent implements OnInit {
         this.suggestDoctorService.getSymtomList().subscribe((data) => {
             this.symptoms = data;
         });
-
-        console.log(this.symptoms)
         this.count = -1;
 
         this.selectedSymptoms = new Set();
@@ -66,8 +64,6 @@ export class SuggestdoctorComponent implements OnInit {
         this.suggestDoctorService.getSuggestedDoctor(this.suggestQuery).subscribe((doctorlist) => {
             this.doctorList = doctorlist;
             this.count = doctorlist.length;
-            console.log('length ' + this.count);
-            console.log(this.doctorList);
         }
         );
 
