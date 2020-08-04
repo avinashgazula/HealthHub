@@ -26,7 +26,10 @@ export class MedicalHistoryComponent implements OnInit {
   booleanUserType; //True: doctor False: consumer
   body;
   result;
-  personalInfo;
+  personalInfo = {
+    name: "",
+    email: ""
+  };
   BMI = 0;
 
   constructor(private builder: FormBuilder,
