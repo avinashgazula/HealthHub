@@ -1,20 +1,15 @@
-
 import { Component, OnInit } from '@angular/core';
+import { WriteblogService } from '../../services/writeblog/writeblog.service';
+import { FeedbackService } from '../../services/feedback/feedback.service';
 import { NgForm } from '@angular/forms';
 import { Writeblog } from '../../model/writeblog.model';
-import { WriteblogService } from '../../services/writeblog/writeblog.service';
-import { FeedbackService } from 'src/app/services/feedback/feedback.service';
-
-
 declare var M: any;
 @Component({
-  selector: 'app-writeblog',
-  templateUrl: './writeblog.component.html',
-  styleUrls: ['./writeblog.component.css'],
-  providers: [WriteblogService]
+  selector: 'healthhub-write-blog',
+  templateUrl: './write-blog.component.html',
+  styleUrls: ['./write-blog.component.css']
 })
-
-export class WriteblogComponent implements OnInit {
+export class WriteBlogComponent implements OnInit {
 
   constructor(public writeblogService: WriteblogService, public feedbackService: FeedbackService) { }
 
@@ -73,3 +68,5 @@ export class WriteblogComponent implements OnInit {
   }
 
 }
+
+
