@@ -55,6 +55,11 @@ export class InsurancefinderComponent implements OnInit {
     this.insuranceData = this.insuranceData.filter(option => option.insurancecompany == this.company || option.insurancename == this.iname || option.agegroup == this.age || option.premium == this.premiums);
   }
 
+  refresh()
+  {
+    this.getInsurances();
+  }
+  
  @HostListener('document:click', ['$event'])
  clicked_event(event) {
    if(this.eRef.nativeElement.contains(event.target)) {
