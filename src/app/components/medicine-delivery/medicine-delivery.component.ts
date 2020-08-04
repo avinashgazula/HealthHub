@@ -1,14 +1,13 @@
 /* @author Harshit Trivedi <harshit.trivedi@dal.ca> */
 
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { OrderMedicineService } from 'src/app/services/orderMedicine/orderMedicine.service';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { LoginComponent } from './../login/login.component';
 
 // defining the syntax of pharmacy names
 export interface StateGroup {
@@ -47,12 +46,6 @@ export class MedicineDeliveryComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,) {
 
-    // redirect to login page if user is not logged in
-    if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
-      localStorage.getItem('token') === undefined) {
-      this.dialog.closeAll();
-      this.dialog.open(LoginComponent, { disableClose: true });
-    }
 
     // GET call to fetch all the pharmacy names from pharmacylists table
     this.orderMedicineService.getPharmacyList().subscribe(

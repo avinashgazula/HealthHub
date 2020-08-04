@@ -1,10 +1,13 @@
 <!--  @author Avinash Gazula <agazula@dal.ca>  -->
 
+<button mat-icon-button tabindex="-1" class="close-button" [routerLink]="['/']" [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+</button>
 <div class="parent">
     <div class="container">
         <div class="register">
             <h3>Create a new Account</h3>
-            <mat-card-actions>
+            <mat-card-actions style="display: flex; flex-direction: row;">
                 <button (click)="selectConsumer()" [class.mat-raised-button]="consumer" mat-stroked-button>For
                     Consumers</button>
                 <button (click)="selectDoctor()" [class.mat-raised-button]="!consumer" mat-stroked-button>For
@@ -31,10 +34,10 @@
                     <mat-form-field appearance="standard">
                         <mat-label>Enter your password</mat-label>
                         <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
-                        <button mat-icon-button matSuffix (click)="hide = !hide">
+                        <button tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-hint align="end">Min Length 8. At least 1 Uppercase</mat-hint>
+                        <mat-hint align="end">Min Length 8. At least 1 Uppercase, Lowercase and Number</mat-hint>
                         <mat-error *ngIf="password.invalid">{{getPasswordError()}}
                         </mat-error>
                     </mat-form-field>
@@ -42,7 +45,7 @@
                     <mat-form-field appearance="standard">
                         <mat-label>Confirm Password</mat-label>
                         <input formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'">
-                        <button mat-icon-button matSuffix (click)="hide = !hide">
+                        <button tabindex="-1" mat-icon-button matSuffix (click)="hide = !hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                         <mat-error *ngIf="confirmPassword.invalid">

@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    position: relative;
+}
+.main-container {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 50px; /* footer height*/
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

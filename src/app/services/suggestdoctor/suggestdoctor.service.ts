@@ -8,6 +8,7 @@ import { environment } from './../../../environments/environment';
 
 @Injectable()
 export class SuggestDoctorService {
+
     serverUrl: string = environment.serverUrl;
 
     constructor(private httpClient: HttpClient) { }

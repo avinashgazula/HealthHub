@@ -1,11 +1,11 @@
 /* @author Avinash Gazula <agazula@dal.ca> */
 
-import { RegisterComponent } from './../register/register.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from './../../services/login/login.service';
+import { RegisterComponent } from './../register/register.component';
 import { ResetPasswordComponent } from './../reset-password/reset-password.component';
 
 @Component({

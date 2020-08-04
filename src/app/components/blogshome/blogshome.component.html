@@ -2,6 +2,18 @@
 <!-- Mat-Card element is adopted from Angular Material and made lot of changes by customizing with css.
   Form elemnts from Angular Material is also been used while designing form elemnts like buttons.
  -->
+
+<!-- <div style="margin-top: 50px; background-color:#001F3F;color: white;"class="container">
+  <div class="row justify-content-center">
+    <div style="text-align: center;" class="col">
+      You can also create your own blog
+  
+&nbsp;&nbsp;&nbsp;&nbsp;
+      <button [routerLink] = "['/writeblog']">Create Blog</button>
+    </div>
+  </div> 
+</div>
+
 <div class="container">
   <div class="row" style="padding: 10px;">
     <mat-card class="example-card">
@@ -203,7 +215,49 @@
         <button mat-stroked-button style="background-color:#001F3F; color: #fef8f2;" (click)="viewBlog()">View Full
           Blog</button>
       </mat-card-actions>
-    </mat-card>
-  </div>
+    </mat-card> -->
+<div style="margin-top: 50px; " class="container">
+  <div class="row justify-content-center">
+    <div style="text-align: center;" class="col">
+      <p style="font-size: 25px;"> You can also create your own blog</p>
 
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <button style="background-color:#001f3f;color:white;font-size:22px;border:1px solid black"
+        [routerLink]="['/writeblog']">Create Blog</button>
+    </div>
+  </div>
 </div>
+
+
+
+<div class="display-feedback">
+
+
+
+
+  <div class="container">
+    <div class="loop" *ngFor="let emp of writeblogService.Writeblog">
+      <br>
+      <br>
+      <div class="view-blog-content">
+        <div style="padding:20px;border:4px solid #001f3f;" class="card">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-2 col-lg-2">
+              <div class="image">
+                <img style="text-align: center;" src="./assets/avatar.png">
+              </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 col-md-10 col-lg-10">
+              <p style="font-size: 19px;"><b>{{emp.name}} </b>&nbsp;<br> <i style="color: #001f3f;font-weight:600">Blog
+                  Title: {{emp.title}}</i> </p>
+              <p style="font-size: 17px;"> {{emp.introduction}} </p>
+              <p><button (click)="click(emp)">View Full Blog</button></p>
+            </div>
+          </div>
+        </div>
+
+
+        <br>
+
+
+      </div>
