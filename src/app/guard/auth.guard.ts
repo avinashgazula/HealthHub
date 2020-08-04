@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): Promise<boolean> {
-    console.log('in canActivate');
 
     return new Promise((resolve, reject) => {
       if (isPlatformBrowser(this.platformId)) {

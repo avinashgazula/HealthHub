@@ -79,9 +79,7 @@ export class HeaderComponent implements OnInit {
     }
 
     markAsRead(id) {
-        console.log(id);
         this.notificationService.markAsRead(id).subscribe((data) => {
-            console.log('Notification marked as read ' + data);
         });
 
         this.notificationService.getNotifications().subscribe((data) => {

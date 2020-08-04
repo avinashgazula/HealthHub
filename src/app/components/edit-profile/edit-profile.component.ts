@@ -52,12 +52,9 @@ export class EditProfileComponent implements OnInit {
         newEmail: this.email.value,
         password: this.password.value,
       };
-      console.log(formData);
 
       this.editProfileService.editProfile(formData).subscribe(
         data => {
-          console.log(data);
-
           if (data.success) {
             localStorage.setItem("name", data.user.name)
             localStorage.setItem("email", data.user.email)
@@ -69,7 +66,6 @@ export class EditProfileComponent implements OnInit {
         }
       )
     } else {
-      console.log(`form invalid`);
 
     }
 
