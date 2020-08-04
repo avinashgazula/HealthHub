@@ -27,6 +27,7 @@ export class SearchResultComponent implements OnInit {
   filter;
   body;
   result;
+  resultSize;
 
   ngOnInit(): void {
     this.keyword = history.state.keyword;
