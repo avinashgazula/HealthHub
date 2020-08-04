@@ -1,15 +1,15 @@
 /* @author Avinash Gazula <agazula@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterComponent } from '../register/register.component';
+import { environment } from './../../../environments/environment';
+import { ResetPasswordService } from './../../services/reset-password/reset-password.service';
 import { LoginComponent } from './../login/login.component';
 
 
-import { environment } from './../../../environments/environment';
-import { ResetPasswordService } from './../../services/reset-password/reset-password.service';
 
 @Component({
   selector: 'healthhub-reset-password',
@@ -136,7 +136,7 @@ export class ResetPasswordComponent implements OnInit {
         data => {
           if (data.success) {
             this.openLoginPage();
-            this.snackBar.open('Verification token sent to ' + this.currentEmail, '', {
+            this.snackBar.open('Password reset succesfully', '', {
               duration: 500,
             });
           } else {

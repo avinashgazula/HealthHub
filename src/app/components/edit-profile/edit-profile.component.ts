@@ -1,9 +1,12 @@
-/* @author Rudra Makwana <rd851601@dal.ca> */
+/* @author Avinash Gazula <agazula@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
+import { environment } from './../../../environments/environment';
+import { EditProfileService } from './../../services/edit-profile/edit-profile.service';
 
 @Component({
   selector: 'healthhub-edit-profile',
@@ -13,12 +16,14 @@ import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
 export class EditProfileComponent implements OnInit {
 
   hide = true;
-  title = "Health Logger";
-  submitted = false;
-
   editProfileForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
+    private editProfileService: EditProfileService) {
     this.createForm();
   }
 
@@ -28,13 +33,9 @@ export class EditProfileComponent implements OnInit {
 
   createForm() {
     this.editProfileForm = this.formBuilder.group({
-      firstName: ['FirstName', Validators.required],
-      lastName: ['LastName', Validators.required],
-      emailID: ['someone@dal.ca', [Validators.required, Validators.email]],
-      password: ['Abcd@123', [Validators.required, Validators.pattern('(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}')]],
-      confirmPassword: ['Abcd@123', [Validators.required]]
-    }, {
-      validator: MatchPasswords('password', 'confirmPassword')
+      name: [localStorage.getItem("name")],
+      email: [localStorage.getItem("email"), [Validators.email]],
+      password: [null, [Validators.pattern(environment.passwordRegex)]]
     });
   }
 
@@ -42,20 +43,39 @@ export class EditProfileComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  get f() { return this.editProfileForm.controls; }
-
   edit() {
-    this.submitted = true;
+    if (this.editProfileForm.valid) {
+      var formData = {
+        name: this.name.value,
+        type: localStorage.getItem('userType'),
+        currentEmail: localStorage.getItem('email'),
+        newEmail: this.email.value,
+        password: this.password.value,
+      };
 
-    if (this.editProfileForm.invalid) {
-      return;
+      this.editProfileService.editProfile(formData).subscribe(
+        data => {
+          if (data.success) {
+            localStorage.setItem("name", data.user.name)
+            localStorage.setItem("email", data.user.email)
+            this.dialog.closeAll();
+            this.snackBar.open('Profile Updated!', '', {
+              duration: 3000,
+            });
+          }
+        }
+      )
+    } else {
+
     }
 
-    // display form values on success
-    alert('SUCCESS!!');
   }
 
-  get emailID() {
+  get name() {
+    return this.editProfileForm.get('name');
+  }
+
+  get email() {
     return this.editProfileForm.get('email');
   }
 
@@ -63,14 +83,11 @@ export class EditProfileComponent implements OnInit {
     return this.editProfileForm.get('password')
   }
 
-  get confirmPassword() {
-    return this.editProfileForm.get('confirmPassword')
-  }
-  getEmailIDError = () => {
-    if (this.emailID.hasError('required')) {
+  getEmailError = () => {
+    if (this.email.hasError('required')) {
       return 'Email is required';
     }
-    return this.emailID.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   };
 
   getPasswordError = () => {
@@ -80,11 +97,5 @@ export class EditProfileComponent implements OnInit {
     return 'Password must be atleast 8 characters long and have at least one uppercase, lowercase character and a symbol'
   }
 
-  getConfirmPasswordError = () => {
-    if (this.confirmPassword.hasError('required')) {
-      return 'Password is required';
-    }
-    return 'Passwords do not match'
-  }
 
 }

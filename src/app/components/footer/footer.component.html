@@ -1,150 +1,18 @@
-<!-- <div class="footer" id="backmain">
-    <br>
-    <div class="container" style="color: white;">
-        <div class="row">
-          <div class="col-sm">
-           <h1>Doctors</h1>
-           <br>
-            <p>Top Doctors</p>
-            <p>Find Doctors Online</p>
-          </div>
-          <div class="col-sm">
-            <h1>Insurance</h1>
-            <br>
-            <p><a routerLink="/insurance">Top Insurance Providers</a></p>
-            <p><a routerLink="/insurance">Find Insurance Online</a></p>
-          </div>
-          <div class="col-sm">
-            <h1>Medicines</h1>
-            <br>
-            <p>COVID Medicines</p>
-            <p>Trending Medicines</p>
-            <p><a routerLink="/orderMedicine">Medicines Online</a></p>
-          </div>
-          <div class="col-sm">
-            <h1>About Us</h1>
-            <br>
-            <p><a routerLink="/forum">Check online Forum</a></p>
-            <p><a routerLink="/contactUs">Contact Us</a></p>
-            <p><a routerLink="/aboutUs">About HealthHub</a></p>
-          </div>
-        </div>
-      </div>
-   </div> -->
+<!-- /* @author Avinash Gazula <agazula@dal.ca> */ -->
 
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<div class="footer">
-
-  <div style="display: flex;
-    flex-direction: row;" id="row">
-    <!-- <div class="container"> -->
-    <div style="margin-top:20px" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-      <div class="row justify-content-center">
-        <a href="#">About Us</a>
-      </div>
-      <div class="row justify-content-center">
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="row justify-content-center">
-        <a href="#">Privacy Policy</a>
-      </div>
-      <div class="row justify-content-center">
-        <a href="#">Terms and Conditions</a>
-      </div>
-      <br>
-      <div class="row justify-content-center">
-        <img src="./assets/google.png">
-        &nbsp;
-        <img src="./assets/apple.png">
-
-      </div>
-
+<footer fxLayout="column">
+  <div class="copyright" fxLayout="row" fxLayout.lt-sm="column">
+    <div style="margin-left: 2%;" fxLayout="row">
+      <button class="link" mat-button [routerLink]="['/aboutUs']">
+        <h3>About HealthHub</h3>
+      </button>
+      <button class="link" mat-button [routerLink]="['/contactUs']">
+        <h3>Contact Us</h3>
+      </button>
     </div>
-    <div style="margin-top:20px" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-      <div class="row justify-content-center">
-        <h4>Our Associates</h4>
-      </div>
-      <div class="row justify-content-center">
-        <a href="#">Link A</a>
-      </div>
-      <div class="row justify-content-center">
-        <a href="#">Link B</a>
-      </div>
-      <div class="row justify-content-center">
-        <a href="#">Link C</a>
-      </div>
-
-    </div>
-    <div style="margin-top:20px" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-      <div class="row justify-content-center">
-        <h4>Latest Blog</h4>
-      </div>
-      <div class="row justify-content-center">
-        <h5>Covid 19</h5>
-      </div>
-      <div class="row justify-content-center">
-        <p style="font-size:13px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et nulla arcu.
-          Nullam vitae mauris facilisis, pharetra arcu a, porttitor diam.</p>
-      </div>
-      <br>
-      <div class="row justify-content-center">
-        <a id="footer-button" class="waves-effect waves-light btn">View More</a>
-      </div>
-
-
-    </div>
-    <div style="margin-top:20px" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-      <div class="row justify-content-center">
-        <h3>Get Connected</h3>
-      </div>
-      <div class="row justify-content-center">
-
-        <a id="social-row" href="#" class="fa fa-facebook"></a>
-        <a id="social-row" href="#" class="fa fa-twitter"></a>
-        <a id="social-row" href="#" class="fa fa-instagram"></a>
-        <a id="social-row" href="#" class="fa fa-youtube"></a>
-
-        <!-- </div> -->
-      </div>
+    <div style="margin-right: 2%; margin-left: 5%;" fxLayout="row">
+      <mat-icon class="logo">local_hospital</mat-icon>
+      <h4> Healthhub<sup>&copy;</sup> All Rights Reserved</h4>
     </div>
   </div>
-
-
-
-
-  <style>
-    .fa {
-      font-size: 25px;
-
-
-    }
-
-    #social-row {
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-
-    a {
-      color: white;
-      font-size: 18px;
-      font-weight: 500;
-      text-decoration: underline;
-    }
-
-    #footer-button {
-      margin-top: -15px;
-      background: black;
-      color: white;
-      font-weight: 400;
-      font-size: 15px;
-      border-radius: 15px 1px 15px 1px;
-    }
-
-    #row {
-
-      margin-bottom: 0px;
-
-    }
-  </style>
+</footer>

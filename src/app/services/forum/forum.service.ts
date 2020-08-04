@@ -1,10 +1,10 @@
 /* @author Vidip Malhotra <vidip.malhotra@dal.ca> */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Question } from '../../model/question';
+import { environment } from '../../../environments/environment';
 import { Answer } from '../../model/answer';
+import { Question } from '../../model/question';
 import { Upvote } from '../../model/upvote';
-import { environment } from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,6 @@ export class ForumService {
   submitquestion(dataobject: Question) {
 
     return this.http.post(this.serverUrl + '/questions/', dataobject).toPromise().then(data => {
-      console.log(data);
     });
   }
 
@@ -39,19 +38,16 @@ export class ForumService {
 
   submitanswer(dataobject: Answer) {
     return this.http.post(this.serverUrl + '/answers/', dataobject).toPromise().then(data => {
-      console.log(data);
     });
   }
 
   upvotequestion(id, dataobject: Upvote) {
     return this.http.post(this.serverUrl + '/questions/upvote/' + id, dataobject).toPromise().then(data => {
-      console.log(data);
     });
   }
 
   upvoteanswer(id, dataobject: Upvote) {
     return this.http.post(this.serverUrl + '/answers/upvote/' + id, dataobject).toPromise().then(data => {
-      console.log(data);
     });
   }
 

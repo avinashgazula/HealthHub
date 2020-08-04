@@ -2,10 +2,10 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// Angular Material imports 
+// Angular Material imports
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -46,6 +46,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { BlogcontentComponent } from './components/blogcontent/blogcontent.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
@@ -61,6 +62,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
 import { LoginComponent } from './components/login/login.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
 import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
@@ -70,10 +72,17 @@ import { ScheduleCareComponent } from './components/schedule-care/schedule-care.
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { WriteBlogComponent } from './components/write-blog/write-blog.component';
+import { AuthGuard } from './guard/auth.guard';
+import { DoctorAppointmentsService } from './services/appointment/doctorappointments.service';
+import { FeedbackService } from './services/feedback/feedback.service';
 import { InsuranceService } from './services/insurance/insurance.service';
 import { LoginService } from './services/login/login.service';
+import { NotificationService } from './services/notifications/notification.service';
 import { RegistrationService } from './services/registration/registration.service';
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
+import { WriteblogService } from './services/writeblog/writeblog.service';
+
 
 
 @NgModule({
@@ -105,6 +114,9 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
     SearchResultComponent,
     MyOrdersComponent,
     FeedbackComponent,
+    MedicalHistoryComponent,
+    WriteBlogComponent,
+    BlogcontentComponent
   ],
   imports: [
     BrowserModule,
@@ -152,7 +164,7 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
     NgxPaginationModule,
     CdkScrollableModule,
   ],
-  providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService],
+  providers: [AuthGuard, InsuranceService, RegistrationService, LoginService, SuggestDoctorService, NotificationService, DoctorAppointmentsService, WriteblogService, FeedbackService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })

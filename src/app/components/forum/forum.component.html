@@ -43,6 +43,7 @@
     <div class="row">
       <div class="col-8" id="mainques">
         <h2>Questions</h2>
+        <p>{{error_message}}</p>
         <table>
           <tr *ngFor="let data of forumData | paginate: {itemsPerPage: 4, currentPage:page}"
             id="tablerow">

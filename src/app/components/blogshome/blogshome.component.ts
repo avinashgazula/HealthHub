@@ -1,23 +1,102 @@
 /* @author Sai Sunil Menta <ss734478@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Writeblog } from '../../model/writeblog.model';
+import { WriteblogService } from '../../services/writeblog/writeblog.service';
 
+
+
+
+declare var M: any;
 @Component({
   selector: 'healthhub-blogshome',
   templateUrl: './blogshome.component.html',
-  styleUrls: ['./blogshome.component.css']
+  styleUrls: ['./blogshome.component.css'],
+  providers: [WriteblogService]
 })
+
+
 export class BlogshomeComponent implements OnInit {
+  isDoctor: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(public writeblogService: WriteblogService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.resetForm();
+    this.refreshWriteblogList();
+
+    if (localStorage.getItem('userType') !== null && localStorage.getItem('userType') === "doctor") {
+      this.isDoctor = true;
+    }
+
+  }
+  resetForm(form?: NgForm) {
+    if (form)
+      form.reset();
+    this.writeblogService.selectedWriteblog = {
+      _id: "",
+      name: "",
+      title: "",
+      introduction: "",
+      content: ""
+
+    }
   }
 
-  viewBlog() {
-
-    this.router.navigate(['/single-blog']);
+  onSubmit(form: NgForm) {
+    if (form.value._id == "") {
+      this.writeblogService.postWriteblog(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshWriteblogList();
+        M.toast({ html: 'Your feedback has been saved successfully', classes: 'rounded' });
+      });
+    }
+    else {
+      this.writeblogService.putWriteblog(form.value).subscribe((res) => {
+        this.resetForm(form);
+        this.refreshWriteblogList();
+        M.toast({ html: 'Updated successfully', classes: 'rounded' });
+      });
+    }
   }
+
+  refreshWriteblogList() {
+    this.writeblogService.getWriteblogList().subscribe((res) => {
+      this.writeblogService.Writeblog = res as Writeblog[];
+    });
+  }
+
+  onEdit(emp: Writeblog) {
+    this.writeblogService.selectedWriteblog = emp;
+  }
+
+  onDelete(_id: string, form: NgForm) {
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.writeblogService.deleteWriteblog(_id).subscribe((res) => {
+        this.refreshWriteblogList();
+        this.resetForm(form);
+        M.toast({ html: 'Deleted successfully', classes: 'rounded' });
+      });
+    }
+  }
+
+  name: string
+  title: string;
+  content: string;
+  introduction: string;
+  id: string;
+  click = (blog) => {
+    this.name = blog.name;
+    this.title = blog.title;
+    this.content = blog.content;
+
+    this.introduction = blog.introduction;
+
+    this.id = blog._id;
+    this.router.navigateByUrl('/blogcontent', { state: { blogObject: blog } });
+  };
 
 }
+

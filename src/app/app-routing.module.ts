@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { BlogcontentComponent } from './components/blogcontent/blogcontent.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
@@ -14,20 +15,25 @@ import { HomeCareComponent } from './components/home-care/home-care.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { InsurancefinderComponent } from './components/insurancefinder/insurancefinder.component';
 import { InsuranceitemComponent } from './components/insuranceitem/insuranceitem.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
 import { MedicineDeliveryComponent } from './components/medicine-delivery/medicine-delivery.component';
 import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-orders.component';
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
+import { WriteBlogComponent } from './components/write-blog/write-blog.component';
+import { AuthGuard } from './guard/auth.guard';
+
 
 const routes: Routes = [
 
   { path: 'consult', component: DoctorComponent },
+  { path: 'writeblog', component: WriteBlogComponent },
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'single-blog', component: BlogComponent },
-  { path: 'orderMedicine', component: MedicineDeliveryComponent },
+  { path: 'orderMedicine', component: MedicineDeliveryComponent, canActivate: [AuthGuard] },
   { path: 'my-orders', component: MyOrdersComponent },
   { path: 'homeCare', component: HomeCareComponent },
   { path: 'aboutUs', component: AboutUsComponent },
@@ -36,14 +42,16 @@ const routes: Routes = [
   { path: 'insurance', component: InsurancefinderComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'question/:id/:category', component: QuestionitemComponent },
-  { path: 'insurance/:username/:age/:email/:gender/:salary', component: InsuranceitemComponent },
+  { path: 'insurance/specific', component: InsuranceitemComponent },
   { path: 'consult', component: DoctorComponent },
   { path: 'blogs', component: BlogshomeComponent },
   { path: 'view-doctor-appointments', component: ViewDoctorAppointmentsComponent },
   { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'suggest', component: SuggestdoctorComponent },
+  { path: 'suggest', component: SuggestdoctorComponent, canActivate: [AuthGuard] },
   { path: 'details', component: DoctorDetailsComponent },
   { path: 'searchresult', component: SearchResultComponent },
+  { path: 'medical-history', component: MedicalHistoryComponent },
+  { path: 'blogcontent', component: BlogcontentComponent },
 ];
 
 @NgModule({

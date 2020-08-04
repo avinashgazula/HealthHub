@@ -1,38 +1,48 @@
 <!-- /* @author Avinash Gazula <agazula@dal.ca> */ -->
 
 <body style="margin-bottom:50px;" fxLayout="column">
-    <section style="margin-top: 10px;" fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="center center"
-        fxLayoutGap="5%">
-        <img class="profile-picture" src={{doctorImageSrc}} alt="Profile Picture">
+    <section *ngIf="doctor" style="margin-top: 10px;" fxLayout.gt-md="row" fxLayout.lt-md="column"
+        fxLayoutAlign="center center" fxLayoutGap="5%">
+        <img class="profile-picture" src={{doctor.image_url}} alt="Profile Picture">
         <article class="details-container">
-            <h2>{{doctorName}}</h2>
-            <h3>{{doctorSpecialization}}</h3>
-            <h4>{{doctorDescription}}</h4>
-            <h4 style="font-weight: bold; margin-top: 5px;">Location: <h4>{{doctorLocation}}</h4>
+            <h2>{{doctor.name}}</h2>
+            <h3>{{doctor.specialization}}</h3>
+            <h4>{{doctor.description}}</h4>
+            <h4 style="font-weight: bold; margin-top: 5px;">Location: <h4>{{doctor.location}}</h4>
             </h4>
-            <h4 style="font-weight: bold; margin-top: 5px;">Fee: <h4>{{doctorFee}}</h4>
+            <h4 style="font-weight: bold; margin-top: 5px;">Fee: <h4>{{doctor.fee}}</h4>
             </h4>
             <h2>Appointments</h2>
-            <div class="appointment-container" fxLayout="column">
+            <form class="appointment-container" fxLayout="column" [formGroup]="appointmentForm">
                 <mat-form-field>
                     <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input (dateChange)="onDateChange()" (click)="picker.open()" (keydown)="false"
+                        formControlName="date" matInput [matDatepicker]="picker" [min]="todayDate">
+                    <mat-error *ngIf="date.invalid && date.touched">
+                        Please select a date
+                    </mat-error>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
+
                 </mat-form-field>
                 <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutGap="2%">
-                    <button disabled mat-stroked-button (click)="selectTime1()" [class.mat-raised-button]="time1">09:00
+                    <button [disabled]="reservedSlotsIndex[0]" mat-stroked-button (click)="selectTime1()"
+                        [class.mat-raised-button]="timeSlots[0]">09:00
                         AM</button>
-                    <button mat-stroked-button (click)="selectTime2()" [class.mat-raised-button]="time2">11:00
+                    <button [disabled]="reservedSlotsIndex[1]" mat-stroked-button (click)="selectTime2()"
+                        [class.mat-raised-button]="timeSlots[1]">11:00
                         AM</button>
-                    <button mat-stroked-button (click)="selectTime3()" [class.mat-raised-button]="time3">02:00
+                    <button [disabled]="reservedSlotsIndex[2]" mat-stroked-button (click)="selectTime3()"
+                        [class.mat-raised-button]="timeSlots[2]">02:00
                         PM</button>
-                    <button mat-stroked-button (click)="selectTime4()" [class.mat-raised-button]="time4">04:00
+                    <button [disabled]="reservedSlotsIndex[3]" mat-stroked-button (click)="selectTime4()"
+                        [class.mat-raised-button]="timeSlots[3]">04:00
                         PM</button>
                 </div>
                 <br>
-                <button (click)="confirmAppointment()" class="confirm" mat-raised-button>Book Appointment</button>
-            </div>
+                <button type="submit" (click)="confirmAppointment()" class="confirm" mat-raised-button>Book
+                    Appointment</button>
+            </form>
         </article>
 
     </section>

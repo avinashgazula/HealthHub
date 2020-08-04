@@ -1,13 +1,30 @@
-/* .footer{
-    background-color:#09335e;
-} */
+/* @author Avinash Gazula <agazula@dal.ca> */
 
-.footer{
-    
-    bottom:0; 
-    background:#001F3F;
-     color:white;
-      font-size:17px;
-       font-weight:500;
+footer {
+    background-color: #001f3f;
+    color: white;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
 }
 
+.copyright {
+    color: white;
+    justify-content: space-between;
+    margin: 5% 0;
+}
+
+h4,
+h3 {
+    margin: auto 0 !important;
+}
+
+@media screen and (max-width: 500px) {
+    h3 {
+        font-size: 14px !important;
+    }
+
+    h4 {
+        font-size: 12px !important;
+    }
+}
