@@ -33,6 +33,8 @@ export class QuestionitemComponent implements OnInit {
   alert_message: string;
   vote_alert: string;
   vote_alert_message: string;
+  error_message:string="";
+  error_message2:string="";
 
   voted(id) {
     let item = this.answers.find(option => option.id == id);
@@ -109,6 +111,8 @@ export class QuestionitemComponent implements OnInit {
             category: d.category
           });
         }
+      }, (error) => {
+        this.error_message2 = "Backend Error. Please try again after some time."
       });
   }
 
@@ -126,6 +130,8 @@ export class QuestionitemComponent implements OnInit {
             user_id: d.user_id
           });
         }
+      },(error) => {
+        this.error_message = "Backend Error. Please try again after some time."
       });
   }
 
@@ -143,6 +149,8 @@ export class QuestionitemComponent implements OnInit {
           });
         }
 
+      }, (error) => {
+        this.error_message = "Backend Error. Please try again after some time."
       });
 
     this.api.getsimilarquestions(category)
@@ -159,6 +167,8 @@ export class QuestionitemComponent implements OnInit {
           });
         }
         this.allQuestions = this.allQuestions.filter(option => option.question_id != id);
+      }, (error) => {
+        this.error_message2 = "Backend Error. Please try again after some time."
       });
 
   }

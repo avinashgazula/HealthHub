@@ -152,7 +152,7 @@ import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.ser
     NgxPaginationModule,
     CdkScrollableModule,
   ],
-  providers: [InsuranceService, RegistrationService, LoginService, SuggestDoctorService],
+  providers: [RegistrationService, LoginService, SuggestDoctorService],
   bootstrap: [AppComponent],
   entryComponents: [LoginComponent, RegisterComponent]
 })

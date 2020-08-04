@@ -33,6 +33,7 @@
       <p id="emptyp"></p>
       <div class="container">
         <br>
+        <p>{{error_message}}</p>
         <div class="row" *ngFor="let data of answers" id="emptyp">
           <br><br><br><br>
           <div class="col-sm-3" style="margin-top: 5%;">
@@ -53,6 +54,7 @@
     </div>
     <div class="col-4">
       <h3 style="">Similar Questions</h3>
+      <p>{{error_message2}}</p>
       <p *ngFor="let data of allQuestions"> <span routerLink="/question/{{data.question_id}}/{{data.category}}"
           id="similarques">{{data.question}}</span></p>
     </div>

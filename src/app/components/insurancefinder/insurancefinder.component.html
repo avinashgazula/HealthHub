@@ -8,7 +8,7 @@
   <div class="card" id="maincard">
     <h2 style="text-align: center; margin-top: 5%;">Find Personalized Health Insurance:</h2>
     <div class="card-body" style="overflow-y: scroll;">
-      <div class="container">
+      <div class="container" style="max-height: 100%">
         <form #insuranceForm="ngForm" [hidden]="checker" (ngSubmit)="onSubmit(insuranceForm)">
           <div class="row">
             <div class="col-sm">
@@ -99,20 +99,54 @@
                   is Required</div>
               </div>
             </div>
+
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Profession</label>
+                <select class="form-control" name="profession" #profession="ngModel" profession="true" [(ngModel)]="uprofession"
+                  required>
+                  <option value="Student">Student</option>
+                  <option value="Employed">Employed</option>
+                  <option value="Business">Business</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="profession.touched && !profession.valid && profession.errors.required">Profession
+                  is Required</div>
+              </div>
+            </div>
+
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Category</label>
+                <select class="form-control" name="category" #category="ngModel" category="true" [(ngModel)]="ucategory"
+                  required>
+                  <option value="Total Protection">Total Protection</option>
+                  <option value="Only Dental Care">Only Dental Care</option>
+                  <option value="International Health Plans">International Health Plans</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="category.touched && !category.valid && category.errors.required">Category
+                  is Required</div>
+              </div>
+            </div>
+
           </div>
           <br>
           <button type="submit" class="btn btn-info" id="submitbutton"
             [disabled]="fName === '' || uemail === '' || uphone === '' || uage === '' || usalary === '' || ugender === ''">Submit</button>
+            <br>
+            <p style="text-align: center;">{{userlogin}}</p>
         </form>
-        <div [hidden]="submitted" id="userfield"><img src="assets/greenicon.png" alt="image"
+        <div [hidden]="submitted"><img src="assets/greenicon.png" alt="image"
             style="margin-left: 30%;" />
           <br>
           <h2 style="text-align: center;">Your Response has been submitted</h2>
           <button type="button" class="btn btn-info" id="button"
-            routerLink="/insurance/{{fName}}/{{uage}}/{{uemail}}/{{ugender}}/{{usalary}}"
-            style="text-align: center; margin-left: 11%;">See Peronsalised Health Plans</button>
+            routerLink="/insurance/specific"
+            style="text-align: center; margin-left: 25%;">See Peronsalised Health Plans</button>
         </div>
-
+        <br>
+        <button type="button" class="btn btn-info" id="button"
+        routerLink="/insurance/specific/"
+        style="text-align: center; margin-left: 28%;" [hidden]="optional">Health Plans as per Pre Filled Data</button>
       </div>
     </div>
   </div>
@@ -121,7 +155,7 @@
     <div class="row">
       <div class="col-sm-8" style="background-color: #f6f7f8;">
         <h2>Top Health Plans</h2>
-        <div *ngFor="let data of insuranceData">
+        <div *ngFor="let data of insuranceData;">
           <div class="card">
             <div class="card-header">
               {{data.insurancecompany}}
@@ -133,12 +167,14 @@
                     <img src="assets/insurance.jpg" alt="image" />
                   </div>
                   <div class="col-sm-8">
-                    <h3 class="card-title">{{data.insurancename}} &nbsp;&nbsp;&nbsp;&nbsp;<span
-                        class="badge badge-info">{{data.type}}</span></h3>
+                    <h2 class="card-title">{{data.insurancename}} &nbsp;&nbsp;&nbsp;&nbsp;<span
+                        class="badge badge-info">{{data.type}}</span></h2>
                     <p class="card-text">{{data.insurancedetails}}</p>
-                    <h2 style="text-align: right;">Price: CAD {{data.premium}} <span style="font-size: 12px;">per
+                    <h2 style="text-align: right;"><span style="font-size: 16px; color:cadetblue;">Dental Care Coverage: {{data.dentalcare}} &nbsp;&nbsp;&nbsp;</span>Price: CAD {{data.premium}} <span style="font-size: 12px;">per month
                         {{data.payduration}}</span></h2>
-                    <a href="#" class="btn btn-primary">Take me to Company's Website</a>
+                    <button type="button" class="btn btn-primary" (click)="interested(data.Id)" [hidden]="!hidebutton">Interested</button>
+                    <br>
+                   <p id="{{data.Id}}" *ngIf="Index == data.Id">{{interested_message}}</p> 
                   </div>
                 </div>
               </div>
@@ -146,6 +182,8 @@
           </div>
           <br>
         </div>
+        <p>{{data_error}}</p>
+        <p>{{error_message}}</p>
 
       </div>
       <div class="col-sm">
@@ -166,13 +204,6 @@
               [(ngModel)]="iname" (ngModelChange)="dataChanged($event,'name')" required="true">
               <option *ngFor="let data of insuranceDatafilter" value={{data.insurancename}}>{{data.insurancename}}
               </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Age Group</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="agegroup" #agegroup="ngModel"
-              [(ngModel)]="age" (ngModelChange)="dataChanged($event,'age')" required="true">
-              <option *ngFor="let data of insuranceDatafilter" value={{data.agegroup}}>{{data.agegroup}}</option>
             </select>
           </div>
           <div class="form-group">

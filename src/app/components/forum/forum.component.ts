@@ -25,6 +25,7 @@ export class ForumComponent implements OnInit {
   originalData: any = [];
   alert_message: string;
   page: number = 1;
+  error_message:string = '';
   constructor(private router: Router, private api: ForumService) { }
 
   ngOnInit(): void {
@@ -96,6 +97,8 @@ export class ForumComponent implements OnInit {
         }
         this.originalData = this.forumData;
         this.forumFilter = ['COVID', 'Dental', 'Ortho', 'Digestive', 'Eyes'];
+      }, (error) => {
+        this.error_message = "Backend Error. Please try again after some time."
       });
   }
 }
