@@ -81,6 +81,7 @@ import { DoctorAppointmentsService } from './services/appointment/doctorappointm
 import { WriteblogService } from './services/writeblog/writeblog.service';
 import { WriteblogComponent } from './components/writeblog/Writeblog.component';
 import { FeedbackService } from './services/feedback/feedback.service';
+import { BlogcontentComponent } from './components/blogcontent/blogcontent.component';
 
 
 
@@ -114,7 +115,8 @@ import { FeedbackService } from './services/feedback/feedback.service';
         MyOrdersComponent,
         FeedbackComponent,
         MedicalHistoryComponent,
-        WriteblogComponent
+        WriteblogComponent,
+        BlogcontentComponent
     ],
     imports: [
         BrowserModule,

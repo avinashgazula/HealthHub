@@ -1,59 +1,80 @@
 <div style="font-family: Roboto, Helvetica Neue, sans-serif;" class="container">
     <div class="feedback-form">
         <div style="text-align: center;" class="add-comment">
-            <div style="font-family: Roboto, Helvetica Neue, sans-serif;" class="row justify-content-center">
-
-                <h3><b>Write A Feedback</b></h3>
+            <div style="font-family: Roboto, Helvetica Neue, sans-serif;margin-top:30px" class="row justify-content-center">
+<br>
+<br>
+                <h3><b>Write Your Blog !</b></h3>
                 <br>
                 <br>
             </div>
             <div class="card">
-                <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)">
+                <form #writeblogForm="ngForm" (ngSubmit)="onSubmit(writeblogForm)">
                     <input type="hidden" name="_id" #_id="ngModel"
-                        [(ngModel)]="feedbackService.selectedFeedback._id">
+                        [(ngModel)]="writeblogService.selectedWriteblog._id">
+                        <div class="row justify-content-center">
+
+                            <div class="input-1">
+                                <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    <label id="label-title">Enter your name</label>
+                                </div>
+                                <div style="margin-top:-5px" class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                                    <div class="input-field">
+                                        <input required type="text" name="name" #name="ngModel"
+                                            [(ngModel)]="writeblogService.selectedWriteblog.name"
+                                            placeholder="Enter name " required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        
 
                     <div class="row justify-content-center">
 
                         <div class="input-1">
                             <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-                                <label id="label-title">Name *</label>
+                                <label id="label-title">Enter the title of the blog</label>
                             </div>
                             <div style="margin-top:-5px" class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
                                 <div class="input-field">
-                                    <input required type="text" name="name" #name="ngModel"
-                                        [(ngModel)]="feedbackService.selectedFeedback.name"
-                                        placeholder="Enter full name" required>
+                                    <input required type="text" name="title" #title="ngModel"
+                                        [(ngModel)]="writeblogService.selectedWriteblog.title"
+                                        placeholder="Enter title " required>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div style="margin-top: 25px;" class="row justify-content-center">
+                    <!-- <div style="margin-top: 25px;" class="row justify-content-center">
 
                         <div class="input-1">
                             <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
 
-                                <label id="label-title">Date *</label>
+                                <label id="label-title">Write a brief introdution to your blog *</label>
 
                             </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                            <div  class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
 
-                                <div class="input-field">
-                                    <input required type="text" name="date" #date="ngModel"
-                                        [(ngModel)]="feedbackService.selectedFeedback.date"
-                                        placeholder="Enter today's date">
+                            
+                                    <div class="row">
+                                        <div class="input-field ">
+                                            <input  required type="text" style="height: 50px; width: inherit;" name="introduction"
+                                                #introduction="ngModel" [(ngModel)]="writeblogService.selectedWriteblog.introduction"
+                                                placeholder="">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                          
                         </div>
-                    </div>
-
+                    </div> -->
                     <div style="margin-top: 25px;" class="row justify-content-center">
 
 
                         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
 
-                            <label style="text-align: left;" id="label-title">Feedback *</label>
+                            <label style="text-align: left;" id="label-title">Write a brief introduction for your blog.</label>
 
                         </div>
 
@@ -67,17 +88,42 @@
                     </div>
                     <div class="row">
                         <div class="input-field col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                            <input required type="text" style="height: 70px; width: inherit;" name="feedback"
-                                #feedback="ngModel" [(ngModel)]="feedbackService.selectedFeedback.feedback"
-                                placeholder="Enter your feedback">
+                            <textarea class="form-control" required type="text" style="height: 80px; width: inherit;" name="introduction"
+                                #introduction="ngModel" [(ngModel)]="writeblogService.selectedWriteblog.introduction"
+                                >introdution</textarea>
+                        </div>
+                    </div>
+               
+
+                    <div style="margin-top: 25px;" class="row justify-content-center">
+
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+
+                            <label style="text-align: left;" id="label-title">Write the content for your blog.</label>
+
+                        </div>
+
+
+
+                        <div class="input-field">
+                            <br>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <textarea required type="text" style="height: 800px; width: inherit;" name="content"
+                                #content="ngModel" [(ngModel)]="writeblogService.selectedWriteblog.content"
+                                >write here</textarea>
                         </div>
                     </div>
                     <div style="margin-top: 45px;" class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-custom right" id="submit-button" type="button"
-                                (click)="resetForm(feedbackForm)">Reset</button>
+                          
                             <button class="btn btn-custom right" id="reset-button" type="submit"
-                                [disabled]="!feedbackForm.valid">Submit Feedback</button>
+                                [disabled]="!writeblogForm.valid">Create Blog</button>
                         </div>
                     </div>
 
@@ -95,158 +141,17 @@
             background: gainsboro;
             border: 2px solid lavender;
         }
-        
-body {
-    width: 100%;
-}
 
-.profile-picture {
-    max-width: 500px;
-    max-height: 400px;
-    object-fit: cover;
-}
+        textarea{
+            margin-top: 1px;
+            width: 300px;
+            border-radius: 3px;
+            height: 40px;
+            background: gainsboro;
+            border: 2px solid lavender;
+        }
 
-.details-container{
-    width: 40%;
-}
-
-.confirm{
-    background-color: #001f3f !important;
-    color: white !important;
-    width: fit-content;
-}
-
-.mat-raised-button{
-    background-color: #2E8B57;
-    color: white;
-}
-
-mat-icon {
-    color: #ffc700;
-}
-
-body{
-    width: 100%;
-    overflow-x: hidden;
-    margin: 0 auto;
-}
-
-.example-card {
-    max-width: 250px;
-}
-
-.review-container{
-    width: 70%;
-    margin: 0 auto;
-}
-
-.card-header {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: white;
-}
-:host /deep/ .mat-card-header-text{
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-mat-card-title {
-    font-size: 80% !important;
-    width: 120px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis !important;
-}
-
-.scroll-container{
-    overflow-x: auto;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #001F3F #F5F5F5;
-}
-
-/* Works on Chrome/Edge/Safari */
-*::-webkit-scrollbar {
-  width: 12px;
-}
-*::-webkit-scrollbar-track {
-  background: #F5F5F5;
-  border-radius: 20px;
-}
-*::-webkit-scrollbar-thumb {
-  background-color: #001F3F;
-  border-radius: 20px;
-  border: 3px solid #F5F5F5;
-}
-
-mat-grid-list {
-    flex-direction: row;
-}
-
-mat-card {
-    float: left;
-    margin: 10px;
-}
-
-.mat-icon-button {
-    background-color: #001F3F;
-    color: white;
-}
-
-
-h5,h4,h3 {
-    margin: 0;
-}
-
-mat-divider {
-    width: 80%;
-    margin: 0 auto;
-}
-
-#submit-button{
-
-    background: #001f3f ;
-    
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
   
-    font-family:Helvetica;
-    height: fit-content;
-    transition: transform .2s;
-    
-}
-
-#reset-button{
-    background:#001f3f ;
-    
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-  
-    font-family:Helvetica;
-    height: fit-content;
-    transition: transform .2s;
-
-}
-
-#doctor-col{
-padding: 30px;
-}
-
-.card{
-padding: 20px;
 
 
-height: fit-content;
-
-border: 2px solid #09335e;
-vertical-align: middle;
-
-
-
-
-}
     </style>
