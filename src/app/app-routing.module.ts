@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { BlogcontentComponent } from './components/blogcontent/blogcontent.component';
 import { BlogshomeComponent } from './components/blogshome/blogshome.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
@@ -21,8 +22,8 @@ import { QuestionitemComponent } from './components/questionitem/questionitem.co
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
-import { AuthGuard } from './guard/auth.guard';
 import { WriteBlogComponent } from './components/write-blog/write-blog.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'details', component: DoctorDetailsComponent },
   { path: 'searchresult', component: SearchResultComponent },
   { path: 'medical-history', component: MedicalHistoryComponent },
+  { path: 'blogcontent', component: BlogcontentComponent },
 ];
 
 @NgModule({
