@@ -1,19 +1,19 @@
 <!-- @author Avinash Gazula <agazula@dal.ca>  -->
 <div>
     <mat-toolbar class="parent">
-
         <div fxLayout.lt-md="row">
             <button mat-icon-button [matMenuTriggerFor]="belowMenu" opened="false" fxHide.gt-sm="true">
                 <mat-icon>menu</mat-icon>
             </button>
             <mat-menu #belowMenu="matMenu" yPosition="below">
+
                 <div fxLayout="column">
                     <button href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></button>
-                    <button href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
+                    <button href="#" *ngIf="isDoctor" mat-button [routerLink]="['/view-doctor-appointments']"><span
                             class="menu-item">Appointments</span></button>
-                    <button href="#" mat-button [routerLink]="['/orderMedicine']"><span
+                    <button href="#" *ngIf="isDoctor === false" mat-button [routerLink]="['/orderMedicine']"><span
                             class="menu-item">Medicines</span></button>
-                    <button href="#" mat-button [routerLink]="['/consult']"><span
+                    <button href="#" *ngIf="isDoctor === false" mat-button [routerLink]="['/consult']"><span
                             class="menu-item">Consult</span></button>
                     <button href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home
                             Care</span></button>
@@ -23,7 +23,8 @@
                 </div>
 
             </mat-menu>
-            <button mat-button routerLink="/" dis>
+
+            <button tabindex="-1" mat-button routerLink="/" dis>
                 <mat-icon class="logo">local_hospital</mat-icon>
                 <span class="logo">HEALTHHUB</span>
             </button>
@@ -35,14 +36,14 @@
                 <span class="menu-spacer"></span>
                 <div fxShow="true" fxLayout="row" fxHide.lt-md="true">
                     <button href="#" mat-button [routerLink]="['/blogs']"><span class="menu-item">Blogs</span></button>
-                    <button href="#" mat-button [routerLink]="['/view-doctor-appointments']"><span
+                    <button href="#" *ngIf="isDoctor" mat-button [routerLink]="['/view-doctor-appointments']"><span
                             class="menu-item">Appointments</span></button>
-                    <button href="#" mat-button [routerLink]="['/orderMedicine']"><span
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/orderMedicine']"><span
                             class="menu-item">Medicines</span></button>
                     <button href="#" mat-button [routerLink]="['/insurance']"><span
                             class="menu-item">Insurance</span></button>
                     <button href="#" mat-button [routerLink]="['/forum']"><span class="menu-item">Forum</span></button>
-                    <button href="#" mat-button [routerLink]="['/consult']"><span
+                    <button href="#" *ngIf="!isDoctor" mat-button [routerLink]="['/consult']"><span
                             class="menu-item">Consult</span></button>
                     <button href="#" mat-button [routerLink]="['/homeCare']"><span class="menu-item">Home
                             Care</span></button>
@@ -55,48 +56,34 @@
 
             <div fxShow.gt-md="true" *ngIf="isLoggedIn">
                 <button class="notifications" mat-icon-button [matMenuTriggerFor]="notificationsMenu" opened="false">
-                    <mat-icon matBadge="3" matBadgeSize="small">notifications_none</mat-icon>
+                    <mat-icon matBadge={{count}} matBadgeSize="small">notifications_none</mat-icon>
                 </button>
                 <mat-menu #notificationsMenu="matMenu" yPosition="below">
                     <div fxLayout="column" class="notificationMenu">
-                        <mat-card class="notificationCard">
-                            <mat-card-content>
-                                <p>
-                                    Appointment with Dr. Rogers tomorrow.
-                                </p>
-                            </mat-card-content>
-                            <mat-card-actions fxLayout="row">
-                                <button mat-button>CONFIRM</button>
-                                <button mat-button>CANCEL</button>
-                            </mat-card-actions>
-                        </mat-card>
-                        <mat-card class="notificationCard">
-                            <mat-card-content>
-                                <p>
-                                    Medicines on their way. You can expect them to be delivered by 25th July
-                                </p>
-                            </mat-card-content>
-                        </mat-card>
-                        <mat-card class="notificationCard">
-                            <mat-card-content>
-                                <p>
-                                    Appointment with Dr. Rogers tomorrow.
-                                </p>
-                            </mat-card-content>
-                            <mat-card-actions fxLayout="row">
-                                <button mat-button>CONFIRM</button>
-                                <button mat-button>CANCEL</button>
-                            </mat-card-actions>
+                        <mat-card class="notificationCard" *ngFor="let notofication of notifications">
+                            <div class="row">
+                                <div class="col-10">
+                                    <mat-card-content>
+                                        {{notofication.message}}
+                                    </mat-card-content>
+                                </div>
+                                <div class="col-2">
+                                    <mat-card-actions fxLayout="row">
+                                        <mat-icon matBadgeSize="small" (click)="markAsRead(notofication._id)">cancel
+                                        </mat-icon>
+                                    </mat-card-actions>
+                                </div>
+                            </div>
                         </mat-card>
                     </div>
                 </mat-menu>
-
                 <button mat-icon-button [matMenuTriggerFor]="profileMenu" opened="false">
                     <mat-icon>account_circle</mat-icon>
                 </button>
                 <mat-menu #profileMenu="matMenu" yPosition="below">
                     <div fxLayout="column">
-                        <button mat-button [routerLink]="['/edit-profile']"><span class="menu-item">Edit
+                        <button mat-button (click)="openEditProfilePage()"><span class="
+                            menu-item">Edit
                                 Profile</span></button>
                         <button mat-button [routerLink]="['/my-orders']"><span class="menu-item">My
                                 Orders</span></button>
@@ -105,10 +92,6 @@
                 </mat-menu>
             </div>
         </div>
-
-
-
-
 
     </mat-toolbar>
 </div>

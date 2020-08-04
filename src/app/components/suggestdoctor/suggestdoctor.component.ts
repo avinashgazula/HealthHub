@@ -1,10 +1,11 @@
 /* @author Sai Sunil Menta <ss734478@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { SuggestDoctorModel } from 'src/app/model/suggestDoctorModel';
 import { SuggestDoctorService } from 'src/app/services/suggestdoctor/suggestdoctor.service';
-import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
 
 
 @Component({
@@ -21,34 +22,37 @@ export class SuggestdoctorComponent implements OnInit {
     symptoms: string[];
     selectedSymptoms;
     doctorList: any[];
+    count: number;
 
     cities: any[] = [
         { value: 'Ontario' },
         { value: 'Toronto' },
         { value: 'Halifax' },
         { value: 'Montreal' },
-        { value: 'Vancouver' }
+        { value: 'Vancouver'}
     ];
 
-    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog) {
-        if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
-            localStorage.getItem('token') === undefined) {
-            this.dialog.closeAll();
-            this.dialog.open(LoginComponent, { disableClose: true });
-        }
-    }
+    constructor(private suggestDoctorService: SuggestDoctorService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) { }
 
     ngOnInit() {
 
         this.suggestDoctorService.getSymtomList().subscribe((data) => {
             this.symptoms = data;
         });
+        this.count = -1;
 
         this.selectedSymptoms = new Set();
     }
 
-    viewDoctor() {
-
+    name;
+    id;
+    viewDoctor(doctor) {
+        this.snackBar.open(doctor.name, '', {
+            duration: 3000,
+        });
+        this.name = doctor.name;
+        this.id = doctor._id;
+        this.router.navigateByUrl('/doctor', { state: { doctorObject: doctor } });
     }
 
     priceRange(value: number) {
@@ -58,14 +62,11 @@ export class SuggestdoctorComponent implements OnInit {
     suggestDoctor() {
 
         this.suggestDoctorService.getSuggestedDoctor(this.suggestQuery).subscribe((doctorlist) => {
-
             this.doctorList = doctorlist;
-            console.log(this.doctorList);
-            this.doctorList.forEach((data) => {
-                console.log('Name' + data.image);
-            });
+            this.count = doctorlist.length;
         }
         );
+
     }
 
     checkAndUncheckSymptoms(event: any, value: string) {

@@ -40,6 +40,12 @@ export class SearchResultComponent implements OnInit {
       this.http.post<any>(this.serverUrl + '/search/search-doctors', this.body).subscribe(results => {
         this.result = results;
       })
+      if(this.result == null || this.result == undefined) {
+        this.resultSize = 0;
+      }
+      else{
+        this.resultSize = this.result.length();
+      }
     }
   }
 

@@ -1,5 +1,11 @@
 /* @author Avinash Gazula <agazula@dal.ca> */
 
+.close-button {
+    float: right;
+    top: -24px;
+    right: -24px;
+}
+
 mat-form-field {
     width: 80%;
 }
@@ -15,12 +21,12 @@ button {
 }
 
 .mat-raised-button {
-    background-color: #001F3F;
+    background-color: #001f3f;
     color: white;
 }
 
 .mat-button {
-    color: #001F3F;
+    color: #001f3f;
 }
 
 h3 {
