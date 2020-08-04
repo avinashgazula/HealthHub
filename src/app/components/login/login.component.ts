@@ -85,7 +85,6 @@ export class LoginComponent implements OnInit {
             this.loginService.login(JSON.stringify(formData)).subscribe(
                 data => {
                     if (data.success) {
-                        console.log(data);
                         localStorage.setItem("token", data.token);
                         localStorage.setItem("userType", data.user.type);
                         localStorage.setItem("userId", data.user._id);

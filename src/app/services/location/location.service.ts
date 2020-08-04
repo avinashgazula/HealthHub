@@ -15,7 +15,6 @@ export class LocationService {
   getAddress(latitude: string, longitude: string): Observable<any> {
     const key: string = environment.googleMapsApiKey;
     const url: string = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true&key=' + key;
-    console.log(url);
 
     return this.httpClient.get(url);
   }

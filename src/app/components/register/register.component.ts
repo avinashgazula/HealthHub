@@ -1,15 +1,15 @@
 /* @author Avinash Gazula <agazula@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LoginComponent } from './../login/login.component';
 import { MatchPasswords } from 'src/app/helpers/MatchPasswords';
+import { environment } from '../../../environments/environment';
 import { RegistrationService } from '../../services/registration/registration.service';
 import { DoctorDetailsComponent } from './../doctor-details/doctor-details.component';
+import { LoginComponent } from './../login/login.component';
 
-import { environment } from '../../../environments/environment'
 
 @Component({
     selector: 'app-register',
@@ -94,7 +94,6 @@ export class RegisterComponent implements OnInit {
 
             this.registrationService.register(JSON.stringify(formData)).subscribe(
                 data => {
-                    console.log(data);
                     if (data.success) {
                         if (!this.consumer) {
                             this.dialog.closeAll();
@@ -112,7 +111,6 @@ export class RegisterComponent implements OnInit {
                             });
                         }
                     } else {
-                        console.log(data.error);
                         this.registerForm.markAsUntouched();
                         this.registerForm.controls['email'].setErrors({ 'other': data.error })
                         this.registrationErrorMessage = data.error;

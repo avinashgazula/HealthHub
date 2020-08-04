@@ -68,7 +68,9 @@ export class DoctorDetailsComponent implements OnInit {
         })
       });
     } else {
-      console.log(`No support for geolocation`);
+      this.snackBar.open('Geolocation not supported', '', {
+        duration: 3000,
+      });
     }
   }
 
