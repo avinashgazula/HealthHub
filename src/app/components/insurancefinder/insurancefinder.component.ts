@@ -110,10 +110,10 @@ export class InsurancefinderComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if (localStorage.getItem('name') && localStorage.getItem('userId')) {
     this.checker = true;
     this.submitted = false;
     this.optional = true;
-    if (localStorage.getItem('name') && localStorage.getItem('userId')) {
       var ques = new userInsurance();
       ques.user_id = localStorage.getItem('userId');
       ques.salary = form.form.value.salary;
