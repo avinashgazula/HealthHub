@@ -59,7 +59,7 @@ export class InsurancefinderComponent implements OnInit {
   {
     this.getInsurances();
   }
-  
+
  @HostListener('document:click', ['$event'])
  clicked_event(event) {
    if(this.eRef.nativeElement.contains(event.target)) {
@@ -124,6 +124,9 @@ export class InsurancefinderComponent implements OnInit {
       ques.email = form.form.value.userEmails;
       ques.phone = form.form.value.UserPhone;
       this.postuserdetails(localStorage.getItem('userId'),ques);
+    }
+    else{
+      this.userlogin = "User must be logged in to Submit";
     }
   }
 
