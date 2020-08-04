@@ -2,7 +2,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { DoctorAppointmentsService } from 'src/app/services/appointment/doctorappointments.service';
-import { database } from 'firebase';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,39 +13,42 @@ export class ViewDoctorAppointmentsComponent implements OnInit {
 
     appointmentList: any[];
     userDetails: any;
+    count: number;
 
 
     constructor(private doctorAppointmentsService: DoctorAppointmentsService, private router: Router) { }
 
     ngOnInit(): void {
-
         this.loadAppointments();
     }
 
-    acceptAppointment(id){
-        this.appointmentList=null
-        this.doctorAppointmentsService.acceptAppointment(id).subscribe((data)=>{
-            this.loadAppointments();
-        });   
-    }
-
-    deleteAppoinment(id){
-        this.appointmentList=null
-        this.doctorAppointmentsService.declineAppointment(id).subscribe((data)=>{
+    acceptAppointment(id) {
+        this.appointmentList = null
+        this.doctorAppointmentsService.acceptAppointment(id).subscribe((data) => {
             this.loadAppointments();
         });
     }
 
-    viewPatientDetails(id){
-        localStorage.setItem('patientID',id);
-        this.router.navigate(['medical-history']);  
+    deleteAppoinment(id) {
+        this.appointmentList = null
+        this.doctorAppointmentsService.declineAppointment(id).subscribe((data) => {
+            this.loadAppointments();
+        });
     }
 
-    loadAppointments(){
+    viewPatientDetails(id) {
+        localStorage.setItem('patientID', id);
+        this.router.navigate(['medical-history']);
+    }
+
+    loadAppointments() {
         this.doctorAppointmentsService.getAllAppointments().subscribe((data) => {
             this.appointmentList = data;
+            if (data.length > 0) {
+                this.count = 1;
+            }else{
+                this.count=0;
+            }
         });
-        
     }
-
 }
