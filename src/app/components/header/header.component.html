@@ -87,6 +87,8 @@
                         <button mat-button (click)="openEditProfilePage()"><span class="
                             menu-item">Edit
                                 Profile</span></button>
+                        <button *ngIf="!isDoctor" mat-button [routerLink]="['/medical-history']"><span
+                                class="menu-item">Medical History</span></button>
                         <button mat-button [routerLink]="['/my-orders']"><span class="menu-item">My
                                 Orders</span></button>
                         <button (click)="logout()" mat-button><span class="menu-item">Logout</span></button>
