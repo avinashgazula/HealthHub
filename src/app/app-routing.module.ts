@@ -20,15 +20,15 @@ import { MyOrdersComponent } from './components/medicine-delivery/my-orders/my-o
 import { QuestionitemComponent } from './components/questionitem/questionitem.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SuggestdoctorComponent } from './components/suggestdoctor/suggestdoctor.component';
-import { WriteblogComponent } from './components/writeblog/Writeblog.component';
 import { ViewDoctorAppointmentsComponent } from './components/view-doctor-appointments/view-doctor-appointments.component';
 import { AuthGuard } from './guard/auth.guard';
+import { WriteBlogComponent } from './components/write-blog/write-blog.component';
 
 
 const routes: Routes = [
 
   { path: 'consult', component: DoctorComponent },
-  { path: 'writeblog', component: WriteblogComponent },
+  { path: 'writeblog', component: WriteBlogComponent },
   { path: 'doctor', component: DoctorProfileComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'single-blog', component: BlogComponent },

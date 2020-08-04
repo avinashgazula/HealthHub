@@ -79,10 +79,8 @@ import { RegistrationService } from './services/registration/registration.servic
 import { SuggestDoctorService } from './services/suggestdoctor/suggestdoctor.service';
 import { DoctorAppointmentsService } from './services/appointment/doctorappointments.service';
 import { WriteblogService } from './services/writeblog/writeblog.service';
-import { WriteblogComponent } from './components/writeblog/Writeblog.component';
 import { FeedbackService } from './services/feedback/feedback.service';
-
-
+import { WriteBlogComponent } from './components/write-blog/write-blog.component';
 
 @NgModule({
     declarations: [
@@ -114,7 +112,7 @@ import { FeedbackService } from './services/feedback/feedback.service';
         MyOrdersComponent,
         FeedbackComponent,
         MedicalHistoryComponent,
-        WriteblogComponent
+        WriteBlogComponent
     ],
     imports: [
         BrowserModule,
