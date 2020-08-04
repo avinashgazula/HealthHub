@@ -1,3 +1,5 @@
+/* @author Avinash Gazula <agazula@dal.ca> */
+
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';

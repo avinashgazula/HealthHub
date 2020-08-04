@@ -1,16 +1,12 @@
 /* @author Sai Sunil Menta <ss734478@dal.ca> */
 
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Writeblog } from '../../model/writeblog.model';
 import { WriteblogService } from '../../services/writeblog/writeblog.service';
-import { HttpClient } from '@angular/common/http';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { environment } from './../../../environments/environment';
 
 
 declare var M: any;
@@ -18,18 +14,23 @@ declare var M: any;
   selector: 'healthhub-blogshome',
   templateUrl: './blogshome.component.html',
   styleUrls: ['./blogshome.component.css'],
-  providers:[WriteblogService]
+  providers: [WriteblogService]
 })
 
 
 export class BlogshomeComponent implements OnInit {
+  isDoctor: boolean = false;
 
   constructor(public writeblogService: WriteblogService, private router: Router) { }
 
   ngOnInit() {
     this.resetForm();
     this.refreshWriteblogList();
-  
+
+    if (localStorage.getItem('userType') !== null && localStorage.getItem('userType') === "doctor") {
+      this.isDoctor = true;
+    }
+
   }
   resetForm(form?: NgForm) {
     if (form)
@@ -81,21 +82,21 @@ export class BlogshomeComponent implements OnInit {
     }
   }
 
-  name:string
-  title:string;
-  content:string;
-  introduction:string;
-  id:string;
+  name: string
+  title: string;
+  content: string;
+  introduction: string;
+  id: string;
   click = (blog) => {
     this.name = blog.name;
     this.title = blog.title;
     this.content = blog.content;
-    
+
     this.introduction = blog.introduction;
 
     this.id = blog._id;
     this.router.navigateByUrl('/blogcontent', { state: { blogObject: blog } });
-};
+  };
 
 }
 
