@@ -16,11 +16,10 @@ import { Observable } from 'rxjs';
 })
 export class MedicalHistoryComponent implements OnInit {
 
-  userID = "5f18eed4f52b5429c00cfae0";
+  userID;
 
   serverUrl = environment.serverUrl;
-  medicalHistoryForm: FormGroup;
-
+  
   currentUserID;
   currentUserType;
   currentUserName;
@@ -33,12 +32,23 @@ export class MedicalHistoryComponent implements OnInit {
   constructor(private builder: FormBuilder,
     private dialog: MatDialog,
     private http: HttpClient,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private router: Router) {
     if (!localStorage.getItem('token') || localStorage.getItem('token') === null ||
       localStorage.getItem('token') === undefined) {
       this.dialog.closeAll();
       this.dialog.open(LoginComponent, { disableClose: true });
     } else {
+
+      this.userID = localStorage.getItem('patientID');
+
+      if(this.userID == null || this.userID == undefined || this.userID == ""){
+        alert("Unknown error occured || Patient cannot be found");
+        router.navigate(['view-doctor-appointments']);
+      }
+
+      console.log(this.userID);
+
       this.currentUserID = localStorage.getItem('userId');
       this.currentUserType = localStorage.getItem('userType');
       this.currentUserName = localStorage.getItem('name');
