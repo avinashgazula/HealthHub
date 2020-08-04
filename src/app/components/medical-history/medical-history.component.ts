@@ -41,19 +41,16 @@ export class MedicalHistoryComponent implements OnInit {
     } else {
 
       this.userID = localStorage.getItem('patientID');
-
-      if(this.userID == null || this.userID == undefined || this.userID == ""){
-        alert("Unknown error occured || Patient cannot be found");
-        router.navigate(['view-doctor-appointments']);
-      }
-
-      console.log(this.userID);
-
+        
       this.currentUserID = localStorage.getItem('userId');
       this.currentUserType = localStorage.getItem('userType');
       this.currentUserName = localStorage.getItem('name');
       if (this.currentUserType === "doctors" || this.currentUserType === "Doctors" || this.currentUserType === "doctor" || this.currentUserType === "Doctor") {
         this.booleanUserType = true;
+        if(this.userID == null || this.userID == undefined || this.userID == ""){
+            alert("Unknown error occured || Patient cannot be found");
+            router.navigate(['view-doctor-appointments']);
+        }
       } else {
         this.booleanUserType = false;
       }
