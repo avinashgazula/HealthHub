@@ -225,6 +225,40 @@ onFileChange(event) {
   }
 ```
 
+[12] AMagyarAMagyar3, “Detect click outside Angular component,” Stack Overflow, 01-Apr-1966. [Online]. Available: https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component. [Accessed: 07-Aug-2020].
+
+### /src/app/components/insurancefinder/insurancefinder.ts
+
+Lines: 63-71
+
+```@HostListener('document:click', ['$event'])
+ clicked_event(event) {
+   if(this.eRef.nativeElement.contains(event.target)) {
+   } else {
+     setTimeout(() => {
+      this.checklogin();
+    }, 500);
+   }
+ }
+```
+
+The above code was created by adapting to code(https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component) as shown below code:
+
+``` @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(this.eRef.nativeElement.contains(event.target)) {
+      this.text = "clicked inside";
+    } else {
+      this.text = "clicked outside";
+    }
+  }
+```
+
+-[How]Above code in [12] was implemented by AMagyarAMagyar3(https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component)
+-[Why]Code in [12] was modified to detect changes of click outside the component and run function accordingly. Hostlistener and nativeElement target click was implemented using above code [12].
+-[How] [12](https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component)Code was modified by Vidip Malhotra
+
+
 ## Image Sources
 
 [1] "Doctor". [Image]. Available: https://unsplash.com/photos/DPEPYPBZpB8 [Accessed: 12-Jun-2020]
