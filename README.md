@@ -1,18 +1,20 @@
+# Add firebase config key and google maps API key in the environment variables files to fix build issues
+
 # Group 12 - Project Proposal
 
 Health Hub allows users to book in-clinic appointments with doctors, purchase medicine, book health plans, have intercation in forum and view blogs where the questions are answered by medical professionals.
 
-* *Date Created*: 07 Jun 2020
-* *Last Modification Date*: 24 Jun 2020
+-   _Date Created_: 07 Jun 2020
+-   _Last Modification Date_: 24 Jun 2020
 
 ## Authors
 
-* [Avinash Gazula](av530575@dal.ca)
-* [Harshit Trivedi](harshit.trivedi@dal.ca) 
-* [Sai Sunil Menta](ss734478@dal.ca)
-* [Vidip Malhotra](vidip.malhotra@dal.ca)
-* [Rudra Makwana](Rudra.Makwana@dal.ca)
-* [Swarali Ghalwadkar](swaralisg22@gmail.com)
+-   [Avinash Gazula](av530575@dal.ca)
+-   [Harshit Trivedi](harshit.trivedi@dal.ca)
+-   [Sai Sunil Menta](ss734478@dal.ca)
+-   [Vidip Malhotra](vidip.malhotra@dal.ca)
+-   [Rudra Makwana](Rudra.Makwana@dal.ca)
+-   [Swarali Ghalwadkar](swaralisg22@gmail.com)
 
 ## Getting Started
 
@@ -22,45 +24,44 @@ NodeJs and Angular must be installed on the system
 
 ### Installing
 
-* Clone the repository by using the provided GitLab link
-* Open the terminal and go to the directory where package.json is located
-* Install the node modules using the following command
-	 `npm install` or `npm i` 
-* Start the angular application by using the following command
-	 `ng serve`
-
+-   Clone the repository by using the provided GitLab link
+-   Open the terminal and go to the directory where package.json is located
+-   Install the node modules using the following command
+    `npm install` or `npm i`
+-   Start the angular application by using the following command
+    `ng serve`
 
 ### Built With
 
-* [Angular](https://angular.io/) - The web framework used
-* [npm](https://www.npmjs.com/) - Dependency Management
-* [Bootstrap](https://getbootstrap.com/) - Used for styling
-* [Angular Material](https://material.angular.io/) - Material UI componengts for angular
+-   [Angular](https://angular.io/) - The web framework used
+-   [npm](https://www.npmjs.com/) - Dependency Management
+-   [Bootstrap](https://getbootstrap.com/) - Used for styling
+-   [Angular Material](https://material.angular.io/) - Material UI componengts for angular
 
 ### Design Justifications
 
-* Angular was the preffered framework for the development of the website because of the straight forward 2-way binding and routing it provides. TyeScript is more robust.
-* Material UI was used for the components because it offers a streamlined and minimalistic layout. Material UI is widely used also its familiar to the end users.
-* Bootstrap was used because its easy to set up and configure laypouts. 
-* A dark blue colour (#001F3F) was chosen as the primary color because it constrasts well with the white background. 
-* Roboto font was used for the components because it is the recommended font for Material UI
+-   Angular was the preffered framework for the development of the website because of the straight forward 2-way binding and routing it provides. TyeScript is more robust.
+-   Material UI was used for the components because it offers a streamlined and minimalistic layout. Material UI is widely used also its familiar to the end users.
+-   Bootstrap was used because its easy to set up and configure laypouts.
+-   A dark blue colour (#001F3F) was chosen as the primary color because it constrasts well with the white background.
+-   Roboto font was used for the components because it is the recommended font for Material UI
 
 ### Pages Built
 
-* Login - Can be accessed using the icon on the header
-* Signup - Can be accessed using the icon on the header
-* Home Page - https://health-hub-5709-test.herokuapp.com/
-* About Us - https://health-hub-5709-test.herokuapp.com/aboutUs
-* Contact Us - https://health-hub-5709-test.herokuapp.com/contactUs
-* Consult Doctor - https://health-hub-5709-test.herokuapp.com/consult
-* Doctor's Profile - https://health-hub-5709-test.herokuapp.com/doctor
-* Home Care - https://health-hub-5709-test.herokuapp.com/homeCare
-* Medicine Delivery - https://health-hub-5709-test.herokuapp.com/orderMedicine
-* Schedule Care - https://health-hub-5709-test.herokuapp.com/homeCare
-* Insurance - https://health-hub-5709-test.herokuapp.com/insurance
-* Forum - https://health-hub-5709-test.herokuapp.com/forum
-* Forum Question Answer Page - https://health-hub-5709-test.herokuapp.com/question/1
-* Edit Profile Page - https://health-hub-5709-test.herokuapp.com/edit-profile
+-   Login - Can be accessed using the icon on the header
+-   Signup - Can be accessed using the icon on the header
+-   Home Page - https://health-hub-5709-test.herokuapp.com/
+-   About Us - https://health-hub-5709-test.herokuapp.com/aboutUs
+-   Contact Us - https://health-hub-5709-test.herokuapp.com/contactUs
+-   Consult Doctor - https://health-hub-5709-test.herokuapp.com/consult
+-   Doctor's Profile - https://health-hub-5709-test.herokuapp.com/doctor
+-   Home Care - https://health-hub-5709-test.herokuapp.com/homeCare
+-   Medicine Delivery - https://health-hub-5709-test.herokuapp.com/orderMedicine
+-   Schedule Care - https://health-hub-5709-test.herokuapp.com/homeCare
+-   Insurance - https://health-hub-5709-test.herokuapp.com/insurance
+-   Forum - https://health-hub-5709-test.herokuapp.com/forum
+-   Forum Question Answer Page - https://health-hub-5709-test.herokuapp.com/question/1
+-   Edit Profile Page - https://health-hub-5709-test.herokuapp.com/edit-profile
 
 ### Directory Structure
 
@@ -104,7 +105,6 @@ NodeJs and Angular must be installed on the system
 
 `helpers` - This folder contains all the helper methods
 
-
 ## Deployment
 
 App is deployed on heroku by linking github repository. Automatic deploy is enabled so that it builds as soon as a commit has been made.
@@ -120,7 +120,6 @@ https://git.cs.dal.ca/gazula/a2_avinash_gazula
 ### Github Link
 
 https://github.com/avinashgazula/HealthHub-A2
-
 
 ## Sources Used
 
@@ -141,37 +140,39 @@ https://github.com/avinashgazula/HealthHub-A2
 { path: 'consult', component: DoctorComponent },
 { path: '', pathMatch: 'full', component: HomeComponent }
 ```
-- [How] The code in [5](https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/ ) was implemented by Ahmed Bouchefra
-- [Why] [5](https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/ ) Code was used to route to components
-- [How] [5](https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/ ) Code was modified by Avinash Gazula
 
+-   [How] The code in [5](https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/) was implemented by Ahmed Bouchefra
+-   [Why][5](https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/ ) Code was used to route to components
+-   [How][5](https://www.smashingmagazine.com/2018/11/a-complete-guide-to-routing-in-angular/ ) Code was modified by Avinash Gazula
 
 [6] "Angular Flex Layout". [Online]. Available: https://github.com/angular/flex-layout [Accessed: 12-Jun-2020]
 
 [7] "Styling Scrollbars with CSS: The Modern Way to Style Scrollbars". [Online]. Available: https://alligator.io/css/css-scrollbars/ [Accessed: 13-Jun-2020]
 
 ### /src/app/components/doctor/doctor.component.css
+
 ### /src/app/components/doctor-profile/doctor-profile.component.css
+
 ### /src/app/components/home/home.component.css
 
 ```css
 *::-webkit-scrollbar {
-  width: 12px;
+    width: 12px;
 }
 *::-webkit-scrollbar-track {
-  background: #F5F5F5;
-  border-radius: 20px;
+    background: #f5f5f5;
+    border-radius: 20px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #001F3F;
-  border-radius: 20px;
-  border: 3px solid #F5F5F5;
+    background-color: #001f3f;
+    border-radius: 20px;
+    border: 3px solid #f5f5f5;
 }
 ```
 
-- [How] The code in [7](https://alligator.io/css/css-scrollbars/) was implemented by William Le
-- [Why] [7](https://alligator.io/css/css-scrollbars/) Code was used to create a custom scroll bar
-- [How] [7](https://alligator.io/css/css-scrollbars/) Code was modified by Avinash Gazula
+-   [How] The code in [7](https://alligator.io/css/css-scrollbars/) was implemented by William Le
+-   [Why][7](https://alligator.io/css/css-scrollbars/) Code was used to create a custom scroll bar
+-   [How][7](https://alligator.io/css/css-scrollbars/) Code was modified by Avinash Gazula
 
 [8] "Angular 7 - Reactive Forms Validation". [Online]. Available: https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example [Accessed: 15-Jun-2020]
 
@@ -192,13 +193,13 @@ export function MatchPasswords(password: string, confirmPassword: string) {
         } else {
             control2.setErrors(null);
         }
-    }
+    };
 }
 ```
 
-- [How] The code in [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) was implemented by Jason Watmore
-- [Why] [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) Code was used to create a custom validator to match passwords
-- [How] [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) Code was modified by Avinash Gazula
+-   [How] The code in [8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) was implemented by Jason Watmore
+-   [Why][8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) Code was used to create a custom validator to match passwords
+-   [How][8](https://jasonwatmore.com/post/2018/11/07/angular-7-reactive-forms-validation-example) Code was modified by Avinash Gazula
 
 [9] "How to Deploy Angular Application to Heroku". [Online]. Available: https://itnext.io/how-to-deploy-angular-application-to-heroku-1d56e09c5147 [Accessed: 14-Jun-2020]
 
@@ -244,7 +245,7 @@ Lines: 63-71
 
 The above code was created by adapting to code(https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component) as shown below code:
 
-``` @HostListener('document:click', ['$event'])
+```@HostListener('document:click', ['$event'])
   clickout(event) {
     if(this.eRef.nativeElement.contains(event.target)) {
       this.text = "clicked inside";
@@ -254,10 +255,7 @@ The above code was created by adapting to code(https://stackoverflow.com/questio
   }
 ```
 
--[How]Above code in [12] was implemented by AMagyar(https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component)
--[Why]Code in [12] was modified to detect changes of click outside the component and run function accordingly. Hostlistener and nativeElement target click was implemented using above code [12].
--[How] [12](https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component)Code was modified by Vidip Malhotra
-
+-[How]Above code in [12] was implemented by AMagyar(https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component) -[Why]Code in [12] was modified to detect changes of click outside the component and run function accordingly. Hostlistener and nativeElement target click was implemented using above code [12]. -[How][12](https://stackoverflow.com/questions/40107008/detect-click-outside-angular-component)Code was modified by Vidip Malhotra
 
 ## Image Sources
 
@@ -275,7 +273,7 @@ The above code was created by adapting to code(https://stackoverflow.com/questio
 
 [7] "Home-Care". [Image]. Available: https://lh3.googleusercontent.com/proxy/gPuENzsO8dvZGIkmqAuCf1a04_CU05mj8Wi6Nzu07qoDpikHi3iq8DgTHWzPjndJXtDHM4ahT4zfu5UyEEFfFPPck0owZHfS7aL5ZHd02ljCwUU_v-Eb0SN-2g [Accessed: 22-Jun-2020]
 
-[8] "Order-Medicine" [Image]. Available: https://d.newsweek.com/en/full/1541364/prescription-pills.jpg [Accessed: 22-Jun-2020] 
+[8] "Order-Medicine" [Image]. Available: https://d.newsweek.com/en/full/1541364/prescription-pills.jpg [Accessed: 22-Jun-2020]
 
 [9] "Contact-Us" [Image]. Available: https://i.gifer.com/YXIc.gif [Accessed: 22-Jun-2020]
 
@@ -288,7 +286,7 @@ The above code was created by adapting to code(https://stackoverflow.com/questio
 [13] healthrecords.png (“Electronic Health Records,” MeHI. [Online]. Available: https://mehi.masstech.org/ehealth/electronic-health-records. [Accessed: 15-Jun-2020].)
 [14] insurance.jpg (“Medical Insurance Icon with Shadow. Flat Design. Isolated Illustration.,” 123RF. [Online]. Available: https://www.123rf.com/photo_48456177_stock-vector-medical-insurance-icon-with-shadow-flat-design-isolated-illustration-.html. [Accessed: 15-Jun-2020].)
 
-[15] digestive.png (VectorGrove.com, “Stomach icon, flat style. Internal organs of the human design element, logo. Anatomy, medicine concept. Digestion. Digestive tract, system. 
+[15] digestive.png (VectorGrove.com, “Stomach icon, flat style. Internal organs of the human design element, logo. Anatomy, medicine concept. Digestion. Digestive tract, system.
 Healthcare. Isolated on white background. Vector illustr. by Borokh,” VectorGrove. [Online]. Available: https://www.vectorgrove.com/royalty-free-vector-image/25762996/stomach-icon-flat-style-internal-organs-of-the-human-design-element-logo-anatomy-medicine-concept-digestion-digestive-tract-system-healthcare-isolated-on-white-background-vector-illustr.html. [Accessed: 15-Jun-2020].)
 
 [16] heart.png (C. Fernando, “'Medical Icons Set (Simple)' by Carlos Fernando,” Iconfinder. [Online]. Available: https://www.iconfinder.com/icons/1542716/clinic_doctor_heart_hospital_pulsation_pulse_rate_icon. [Accessed: 15-Jun-2020].)
@@ -311,11 +309,12 @@ Icons References:
 
 Insurance Data Text References:
 
-[1] [Online]. Available: https://www.surehealth.ca/?gclid=Cj0KCQjw6575BRCQARIsAMp-ksNUyvYowKuJ4GubKISGLFuqX9itKyTK9KjZ5YhYxp4YwpGBgzh-Og0aAjirEALw_wcB. [Accessed: 04-Aug-2020].
+[1][online]. Available: https://www.surehealth.ca/?gclid=Cj0KCQjw6575BRCQARIsAMp-ksNUyvYowKuJ4GubKISGLFuqX9itKyTK9KjZ5YhYxp4YwpGBgzh-Og0aAjirEALw_wcB. [Accessed: 04-Aug-2020].
 
 [2] “Personal health insurance,” Personal Health Insurance | Sun Life. [Online]. Available: https://www.sunlife.ca/en/explore-products/insurance/health-insurance/personal-health-insurance/. [Accessed: 04-Aug-2020].
 
 [3] “Personal Health &amp; Dental Insurance: Great-West Life in Canada,” Great. [Online]. Available: https://www.greatwestlife.com/you-and-your-family/products/protection-for-your-life/health-and-dental-insurance.html. [Accessed: 04-Aug-2020].
 
 ## Acknowledgements
-* https://www.traversymedia.com/
+
+-   https://www.traversymedia.com/
